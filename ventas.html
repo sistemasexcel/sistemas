@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ventas e Inventario - Sistemas Excel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.jpeg" alt="Sistemas Excel Logo">
+                Sistemas Excel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav mx-auto">
+                     <li class="nav-item">
+                         <a class="nav-link" href="index.html">Inicio</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link active" href="index.html#sistemas-excel">Sistemas</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="index.html#contacto">Contacto</a>
+                     </li>
+                 </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1 style="margin-bottom: 10px;">Sistema de Ventas e Inventario</h1>
+            <p>Solución completa para la gestión de ventas e inventario en Excel, diseñada para llevar un control ordenado de productos, ventas y reportes. Ideal para cualquier tipo de negocio y seguimiento eficiente del inventario.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Características Section -->
+        <section id="caracteristicas">
+            <h2 class="section-title">Sistema de Ventas e Inventario V5.0</h2>
+             <img src="img/ventas.png" class="img-fluid mb-4" alt="Sistema de Ventas e Inventario" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+             <div class="row g-4">
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-success">🔐 Acceso restringido por usuarios</h5>
+                             <p class="card-text">Control de acceso seguro para proteger la información del sistema.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-primary">📦 Registro de productos con imágenes</h5>
+                             <p class="card-text">Gestiona tu inventario con fotos de productos para mejor identificación.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-info">🛒 Registro de compras</h5>
+                             <p class="card-text">Controla todas las compras y proveedores de manera eficiente.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-warning">🏢 Registro de proveedores</h5>
+                             <p class="card-text">Mantén un registro actualizado de tus proveedores.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-success">👥 Registro de clientes</h5>
+                             <p class="card-text">Base de datos de clientes con historial de compras.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-primary">📋 Módulo de cotizaciones</h5>
+                             <p class="card-text">Genera cotizaciones rápidas y profesionales.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-info">📊 Módulo de Kardex</h5>
+                             <p class="card-text">Control detallado de movimientos de inventario.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-warning">📈 Reportes por vendedor, clientes, fecha, productos y categoría</h5>
+                             <p class="card-text">Informes completos para análisis de negocio.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body">
+                             <h5 class="card-title text-info">💱 Adaptable a cualquier moneda</h5>
+                             <p class="card-text">El sistema se configura fácilmente para trabajar con la moneda de tu país.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-6 col-lg-4">
+                     <div class="card h-100 shadow-sm">
+                         <div class="card-body text-center">
+                             <h5 class="card-title text-success">💰 Precio del Sistema</h5>
+                             <p class="card-text">Pago único e incluye video tutorial</p>
+                             <div class="d-flex justify-content-center align-items-center mb-3">
+                                 <h3 class="text-success fw-bold me-3" style="font-size: 1.8rem;">S/ 65</h3>
+                                 <span class="text-muted mx-2">o</span>
+                                 <h3 class="text-success fw-bold ms-3" style="font-size: 1.8rem;">$21 USD</h3>
+                             </div>
+                             <a href="https://wa.me/51922784328?text=Quiero%20adquirir%20el%20sistema%20de%20ventas%20e%20inventario%20por%20S/65" class="btn btn-success btn-lg" target="_blank">
+                                 <i class="fas fa-shopping-cart me-2"></i>Adquirir ahora
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Video Tutorial Section -->
+        <section id="video-tutorial" class="bg-light py-4 mt-4">
+            <div class="container">
+                <h3 class="text-center mb-3">Tutorial en Video</h3>
+                <div class="text-center">
+                    <a href="https://youtu.be/L8XVvtyEAns" target="_blank" class="btn btn-danger btn-lg" title="Ver tutorial en YouTube">
+                        <i class="fab fa-youtube me-2"></i> Ver video tutorial
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Imágenes del Sistema Section -->
+        <section id="imagenes-sistema">
+            <h2 class="section-title">Imágenes del Sistema de Ventas e Inventario</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/1 login.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Login">
+                        <div class="card-body">
+                            <h5 class="card-title">Pantalla de Login</h5>
+                            <p class="card-text">Acceso seguro al sistema con módulos privados.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/2 menu principal.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Menú Principal">
+                        <div class="card-body">
+                            <h5 class="card-title">Menú Principal</h5>
+                            <p class="card-text">Navegación intuitiva a todos los módulos del sistema.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/3 modulo de configuraciones.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Configuraciones">
+                        <div class="card-body">
+                            <h5 class="card-title">Módulo de Configuraciones</h5>
+                            <p class="card-text">Personaliza ajustes del sistema según tus necesidades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/4 registro de productos.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Registro de Productos">
+                        <div class="card-body">
+                            <h5 class="card-title">Registro de Productos</h5>
+                            <p class="card-text">Gestiona el inventario completo con imágenes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/5 modulo de compras.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Módulo de Compras">
+                        <div class="card-body">
+                            <h5 class="card-title">Módulo de Compras</h5>
+                            <p class="card-text">Controla las compras y proveedores de manera eficiente.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/6 modulo de cotizaciones.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Módulo de Cotizaciones">
+                        <div class="card-body">
+                            <h5 class="card-title">Módulo de Cotizaciones</h5>
+                            <p class="card-text">Genera cotizaciones profesionales al instante.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/7 modulo de ventas.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Módulo de Ventas">
+                        <div class="card-body">
+                            <h5 class="card-title">Módulo de Ventas</h5>
+                            <p class="card-text">Registra ventas y genera comprobantes al instante.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/8 registro de proveedores.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Registro de Proveedores">
+                        <div class="card-body">
+                            <h5 class="card-title">Registro de Proveedores</h5>
+                            <p class="card-text">Mantén un registro actualizado de tus proveedores.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/9 registro de clientes.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Registro de Clientes">
+                        <div class="card-body">
+                            <h5 class="card-title">Registro de Clientes</h5>
+                            <p class="card-text">Base de datos de clientes con historial de compras.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/10 modulo kardex.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Módulo Kardex">
+                        <div class="card-body">
+                            <h5 class="card-title">Módulo Kardex</h5>
+                            <p class="card-text">Control de movimientos de inventario en tiempo real.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="img-ventas/11 modulo de reportes.png" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Módulo de Reportes">
+                        <div class="card-body">
+                            <h5 class="card-title">Módulo de Reportes</h5>
+                            <p class="card-text">Genera reportes detallados de ventas y kardex.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="bg-light py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h2 class="card-title text-success">¿Interesado en este Sistema?</h2>
+                            <p class="card-text lead">¿Listo para implementarlo en tu negocio? Comunícate por WhatsApp y te proporcionaré una propuesta personalizada.</p>
+                            <a href="https://wa.me/51922784328?text=necesito%20mas%20informacion%20del%20sistema%20de%20ventas%20e%20inventario%20en%20excel." class="btn btn-success btn-lg" target="_blank">
+                                <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Sistemas Excel. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Floating Social Media Buttons -->
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <a href="https://www.youtube.com/@SISTEMASEXCEL" class="btn btn-danger btn-lg mb-2 rounded-circle" target="_blank" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <br>
+        <a href="https://www.facebook.com/profile.php?id=61576685654851" class="btn btn-primary btn-lg mb-2 rounded-circle" target="_blank" title="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <br>
+        <a href="http://tiktok.com/@excelsistemascusco" class="btn btn-dark btn-lg rounded-circle" target="_blank" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+</body>
+</html>
