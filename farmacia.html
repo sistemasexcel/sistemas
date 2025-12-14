@@ -20,6 +20,21 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            function importHotmart(){ 
+                var imported = document.createElement('script'); 
+                imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+                document.head.appendChild(imported); 
+                var link = document.createElement('link'); 
+                link.rel = 'stylesheet'; 
+                link.type = 'text/css'; 
+                link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+                document.head.appendChild(link);    
+            } 
+            importHotmart(); 
+        });
+    </script>
 </head>
 
 <body>
@@ -144,11 +159,16 @@
                                     <span class="fs-5 opacity-75">/</span>
                                     <h3 class="fw-bold display-6 mb-0">$24 USD</h3>
                                 </div>
-                                <a href="https://wa.me/51922784328?text=Quiero%20adquirir%20el%20sistema%20de%20farmacia%20por%20S/50"
-                                    class="btn btn-light text-success fw-bold rounded-pill w-100 hover-lift"
+                                <a href="https://wa.me/51922784328?text=Quiero%20adquirir%20el%20sistema%20de%20farmacia%20por%20S/80"
+                                    class="btn btn-info fw-bold rounded-pill w-100 hover-lift mb-3"
                                     target="_blank">
-                                    <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
+                                    <i class="fab fa-whatsapp me-2"></i>Comprar por WhatsApp
                                 </a>
+                                <div class="mt-2">
+                                    <a id="hotmart-button" href="https://pay.hotmart.com/L102677652I?checkoutMode=2&bid=1765716501974" class="hotmart-fb hotmart__button-checkout btn btn-primary fw-bold rounded-pill w-100 hover-lift">
+                                        <i class="fas fa-shopping-cart me-2"></i>Comprar Online
+                                    </a>
+                                </div>
                             </div>
                             <!-- Decorative Circle -->
                             <div
@@ -253,10 +273,16 @@
                     <h2 class="display-5 fw-bold text-white mb-4">Potencia tu Farmacia Hoy</h2>
                     <p class="lead text-white mb-5">Obtén el control total de tu negocio con una herramienta
                         accesible y fácil de usar. ¡Cotiza tu licencia ahora!</p>
-                    <a href="https://wa.me/51922784328?text=necesito%20mas%20informacion%20del%20sistema%20de%20farmacia%20en%20excel."
-                        class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-lift" target="_blank">
-                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
-                    </a>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                        <a href="https://wa.me/51922784328?text=necesito%20mas%20informacion%20del%20sistema%20de%20farmacia%20en%20excel."
+                            class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-lift" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                        </a>
+                        <a href="https://pay.hotmart.com/L102677652I?checkoutMode=2&bid=1765716501974"
+                            class="hotmart-fb hotmart__button-checkout btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold hover-lift">
+                            <i class="fas fa-shopping-cart me-2"></i>Comprar Online
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
