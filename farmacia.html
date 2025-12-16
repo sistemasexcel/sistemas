@@ -20,21 +20,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            function importHotmart(){ 
-                var imported = document.createElement('script'); 
-                imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
-                document.head.appendChild(imported); 
-                var link = document.createElement('link'); 
-                link.rel = 'stylesheet'; 
-                link.type = 'text/css'; 
-                link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
-                document.head.appendChild(link);    
-            } 
-            importHotmart(); 
-        });
-    </script>
 </head>
 
 <body>
@@ -159,16 +144,11 @@
                                     <span class="fs-5 opacity-75">/</span>
                                     <h3 class="fw-bold display-6 mb-0">$24 USD</h3>
                                 </div>
-                                <a href="https://wa.me/51922784328?text=Quiero%20adquirir%20el%20sistema%20de%20farmacia%20por%20S/80"
-                                    class="btn btn-info fw-bold rounded-pill w-100 hover-lift mb-3"
+                                <a href="https://wa.me/51922784328?text=Quiero%20adquirir%20el%20sistema%20de%20farmacia%20por%20S/50"
+                                    class="btn btn-light text-success fw-bold rounded-pill w-100 hover-lift"
                                     target="_blank">
-                                    <i class="fab fa-whatsapp me-2"></i>Comprar por WhatsApp
+                                    <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
                                 </a>
-                                <div class="mt-2">
-                                    <a id="hotmart-button" href="https://pay.hotmart.com/L102677652I?checkoutMode=2&bid=1765716501974" class="hotmart-fb hotmart__button-checkout btn btn-primary fw-bold rounded-pill w-100 hover-lift">
-                                        <i class="fas fa-shopping-cart me-2"></i>Comprar Online
-                                    </a>
-                                </div>
                             </div>
                             <!-- Decorative Circle -->
                             <div
@@ -184,11 +164,190 @@
         <section id="video-tutorial" class="bg-light-green py-5">
             <div class="container text-center">
                 <h3 class="fw-bold mb-4" data-aos="fade-up">Aprende a usarlo en minutos</h3>
-                <div class="d-inline-block" data-aos="zoom-in">
+                <div class="d-flex justify-content-center gap-3" data-aos="zoom-in">
                     <a href="https://www.youtube.com/watch?v=yXiQ55p4vxY&t=84s" target="_blank"
                         class="btn btn-danger btn-lg rounded-pill px-5 py-3 shadow-lg hover-lift">
                         <i class="fab fa-youtube me-2"></i> Ver Video Tutorial
                     </a>
+                    <a href="https://youtu.be/Zh_GIz2W_-M" target="_blank"
+                        class="btn btn-danger btn-lg rounded-pill px-5 py-3 shadow-lg hover-lift">
+                        <i class="fab fa-youtube me-2"></i> Nuevo Video Actualizado
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios Section -->
+        <section id="testimonios" class="py-5 bg-white">
+            <div class="container py-5">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h5 class="text-success fw-bold text-uppercase ls-1">Experiencias de Clientes</h5>
+                    <h2 class="fw-bold display-5 text-dark">Cómo el Sistema de Farmacia Transformó sus Negocios</h2>
+                </div>
+                <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-success"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"El sistema me ha ahorrado horas diarias en la gestión de inventario. Ahora tengo reportes automáticos y controlo mejor mis ganancias."</p>
+                                            <h6 class="fw-bold text-dark">María González</h6>
+                                            <small class="text-muted">Dueña de Farmacia Central, Lima</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-primary"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"Desde que uso este sistema, mis ventas han aumentado un 30%. La facilidad para generar notas de ventas al instante y controlar stock es increíble."</p>
+                                            <h6 class="fw-bold text-dark">Carlos Ramírez</h6>
+                                            <small class="text-muted">Gerente de Farmacia Salud, Arequipa</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-info"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"El kardex y los reportes me dan el control total de mi negocio. Ya no pierdo tiempo en tareas manuales repetitivas."</p>
+                                            <h6 class="fw-bold text-dark">Ana López</h6>
+                                            <small class="text-muted">Propietaria de Botica Familiar, Cusco</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-warning"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"Fácil de instalar y usar. Mi farmacia ahora es más eficiente y rentable. Recomiendo este sistema a todos."</p>
+                                            <h6 class="fw-bold text-dark">Luis Torres</h6>
+                                            <small class="text-muted">Dueño de Farmacia Moderna, Trujillo</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-secondary"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"Excelente sistema adaptable a pesos mexicanos. Me ayuda a gestionar mi farmacia de manera eficiente y generar reportes precisos."</p>
+                                            <h6 class="fw-bold text-dark">Roberto Hernández</h6>
+                                            <small class="text-muted">Propietario de Farmacia del Sol, México</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-danger"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"En Bolivia, este sistema se adaptó perfectamente a nuestros bolivianos. Las notas de ventas al instante facilitan nuestro trabajo diario."</p>
+                                            <h6 class="fw-bold text-dark">Patricia Morales</h6>
+                                            <small class="text-muted">Gerente de Botica Santa Cruz, Bolivia</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-success"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"A pesar de la situación en Venezuela, este sistema en bolívares me mantiene organizado y eficiente en la gestión de medicamentos."</p>
+                                            <h6 class="fw-bold text-dark">José Martínez</h6>
+                                            <small class="text-muted">Dueño de Farmacia Caracas, Venezuela</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
+                                        <div class="card-body text-center p-4">
+                                            <div class="mb-3">
+                                                <i class="fas fa-user-circle fa-3x text-info"></i>
+                                            </div>
+                                            <div class="mb-3">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                            <p class="card-text text-muted mb-3">"El sistema se configura fácilmente con dólares ecuatorianos. La generación automática de notas de ventas es un gran ahorro de tiempo."</p>
+                                            <h6 class="fw-bold text-dark">María Fernanda Ruiz</h6>
+                                            <small class="text-muted">Propietaria de Farmacia Quito, Ecuador</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -273,16 +432,10 @@
                     <h2 class="display-5 fw-bold text-white mb-4">Potencia tu Farmacia Hoy</h2>
                     <p class="lead text-white mb-5">Obtén el control total de tu negocio con una herramienta
                         accesible y fácil de usar. ¡Cotiza tu licencia ahora!</p>
-                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-                        <a href="https://wa.me/51922784328?text=necesito%20mas%20informacion%20del%20sistema%20de%20farmacia%20en%20excel."
-                            class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-lift" target="_blank">
-                            <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
-                        </a>
-                        <a href="https://pay.hotmart.com/L102677652I?checkoutMode=2&bid=1765716501974"
-                            class="hotmart-fb hotmart__button-checkout btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold hover-lift">
-                            <i class="fas fa-shopping-cart me-2"></i>Comprar Online
-                        </a>
-                    </div>
+                    <a href="https://wa.me/51922784328?text=necesito%20mas%20informacion%20del%20sistema%20de%20farmacia%20en%20excel."
+                        class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-lift" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
@@ -321,6 +474,7 @@
                 </div>
             </div>
             <div class="text-center pt-3">
+                <p id="visitor-counter" class="mb-0 small">Visitas: 0</p>
                 <p class="mb-0 small">&copy; 2025 Sistemas Excel. Todos los derechos reservados.</p>
             </div>
         </div>
@@ -332,6 +486,18 @@
         crossorigin="anonymous"></script>
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let count = localStorage.getItem('visitCount');
+            if (count) {
+                count = parseInt(count) + 1;
+            } else {
+                count = 1;
+            }
+            localStorage.setItem('visitCount', count);
+            document.getElementById('visitor-counter').innerText = 'Visitas: ' + count;
+        });
+    </script>
     <script>
         AOS.init({
             duration: 800,

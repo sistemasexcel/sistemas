@@ -312,6 +312,7 @@
                 </div>
             </div>
             <div class="text-center pt-3">
+                <p id="visitor-counter" class="mb-0 small">Visitas: 0</p>
                 <p class="mb-0 small">&copy; 2025 Sistemas Excel. Todos los derechos reservados.</p>
             </div>
         </div>
@@ -323,6 +324,18 @@
         crossorigin="anonymous"></script>
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let count = localStorage.getItem('visitCount');
+            if (count) {
+                count = parseInt(count) + 1;
+            } else {
+                count = 1;
+            }
+            localStorage.setItem('visitCount', count);
+            document.getElementById('visitor-counter').innerText = 'Visitas: ' + count;
+        });
+    </script>
     <script>
         AOS.init({
             duration: 800,

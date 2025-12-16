@@ -21,6 +21,19 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .glow-effect {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #dc3545;
+            }
+            to {
+                box-shadow: 0 0 20px #dc3545, 0 0 30px #dc3545;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -143,7 +156,7 @@
                             <div class="card-body p-4 p-lg-5">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <span
-                                        class="badge bg-success-subtle text-success rounded-pill px-3 py-1">Farmacias</span>
+                                        class="badge bg-danger text-white rounded-pill px-3 py-1 shadow-sm">Farmacias</span>
                                     <small class="text-muted"><i class="fas fa-star text-warning"></i> 4.9/5</small>
                                 </div>
                                 <h2 class="card-title fw-bold mb-3">Sistema de Farmacia Pro</h2>
@@ -157,6 +170,7 @@
                                         Ventas Diarios/Mensuales</li>
                                     <li><i class="fas fa-check-circle text-success me-2"></i>Alertas de medicamentos Vencidos</li>
                                     <li class="mb-2"><i class="fas fa-barcode text-success me-2"></i>Lectura de Códigos de Barras (Escaneo rápido y preciso de productos).</li>
+                                    <li class="mb-2"><span class="badge bg-danger text-white rounded-pill px-3 py-1 me-2 glow-effect">Productos Más Comprados</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -252,6 +266,7 @@
                 </div>
             </div>
             <div class="text-center pt-3">
+                <p id="visitor-counter" class="mb-0 small">Visitas: 0</p>
                 <p class="mb-0 small">&copy; 2025 Sistemas Excel. Todos los derechos reservados.</p>
             </div>
         </div>
@@ -265,6 +280,18 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Christmas Effect JS -->
     <script src="christmas-effect.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let count = localStorage.getItem('visitCount');
+            if (count) {
+                count = parseInt(count) + 1;
+            } else {
+                count = 1;
+            }
+            localStorage.setItem('visitCount', count);
+            document.getElementById('visitor-counter').innerText = 'Visitas: ' + count;
+        });
+    </script>
     <script>
         AOS.init({
             duration: 800,
