@@ -4,61 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas Excel - Soluciones Profesionales</title>
+    <title>Sistemas Excel - Soluciones Profesionales en VBA</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap"
-        rel="stylesheet">
-
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .glow-effect {
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px #dc3545;
-            }
-            to {
-                box-shadow: 0 0 20px #dc3545, 0 0 30px #dc3545;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-blur">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img src="img/logo.jpeg" alt="Sistemas Excel Logo" class="brand-logo">
-                <span class="brand-text">Sistemas Excel</span>
+                <img src="img/logo.jpeg" alt="Logo" class="brand-logo" style="height: 40px; border-radius: 8px;">
+                <span>Sistemas</span> Excel
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sistemas-excel">Soluciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#beneficios">Beneficios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-contact-nav" href="#contacto">Contacto</a>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#sistemas">Nuestras Soluciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="nav-link btn-contact-nav" href="#contacto">Hablemos ahora</a>
                     </li>
                 </ul>
             </div>
@@ -66,145 +43,169 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero d-flex align-items-center">
-        <div class="santa-container">
-            <img src="img/santa-sleigh.png" alt="Santa Claus Flying" class="santa-img">
-        </div>
-        <div class="container text-center">
-            <span class="badge bg-white text-success mb-3 px-3 py-2 rounded-pill shadow-sm"
-                data-aos="fade-down">Expertos en Automatización</span>
-            <h1 class="display-3 fw-bold mb-4 text-white" data-aos="fade-up" data-aos-delay="100">Potencia tu Negocio
-                con <span class="text-highlight">Excel</span></h1>
-            <p class="lead text-white mb-5 mx-auto" style="max-width: 700px;" data-aos="fade-up" data-aos-delay="200">
-                Desarrollamos sistemas a medida con VBA para automatizar procesos, gestionar inventarios y optimizar la
-                toma de decisiones.</p>
-            <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
-                <a href="#sistemas-excel" class="btn btn-light btn-lg px-5 py-3 fw-bold rounded-pill">Ver Soluciones</a>
-                <a href="#contacto" class="btn btn-outline-light btn-lg px-5 py-3 fw-bold rounded-pill">Cotizar
-                    Ahora</a>
+    <header class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="section-tag" data-aos="fade-right">Lo mejor de la automatización</span>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Potencia tu Negocio con <span
+                            class="text-gradient">Excel Inteligente</span></h1>
+                    <p class="mb-5" data-aos="fade-up" data-aos-delay="200">
+                        Transformamos tus procesos manuales en herramientas potentes y automatizadas con VBA. Gestión de
+                        inventarios, reportes dinámicos y control total en un clic.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#sistemas" class="btn btn-primary btn-lg">Explorar Soluciones</a>
+                        <a href="#contacto" class="btn btn-outline-primary btn-lg">Solicitar Cotización</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in">
+                    <div class="position-relative">
+                        <img src="img/farmacia.png" alt="Excel Dashboard" class="img-fluid rounded-4 shadow-lg">
+                        <div class="position-absolute bottom-0 end-0 bg-white p-4 rounded-4 shadow-lg m-3 d-none d-md-block"
+                            style="border-left: 5px solid var(--primary);">
+                            <h5 class="mb-0">Ahorro de Tiempo</h5>
+                            <small class="text-muted">Hasta un 90% en tareas manuales</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="hero-overlay"></div>
     </header>
 
     <main>
-        <!-- Beneficios Section (New) -->
-        <section id="beneficios" class="py-5 bg-white">
+        <!-- Beneficios Section -->
+        <section id="beneficios" class="py-5">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <h5 class="text-success fw-bold text-uppercase ls-1">Por qué elegirnos</h5>
-                    <h2 class="fw-bold display-5 text-dark">Lleva tu gestión al siguiente nivel</h2>
+                    <span class="section-tag">¿Por qué elegirnos?</span>
+                    <h2 class="display-5">Lleva tu gestión al siguiente nivel</h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card p-4 h-100 text-center rounded-4 border-0 shadow-hover bg-light-green">
-                            <div
-                                class="icon-box mb-4 mx-auto bg-white text-success rounded-circle d-flex align-items-center justify-content-center shadow-sm">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper">
                                 <i class="fas fa-bolt fa-2x"></i>
                             </div>
-                            <h4 class="fw-bold mb-3">Automatización Total</h4>
-                            <p class="text-muted">Despídete de las tareas manuales repetitivas. Nuestros sistemas
-                                trabajan por ti ahorrando tiempo y reduciendo errores.</p>
+                            <h4>Automatización Total</h4>
+                            <p class="text-muted">Despídete de las tareas repetitivas. Nuestros sistemas trabajan por ti
+                                de forma autónoma.</p>
                         </div>
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card p-4 h-100 text-center rounded-4 border-0 shadow-hover bg-light-green">
-                            <div
-                                class="icon-box mb-4 mx-auto bg-white text-success rounded-circle d-flex align-items-center justify-content-center shadow-sm">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper">
                                 <i class="fas fa-chart-pie fa-2x"></i>
                             </div>
-                            <h4 class="fw-bold mb-3">Control Preciso</h4>
-                            <p class="text-muted">Mantén el control total de tu inventario, ventas y clientes con
-                                reportes detallados y paneles de control intuitivos.</p>
+                            <h4>Control Preciso</h4>
+                            <p class="text-muted">Inventarios, ventas y clientes en un solo panel de control intuitivo y
+                                muy fácil de usar.</p>
                         </div>
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card p-4 h-100 text-center rounded-4 border-0 shadow-hover bg-light-green">
-                            <div
-                                class="icon-box mb-4 mx-auto bg-white text-success rounded-circle d-flex align-items-center justify-content-center shadow-sm">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper">
                                 <i class="fas fa-lock fa-2x"></i>
                             </div>
-                            <h4 class="fw-bold mb-3">Seguridad y Respaldo</h4>
-                            <p class="text-muted">Tus datos están seguros. Implementamos sistemas de login y respaldos
-                                automáticos para proteger tu información.</p>
+                            <h4>Seguridad Garantizada</h4>
+                            <p class="text-muted">Gestión de accesos, roles de usuario y respaldos automáticos para tu
+                                información crítica.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sistemas en Excel Section -->
-        <section id="sistemas-excel" class="section-bg py-5">
+        <!-- Sistemas Section -->
+        <section id="sistemas" class="py-5" style="background: #f1f5f9;">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <h5 class="text-success fw-bold text-uppercase ls-1">Nuestros Productos</h5>
-                    <h2 class="fw-bold display-5 text-dark">Soluciones Destacadas</h2>
+                    <span class="section-tag">Nuestro Catálogo</span>
+                    <h2 class="display-5">Sistemas Listos para Usar</h2>
                 </div>
-                <div class="row g-4">
+                <div class="row g-5">
                     <!-- Sistema Farmacia -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="product-card card h-100 border-0 shadow-lg overflow-hidden rounded-4">
-                            <div class="card-img-wrapper position-relative overflow-hidden">
-                                <img src="img/farmacia.png" class="card-img-top transition-scale"
-                                    alt="Sistema de Farmacia">
-                                <div class="card-overlay d-flex align-items-center justify-content-center">
-                                    <a href="farmacia.html"
-                                        class="btn btn-light rounded-pill px-4 py-2 fw-bold stretched-link">Ver
-                                        Detalles</a>
-                                </div>
+                    <div class="col-12" data-aos="fade-up">
+                        <div class="product-card horizontal">
+                            <div class="product-img-container">
+                                <img src="img/farmacia.png" alt="Sistema de Farmacia">
+                                <span class="product-badge">Lo más vendido • Para Farmacias</span>
                             </div>
-                            <div class="card-body p-4 p-lg-5">
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <span
-                                        class="badge bg-danger text-white rounded-pill px-3 py-1 shadow-sm">Farmacias</span>
-                                    <small class="text-muted"><i class="fas fa-star text-warning"></i> 4.9/5</small>
+                            <div class="product-content">
+                                
+                                <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Farmacia Pro</span>
+                                    <small class="text-muted fs-5 fw-normal">V 4.12</small>
+                                </h3>
+                                <p class="text-muted mb-4 fs-5">Lleva el control TOTAL de tu botica o farmacia. Gestiona
+                                    medicamentos, stock, vencimientos y reportes con una herramienta profesional
+                                    diseñada para emprendedores.</p>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Lector de Barras</li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Alertas de Vencimiento</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Reportes Diarios</li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Ventas por Vendedor</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h2 class="card-title fw-bold mb-3">Sistema de Farmacia Pro</h2>
-                                <p class="card-text text-muted mb-4">La solución definitiva para farmacias. Gestiona
-                                     proveedores y ventas con una interfaz intuitiva y potentes
-                                    reportes.</p>
-                                <ul class="list-unstyled text-muted mb-0 small">
-                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Control de
-                                        Stock y Vencimientos</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Reportes de
-                                        Ventas Diarios/Mensuales</li>
-                                    <li><i class="fas fa-check-circle text-success me-2"></i>Alertas de medicamentos Vencidos</li>
-                                    <li class="mb-2"><i class="fas fa-barcode text-success me-2"></i>Lectura de Códigos de Barras (Escaneo rápido y preciso de productos).</li>
-                                    <li class="mb-2"><span class="badge bg-danger text-white rounded-pill px-3 py-1 me-2 glow-effect">Productos Más Comprados</span></li>
-                                </ul>
+                                <div class="d-flex gap-3">
+                                    <a href="farmacia.html" class="btn btn-primary px-4">Más detalles del sistema</a>
+                                    <button type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
+                                        data-bs-target="#checkoutModalIndex">
+                                        Comprar ahora
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Sistema Ventas e Inventario -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="product-card card h-100 border-0 shadow-lg overflow-hidden rounded-4">
-                            <div class="card-img-wrapper position-relative overflow-hidden">
-                                <img src="img/ventas.png" class="card-img-top transition-scale"
-                                    alt="Sistema de Ventas e Inventario">
-                                <div class="card-overlay d-flex align-items-center justify-content-center">
-                                    <a href="ventas.html"
-                                        class="btn btn-light rounded-pill px-4 py-2 fw-bold stretched-link">Ver
-                                        Detalles</a>
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                        <div class="product-card horizontal">
+                            <div class="product-content">
+                                <span class="section-tag" style="margin-bottom: 0.5rem;">Versatilidad para tu
+                                    negocio</span>
+                                <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Ventas e
+                                        Inventario</span> <small class="text-muted fs-5 fw-normal">V 5.0</small></h3>
+                                <p class="text-muted mb-4 fs-5">La herramienta ideal para ferreterías, bodegas,
+                                    papelerías y más. Registra ventas con imágenes de productos, genera cotizaciones y
+                                    más.</p>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Imágenes de Productos</li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Cotizaciones Profesionales</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Kardex de Almacén</li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                                Gestión de Proveedores</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <a href="ventas.html" class="btn btn-primary px-4">Más detalles del sistema</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20adquirir%20el%20sistema%20de%20ventas"
+                                        class="btn btn-outline-primary px-4">Comprar ahora</a>
                                 </div>
                             </div>
-                            <div class="card-body p-4 p-lg-5">
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <span
-                                        class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1">General</span>
-                                    <small class="text-muted"><i class="fas fa-star text-warning"></i> 4.8/5</small>
-                                </div>
-                                <h2 class="card-title fw-bold mb-3">Sistema de Ventas e Inventario</h2>
-                                <p class="card-text text-muted mb-4">Adaptable a cualquier negocio retail. Ferreterías,
-                                    bodegas, papelerías y más. Todo lo que necesitas en un solo lugar.</p>
-                                <ul class="list-unstyled text-muted mb-0 small">
-                                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Genera Notas de ventas
-                                        Rápida</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Gestión de
-                                        Clientes</li>
-                                    
-                                    </li>
-                                    <li class="mb-2"><i class="fas fa-barcode text-primary me-2"></i>Lectura de Códigos de Barras <span class="text-danger fw-bold">(Próximamente)</span></li>
-                                </ul>
+                            <div class="product-img-container">
+                                <img src="img/ventas.png" alt="Sistema de Ventas">
+                                <span class="product-badge">Actualizado • Multi-Negocio</span>
                             </div>
                         </div>
                     </div>
@@ -212,86 +213,103 @@
             </div>
         </section>
 
-
-    </main>
-
-    <!-- Contacto Section -->
-    <section id="contacto" class="py-5 bg-dark position-relative overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10 bg-gradient-brand"></div>
-        <div class="container position-relative z-1 py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="zoom-in">
-                    <h2 class="display-5 fw-bold text-white mb-4">¿Tienes una idea en mente?</h2>
-                    <p class="lead text-white mb-5">Convertimos tus procesos complejos en herramientas simples y
-                        potentes. Hablemos de cómo optimizar tu negocio hoy mismo.</p>
-                    <a href="https://wa.me/51922784328?text=Hola%2C%20tengo%20una%20idea%20para%20un%20sistema%20en%20Excel%20y%20quiero%20cotizar%20una%20solución%20a%20la%20medida%20de%20mis%20necesidades."
-                        class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-lift" target="_blank">
-                        <i class="fab fa-whatsapp me-2"></i>Cotizar por WhatsApp
+        <!-- CTA / Contacto Section -->
+        <section id="contacto" class="py-5">
+            <div class="container py-5">
+                <div class="pricing-card" data-aos="zoom-in">
+                    <span class="section-tag" style="color: var(--primary-vibrant);">¿Buscando algo a medida?</span>
+                    <h2 class="display-4 text-white mb-4">Hacemos tus ideas realidad en Excel</h2>
+                    <p class="lead mb-5" style="max-width: 700px; margin: 0 auto; color: #cbd5e1;">
+                        Si tu negocio tiene necesidades específicas, desarrollamos el sistema exacto que imaginas.
+                        Ahorra tiempo y optimiza tus resultados hoy.
+                    </p>
+                    <a href="https://wa.me/51922784328?text=Hola%2C%20quisiera%20cotizar%20un%20sistema%20personalizado"
+                        class="btn btn-primary btn-lg px-5 py-3" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer bg-black py-5 text-white">
+    <footer class="footer">
         <div class="container">
-            <div class="row gy-4 border-bottom border-secondary pb-5 mb-5">
-                <div class="col-md-4">
-                    <h5 class="text-white mb-3 fw-bold">Sistemas Excel</h5>
-                    <p>Soluciones tecnológicas accesibles y potentes para emprendedores y empresas que buscan crecer.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-white mb-3 fw-bold">Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#sistemas-excel"
-                                class="text-white text-decoration-none hover-white">Nuestros Sistemas</a></li>
-                        <li class="mb-2"><a href="#beneficios"
-                                class="text-white text-decoration-none hover-white">Beneficios</a></li>
-                        <li class="mb-2"><a href="#contacto"
-                                class="text-white text-decoration-none hover-white">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-white mb-3 fw-bold">Síguenos</h5>
-                    <div class="d-flex gap-3">
-                        <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5 social-link"
-                            target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=61576685654851"
-                            class="text-white fs-5 social-link" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5 social-link"
-                            target="_blank"><i class="fab fa-tiktok"></i></a>
+            <div class="row gy-5 pb-5 border-bottom border-dark">
+                <div class="col-lg-4">
+                    <a class="navbar-brand text-white d-block mb-3" href="#">
+                        <span>Sistemas</span> Excel
+                    </a>
+                    <p>Soluciones tecnológicas accesibles basadas en Microsoft Excel para transformar el flujo de
+                        trabajo de emprendedores en toda Latinoamérica.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5"
+                            target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i
+                                class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Navegación</h5>
+                    <a href="#sistemas" class="footer-link">Sistemas</a>
+                    <a href="#beneficios" class="footer-link">Beneficios</a>
+                    <a href="#contacto" class="footer-link">Contacto</a>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h5>Nuestros Sistemas</h5>
+                    <a href="farmacia.html" class="footer-link">Sistema Farmacia Pro</a>
+                    <a href="ventas.html" class="footer-link">Ventas e Inventario</a>
+                </div>
+                <div class="col-lg-3 col-md-4 text-lg-end">
+                    <h5>Contacto</h5>
+                    <p class="mb-1 text-white fw-bold">+51 922 784 328</p>
+                    <p>Cusco, Perú</p>
+                </div>
             </div>
-            <div class="text-center pt-3">
+            <div class="text-center pt-4 mt-2">
                 <p class="mb-0 small">&copy; 2025 Sistemas Excel. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Modal Checkout Hotmart -->
+    <div class="modal fade" id="checkoutModalIndex" tabindex="-1" aria-labelledby="checkoutModalIndexLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalIndexLabel">Adquirir Sistema - Farmacia Pro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="https://pay.hotmart.com/L102677652I" class="hotmart-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Christmas Effect JS -->
-    <script src="christmas-effect.js"></script>
     <script>
         AOS.init({
-            duration: 800,
+            duration: 1000,
             once: true,
             offset: 100
         });
 
-        // Navbar blur effect on scroll
+        // Navbar blur change
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-                document.querySelector('.navbar').classList.add('navbar-scrolled');
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.style.background = "rgba(255, 255, 255, 0.95)";
+                navbar.style.boxShadow = "0 10px 30px -10px rgba(0,0,0,0.1)";
             } else {
-                document.querySelector('.navbar').classList.remove('navbar-scrolled');
+                navbar.style.background = "rgba(255, 255, 255, 0.7)";
+                navbar.style.boxShadow = "none";
             }
         });
     </script>

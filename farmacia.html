@@ -4,16 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Farmacia - Sistemas Excel</title>
+    <title>Sistema de Farmacia Pro - Sistemas Excel</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap"
-        rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- AOS Animation -->
@@ -25,26 +21,21 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-blur">
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="img/logo.jpeg" alt="Sistemas Excel Logo" class="brand-logo">
-                <span class="brand-text">Sistemas Excel</span>
+                <img src="img/logo.jpeg" alt="Logo" class="brand-logo" style="height: 40px; border-radius: 8px;">
+                <span>Sistemas</span> Excel
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Sistema Farmacia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-contact-nav" href="index.html#contacto">Contacto</a>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="nav-link btn-contact-nav" href="index.html#contacto">Cotizar ahora</a>
                     </li>
                 </ul>
             </div>
@@ -52,369 +43,245 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero d-flex align-items-center" style="min-height: 60vh;">
-        <div class="santa-container">
-            <img src="img/santa-sleigh.png" alt="Santa Claus Flying" class="santa-img">
-        </div>
-        <div class="container text-center position-relative z-1">
-            <span class="badge bg-white text-success mb-3 px-3 py-2 rounded-pill shadow-sm" data-aos="fade-down">Versión
-                4.12</span>
-            <h1 class="display-3 fw-bold mb-4 text-white" data-aos="fade-up">Sistema de Farmacia</h1>
-            <p class="lead text-white mb-4 mx-auto" style="max-width: 800px;" data-aos="fade-up" data-aos-delay="100">
-                Solución completa para la gestión interna de farmacias en Excel. Controla
-                medicamentos, ventas y reportes de forma eficiente.</p>
-            <div data-aos="fade-up" data-aos-delay="200">
-                <a href="#caracteristicas" class="btn btn-light rounded-pill px-4 py-2 fw-bold">Ver Características</a>
+    <header class="hero" style="padding-top: 140px; padding-bottom: 60px;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <span class="section-tag" data-aos="fade-right">Versión 4.12 • Lanzamiento 2025</span>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span class="text-gradient">Farmacia
+                            Pro</span></h1>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                        La herramienta más completa para la gestión farmacéutica en Excel. Controla stock, vencimientos
+                        y genera reportes automáticos con facilidad extrema.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="https://youtu.be/yXiQ55p4vxY" target="_blank" class="btn btn-primary btn-lg">
+                            <i class="fab fa-youtube me-2"></i>Video Tutorial 1
+                        </a>
+                        <a href="https://youtu.be/q7T8xSA2UBc" target="_blank" class="btn btn-outline-dark btn-lg">
+                            <i class="fab fa-youtube me-2"></i>Video Tutorial 2
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="zoom-in">
+                    <img src="img/farmacia.png" alt="Farmacia Pro" class="img-fluid rounded-4 shadow-lg border"
+                        style="border-width: 8px !important; border-color: white !important;">
+                </div>
             </div>
         </div>
-        <div class="hero-overlay"></div>
     </header>
 
     <main>
-        <!-- Características Section -->
-        <section id="caracteristicas" class="py-5 bg-white">
+        <!-- Características Modernas -->
+        <section class="py-5 bg-white">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <h5 class="text-success fw-bold text-uppercase ls-1">Funcionalidades</h5>
-                    <h2 class="fw-bold display-5 text-dark">Todo lo que necesitas</h2>
+                    <span class="section-tag">Funcionalidades</span>
+                    <h2 class="display-6">Diseñado para la eficiencia</h2>
                 </div>
-
-                <div class="row justify-content-center mb-5" data-aos="fade-up">
-                    <div class="col-lg-10">
-                        <img src="img/farmacia.png" class="img-fluid rounded-4 shadow-lg" alt="Sistema de Farmacia">
-                    </div>
-                </div>
-
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card p-4 h-100 bg-light rounded-4 border-0 shadow-hover">
-                            <div class="text-success mb-3"><i class="fas fa-pills fa-2x"></i></div>
-                            <h5 class="fw-bold mb-3">Gestión de Medicamentos</h5>
-                            <p class="text-muted">Registra y administra el inventario de forma automatizada.</p>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper"><i class="fas fa-pills fa-2x"></i></div>
+                            <h5>Gestión de Medicamentos</h5>
+                            <p class="text-muted small">Administra todo tu catálogo con fichas técnicas, precios y
+                                categorías inteligentes.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card p-4 h-100 bg-light rounded-4 border-0 shadow-hover">
-                            <div class="text-primary mb-3"><i class="fas fa-box-open fa-2x"></i></div>
-                            <h5 class="fw-bold mb-3">Control de Inventario</h5>
-                            <p class="text-muted">Monitorea stock, entradas y salidas de productos farmacéuticos.</p>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper"><i class="fas fa-barcode fa-2x"></i></div>
+                            <h5>Control por Escaneo</h5>
+                            <p class="text-muted small">Totalmente compatible con lectores de códigos de barras para
+                                ventas y registro de stock veloz.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card p-4 h-100 bg-light rounded-4 border-0 shadow-hover">
-                            <div class="text-info mb-3"><i class="fas fa-file-invoice-dollar fa-2x"></i></div>
-                            <h5 class="fw-bold mb-3">Reportes Detallados</h5>
-                            <p class="text-muted">Genera informes de ventas, kardex, Ventas por vendedor y mucho más. </p>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper"><i class="fas fa-calendar-check fa-2x"></i></div>
+                            <h5>Alertas de Vencimiento</h5>
+                            <p class="text-muted small">El sistema te avisa automáticamente qué productos están por
+                                vencer para evitar pérdidas.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card p-4 h-100 bg-light rounded-4 border-0 shadow-hover">
-                            <div class="text-warning mb-3"><i class="fas fa-users fa-2x"></i></div>
-                            <h5 class="fw-bold mb-3">Gestión de Clientes</h5>
-                            <p class="text-muted">Mantén un registro de clientes, historial de compras y búsquedas
-                                rápidas por DNI o RUC (Consultas solo para Perú).</p>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper"><i class="fas fa-users fa-2x"></i></div>
+                            <h5>Gestión de Clientes</h5>
+                            <p class="text-muted small">Búsquedas rápidas por DNI o RUC con historial de compras
+                                guardado al instante.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card p-4 h-100 bg-light rounded-4 border-0 shadow-hover">
-                            <div class="text-secondary mb-3"><i class="fas fa-globe-americas fa-2x"></i></div>
-                            <h5 class="fw-bold mb-3">Multi-Moneda</h5>
-                            <p class="text-muted">El sistema es totalmente configurable para trabajar con la moneda
-                                local de tu país sin complicaciones.</p>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper"><i class="fas fa-globe-americas fa-2x"></i></div>
+                            <h5>Multi-Moneda</h5>
+                            <p class="text-muted small">Configura el sistema para la moneda local de tu país: Soles,
+                                Pesos, Dólares, etc.</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card p-4 h-100 bg-light rounded-4 border-0 shadow-hover">
-                            <div class="text-success mb-3"><i class="fas fa-barcode fa-2x"></i></div>
-                            <h5 class="fw-bold mb-3">Escaneo por Código de Barras</h5>
-                            <p class="text-muted">Agiliza tus ventas y control de inventario con nuestro sistema compatible con lectores de códigos de barras estándar.</p>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div
-                            class="card h-100 border-0 shadow-lg bg-gradient-brand text-white rounded-4 overflow-hidden position-relative">
-                            <div
-                                class="card-body text-center p-4 d-flex flex-column justify-content-center position-relative z-1">
-                                <h5 class="card-title fw-bold text-white mb-3">Oferta Especial</h5>
-                                <p class="mb-2 opacity-75">Pago único - Incluye Tutorial</p>
-                                <div class="d-flex justify-content-center align-items-end mb-4 gap-2">
-                                    <h3 class="fw-bold display-6 mb-0">S/ 80</h3>
-                                    <span class="fs-5 opacity-75">/</span>
-                                    <h3 class="fw-bold display-6 mb-0">$24 USD</h3>
-                                </div>
-                                <a href="https://wa.me/51922784328?text=Quiero%20adquirir%20el%20sistema%20de%20farmacia%20por%20S/50"
-                                    class="btn btn-light text-success fw-bold rounded-pill w-100 hover-lift"
-                                    target="_blank">
-                                    <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
-                                </a>
-                            </div>
-                            <!-- Decorative Circle -->
-                            <div
-                                class="position-absolute top-0 end-0 translate-middle p-5 bg-white opacity-10 rounded-circle">
-                            </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-card h-100">
+                            <div class="icon-wrapper"><i class="fas fa-chart-line fa-2x"></i></div>
+                            <h5>Reportes & Kardex</h5>
+                            <p class="text-muted small">Visualiza el movimiento de tus productos (Kardex físico y
+                                valorado) en tiempo real.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Video Tutorial Section -->
-        <section id="video-tutorial" class="bg-light-green py-5">
-            <div class="container text-center">
-                <h3 class="fw-bold mb-4" data-aos="fade-up">Aprende a usarlo en minutos</h3>
-                <div class="d-flex justify-content-center gap-3" data-aos="zoom-in">
-                    <a href="https://www.youtube.com/watch?v=yXiQ55p4vxY&t=84s" target="_blank"
-                        class="btn btn-danger btn-lg rounded-pill px-5 py-3 shadow-lg hover-lift">
-                        <i class="fab fa-youtube me-2"></i> Ver Video Tutorial
-                    </a>
-                    <a href="https://youtu.be/Zh_GIz2W_-M" target="_blank"
-                        class="btn btn-danger btn-lg rounded-pill px-5 py-3 shadow-lg hover-lift">
-                        <i class="fab fa-youtube me-2"></i> Nuevo Video Actualizado
-                    </a>
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-5" style="background-color: #f8fafc;">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="pricing-card" data-aos="flip-up">
+                            <span class="section-tag" style="color: var(--primary-vibrant);">Oferta por
+                                Lanzamiento</span>
+                            <h3 class="text-white mt-3">Licencia Vitalicia</h3>
+                            <p class="mb-4" style="color: #94a3b8;">Pago único sin mensualidades</p>
+                            <div class="price-box">
+                                <span class="price-large">S/ 80</span>
+                                <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
+                                <span class="price-large">$ 24 USD</span>
+                            </div>
+                            <ul class="list-unstyled text-start mb-5"
+                                style="max-width: 300px; margin: 0 auto; color: #cbd5e1;">
+                                
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Tutoriales paso a paso
+                                </li>
+                                
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Configuración inicial
+                                    incluída</li>
+                            </ul>
+                            <button type="button" class="btn btn-primary w-100 py-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal">
+                                <i class="fas fa-cart-plus me-2"></i>¡Lo quiero ahora!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Capturas Extendida -->
+        <section id="galeria" class="py-5">
+            <div class="container py-5">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-tag">Explora la Interfaz</span>
+                    <h2 class="display-6">Recorrido por el Sistema</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="product-card">
+                            <img src="Img_farmacia/1 login.png" alt="Acceso" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Acceso de Seguridad</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="product-card">
+                            <img src="Img_farmacia/2 configuraciones.png" alt="Menu" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Configuraciones</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="product-card">
+                            <img src="Img_farmacia/3 registro de medicamentos.png" alt="Medicamentos" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Gestión de Productos</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="product-card">
+                            <img src="Img_farmacia/4 modulo de compras.png" alt="Compras" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Módulo de Compras</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="product-card">
+                            <img src="Img_farmacia/5 modulo de ventas.png" alt="Ventas" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Terminal de Ventas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="product-card">
+                            <img src="Img_farmacia/6 registro de proveedores.png" alt="Proveedores" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Registro de Proveedores</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="product-card">
+                            <img src="Img_farmacia/7 registro de clientes.png" alt="Clientes" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Gestión de Clientes</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="product-card">
+                            <img src="Img_farmacia/8 reportes.png" alt="Reportes" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Análisis de Ventas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="product-card">
+                            <img src="Img_farmacia/9 kardex.png" alt="Kardex" class="img-fluid">
+                            <div class="p-3 text-center fw-bold">Control de Kardex</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonios Section -->
-        <section id="testimonios" class="py-5 bg-white">
+        <section class="py-5" style="background-color: #f1f5f9;">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <h5 class="text-success fw-bold text-uppercase ls-1">Experiencias de Clientes</h5>
-                    <h2 class="fw-bold display-5 text-dark">Cómo el Sistema de Farmacia Transformó sus Negocios</h2>
+                    <span class="section-tag">Opiniones Reales</span>
+                    <h2 class="display-6">Lo que dicen nuestros clientes</h2>
                 </div>
-                <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row g-4">
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-success"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"El sistema me ha ahorrado horas diarias en la gestión de inventario. Ahora tengo reportes automáticos y controlo mejor mis ganancias."</p>
-                                            <h6 class="fw-bold text-dark">María González</h6>
-                                            <small class="text-muted">Dueña de Farmacia Central, Lima</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-primary"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"Desde que uso este sistema, mis ventas han aumentado un 30%. La facilidad para generar notas de ventas al instante y controlar stock es increíble."</p>
-                                            <h6 class="fw-bold text-dark">Carlos Ramírez</h6>
-                                            <small class="text-muted">Gerente de Farmacia Salud, Arequipa</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-info"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"El kardex y los reportes me dan el control total de mi negocio. Ya no pierdo tiempo en tareas manuales repetitivas."</p>
-                                            <h6 class="fw-bold text-dark">Ana López</h6>
-                                            <small class="text-muted">Propietaria de Botica Familiar, Cusco</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-warning"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"Fácil de instalar y usar. Mi farmacia ahora es más eficiente y rentable. Recomiendo este sistema a todos."</p>
-                                            <h6 class="fw-bold text-dark">Luis Torres</h6>
-                                            <small class="text-muted">Dueño de Farmacia Moderna, Trujillo</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row g-4">
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-secondary"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"Excelente sistema adaptable a pesos mexicanos. Me ayuda a gestionar mi farmacia de manera eficiente y generar reportes precisos."</p>
-                                            <h6 class="fw-bold text-dark">Roberto Hernández</h6>
-                                            <small class="text-muted">Propietario de Farmacia del Sol, México</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-danger"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"En Bolivia, este sistema se adaptó perfectamente a nuestros bolivianos. Las notas de ventas al instante facilitan nuestro trabajo diario."</p>
-                                            <h6 class="fw-bold text-dark">Patricia Morales</h6>
-                                            <small class="text-muted">Gerente de Botica Santa Cruz, Bolivia</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-success"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"A pesar de la situación en Venezuela, este sistema en bolívares me mantiene organizado y eficiente en la gestión de medicamentos."</p>
-                                            <h6 class="fw-bold text-dark">José Martínez</h6>
-                                            <small class="text-muted">Dueño de Farmacia Caracas, Venezuela</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="card h-100 border-0 shadow-lg rounded-4 bg-light">
-                                        <div class="card-body text-center p-4">
-                                            <div class="mb-3">
-                                                <i class="fas fa-user-circle fa-3x text-info"></i>
-                                            </div>
-                                            <div class="mb-3">
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                                <i class="fas fa-star text-warning"></i>
-                                            </div>
-                                            <p class="card-text text-muted mb-3">"El sistema se configura fácilmente con dólares ecuatorianos. La generación automática de notas de ventas es un gran ahorro de tiempo."</p>
-                                            <h6 class="fw-bold text-dark">María Fernanda Ruiz</h6>
-                                            <small class="text-muted">Propietaria de Farmacia Quito, Ecuador</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Imágenes del Sistema Section -->
-        <section id="imagenes-sistema" class="py-5 bg-white">
-            <div class="container py-5">
-                <h2 class="section-title text-center mb-5 fw-bold" data-aos="fade-up">Galería del Sistema</h2>
                 <div class="row g-4">
-                    <!-- Images Loop -->
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                            <img src="Img_farmacia/1 login.png" class="card-img-top"
-                                style="height: 220px; object-fit: cover;" alt="Login">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Pantalla de Login</h6>
-                                <p class="small text-muted mb-0">Acceso seguro y gestión de permisos.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                            <img src="Img_farmacia/2 configuraciones.png" class="card-img-top"
-                                style="height: 220px; object-fit: cover;" alt="Configuraciones">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Configuraciones</h6>
-                                <p class="small text-muted mb-0">Parametrización completa del sistema.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                            <img src="Img_farmacia/3 registro de medicamentos.png" class="card-img-top"
-                                style="height: 220px; object-fit: cover;" alt="Registro">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Registro de Medicamentos</h6>
-                                <p class="small text-muted mb-0">Categorización y gestión detallada.</p>
+                    <div class="col-md-4" data-aos="fade-up">
+                        <div class="testimonial-card">
+                            <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="mb-4 text-muted">"Excelente sistema, muy fácil de usar y me ayudó mucho en mi
+                                botica. El soporte técnico es increíble."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="user-avatar">R</div>
+                                <div>
+                                    <h6 class="mb-0">Rosa M.</h6>
+                                    <small class="text-muted">Dueña de Botica</small>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                            <img src="Img_farmacia/5 modulo de ventas.png" class="card-img-top"
-                                style="height: 220px; object-fit: cover;" alt="Ventas">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Módulo de Ventas</h6>
-                                <p class="small text-muted mb-0">Interfaz ágil para facturación rápida.</p>
+                        <div class="testimonial-card">
+                            <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="mb-4 text-muted">"Muy intuitivo. Logré organizar todo mi inventario en una tarde.
+                                Lo recomiendo al 100%."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="user-avatar">J</div>
+                                <div>
+                                    <h6 class="mb-0">Jose L.</h6>
+                                    <small class="text-muted">Farmacéutico</small>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                            <img src="Img_farmacia/8 reportes.png" class="card-img-top"
-                                style="height: 220px; object-fit: cover;" alt="Reportes">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Reportes y Estadísticas</h6>
-                                <p class="small text-muted mb-0">Visualización clara de datos clave.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                            <img src="Img_farmacia/9 kardex.png" class="card-img-top"
-                                style="height: 220px; object-fit: cover;" alt="Kardex">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Kardex Físico y Valorado</h6>
-                                <p class="small text-muted mb-0">Trazabilidad total de tus productos.</p>
+                        <div class="testimonial-card">
+                            <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="mb-4 text-muted">"Me ayudó a organizar mis compras y evitar pérdidas de productos
+                                por vencimiento. Imprescindible."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="user-avatar">M</div>
+                                <div>
+                                    <h6 class="mb-0">Maria P.</h6>
+                                    <small class="text-muted">Administradora</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -423,82 +290,33 @@
         </section>
     </main>
 
-    <!-- Contacto Section -->
-    <section id="contacto" class="py-5 bg-dark position-relative overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10 bg-gradient-brand"></div>
-        <div class="container position-relative z-1 py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="zoom-in">
-                    <h2 class="display-5 fw-bold text-white mb-4">Potencia tu Farmacia Hoy</h2>
-                    <p class="lead text-white mb-5">Obtén el control total de tu negocio con una herramienta
-                        accesible y fácil de usar. ¡Cotiza tu licencia ahora!</p>
-                    <a href="https://wa.me/51922784328?text=necesito%20mas%20informacion%20del%20sistema%20de%20farmacia%20en%20excel."
-                        class="btn btn-success btn-lg px-5 py-3 rounded-pill fw-bold hover-lift" target="_blank">
-                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer bg-black py-5 text-white">
+    <!-- Footer Simple -->
+    <footer class="footer py-5 text-center">
         <div class="container">
-            <div class="row gy-4 border-bottom border-secondary pb-5 mb-5">
-                <div class="col-md-4">
-                    <h5 class="text-white mb-3 fw-bold">Sistemas Excel</h5>
-                    <p>Soluciones tecnológicas accesibles y potentes para emprendedores y empresas que buscan crecer.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-white mb-3 fw-bold">Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html"
-                                class="text-white text-decoration-none hover-white">Inicio</a></li>
-                        <li class="mb-2"><a href="index.html#sistemas-excel"
-                                class="text-white text-decoration-none hover-white">Productos</a></li>
-                        <li class="mb-2"><a href="index.html#contacto"
-                                class="text-white text-decoration-none hover-white">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-white mb-3 fw-bold">Síguenos</h5>
-                    <div class="d-flex gap-3">
-                        <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5 social-link"
-                            target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=61576685654851"
-                            class="text-white fs-5 social-link" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5 social-link"
-                            target="_blank"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center pt-3">
-                <p class="mb-0 small">&copy; 2025 Sistemas Excel. Todos los derechos reservados.</p>
-            </div>
+            <p class="mb-0">&copy; 2025 Sistemas Excel. Soluciones que impulsan tu farmacia.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <!-- AOS Animation JS -->
+    <!-- Modal Checkout Hotmart -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Completar Adquisición - Farmacia Pro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="https://pay.hotmart.com/L102677652I" class="hotmart-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-                document.querySelector('.navbar').classList.add('navbar-scrolled');
-            } else {
-                document.querySelector('.navbar').classList.remove('navbar-scrolled');
-            }
-        });
+        AOS.init({ duration: 1000, once: true });
     </script>
 </body>
 
