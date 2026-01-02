@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- AOS Animation -->
@@ -33,6 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#sistemas">Nuestras Soluciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="python.html">Sistemas Python</a></li>
                     <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
                     <li class="nav-item ms-lg-3">
                         <a class="nav-link btn-contact-nav" href="#contacto">Hablemos ahora</a>
@@ -45,29 +48,16 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
                     <span class="section-tag" data-aos="fade-right">Lo mejor de la automatización</span>
                     <h1 data-aos="fade-up" data-aos-delay="100">Potencia tu Negocio con <span
                             class="text-gradient">Excel Inteligente</span></h1>
-                    <p class="mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <p class="mb-5" data-aos="fade-up" data-aos-delay="1">
                         Transformamos tus procesos manuales en herramientas potentes y automatizadas con VBA. Gestión de
                         inventarios, reportes dinámicos y control total en un clic.
                     </p>
-                    <div class="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="300">
-                        <a href="#sistemas" class="btn btn-primary btn-lg">Explorar Soluciones</a>
-                        <a href="#contacto" class="btn btn-outline-primary btn-lg">Solicitar Cotización</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in">
-                    <div class="position-relative">
-                        <img src="img/farmacia.png" alt="Excel Dashboard" class="img-fluid rounded-4 shadow-lg">
-                        <div class="position-absolute bottom-0 end-0 bg-white p-4 rounded-4 shadow-lg m-3 d-none d-md-block"
-                            style="border-left: 5px solid var(--primary);">
-                            <h5 class="mb-0">Ahorro de Tiempo</h5>
-                            <small class="text-muted">Hasta un 90% en tareas manuales</small>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -82,7 +72,7 @@
                     <h2 class="display-5">Lleva tu gestión al siguiente nivel</h2>
                 </div>
                 <div class="row g-4">
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                         <div class="feature-card h-100">
                             <div class="icon-wrapper">
                                 <i class="fas fa-bolt fa-2x"></i>
@@ -92,7 +82,7 @@
                                 de forma autónoma.</p>
                         </div>
                     </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                         <div class="feature-card h-100">
                             <div class="icon-wrapper">
                                 <i class="fas fa-chart-pie fa-2x"></i>
@@ -102,7 +92,7 @@
                                 muy fácil de usar.</p>
                         </div>
                     </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                         <div class="feature-card h-100">
                             <div class="icon-wrapper">
                                 <i class="fas fa-lock fa-2x"></i>
@@ -110,6 +100,18 @@
                             <h4>Seguridad Garantizada</h4>
                             <p class="text-muted">Gestión de accesos, roles de usuario y respaldos automáticos para tu
                                 información crítica.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-card h-100 position-relative">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1 rounded-bl-3 fs-6 d-flex align-items-center gap-1" style="border-bottom-left-radius: 15px; font-size: 0.7rem !important;">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" style="width: 16px;"> Perú
+                            </span>
+                            <div class="icon-wrapper">
+                                <i class="bi bi-search fa-2x"></i>
+                            </div>
+                            <h4>Consultas DNI / RUC</h4>
+                            <p class="text-muted">Obtén datos de clientes y proveedores al instante conectando con bases de datos oficiales.</p>
                         </div>
                     </div>
                 </div>
@@ -134,25 +136,31 @@
                             <div class="product-content">
                                 
                                 <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Farmacia Pro</span>
-                                    <small class="text-muted fs-5 fw-normal">V 4.12</small>
+                                    <small class="text-muted fs-5 fw-normal">V 4.15</small>
                                 </h3>
                                 <p class="text-muted mb-4 fs-5">Lleva el control TOTAL de tu botica o farmacia. Gestiona
                                     medicamentos, stock, vencimientos y reportes con una herramienta profesional
                                     diseñada para emprendedores.</p>
                                 <div class="row g-3 mb-4">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-3">
+                                            <i class="fas fa-info-circle text-warning fs-4"></i>
+                                            <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                                        </div>
+                                    </div>
                                     <div class="col-sm-6">
                                         <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-upc-scan text-primary me-2"></i>
                                                 Lector de Barras</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-alarm text-primary me-2"></i>
                                                 Alertas de Vencimiento</li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
                                         <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-file-earmark-bar-graph text-primary me-2"></i>
                                                 Reportes Diarios</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-person-badge text-primary me-2"></i>
                                                 Ventas por Vendedor</li>
                                         </ul>
                                     </div>
@@ -171,6 +179,10 @@
                     <!-- Sistema Ventas e Inventario -->
                     <div class="col-12" data-aos="fade-up" data-aos-delay="200">
                         <div class="product-card horizontal">
+                            <div class="product-img-container">
+                                <img src="img/ventas.png" alt="Sistema de Ventas">
+                                <span class="product-badge">Actualizado • Multi-Negocio</span>
+                            </div>
                             <div class="product-content">
                                 <span class="section-tag" style="margin-bottom: 0.5rem;">Versatilidad para tu
                                     negocio</span>
@@ -180,32 +192,80 @@
                                     papelerías y más. Registra ventas con imágenes de productos, genera cotizaciones y
                                     más.</p>
                                 <div class="row g-3 mb-4">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-3">
+                                            <i class="fas fa-info-circle text-warning fs-4"></i>
+                                            <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                                        </div>
+                                    </div>
                                     <div class="col-sm-6">
                                         <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-images text-primary me-2"></i>
                                                 Imágenes de Productos</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-file-earmark-text text-primary me-2"></i>
                                                 Cotizaciones Profesionales</li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
                                         <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-box-seam text-primary me-2"></i>
                                                 Kardex de Almacén</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>
+                                            <li class="mb-2"><i class="bi bi-truck text-primary me-2"></i>
                                                 Gestión de Proveedores</li>
+                                            <li class="mb-2"><i class="bi bi-upc-scan text-primary me-2"></i>
+                                                Lector de Código de Barras</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="d-flex gap-3">
                                     <a href="ventas.html" class="btn btn-primary px-4">Más detalles del sistema</a>
-                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20adquirir%20el%20sistema%20de%20ventas"
-                                        class="btn btn-outline-primary px-4">Comprar ahora</a>
+                                    <button type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
+                                        data-bs-target="#checkoutModalVentas">
+                                        Comprar ahora
+                                    </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Sistema de Cotizaciones -->
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="400">
+                        <div class="product-card horizontal">
                             <div class="product-img-container">
-                                <img src="img/ventas.png" alt="Sistema de Ventas">
-                                <span class="product-badge">Actualizado • Multi-Negocio</span>
+                                <img src="img_cotizacion/1.2-01.jpg" alt="Sistema de Cotizaciones">
+                                <span class="product-badge">Nuevo • Empresarial</span>
+                            </div>
+                            <div class="product-content">
+                                <span class="section-tag" style="margin-bottom: 0.5rem;">Gestión Comercial</span>
+                                <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Cotizaciones</span> <small class="text-muted fs-5 fw-normal">V 10.5</small></h3>
+                                <p class="text-muted mb-4 fs-5">Genera cotizaciones profesionales en segundos. Gestiona clientes, productos y exporta a PDF con diseño impactante.</p>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-3">
+                                            <i class="fas fa-info-circle text-warning fs-4"></i>
+                                            <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="bi bi-search text-primary me-2"></i> Consultas DNI/RUC (Perú)</li>
+                                            <li class="mb-2"><i class="bi bi-file-earmark-pdf text-primary me-2"></i> Exportación a PDF</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="bi bi-people-fill text-primary me-2"></i> Base de Datos Clientes</li>
+                                            <li class="mb-2"><i class="bi bi-database text-primary me-2"></i> Base de Datos Productos</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <a href="cotizaciones.html" class="btn btn-primary px-4">Más detalles del sistema</a>
+                                    <button type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
+                                        data-bs-target="#checkoutModalCotizaciones">
+                                        Comprar ahora
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -261,11 +321,24 @@
                     <h5>Nuestros Sistemas</h5>
                     <a href="farmacia.html" class="footer-link">Sistema Farmacia Pro</a>
                     <a href="ventas.html" class="footer-link">Ventas e Inventario</a>
+                    <a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a>
                 </div>
                 <div class="col-lg-3 col-md-4 text-lg-end">
                     <h5>Contacto</h5>
-                    <p class="mb-1 text-white fw-bold">+51 922 784 328</p>
-                    <p>Cusco, Perú</p>
+                    <p class="mb-1 text-white fw-bold"><i class="bi bi-whatsapp me-2"></i>+51 922 784 328</p>
+                 
+                    <div class="mt-4">
+                        <h6 class="text-white mb-3 small text-uppercase fw-bold" style="letter-spacing: 1px;">Métodos de Pago</h6>
+                        <div class="d-flex flex-column gap-3 align-items-lg-end">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg" alt="Visa" style="height: 25px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 25px;">
+                            <img src="https://logodownload.org/wp-content/uploads/2019/08/hotmart-logo.png" alt="Hotmart" style="height: 25px; filter: invert(1);">
+                            <div class="d-flex gap-2 justify-content-lg-end">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Yape_text_app_icon.png/320px-Yape_text_app_icon.png" alt="Yape" style="height: 35px; border-radius: 5px;">
+                                <img src="https://seeklogo.com/images/P/plin-logo-967A4AF583-seeklogo.com.png" alt="Plin" style="height: 35px; border-radius: 5px;">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="text-center pt-4 mt-2">
@@ -285,6 +358,38 @@
                 </div>
                 <div class="modal-body p-0">
                     <iframe src="https://pay.hotmart.com/L102677652I" class="hotmart-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Checkout Ventas -->
+    <div class="modal fade" id="checkoutModalVentas" tabindex="-1" aria-labelledby="checkoutModalVentasLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalVentasLabel">Adquirir Sistema - Ventas e Inventario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="https://pay.hotmart.com/F102803755C" class="hotmart-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Checkout Cotizaciones -->
+    <div class="modal fade" id="checkoutModalCotizaciones" tabindex="-1" aria-labelledby="checkoutModalCotizacionesLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalCotizacionesLabel">Adquirir Sistema - Cotizaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="https://pay.hotmart.com/G103608811T" class="hotmart-iframe"></iframe>
                 </div>
             </div>
         </div>
