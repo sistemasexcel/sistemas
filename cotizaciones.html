@@ -36,9 +36,6 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
-                    <li class="nav-item ms-lg-3">
-                        <a class="nav-link btn-contact-nav" href="index.html#contacto">Cotizar ahora</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -48,7 +45,7 @@
     <header class="hero" style="padding-top: 140px; padding-bottom: 60px;">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                     <div class="d-inline-flex align-items-center gap-2 p-2 px-3 rounded-pill mb-4 shadow-sm" 
                          style="background: rgba(33, 115, 70, 0.05); border: 1px solid rgba(33, 115, 70, 0.1);" 
                          data-aos="fade-right">
@@ -65,6 +62,9 @@
                         <a href="https://youtu.be/WzQBM0NxQHA" target="_blank" class="btn btn-danger btn-lg">
                             <i class="fab fa-youtube me-2"></i>Ver Video
                         </a>
+                        <a href="COTIZACIONES - DEMO.xlsm" download class="btn btn-success btn-lg">
+                            <i class="bi bi-download me-2"></i>Descargar Demo
+                        </a>
                         <a href="#galeria" class="btn btn-primary btn-lg">
                             <i class="fas fa-images me-2"></i>Ver Galería
                         </a>
@@ -73,9 +73,10 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="zoom-in">
-                    <img src="img_cotizacion/1.png" alt="Sistema de Cotizaciones" class="img-fluid rounded-4 shadow-lg border"
-                        style="border-width: 8px !important; border-color: white !important;">
+                <div class="col-lg-6 text-center mt-5 mt-lg-0" data-aos="zoom-in">
+                    <div class="ratio ratio-16x9 rounded-4 shadow-lg border overflow-hidden" style="border-width: 8px !important; border-color: white !important;">
+                        <iframe src="https://www.youtube.com/embed/8GrIuENlzKI" title="Sistema de Cotizaciones" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -185,9 +186,9 @@
         <section id="pricing" class="py-5" style="background-color: #f8fafc;">
             <div class="container py-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-5">
+                    <div class="col-lg-10">
                         <!-- Countdown Timer -->
-                        <div class="countdown-container text-center mb-4" data-aos="fade-down">
+                        <div class="countdown-container text-center mb-5" data-aos="fade-down">
                             <h5 class="fw-bold"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!</h5>
                             <div class="d-flex justify-content-center gap-3">
                                 <div class="time-box">
@@ -206,28 +207,40 @@
                         </div>
 
                         <div class="pricing-card" data-aos="flip-up">
-                            <span class="section-tag" style="color: var(--primary-vibrant);">Oferta Especial</span>
-                            <h3 class="text-white mt-3">Licencia Vitalicia</h3>
-                            <p class="mb-4" style="color: #94a3b8;">Pago único sin mensualidades</p>
-                            <div class="price-box">
-                                <span class="price-large">S/ 20</span>
-                                <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
-                                <span class="price-large">$ 7 USD</span>
+                            <div class="pricing-left">
+                                <span class="section-tag" style="color: var(--primary-vibrant);">Oferta Especial</span>
+                                <h3 class="text-white mt-3">Licencia Vitalicia</h3>
+                                <p class="mb-4" style="color: #94a3b8;">Pago único sin mensualidades</p>
+                                <div class="price-box">
+                                    <span class="price-large">S/ 25</span>
+                                    <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
+                                    <span class="price-large">$ 8 USD</span>
+                                </div>
                             </div>
-                            <ul class="list-unstyled text-start mb-5"
-                                style="max-width: 300px; margin: 0 auto; color: #cbd5e1;">
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Consultas SUNAT/RENIEC (Valido para Perú)</li>
-                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Exportación a PDF</li>
-                                
-                            </ul>
-                            <button type="button" class="btn btn-primary w-100 py-3 mb-3" data-bs-toggle="modal"
-                                data-bs-target="#checkoutModal">
-                                <i class="fas fa-cart-plus me-2"></i>¡Adquirir ahora!
-                            </button>
-                            <a href="https://wa.me/51922784328?text=Hola,%20vengo%20desde%20la%20web%20de%20Sistemas%20Excel%20y%20estoy%20interesado%20en%20adquirir%20el%20Sistema%20de%20Cotizaciones%20en%20Excel.%20Quedo%20atento(a)%20a%20la%20información." 
-                               target="_blank" class="btn btn-outline-light w-100 py-3">
-                                <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
-                            </a>
+                            
+                            <div class="pricing-right">
+                                <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-4 text-start">
+                                    <i class="bi bi-info-circle text-warning fs-4"></i>
+                                    <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                                </div>
+
+                                <ul class="list-unstyled text-start mb-5"
+                                    style="color: #cbd5e1;">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Consultas SUNAT/RENIEC (Valido para Perú)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Exportación a PDF</li>
+                                    
+                                </ul>
+                                <div class="pricing-actions">
+                                    <button type="button" class="btn btn-primary w-100 py-3" data-bs-toggle="modal"
+                                        data-bs-target="#checkoutModal">
+                                        <i class="fas fa-cart-plus me-2"></i>¡Adquirir ahora!
+                                    </button>
+                                    <a href="https://wa.me/51922784328?text=Hola,%20vengo%20desde%20la%20web%20de%20Sistemas%20Excel%20y%20estoy%20interesado%20en%20adquirir%20el%20Sistema%20de%20Cotizaciones%20en%20Excel.%20Quedo%20atento(a)%20a%20la%20información." 
+                                       target="_blank" class="btn btn-outline-light w-100 py-3">
+                                        <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
