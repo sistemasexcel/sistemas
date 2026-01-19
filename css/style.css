@@ -550,6 +550,21 @@ a { text-decoration: none; }
     margin-top: 4px;
 }
 
+/* New: Large Feature Icon */
+.feature-icon {
+    width: 70px; /* Aumentar el tamaño del contenedor */
+    height: 70px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 2.2rem; /* Aumentar el tamaño del icono dentro del contenedor */
+}
+
+
 /* --- Footer --- */
 .footer {
     background-color: var(--secondary);

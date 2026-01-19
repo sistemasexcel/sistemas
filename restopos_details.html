@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestoPOS System v2.0 - Sistemas Excel</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        #galleryModal .modal-lg {
+            max-width: 80%;
+        }
+
+        #galleryModal .modal-content {
+            background-color: transparent;
+            border: 0;
+        }
+
+        #galleryModal .carousel-inner img {
+            max-height: 80vh;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        #galleryModal .btn-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="img/logo.jpeg" alt="Logo" class="brand-logo" style="height: 40px; border-radius: 8px;">
+                <span>Sistemas</span> Excel
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sistemasweb.html">Sistemas Web</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow-1" style="padding-top: 80px;">
+        <section id="restopos-details" class="py-5 bg-light">
+            <div class="container py-5">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h1 class="display-4"><span class="text-gradient">RestoPOS System v2.0</span></h1>
+                    <p class="lead text-muted mt-3">La Solución Integral para tu Restaurante</p>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-lg-10 mx-auto" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card shadow-lg border-0">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <img src="app web/1.png" class="img-fluid rounded-start" alt="RestoPOS System">
+                                </div>
+                                <div class="col-lg-6 d-flex flex-column p-5">
+                                    <h2 class="h4">El POS que tu restaurante necesita</h2>
+                                    <p class="flex-grow-1">Nuestro sistema Todo en Uno optimiza cada proceso de tu restaurante, reduce errores operativos y maximiza tus ganancias. Menos complicaciones, más control y mejores resultados desde un solo lugar.</p>
+                                    <a href="https://wa.me/51922784328?text=Hola,%20me%20interesa%20el%20sistema%20RestoPOS" class="btn btn-primary btn-lg mt-3" target="_blank">
+                                        <i class="bi bi-whatsapp me-2"></i> Solicitar Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5">Características Principales</h2>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="card h-100 shadow-sm border-0 feature-card-details">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-primary text-white"><i class="fas fa-cash-register"></i></div>
+                                <h5 class="card-title">Punto de Venta (POS)</h5>
+                                <p class="card-text text-muted">Interfaz táctil amigable, múltiples métodos de pago, y cálculo automático de vueltos y cuentas divididas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 shadow-sm border-0 feature-card-details">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-success text-white"><i class="fas fa-chair"></i></div>
+                                <h5 class="card-title">Gestión de Mesas y Salón</h5>
+                                <p class="card-text text-muted">Mapa de mesas en vivo, gestión de cuentas y tickets personalizables con tu logo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 shadow-sm border-0 feature-card-details">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-danger text-white"><i class="fas fa-motorcycle"></i></div>
+                                <h5 class="card-title">Módulo de Delivery</h5>
+                                <p class="card-text text-muted">Control total de pedidos, base de datos de clientes para agilizar entregas y monitoreo de estados del pedido (cocina, listo, en camino).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 shadow-sm border-0 feature-card-details">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-info text-white"><i class="fas fa-tv"></i></div>
+                                <h5 class="card-title">Pantalla en Cocina (KDS)</h5>
+                                <p class="card-text text-muted">Reemplaza las comandas de papel. Los pedidos llegan a una pantalla en tiempo real con prioridades y detalles claros.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card h-100 shadow-sm border-0 feature-card-details">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-warning text-dark"><i class="fas fa-money-bill-wave"></i></div>
+                                <h5 class="card-title">Control Financiero</h5>
+                                <p class="card-text text-muted">Arqueos de caja seguros, registro de gastos y auditoría completa de sesiones para un control total de tu efectivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card h-100 shadow-sm border-0 feature-card-details">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-dark text-white"><i class="fas fa-user-shield"></i></div>
+                                <h5 class="card-title">Seguridad y Roles</h5>
+                                <p class="card-text text-muted">Perfiles definidos (admin, cajero, mozo) para proteger tu información sensible y dar acceso solo a lo necesario.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5 pt-5">
+                    <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                         <div class="card shadow-sm border-0">
+                            <div class="card-body p-5">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature-icon bg-primary text-white me-4" style="font-size: 2rem;"><i class="fas fa-chart-line"></i></div>
+                                    <h2 class="mb-0">Inteligencia de Negocios</h2>
+                                </div>
+                                <p class="text-muted">Toma decisiones basadas en datos con nuestro dashboard ejecutivo y analítica avanzada. Descarga todo en Excel o PDF.</p>
+                                <ul class="list-group list-group-flush mt-4">
+                                    <li class="list-group-item"><i class="fas fa-chart-line fa-lg me-2 text-primary"></i> <strong>Dashboard Ejecutivo:</strong> Resumen en tiempo real de las ventas del día.</li>
+                                  
+                                    <li class="list-group-item"><i class="fas fa-star fa-lg me-2 text-warning"></i> <strong>Rendimiento de Personal:</strong> Identifica a tus mejores vendedores.</li>
+                                    <li class="list-group-item"><i class="fas fa-credit-card fa-lg me-2 text-success"></i> <strong>Análisis de Métodos de Pago:</strong> Conoce cómo prefieren pagar tus clientes.</li>
+                                </ul>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 pt-5" data-aos="fade-up">
+                    <h2 class="display-5">Galería de Imágenes</h2>
+                    <p class="lead text-muted">Un vistazo a la interfaz de RestoPOS System v2.0</p>
+                </div>
+
+                <div class="row g-4 mt-4">
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+                            <img src="app web/1.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 1">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="50">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="1">
+                            <img src="app web/2.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 2">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="2">
+                            <img src="app web/3.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 3">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="3">
+                            <img src="app web/4.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 4">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                         <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="4">
+                            <img src="app web/5.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 5">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="250">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="5">
+                            <img src="app web/6.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 6">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="6">
+                            <img src="app web/7.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 7">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="350">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="7">
+                            <img src="app web/8.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 8">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="8">
+                            <img src="app web/9.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 9">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="450">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="9">
+                            <img src="app web/10.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 10">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="10">
+                            <img src="app web/11.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 11">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="550">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="11">
+                            <img src="app web/12.png" class="img-fluid rounded shadow-sm gallery-item" alt="Galería de RestoPOS 12">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="why-choose mt-5 pt-5 text-center" data-aos="fade-up">
+                    <h2 class="display-5">¿Por qué elegir RestoPOS?</h2>
+                    <div class="row mt-5 g-4 justify-content-center">
+                         <div class="col-md-4">
+                            <div class="p-4 bg-white rounded shadow-sm h-100">
+                                <i class="fas fa-check-circle text-success fa-2x mb-3"></i>
+                                <h4>Cero Comisiones</h4>
+                                <p class="text-muted">Sistema propio, sin pagos mensuales recurrentes por cada venta que realizas.</p>
+                            </div>
+                         </div>
+
+                         <div class="col-md-4">
+                            <div class="p-4 bg-white rounded shadow-sm h-100">
+                                <i class="fas fa-user-check text-info fa-2x mb-3"></i>
+                                <h4>Fácil de Usar</h4>
+                                <p class="text-muted">Curva de aprendizaje mínima para tu personal. Empieza a operar en minutos.</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Gallery Modal -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div id="galleryCarousel" class="carousel slide" data-bs-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="app web/1.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/2.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/3.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/4.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/5.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/6.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/7.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/8.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/9.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/10.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="app web/11.png" class="d-block w-100" alt="...">
+                            </div>
+                             <div class="carousel-item">
+                                <img src="app web/12.png" class="d-block w-100" alt="...">
+                            </div>
+                             <div class="carousel-item">
+                                <img src="app web/13.png" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center text-md-start pt-5 pb-4">
+            <div class="row">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <img src="img/logo.jpeg" alt="Logo" class="me-2" style="height: 24px; border-radius: 4px;">Sistemas Excel
+                    </h6>
+                    <p>
+                        Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda Latinoamérica.
+                    </p>
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Nuestros Sistemas</h6>
+                    <p><a href="farmacia.html" class="footer-link">Sistema Farmacia Pro</a></p>
+                    <p><a href="ventas.html" class="footer-link">Ventas e Inventario</a></p>
+                    <p><a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a></p>
+                    <p><a href="sistemasweb.html" class="footer-link">Sistemas Web</a></p>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Navegación</h6>
+                    <p><a href="index.html#sistemas" class="footer-link">Sistemas</a></p>
+                    <p><a href="index.html#beneficios" class="footer-link">Beneficios</a></p>
+                    <p><a href="index.html#contacto" class="footer-link">Contacto</a></p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+                    <p><i class="fas fa-phone me-3"></i> +51 922 784 328</p>
+                    <div class="mt-4">
+                        <h6 class="text-uppercase fw-bold mb-3">Síguenos</h6>
+                        <div class="d-flex gap-3">
+                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2025 Copyright:
+                <a class="text-reset fw-bold" href="index.html">SistemasExcel.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar blur change
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.style.background = "rgba(255, 255, 255, 0.95)";
+                navbar.style.boxShadow = "0 10px 30px -10px rgba(0,0,0,0.1)";
+            } else {
+                navbar.style.background = "rgba(255, 255, 255, 0.7)";
+                navbar.style.boxShadow = "none";
+            }
+        });
+
+        // Gallery Modal Logic
+        const galleryModal = document.getElementById('galleryModal');
+        galleryModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const slideIndex = parseInt(button.getAttribute('data-bs-slide-to'));
+            const carousel = new bootstrap.Carousel(document.getElementById('galleryCarousel'));
+            carousel.to(slideIndex);
+        });
+    </script>
+</body>
+
+</html>
