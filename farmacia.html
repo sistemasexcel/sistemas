@@ -49,9 +49,9 @@
                     <div class="d-inline-flex align-items-center gap-2 p-2 px-3 rounded-pill mb-4 shadow-sm" 
                          style="background: rgba(33, 115, 70, 0.05); border: 1px solid rgba(33, 115, 70, 0.1);" 
                          data-aos="fade-right">
-                        <i class="bi bi-patch-check-fill text-primary"></i>
+                        <i class="bi bi-star-fill text-warning"></i> 
                         <span style="color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Versión 4.15 - Actualizado • Lanzamiento 2026
+                            ¡ÚLTIMA VERSIÓN! 4.19 - ACTUALIZADO FEBRERO 2026
                         </span>
                     </div>
                     <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span class="text-gradient">Farmacia
@@ -67,9 +67,12 @@
                         <a href="https://youtu.be/q7T8xSA2UBc" target="_blank" class="btn btn-outline-dark btn-lg">
                             <i class="fab fa-youtube me-2"></i>Video Tutorial 2
                         </a>
-                        <a href="https://drive.google.com/drive/u/2/folders/1yzIjShQCo-p5EAI8lvBq2ymOWQ9slm2V" target="_blank" class="btn btn-success btn-lg">
+                        <a href="https://drive.google.com/drive/u/2/folders/1yzIjShQCo-p5EAI8lvBq2ymOWQ9slm2V" target="_blank" class="btn btn-info btn-lg">
                             <i class="bi bi-download me-2"></i>Descargar Demo
                         </a>
+                        <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                            <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
+                        </button>
                     </div>
                 </div>
                 <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="zoom-in">
@@ -241,6 +244,20 @@
                             </div>
                         </div>
                     </div>
+					<div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-card">
+                            <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="mb-4 text-muted">"Excelente sistema: me está ayudando bastante para mi inventario y llevar las ventas diarias. Los recomiendo."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="user-avatar">F</div>
+                                <div>
+                                    <h6 class="mb-0">Frank Rfps</h6>
+                                    <small class="text-muted">Bolivia <img src="https://flagcdn.com/w20/bo.png" alt="Bolivia" style="width: 20px; border-radius: 2px;"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -344,7 +361,7 @@
                                 <div class="price-box">
                                     <span class="price-large">S/ 90</span>
                                     <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
-                                    <span class="price-large">$ 27 USD</span>
+                                    <span class="price-large">$30 USD</span>
                                 </div>
                             </div>
                             
@@ -365,10 +382,10 @@
                                 </ul>
                                 <div class="pricing-actions">
                                     <button type="button" class="btn btn-primary w-100 py-3" data-bs-toggle="modal"
-                                        data-bs-target="#checkoutModal">
+                                        data-bs-target="#paymentModal">
                                         <i class="fas fa-cart-plus me-2"></i>¡Lo quiero ahora!
                                     </button>
-                                    <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y estoy interesado en adquirir el Sistema de Farmacia en Excel, cuyo precio es S/ 89.90 o USD 27. Quedo atento(a) a la información para la compra." 
+                                    <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y estoy interesado en adquirir el Sistema de Farmacia en Excel, cuyo precio es S/ 90.00 o USD 30. Quedo atento(a) a la información para la compra." 
                                        target="_blank" class="btn btn-outline-light w-100 py-3">
                                         <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
                                     </a>
@@ -424,22 +441,75 @@
             </div>
 
             <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2025 Copyright:
+                © 2026 Copyright:
                 <a class="text-reset fw-bold" href="index.html">SistemasExcel.com</a>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Checkout Hotmart -->
-    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <!-- Modal Pagos -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="checkoutModalLabel">Completar Adquisición - Farmacia Pro</h5>
+                    <h5 class="modal-title" id="paymentModalLabel">Elige tu método de pago</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
-                    <iframe src="https://pay.hotmart.com/L102677652I" class="hotmart-iframe"></iframe>
+                <div class="modal-body" style="padding: 0;">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal-content" type="button" role="tab" aria-controls="paypal-content" aria-selected="true" style="border-radius: 0;">
+                                <i class="fab fa-paypal me-2"></i>Pago Internacional
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content" type="button" role="tab" aria-controls="peru-content" aria-selected="false" style="border-radius: 0;">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="paymentTabsContent">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel" aria-labelledby="paypal-tab">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Manual con PayPal</h4>
+                                <p>Realiza un pago de <strong>$30.00 USD</strong> a la siguiente cuenta de PayPal:</p>
+                                
+                                <div class="alert alert-light border my-3">
+                                    <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
+                                </div>
+                                
+                                <img src="img/Paypal.webp" alt="Pagar con PayPal" class="img-fluid my-3" style="max-height: 60px;">
+
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Farmacia Pro. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Una vez realizado el pago, envía tu comprobante a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                            <div class="p-4">
+                                <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar tu licencia.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 text-center">
+                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm" style="max-width: 250px;">
+                                    </div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-3 rounded text-center">
+                                            <p class="display-6 fw-bold mb-2">S/90.00</p>
+                                            <h6 class="fw-bold">Yape / Plin</h6>
+                                            <p class="mb-1"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Farmacia Pro. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Después de realizar el depósito, envía el comprobante a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -54,8 +54,8 @@
                             Versión 5.0 | Escanea desde un Lector de codigo de Barras.
                         </span>
                     </div>
-                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span class="text-gradient">Ventas &
-                            Stock</span></h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span class="text-gradient">Ventas e
+                            Inventario</span></h1>
                     <p class="lead" data-aos="fade-up" data-aos-delay="200">
                         Una herramienta práctica para negocios que permite gestionar imágenes de productos, crear cotizaciones
 						al instante y mantener el inventario siempre actualizado desde Excel.
@@ -63,11 +63,13 @@
                     <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="300">
                         <a href="https://youtu.be/L8XVvtyEAns" target="_blank" class="btn btn-primary btn-lg">Tutorial
                             en YouTube</a>
-                        <a href="https://drive.google.com/drive/u/2/folders/1jm-VZP2o2GMvbte0lrKBKyjAxH4KV9Pa?usp=sharing" target="_blank" class="btn btn-success btn-lg">
+                        <a href="https://drive.google.com/drive/u/2/folders/1jm-VZP2o2GMvbte0lrKBKyjAxH4KV9Pa?usp=sharing" target="_blank" class="btn btn-info btn-lg">
                             <i class="bi bi-download me-2"></i>Descargar Demo
                         </a>
+                        <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                            <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
+                        </button>
                     </div>
-
                     <!-- Video embebido pequeño -->
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
                         <h6 class="text-muted mb-3 d-flex align-items-center gap-2">
@@ -278,12 +280,12 @@
                             <div class="pricing-left">
                                 <span class="section-tag" style="color: var(--primary-vibrant);">Precio Unico
                                     Impatible</span>
-                                <h3 class="text-white mt-3">Combo Ventas V5</h3>
+                                <h3 class="text-white mt-3">SISTEMA DE VENTAS E INVENTARIO V.5</h3>
                                 <p class="mb-4" style="color: #94a3b8;">Sin cuotas mensuales ni anuales</p>
                                 <div class="price-box">
                                     <span class="price-large">S/ 90</span>
                                     <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
-                                    <span class="price-large">$ 27 USD</span>
+                                    <span class="price-large">$ 30 USD</span>
                                 </div>
                             </div>
 
@@ -303,10 +305,10 @@
                                 </ul>
                                 <div class="pricing-actions">
                                     <button type="button" class="btn btn-primary w-100 py-3" data-bs-toggle="modal"
-                                        data-bs-target="#checkoutModal">
+                                        data-bs-target="#paymentModal">
                                         <i class="bi bi-cart-plus me-2"></i>¡Lo quiero ahora!
                                     </button>
-                                    <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y estoy interesado en adquirir el Sistema de Ventas e Inventario en Excel, cuyo precio es S/ 89.90 o USD 27. Quedo atento(a) a la información para la compra." 
+                                    <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y estoy interesado en adquirir el Sistema de Ventas e Inventario en Excel, cuyo precio es S/ 90.00 o USD 30. Quedo atento(a) a la información para la compra." 
                                        target="_blank" class="btn btn-outline-light w-100 py-3">
                                         <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
                                     </a>
@@ -362,27 +364,79 @@
             </div>
 
             <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2025 Copyright:
+                © 2026 Copyright:
                 <a class="text-reset fw-bold" href="index.html">SistemasExcel.com</a>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Checkout Hotmart -->
-    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <!-- Modal Pagos -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="checkoutModalLabel">Completar Adquisición - Ventas & Stock</h5>
+                    <h5 class="modal-title" id="paymentModalLabel">Elige tu método de pago</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
-                    <iframe src="https://pay.hotmart.com/F102803755C" class="hotmart-iframe"></iframe>
+                <div class="modal-body" style="padding: 0;">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal-content" type="button" role="tab" aria-controls="paypal-content" aria-selected="true" style="border-radius: 0;">
+                                <i class="fab fa-paypal me-2"></i>Pago Internacional
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content" type="button" role="tab" aria-controls="peru-content" aria-selected="false" style="border-radius: 0;">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="paymentTabsContent">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel" aria-labelledby="paypal-tab">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Manual con PayPal</h4>
+                                <p>Realiza un pago de <strong>$30.00 USD</strong> a la siguiente cuenta de PayPal:</p>
+                                
+                                <div class="alert alert-light border my-3">
+                                    <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
+                                </div>
+                                
+                                <img src="img/Paypal.webp" alt="Pagar con PayPal" class="img-fluid my-3" style="max-height: 60px;">
+
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Ventas e Inventario. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Una vez realizado el pago, envía tu comprobante a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                            <div class="p-4">
+                                <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar tu licencia.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 text-center">
+                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm" style="max-width: 250px;">
+                                    </div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-3 rounded text-center">
+                                            <p class="display-6 fw-bold mb-2">S/90.00</p>
+                                            <h6 class="fw-bold">Yape / Plin</h6>
+                                            <p class="mb-1"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Ventas e Inventario. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Después de realizar el depósito, envía el comprobante a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
