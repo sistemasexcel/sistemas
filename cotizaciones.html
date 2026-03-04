@@ -4,20 +4,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Cotizaciones - Sistemas Excel</title>
-    <!-- Google Fonts -->
+    <title>Sistema de Cotizaciones Pro - Genera Presupuestos Profesionales - Sistemas Excel</title>
+    <meta name="description"
+        content="Sistema de Cotizaciones en Excel. Genera presupuestos profesionales, exporta a PDF y gestiona clientes y productos desde una sola herramienta.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --cot-primary: #7c3aed;
+            --cot-primary-dark: #6d28d9;
+            --cot-primary-light: #a78bfa;
+            --cot-accent: #f59e0b;
+            --cot-gradient: linear-gradient(135deg, #7c3aed 0%, #f59e0b 100%);
+            --cot-gradient-soft: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(245, 158, 11, 0.08) 100%);
+        }
+
+        .hero-cot {
+            padding: 160px 0 100px;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
+                #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cot::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: var(--cot-gradient);
+            opacity: 0.04;
+            filter: blur(80px);
+            animation: floatCot 8s ease-in-out infinite;
+        }
+
+        @keyframes floatCot {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes pulseGlowCot {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(245, 158, 11, 0.4);
+            }
+        }
+
+        .text-gradient-cot {
+            background: var(--cot-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vbadge-cot {
+            background: var(--cot-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulseGlowCot 3s ease-in-out infinite;
+        }
+
+        .chip-cot {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cot-primary);
+            transition: all 0.3s ease;
+        }
+
+        .chip-cot:hover {
+            background: var(--cot-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -5px rgba(124, 58, 237, 0.3);
+        }
+
+        .video-wrap {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(124, 58, 237, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .video-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .ccard {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(124, 58, 237, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ccard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--cot-gradient);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .ccard:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.12);
+            border-color: var(--cot-primary);
+        }
+
+        .ccard:hover::before {
+            opacity: 1;
+        }
+
+        .ccard-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .ccard:hover .ccard-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .ci-violet {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--cot-primary);
+        }
+
+        .ci-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .ci-rose {
+            background: rgba(244, 63, 94, 0.1);
+            color: #f43f5e;
+        }
+
+        .ci-blue {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .ci-green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .ccard-badge-flag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gcard-c {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .gcard-c:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+        }
+
+        .gcard-c img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gcard-c:hover img {
+            transform: scale(1.06);
+        }
+
+        .gcard-c-label {
+            padding: 14px 18px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .tcard-c {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .tcard-c:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.1);
+        }
+
+        .tcard-c .stars {
+            color: #f59e0b;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .tcard-c .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--cot-gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .cta-cot {
+            background: linear-gradient(165deg, #0c1222 0%, #1a1f3a 50%, #1e1035 100%);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-cot-left {
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cta-cot-right {
+            padding: 48px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .price-cot {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .price-cot .amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.04em;
+        }
+
+        .price-cot .cur {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        .price-cot .divider {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 2rem;
+            margin: 0 8px;
+        }
+
+        .cta-btn-cot {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: var(--cot-gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .cta-btn-cot:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
+            color: white;
+        }
+
+        .cta-btn-cot-alt {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 12px;
+        }
+
+        .cta-btn-cot-alt:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .cklist-c li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+        }
+
+        .cklist-c li i {
+            color: var(--cot-primary-light);
+            font-size: 1rem;
+        }
+
+        .info-banner-dark-c {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        @media (max-width: 991px) {
+            .hero-cot {
+                padding: 130px 0 60px;
+                text-align: center;
+            }
+
+            .hero-cot h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-cot-left,
+            .cta-cot-right {
+                padding: 32px 24px;
+            }
+
+            .cta-cot-right {
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-cot h1 {
+                font-size: 2rem;
+            }
+
+            .price-cot .amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -35,47 +454,65 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#funcionalidades">Funcionalidades</a></li>
                     <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#precio">Precio</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button type="button" class="btn btn-sm px-4 rounded-pill text-white"
+                            style="background: var(--cot-gradient);" data-bs-toggle="modal"
+                            data-bs-target="#paymentModal">Comprar</button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" style="padding-top: 140px; padding-bottom: 60px;">
+    <!-- Hero -->
+    <header class="hero-cot">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <div class="d-inline-flex align-items-center gap-2 p-2 px-3 rounded-pill mb-4 shadow-sm" 
-                         style="background: rgba(33, 115, 70, 0.05); border: 1px solid rgba(33, 115, 70, 0.1);" 
-                         data-aos="fade-right">
-                        <i class="bi bi-patch-check-fill text-primary"></i>
-                        <span style="color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Versión 10.5 • Nuevo Lanzamiento
-                        </span>
+                    <div class="d-inline-flex align-items-center gap-3 mb-4" data-aos="fade-right">
+                        <span class="vbadge-cot"><i class="bi bi-patch-check-fill"></i> Versión 10.5 — Nuevo
+                            Lanzamiento</span>
                     </div>
-                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span class="text-gradient">Cotizaciones</span></h1>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="200">
-                        Genera cotizaciones profesionales en segundos. Gestiona clientes, productos y envía propuestas comerciales impactantes directamente desde Excel.
+                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span
+                            class="text-gradient-cot">Cotizaciones</span></h1>
+                    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200" style="max-width: 560px;">
+                        Genera cotizaciones profesionales en segundos. Gestiona clientes, productos y envía propuestas
+                        comerciales impactantes directamente desde Excel.
                     </p>
+
+                    <div class="d-flex flex-wrap gap-2 mb-4" data-aos="fade-up" data-aos-delay="250">
+                        <span class="chip-cot"><i class="bi bi-file-earmark-pdf-fill"></i> Exportar PDF</span>
+                        <span class="chip-cot"><i class="bi bi-people-fill"></i> Clientes</span>
+                        <span class="chip-cot"><i class="bi bi-search"></i> DNI/RUC</span>
+                        <span class="chip-cot"><i class="bi bi-box-seam-fill"></i> Productos</span>
+                    </div>
+
                     <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="300">
                         <a href="https://youtu.be/WzQBM0NxQHA" target="_blank" class="btn btn-danger btn-lg">
                             <i class="fab fa-youtube me-2"></i>Ver Video
                         </a>
-                        <a href="COTIZACIONES - DEMO.xlsm" download class="btn btn-info btn-lg">
+                        <a href="COTIZACIONES - DEMO.xlsm" download class="btn btn-lg text-white"
+                            style="background: var(--cot-primary);">
                             <i class="bi bi-download me-2"></i>Descargar Demo
                         </a>
-                        <a href="#galeria" class="btn btn-primary btn-lg">
+                        <a href="#galeria" class="btn btn-outline-dark btn-lg">
                             <i class="fas fa-images me-2"></i>Ver Galería
                         </a>
-                        <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                        <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal"
+                            data-bs-target="#paymentModal">
                             <i class="fas fa-shopping-cart me-2"></i>Adquirir ahora
                         </button>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center mt-5 mt-lg-0" data-aos="zoom-in">
-                    <div class="ratio ratio-16x9 rounded-4 shadow-lg border overflow-hidden" style="border-width: 8px !important; border-color: white !important;">
-                        <iframe src="https://www.youtube.com/embed/8GrIuENlzKI" title="Sistema de Cotizaciones" allowfullscreen></iframe>
+                <div class="col-lg-6 text-center mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="video-wrap">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/8GrIuENlzKI" title="Sistema de Cotizaciones"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,163 +520,159 @@
     </header>
 
     <main>
-        <!-- Características Modernas -->
-        <section class="py-5 bg-white">
+        <!-- Funcionalidades -->
+        <section id="funcionalidades" class="py-5"
+            style="background: linear-gradient(180deg, #faf5ff 0%, #f8fafc 100%);">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <span class="section-tag">Funcionalidades</span>
-                    <h2 class="display-6">Potencia tus Ventas</h2>
+                    <span class="section-tag"
+                        style="background: rgba(124,58,237,0.08); color: var(--cot-primary);">Funcionalidades</span>
+                    <h2 class="display-6">Potencia tus <span class="text-gradient-cot">Ventas</span></h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card h-100 position-relative">
-                            <span class="position-absolute top-0 end-0 bg-danger text-white px-3 py-2 rounded-bl-3 fw-bold d-flex align-items-center gap-2" style="border-bottom-left-radius: 20px; border-top-right-radius: 24px; font-size: 0.85rem !important; box-shadow: -2px 2px 10px rgba(220, 53, 69, 0.2);">
-                                <img src="https://flagcdn.com/w40/pe.png" alt="Perú" style="width: 24px; border-radius: 2px;"> Válido para Perú
+                        <div class="ccard">
+                            <span class="ccard-badge-flag">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú"
+                                    style="width: 18px; border-radius: 2px;"> Perú
                             </span>
-                            <div class="icon-wrapper"><i class="fas fa-search fa-2x"></i></div>
+                            <div class="ccard-icon ci-rose"><i class="fas fa-search"></i></div>
                             <h5>Consultas DNI / RUC</h5>
-                            <p class="text-muted small">Sistema automatizado con APIs de SUNAT y RENIEC para la búsqueda y validación de datos de clientes en Perú.</p>
+                            <p class="text-muted small mb-0">Sistema automatizado con APIs de SUNAT y RENIEC para la
+                                búsqueda y validación de datos de clientes en Perú.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper"><i class="fas fa-file-invoice-dollar fa-2x"></i></div>
+                        <div class="ccard">
+                            <div class="ccard-icon ci-violet"><i class="fas fa-file-invoice-dollar"></i></div>
                             <h5>Cotizaciones Rápidas</h5>
-                            <p class="text-muted small">Crea presupuestos detallados en pocos clics con cálculo automático de totales e impuestos.</p>
+                            <p class="text-muted small mb-0">Crea presupuestos detallados en pocos clics con cálculo
+                                automático de totales e impuestos.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper"><i class="fas fa-file-pdf fa-2x"></i></div>
+                        <div class="ccard">
+                            <div class="ccard-icon ci-amber"><i class="fas fa-file-pdf"></i></div>
                             <h5>Exportación PDF</h5>
-                            <p class="text-muted small">Convierte tus cotizaciones a PDF con diseño profesional listo para enviar a tus clientes.</p>
+                            <p class="text-muted small mb-0">Convierte tus cotizaciones a PDF con diseño profesional
+                                listo para enviar a tus clientes.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper"><i class="fas fa-users fa-2x"></i></div>
+                        <div class="ccard">
+                            <div class="ccard-icon ci-blue"><i class="fas fa-users"></i></div>
                             <h5>Base de Datos Clientes</h5>
-                            <p class="text-muted small">Registra y administra la información de tus clientes para un acceso inmediato.</p>
+                            <p class="text-muted small mb-0">Registra y administra la información de tus clientes para
+                                un acceso inmediato.</p>
                         </div>
                     </div>
-                   
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper"><i class="fas fa-box fa-2x"></i></div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="ccard">
+                            <div class="ccard-icon ci-green"><i class="fas fa-box"></i></div>
                             <h5>Control de Productos</h5>
-                            <p class="text-muted small">Gestiona tus productos o servicios con precios y descripciones actualizadas.</p>
+                            <p class="text-muted small mb-0">Gestiona tus productos o servicios con precios y
+                                descripciones actualizadas.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Galería de Capturas Extendida -->
-        <section id="galeria" class="py-5">
+        <!-- Galería -->
+        <section id="galeria" class="py-5 bg-white">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <span class="section-tag">Explora la Interfaz</span>
-                    <h2 class="display-6">Recorrido por el Sistema</h2>
+                    <span class="section-tag"
+                        style="background: rgba(124,58,237,0.08); color: var(--cot-primary);">Explora la Interfaz</span>
+                    <h2 class="display-6">Recorrido por el <span class="text-gradient-cot">Sistema</span></h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-card">
-                            <img src="img_cotizacion/1.png" alt="Vista Principal" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Vista Principal</div>
+                        <div class="gcard-c"><img src="img_cotizacion/1.png" alt="Vista Principal">
+                            <div class="gcard-c-label">Vista Principal</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="product-card">
-                            <img src="img_cotizacion/2.png" alt="Generación de Cotización" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Menu Principal</div>
+                        <div class="gcard-c"><img src="img_cotizacion/2.png" alt="Menu Principal">
+                            <div class="gcard-c-label">Menu Principal</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="product-card">
-                            <img src="img_cotizacion/3.png" alt="Gestión de Clientes" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Gestión de Productos</div>
+                        <div class="gcard-c"><img src="img_cotizacion/3.png" alt="Gestión de Productos">
+                            <div class="gcard-c-label">Gestión de Productos</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gcard-c"><img src="img_cotizacion/4.png" alt="Gestión de clientes">
+                            <div class="gcard-c-label">Gestión de Clientes</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-card">
-                            <img src="img_cotizacion/4.png" alt="Catálogo de Productos" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Gestión de clientes</div>
+                        <div class="gcard-c"><img src="img_cotizacion/5.png" alt="Módulo de Cotizaciones">
+                            <div class="gcard-c-label">Módulo de Cotizaciones</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="product-card">
-                            <img src="img_cotizacion/5.png" alt="Reportes" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Módulo de Cotizaciones</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="product-card">
-                            <img src="img_cotizacion/6.png" alt="Configuración" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Formato de Exportación a PDF</div>
+                        <div class="gcard-c"><img src="img_cotizacion/6.png" alt="Exportación a PDF">
+                            <div class="gcard-c-label">Formato de Exportación a PDF</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-5" style="background-color: #f8fafc;">
+        <!-- Pricing -->
+        <section id="precio" class="py-5" style="background: #f8fafc;">
             <div class="container py-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <!-- Countdown Timer -->
-                        <div class="countdown-container text-center mb-5" data-aos="fade-down">
-                            <h5 class="fw-bold"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!</h5>
-                            <div class="d-flex justify-content-center gap-3">
-                                <div class="time-box">
-                                    <span id="hours">00</span>
-                                    <small>Horas</small>
-                                </div>
-                                <div class="time-box">
-                                    <span id="minutes">00</span>
-                                    <small>Min</small>
-                                </div>
-                                <div class="time-box">
-                                    <span id="seconds">00</span>
-                                    <small>Seg</small>
+                <div class="text-center mb-5" data-aos="fade-down">
+                    <h5 class="fw-bold" style="color: #ef4444;"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!
+                    </h5>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
+                        <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+                        <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+                    </div>
+                </div>
+
+                <div class="cta-cot" data-aos="fade-up">
+                    <div class="row g-0">
+                        <div class="col-lg-5">
+                            <div class="cta-cot-left">
+                                <span class="vbadge-cot mb-3" style="align-self: flex-start; animation: none;"><i
+                                        class="bi bi-gem"></i> Oferta Especial</span>
+                                <h3 class="text-white mt-2">Licencia Vitalicia</h3>
+                                <p style="color: #94a3b8;" class="mb-3">Pago único sin mensualidades</p>
+                                <div class="price-cot">
+                                    <span class="cur">S/</span>
+                                    <span class="amount">25</span>
+                                    <span class="divider">|</span>
+                                    <span class="cur">$</span>
+                                    <span class="amount">9</span>
+                                    <span class="cur">USD</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="pricing-card" data-aos="flip-up">
-                            <div class="pricing-left">
-                                <span class="section-tag" style="color: var(--primary-vibrant);">Oferta Especial</span>
-                                <h3 class="text-white mt-3">Licencia Vitalicia</h3>
-                                <p class="mb-4" style="color: #94a3b8;">Pago único sin mensualidades</p>
-                                <div class="price-box">
-                                    <span class="price-large">S/ 25</span>
-                                    <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
-                                    <span class="price-large">$ 9 USD</span>
-                                </div>
-                            </div>
-                            
-                            <div class="pricing-right">
-                                <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-4 text-start">
+                        <div class="col-lg-7">
+                            <div class="cta-cot-right">
+                                <div class="info-banner-dark-c mb-4">
                                     <i class="bi bi-info-circle text-warning fs-4"></i>
-                                    <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                                    <p class="mb-0 small" style="color: #f8fafc;">Para usar el sistema como
+                                        <strong>requisito indispensable</strong> se debe contar con la versión de
+                                        <strong>Office 2019 en adelante.</strong></p>
                                 </div>
-
-                                <ul class="list-unstyled text-start mb-5"
-                                    style="color: #cbd5e1;">
-                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Consultas SUNAT/RENIEC (Valido para Perú)</li>
-                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Exportación a PDF</li>
-                                    
+                                <ul class="list-unstyled cklist-c mb-4">
+                                    <li><i class="bi bi-check-circle-fill"></i> Consultas SUNAT/RENIEC (Válido para
+                                        Perú)</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
                                 </ul>
-                                <div class="pricing-actions">
-                                    <button type="button" class="btn btn-primary w-100 py-3" data-bs-toggle="modal"
-                                        data-bs-target="#paymentModal">
-                                        <i class="fas fa-cart-plus me-2"></i>¡Adquirir ahora!
-                                    </button>
-                                    <a href="https://wa.me/51922784328?text=Hola,%20vengo%20desde%20la%20web%20de%20Sistemas%20Excel%20y%20estoy%20interesado%20en%20adquirir%20el%20Sistema%20de%20Cotizaciones%20en%20Excel.%20Quedo%20atento(a)%20a%20la%20información." 
-                                       target="_blank" class="btn btn-outline-light w-100 py-3">
-                                        <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
-                                    </a>
-                                </div>
+                                <button type="button" class="cta-btn-cot" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal">
+                                    <i class="fas fa-cart-plus me-2"></i>¡Adquirir ahora!
+                                </button>
+                                <a href="https://wa.me/51922784328?text=Hola,%20vengo%20desde%20la%20web%20de%20Sistemas%20Excel%20y%20estoy%20interesado%20en%20adquirir%20el%20Sistema%20de%20Cotizaciones%20en%20Excel.%20Quedo%20atento(a)%20a%20la%20información."
+                                    target="_blank" class="cta-btn-cot-alt">
+                                    <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -247,53 +680,56 @@
             </div>
         </section>
 
-        <!-- Testimonios Section -->
-        <section class="py-5" style="background-color: #f1f5f9;">
+        <!-- Testimonios -->
+        <section class="py-5" style="background: #f1f5f9;">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <span class="section-tag">Opiniones Reales</span>
-                    <h2 class="display-6">Lo que dicen nuestros clientes</h2>
+                    <span class="section-tag"
+                        style="background: rgba(124,58,237,0.08); color: var(--cot-primary);">Opiniones Reales</span>
+                    <h2 class="display-6">Lo que dicen nuestros <span class="text-gradient-cot">clientes</span></h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-4" data-aos="fade-up">
-                        <div class="testimonial-card">
-                            <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        <div class="tcard-c">
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                     class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="mb-4 text-muted">"Las cotizaciones que realizo lo hago mas rapido, muy buena la atención y el soporte que me brinda para cualquier adaptación o modifición. Muchas Gracias Ing. Joel"</p>
+                            <p class="mb-4 text-muted">"Las cotizaciones que realizo lo hago mas rapido, muy buena la
+                                atención y el soporte que me brinda para cualquier adaptación o modifición. Muchas
+                                Gracias Ing. Joel"</p>
                             <div class="d-flex align-items-center gap-3">
-                                <div class="user-avatar">C</div>
+                                <div class="avatar">C</div>
                                 <div>
-                                    <h6 class="mb-0">Carlos Tecsi.</h6>
-                                    <small class="text-muted">Perú</small>
+                                    <h6 class="mb-0">Carlos Tecsi.</h6><small class="text-muted">Perú</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-card">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                            </div>
-                            <p class="mb-4 text-muted">"Excelente, me ayuda a generar cotizaciones mas rapido y el soporte que brinda es muy rapido ante cualquier duda."</p>
+                        <div class="tcard-c">
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                            <p class="mb-4 text-muted">"Excelente, me ayuda a generar cotizaciones mas rapido y el
+                                soporte que brinda es muy rapido ante cualquier duda."</p>
                             <div class="d-flex align-items-center gap-3">
-                                <div class="user-avatar">A</div>
+                                <div class="avatar">A</div>
                                 <div>
-                                    <h6 class="mb-0">Ana Sanchez.</h6>
-                                    <small class="text-muted">Tienda de ropas - Trujillo</small>
+                                    <h6 class="mb-0">Ana Sanchez.</h6><small class="text-muted">Tienda de ropas -
+                                        Trujillo</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-card">
-                            <div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        <div class="tcard-c">
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                     class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="mb-4 text-muted">"Me encanta que pueda exportar a PDF directamente. A mis clientes le envio más rapido las cotizaciones por whatsapp.</p>
+                            <p class="mb-4 text-muted">"Me encanta que pueda exportar a PDF directamente. A mis clientes
+                                le envio más rapido las cotizaciones por whatsapp.</p>
                             <div class="d-flex align-items-center gap-3">
-                                <div class="user-avatar">L</div>
+                                <div class="avatar">L</div>
                                 <div>
-                                    <h6 class="mb-0">Luis Silva.</h6>
-                                    <small class="text-muted">Tienda de Ferreteria - Cusco</small>
+                                    <h6 class="mb-0">Luis Silva.</h6><small class="text-muted">Tienda de Ferreteria -
+                                        Cusco</small>
                                 </div>
                             </div>
                         </div>
@@ -308,14 +744,11 @@
         <div class="container text-center text-md-start pt-5 pb-4">
             <div class="row">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <img src="img/logo.jpeg" alt="Logo" class="me-2" style="height: 24px; border-radius: 4px;">Sistemas Excel
-                    </h6>
-                    <p>
-                        Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda Latinoamérica.
-                    </p>
+                    <h6 class="text-uppercase fw-bold mb-4"><img src="img/logo.jpeg" alt="Logo" class="me-2"
+                            style="height: 24px; border-radius: 4px;">Sistemas Excel</h6>
+                    <p>Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda
+                        Latinoamérica.</p>
                 </div>
-
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Nuestros Sistemas</h6>
                     <p><a href="farmacia.html" class="footer-link">Sistema Farmacia Pro</a></p>
@@ -323,32 +756,30 @@
                     <p><a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a></p>
                     <p><a href="sistemasweb.html" class="footer-link">Sistemas Web</a></p>
                 </div>
-
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Navegación</h6>
                     <p><a href="index.html#sistemas" class="footer-link">Sistemas</a></p>
                     <p><a href="index.html#beneficios" class="footer-link">Beneficios</a></p>
                     <p><a href="index.html#contacto" class="footer-link">Contacto</a></p>
                 </div>
-
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
                     <p><i class="fas fa-phone me-3"></i> +51 922 784 328</p>
                     <div class="mt-4">
                         <h6 class="text-uppercase fw-bold mb-3">Síguenos</h6>
                         <div class="d-flex gap-3">
-                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i class="fab fa-youtube"></i></a>
-                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i
+                                    class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5"
+                                target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i
+                                    class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2026 Copyright:
-                <a class="text-reset fw-bold" href="index.html">SistemasExcel.com</a>
-            </div>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2026 Copyright: <a
+                    class="text-reset fw-bold" href="index.html">SistemasExcel.com</a></div>
         </div>
     </footer>
 
@@ -363,39 +794,43 @@
                 <div class="modal-body" style="padding: 0;">
                     <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal-content" type="button" role="tab" aria-controls="paypal-content" aria-selected="true" style="border-radius: 0;">
-                                <i class="fab fa-paypal me-2"></i>Pago Internacional
-                            </button>
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
+                                data-bs-target="#paypal-content" type="button" role="tab" style="border-radius: 0;"><i
+                                    class="fab fa-paypal me-2"></i>Pago Internacional</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content" type="button" role="tab" aria-controls="peru-content" aria-selected="false" style="border-radius: 0;">
-                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
-                            </button>
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" style="border-radius: 0;"><img
+                                    src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional
+                                (Perú)</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="paymentTabsContent">
-                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel" aria-labelledby="paypal-tab">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel">
                             <div class="text-center p-4">
                                 <h4 class="mb-3">Pago Manual con PayPal</h4>
                                 <p>Realiza un pago de <strong>$9.00 USD</strong> a la siguiente cuenta de PayPal:</p>
                                 <div class="alert alert-light border my-3">
                                     <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
                                 </div>
-                                <img src="img/Paypal.webp" alt="Pagar con PayPal" class="img-fluid my-3" style="max-height: 60px;">
-                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el pago de $9.00 USD por PayPal para el Sistema de Cotizaciones. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-3 d-block text-decoration-none">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Una vez realizado el pago, envía tu comprobante a nuestro WhatsApp.
+                                <img src="img/Paypal.webp" alt="PayPal" class="img-fluid my-3"
+                                    style="max-height: 60px;">
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el pago de $9.00 USD por PayPal para el Sistema de Cotizaciones. Adjunto mi comprobante."
+                                    target="_blank"
+                                    class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Una vez realizado el pago, envía tu comprobante
+                                    a nuestro WhatsApp.
                                 </a>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel">
                             <div class="p-4">
                                 <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
-                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar tu licencia.</p>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar
+                                    tu licencia.</p>
                                 <div class="row align-items-center">
-                                    <div class="col-lg-6 text-center">
-                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm" style="max-width: 250px;">
-                                    </div>
+                                    <div class="col-lg-6 text-center"><img src="img/YAPE-.jpeg" alt="QR Yape"
+                                            class="img-fluid rounded shadow-sm" style="max-width: 250px;"></div>
                                     <div class="col-lg-6 mt-3 mt-lg-0">
                                         <div class="border p-3 rounded text-center">
                                             <p class="display-6 fw-bold mb-2">S/25.00</p>
@@ -405,9 +840,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Cotizaciones. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-4 d-block text-decoration-none">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Después de realizar el depósito, envía el comprobante a nuestro WhatsApp.
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Cotizaciones. Adjunto mi comprobante."
+                                    target="_blank"
+                                    class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Después de realizar el depósito, envía el
+                                    comprobante a nuestro WhatsApp.
                                 </a>
                             </div>
                         </div>
@@ -417,34 +854,23 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Countdown Logic (Ends at midnight today)
+        AOS.init({ duration: 800, once: true, offset: 80 });
         function updateCountdown() {
             const now = new Date();
             const endOfDay = new Date();
             endOfDay.setHours(23, 59, 59, 999);
-
             let diff = endOfDay - now;
-
-            if (diff < 0) {
-                endOfDay.setDate(endOfDay.getDate() + 1);
-                diff = endOfDay - now;
-            }
-
+            if (diff < 0) { endOfDay.setDate(endOfDay.getDate() + 1); diff = endOfDay - now; }
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-
             document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
             document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
             document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>

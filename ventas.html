@@ -4,20 +4,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Ventas e Inventario - Sistemas Excel</title>
-    <!-- Google Fonts -->
+    <title>Sistema de Ventas e Inventario Pro - Control Total de tu Negocio - Sistemas Excel</title>
+    <meta name="description"
+        content="Sistema de Ventas e Inventario en Excel. Lector de código de barras, kardex, reportes, cotizaciones PDF y gestión completa de tu negocio.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --ven-primary: #2563eb;
+            --ven-primary-dark: #1d4ed8;
+            --ven-primary-light: #60a5fa;
+            --ven-accent: #f97316;
+            --ven-gradient: linear-gradient(135deg, #2563eb 0%, #f97316 100%);
+            --ven-gradient-soft: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(249, 115, 22, 0.08) 100%);
+        }
+
+        .hero-ven {
+            padding: 160px 0 100px;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(249, 115, 22, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(96, 165, 250, 0.06) 0%, transparent 50%),
+                #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-ven::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: var(--ven-gradient);
+            opacity: 0.04;
+            filter: blur(80px);
+            animation: floatVen 8s ease-in-out infinite;
+        }
+
+        @keyframes floatVen {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes pulseGlowVen {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(249, 115, 22, 0.4);
+            }
+        }
+
+        .text-gradient-ven {
+            background: var(--ven-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vbadge-ven {
+            background: var(--ven-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulseGlowVen 3s ease-in-out infinite;
+        }
+
+        .chip-ven {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid rgba(37, 99, 235, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ven-primary);
+            transition: all 0.3s ease;
+        }
+
+        .chip-ven:hover {
+            background: var(--ven-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.3);
+        }
+
+        .hero-img-ven {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-img-ven::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .hero-img-ven img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-img-ven:hover img {
+            transform: scale(1.03);
+        }
+
+        .vcard {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(37, 99, 235, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--ven-gradient);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .vcard:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+            border-color: var(--ven-primary);
+        }
+
+        .vcard:hover::before {
+            opacity: 1;
+        }
+
+        .vcard-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .vcard:hover .vcard-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .vi-blue {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--ven-primary);
+        }
+
+        .vi-orange {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--ven-accent);
+        }
+
+        .vi-rose {
+            background: rgba(244, 63, 94, 0.1);
+            color: #f43f5e;
+        }
+
+        .vi-green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .vi-violet {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+
+        .vi-teal {
+            background: rgba(20, 184, 166, 0.1);
+            color: #14b8a6;
+        }
+
+        .vi-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .vi-slate {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+        }
+
+        .vcard-badge-new {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--ven-gradient);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .vcard-badge-flag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-banner-v {
+            background: white;
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .gcard-v {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .gcard-v:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .gcard-v img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gcard-v:hover img {
+            transform: scale(1.06);
+        }
+
+        .gcard-v-label {
+            padding: 14px 18px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .cta-ven {
+            background: linear-gradient(165deg, #0c1222 0%, #1a1f3a 50%, #0f1d3d 100%);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(37, 99, 235, 0.15);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-ven-left {
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cta-ven-right {
+            padding: 48px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .price-ven {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .price-ven .amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.04em;
+        }
+
+        .price-ven .cur {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        .price-ven .divider {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 2rem;
+            margin: 0 8px;
+        }
+
+        .cta-btn-ven {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: var(--ven-gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .cta-btn-ven:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+            color: white;
+        }
+
+        .cta-btn-ven-alt {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 12px;
+        }
+
+        .cta-btn-ven-alt:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .cklist-v li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+        }
+
+        .cklist-v li i {
+            color: var(--ven-primary-light);
+            font-size: 1rem;
+        }
+
+        .info-banner-dark-v {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        @media (max-width: 991px) {
+            .hero-ven {
+                padding: 130px 0 60px;
+                text-align: center;
+            }
+
+            .hero-ven h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-ven-left,
+            .cta-ven-right {
+                padding: 32px 24px;
+            }
+
+            .cta-ven-right {
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-ven h1 {
+                font-size: 2rem;
+            }
+
+            .price-ven .amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -35,54 +469,72 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#funcionalidades">Funcionalidades</a></li>
                     <li class="nav-item"><a class="nav-link" href="#galeria">Módulos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#precio">Precio</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button type="button" class="btn btn-sm px-4 rounded-pill text-white"
+                            style="background: var(--ven-gradient);" data-bs-toggle="modal"
+                            data-bs-target="#paymentModal">Comprar</button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" style="padding-top: 140px; padding-bottom: 60px;">
+    <!-- Hero -->
+    <header class="hero-ven">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <div class="d-inline-flex align-items-center gap-2 p-2 px-3 rounded-pill mb-4 shadow-sm" 
-                         style="background: rgba(33, 115, 70, 0.05); border: 1px solid rgba(33, 115, 70, 0.1);" 
-                         data-aos="fade-right">
-                        <i class="bi bi-patch-check-fill text-primary"></i>
-                        <span style="color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Versión 5.0 | Escanea desde un Lector de codigo de Barras.
-                        </span>
+                    <div class="d-inline-flex align-items-center gap-3 mb-4" data-aos="fade-right">
+                        <span class="vbadge-ven"><i class="bi bi-patch-check-fill"></i> Versión 5.0 — Lector de Código
+                            de Barras</span>
                     </div>
-                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <span class="text-gradient">Ventas e
+                    <h1 data-aos="fade-up" data-aos-delay="100">Sistema de <br><span class="text-gradient-ven">Ventas e
                             Inventario</span></h1>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="200">
-                        Una herramienta práctica para negocios que permite gestionar imágenes de productos, crear cotizaciones
-						al instante y mantener el inventario siempre actualizado desde Excel.
+                    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200" style="max-width: 560px;">
+                        Una herramienta práctica para negocios que permite gestionar imágenes de productos, crear
+                        cotizaciones al instante y mantener el inventario siempre actualizado desde Excel.
                     </p>
+
+                    <div class="d-flex flex-wrap gap-2 mb-4" data-aos="fade-up" data-aos-delay="250">
+                        <span class="chip-ven"><i class="bi bi-upc-scan"></i> Código de Barras</span>
+                        <span class="chip-ven"><i class="bi bi-cart-check-fill"></i> Punto de Venta</span>
+                        <span class="chip-ven"><i class="bi bi-clipboard2-data-fill"></i> Kardex</span>
+                        <span class="chip-ven"><i class="bi bi-images"></i> Imágenes</span>
+                    </div>
+
                     <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="300">
-                        <a href="https://youtu.be/L8XVvtyEAns" target="_blank" class="btn btn-primary btn-lg">Tutorial
-                            en YouTube</a>
-                        <a href="https://drive.google.com/drive/u/2/folders/1jm-VZP2o2GMvbte0lrKBKyjAxH4KV9Pa?usp=sharing" target="_blank" class="btn btn-info btn-lg">
+                        <a href="https://youtu.be/L8XVvtyEAns" target="_blank" class="btn btn-lg text-white shadow-lg"
+                            style="background: var(--ven-gradient);">
+                            <i class="fab fa-youtube me-2"></i>Tutorial en YouTube
+                        </a>
+                        <a href="https://drive.google.com/drive/u/2/folders/1jm-VZP2o2GMvbte0lrKBKyjAxH4KV9Pa?usp=sharing"
+                            target="_blank" class="btn btn-lg text-white" style="background: var(--ven-accent);">
                             <i class="bi bi-download me-2"></i>Descargar Demo
                         </a>
-                        <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                        <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal"
+                            data-bs-target="#paymentModal">
                             <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
                         </button>
                     </div>
-                    <!-- Video embebido pequeño -->
+
+                    <!-- Video pequeño -->
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
                         <h6 class="text-muted mb-3 d-flex align-items-center gap-2">
-                            <i class="bi bi-play-circle-fill text-danger fs-5"></i> Pasos para habuilitar el sistema:
+                            <i class="bi bi-play-circle-fill text-danger fs-5"></i> Pasos para habilitar el sistema:
                         </h6>
-                        <div class="ratio ratio-16x9 rounded-4 shadow-sm border overflow-hidden" style="max-width: 420px; border-width: 4px !important; border-color: white !important;">
-                            <iframe src="https://www.youtube.com/embed/uoi9LHoX18Y" title="Demo Sistema de Ventas" allowfullscreen></iframe>
+                        <div class="ratio ratio-16x9 rounded-4 shadow-sm border overflow-hidden"
+                            style="max-width: 420px; border-width: 4px !important; border-color: white !important;">
+                            <iframe src="https://www.youtube.com/embed/uoi9LHoX18Y" title="Demo Sistema de Ventas"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in">
-                    <div class="glass-container p-2 rounded-5 overflow-hidden shadow-lg border-5 border-white">
-                        <img src="img/ventas.png" alt="Ventas Dashboard" class="img-fluid rounded-4">
+                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="hero-img-ven">
+                        <img src="img/ventas.png" alt="Sistema Ventas e Inventario">
                     </div>
                 </div>
             </div>
@@ -90,83 +542,89 @@
     </header>
 
     <main>
-        <!-- Beneficios Retail -->
-        <section class="py-5 bg-white">
+        <!-- Funcionalidades -->
+        <section id="funcionalidades" class="py-5"
+            style="background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);">
             <div class="container py-5">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <span class="section-tag">Totalmente adaptable</span>
-                    <h2 class="display-6">Todo bajo control</h2>
+                <div class="text-center mb-4" data-aos="fade-up">
+                    <span class="section-tag"
+                        style="background: rgba(37,99,235,0.08); color: var(--ven-primary);">Totalmente Adaptable</span>
+                    <h2 class="display-6">Todo bajo <span class="text-gradient-ven">control</span></h2>
                 </div>
+
+                <div class="info-banner-v mb-5" data-aos="fade-up">
+                    <i class="bi bi-info-circle text-warning fs-4"></i>
+                    <p class="mb-0 text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe
+                        contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                </div>
+
                 <div class="row g-4">
-                    <div class="col-12" data-aos="fade-up">
-                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-2">
-                            <i class="bi bi-info-circle text-warning fs-4"></i>
-                            <p class="mb-0 text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
-                        </div>
-                    </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card h-100 position-relative">
-                            <span class="position-absolute top-0 end-0 bg-primary text-white px-3 py-1 rounded-bl-3 fs-6 fw-bold" style="border-bottom-left-radius: 15px; border-top-right-radius: 24px;">¡NUEVO!</span>
-                            <div class="icon-wrapper mx-auto"><i class="bi bi-upc-scan fs-2"></i></div>
+                        <div class="vcard">
+                            <span class="vcard-badge-new">¡Nuevo!</span>
+                            <div class="vcard-icon vi-blue"><i class="bi bi-upc-scan"></i></div>
                             <h5>Lector de Barras</h5>
-                            <p class="text-muted small">Agiliza tus ventas y la toma de inventarios. El sistema es 100% compatible con cualquier lector de códigos de barras.</p>
+                            <p class="text-muted small mb-0">Agiliza tus ventas y la toma de inventarios. El sistema es
+                                100% compatible con cualquier lector de códigos de barras.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card h-100 position-relative">
-                            <span class="position-absolute top-0 end-0 bg-danger text-white px-3 py-2 rounded-bl-3 fw-bold d-flex align-items-center gap-2" style="border-bottom-left-radius: 20px; border-top-right-radius: 24px; font-size: 0.85rem !important; box-shadow: -2px 2px 10px rgba(220, 53, 69, 0.2);">
-                                <img src="https://flagcdn.com/w40/pe.png" alt="Perú" style="width: 24px; border-radius: 2px;"> Válido para Perú
+                        <div class="vcard">
+                            <span class="vcard-badge-flag">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú"
+                                    style="width: 18px; border-radius: 2px;"> Perú
                             </span>
-                            <div class="icon-wrapper mx-auto"><i class="bi bi-search fs-2"></i></div>
+                            <div class="vcard-icon vi-violet"><i class="bi bi-search"></i></div>
                             <h5>Consultas DNI / RUC</h5>
-                            <p class="text-muted small">Búsqueda automática de datos directo desde la base de datos oficial. Válido exclusivamente para clientes en Perú.</p>
+                            <p class="text-muted small mb-0">Búsqueda automática de datos directo desde la base de datos
+                                oficial. Válido exclusivamente para clientes en Perú.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper mx-auto"><i class="fas fa-user-lock fa-2x"></i></div>
+                        <div class="vcard">
+                            <div class="vcard-icon vi-rose"><i class="fas fa-user-lock"></i></div>
                             <h5>Acceso Restringido</h5>
-                            <p class="text-muted small">Protege tu información comercial con un sistema de login
+                            <p class="text-muted small mb-0">Protege tu información comercial con un sistema de login
                                 avanzado y control selectivo de usuarios.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper mx-auto"><i class="fas fa-images fa-2x"></i></div>
+                        <div class="vcard">
+                            <div class="vcard-icon vi-orange"><i class="fas fa-images"></i></div>
                             <h5>Imágenes de Productos</h5>
-                            <p class="text-muted small">Visualiza tus productos al momento de vender. Identificación
-                                rápida y catálogo visual interactivo.</p>
+                            <p class="text-muted small mb-0">Visualiza tus productos al momento de vender.
+                                Identificación rápida y catálogo visual interactivo.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper mx-auto"><i class="fas fa-shipping-fast fa-2x"></i></div>
+                        <div class="vcard">
+                            <div class="vcard-icon vi-green"><i class="fas fa-shipping-fast"></i></div>
                             <h5>Compras y Proveedores</h5>
-                            <p class="text-muted small">Controla el abastecimiento de tu negocio. Registro de compras,
-                                facturas de proveedores y stock.</p>
+                            <p class="text-muted small mb-0">Controla el abastecimiento de tu negocio. Registro de
+                                compras, facturas de proveedores y stock.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper mx-auto"><i class="fas fa-file-contract fa-2x"></i></div>
+                        <div class="vcard">
+                            <div class="vcard-icon vi-amber"><i class="fas fa-file-contract"></i></div>
                             <h5>Clientes y Cotizaciones</h5>
-                            <p class="text-muted small">Base de datos de clientes y generación profesional de
+                            <p class="text-muted small mb-0">Base de datos de clientes y generación profesional de
                                 cotizaciones en PDF listas para entregar.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper mx-auto"><i class="fas fa-chart-pie fa-2x"></i></div>
+                        <div class="vcard">
+                            <div class="vcard-icon vi-teal"><i class="fas fa-chart-pie"></i></div>
                             <h5>Kardex y Reportes</h5>
-                            <p class="text-muted small">Análisis detallado de movimientos. Reportes de ventas diarios,
-                                semanales y mensuales automatizados.</p>
+                            <p class="text-muted small mb-0">Análisis detallado de movimientos. Reportes de ventas
+                                diarios, semanales y mensuales automatizados.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper mx-auto"><i class="bi bi-tags fs-2"></i></div>
+                        <div class="vcard">
+                            <div class="vcard-icon vi-slate"><i class="bi bi-tags"></i></div>
                             <h5>Venta Ágil</h5>
-                            <p class="text-muted small">Interfaz optimizada para el punto de venta. Realiza
+                            <p class="text-muted small mb-0">Interfaz optimizada para el punto de venta. Realiza
                                 transacciones en segundos con pocos clics.</p>
                         </div>
                     </div>
@@ -174,145 +632,127 @@
             </div>
         </section>
 
-        <!-- Galería de Capturas -->
-        <section id="galeria" class="py-5">
+        <!-- Galería -->
+        <section id="galeria" class="py-5 bg-white">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <span class="section-tag">Explora la Interfaz</span>
-                    <h2 class="display-6">Módulos especializados</h2>
+                    <span class="section-tag"
+                        style="background: rgba(37,99,235,0.08); color: var(--ven-primary);">Explora la Interfaz</span>
+                    <h2 class="display-6">Módulos <span class="text-gradient-ven">especializados</span></h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-card">
-                            <img src="img-ventas/1 login.png" alt="Login" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Login Privado</div>
+                        <div class="gcard-v"><img src="img-ventas/1 login.png" alt="Login">
+                            <div class="gcard-v-label">Login Privado</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="product-card">
-                            <img src="img-ventas/2 menu principal.png" alt="Menu" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Dashboard Principal</div>
+                        <div class="gcard-v"><img src="img-ventas/2 menu principal.png" alt="Menu">
+                            <div class="gcard-v-label">Dashboard Principal</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="product-card">
-                            <img src="img-ventas/3 modulo de configuraciones.png" alt="Configuracion" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Configuraciones</div>
+                        <div class="gcard-v"><img src="img-ventas/3 modulo de configuraciones.png" alt="Config">
+                            <div class="gcard-v-label">Configuraciones</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gcard-v"><img src="img-ventas/4 registro de productos.png" alt="Productos">
+                            <div class="gcard-v-label">Módulo Productos</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-card">
-                            <img src="img-ventas/4 registro de productos.png" alt="Productos" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Módulo Productos</div>
+                        <div class="gcard-v"><img src="img-ventas/5 modulo de compras.png" alt="Compras">
+                            <div class="gcard-v-label">Módulo de Compras</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="product-card">
-                            <img src="img-ventas/5 modulo de compras.png" alt="Compras" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Módulo de Compras</div>
+                        <div class="gcard-v"><img src="img-ventas/6 modulo de cotizaciones.png" alt="Cotizaciones">
+                            <div class="gcard-v-label">Punto de Venta</div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="product-card">
-                            <img src="img-ventas/6 modulo de cotizaciones.png" alt="Cotizaciones" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Punto de Venta</div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gcard-v"><img src="img-ventas/7 modulo de ventas.png" alt="Ventas">
+                            <div class="gcard-v-label">Módulo de Cotizaciones</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-card">
-                            <img src="img-ventas/7 modulo de ventas.png" alt="Ventas" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Módulo de Cotizaciones</div>
+                        <div class="gcard-v"><img src="img-ventas/8 registro de proveedores.png" alt="Proveedores">
+                            <div class="gcard-v-label">Registro de Proveedores</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="product-card">
-                            <img src="img-ventas/8 registro de proveedores.png" alt="Proveedores" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Registro de Proveedores</div>
+                        <div class="gcard-v"><img src="img-ventas/9 registro de clientes.png" alt="Clientes">
+                            <div class="gcard-v-label">Gestión de Clientes</div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="product-card">
-                            <img src="img-ventas/9 registro de clientes.png" alt="Clientes" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Gestión de Clientes</div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gcard-v"><img src="img-ventas/10 modulo kardex.png" alt="Kardex">
+                            <div class="gcard-v-label">Control de Kardex</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="product-card">
-                            <img src="img-ventas/10 modulo kardex.png" alt="Kardex" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Control de Kardex</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="product-card">
-                            <img src="img-ventas/11 modulo de reportes.png" alt="Reportes" class="img-fluid">
-                            <div class="p-3 text-center fw-bold">Filtros de Reportes</div>
+                        <div class="gcard-v"><img src="img-ventas/11 modulo de reportes.png" alt="Reportes">
+                            <div class="gcard-v-label">Filtros de Reportes</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-5" style="background-color: #f8fafc;">
+        <!-- Pricing -->
+        <section id="precio" class="py-5" style="background: #f8fafc;">
             <div class="container py-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <!-- Countdown Timer -->
-                        <div class="countdown-container text-center mb-5" data-aos="fade-down">
-                            <h5 class="fw-bold"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!</h5>
-                            <div class="d-flex justify-content-center gap-3">
-                                <div class="time-box">
-                                    <span id="hours">00</span>
-                                    <small>Horas</small>
-                                </div>
-                                <div class="time-box">
-                                    <span id="minutes">00</span>
-                                    <small>Min</small>
-                                </div>
-                                <div class="time-box">
-                                    <span id="seconds">00</span>
-                                    <small>Seg</small>
+                <div class="text-center mb-5" data-aos="fade-down">
+                    <h5 class="fw-bold" style="color: #ef4444;"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!
+                    </h5>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
+                        <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+                        <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+                    </div>
+                </div>
+
+                <div class="cta-ven" data-aos="fade-up">
+                    <div class="row g-0">
+                        <div class="col-lg-5">
+                            <div class="cta-ven-left">
+                                <span class="vbadge-ven mb-3" style="align-self: flex-start; animation: none;"><i
+                                        class="bi bi-gem"></i> Precio Único Imbatible</span>
+                                <h3 class="text-white mt-2">SISTEMA DE VENTAS E INVENTARIO V.5</h3>
+                                <p style="color: #94a3b8;" class="mb-3">Sin cuotas mensuales ni anuales</p>
+                                <div class="price-ven">
+                                    <span class="cur">S/</span>
+                                    <span class="amount">90</span>
+                                    <span class="divider">|</span>
+                                    <span class="cur">$</span>
+                                    <span class="amount">30</span>
+                                    <span class="cur">USD</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="pricing-card" data-aos="flip-up">
-                            <div class="pricing-left">
-                                <span class="section-tag" style="color: var(--primary-vibrant);">Precio Unico
-                                    Impatible</span>
-                                <h3 class="text-white mt-3">SISTEMA DE VENTAS E INVENTARIO V.5</h3>
-                                <p class="mb-4" style="color: #94a3b8;">Sin cuotas mensuales ni anuales</p>
-                                <div class="price-box">
-                                    <span class="price-large">S/ 90</span>
-                                    <span class="ms-2 me-2 fs-4" style="color: #475569;">|</span>
-                                    <span class="price-large">$ 30 USD</span>
-                                </div>
-                            </div>
-
-                            <div class="pricing-right">
-                                <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-4 text-start">
+                        <div class="col-lg-7">
+                            <div class="cta-ven-right">
+                                <div class="info-banner-dark-v mb-4">
                                     <i class="bi bi-info-circle text-warning fs-4"></i>
-                                    <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
+                                    <p class="mb-0 small" style="color: #f8fafc;">Para usar el sistema como
+                                        <strong>requisito indispensable</strong> se debe contar con la versión de
+                                        <strong>Office 2019 en adelante.</strong></p>
                                 </div>
-
-                                <ul class="list-unstyled text-start mb-5"
-                                    style="color: #cbd5e1;">
-                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Tutoriales de uso</li>
-                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Reportes Avanzados</li>
-                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Soporte Post-Venta</li>
-                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Actualizaciones
-                                        permanentes</li>
+                                <ul class="list-unstyled cklist-v mb-4">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tutoriales de uso</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Reportes Avanzados</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Soporte Post-Venta</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Actualizaciones permanentes</li>
                                 </ul>
-                                <div class="pricing-actions">
-                                    <button type="button" class="btn btn-primary w-100 py-3" data-bs-toggle="modal"
-                                        data-bs-target="#paymentModal">
-                                        <i class="bi bi-cart-plus me-2"></i>¡Lo quiero ahora!
-                                    </button>
-                                    <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y estoy interesado en adquirir el Sistema de Ventas e Inventario en Excel, cuyo precio es S/ 90.00 o USD 30. Quedo atento(a) a la información para la compra." 
-                                       target="_blank" class="btn btn-outline-light w-100 py-3">
-                                        <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
-                                    </a>
-                                </div>
+                                <button type="button" class="cta-btn-ven" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal">
+                                    <i class="bi bi-cart-plus me-2"></i>¡Lo quiero ahora!
+                                </button>
+                                <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y estoy interesado en adquirir el Sistema de Ventas e Inventario en Excel, cuyo precio es S/ 90.00 o USD 30. Quedo atento(a) a la información para la compra."
+                                    target="_blank" class="cta-btn-ven-alt">
+                                    <i class="fab fa-whatsapp me-2"></i>Recibir oferta especial
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -326,14 +766,11 @@
         <div class="container text-center text-md-start pt-5 pb-4">
             <div class="row">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <img src="img/logo.jpeg" alt="Logo" class="me-2" style="height: 24px; border-radius: 4px;">Sistemas Excel
-                    </h6>
-                    <p>
-                        Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda Latinoamérica.
-                    </p>
+                    <h6 class="text-uppercase fw-bold mb-4"><img src="img/logo.jpeg" alt="Logo" class="me-2"
+                            style="height: 24px; border-radius: 4px;">Sistemas Excel</h6>
+                    <p>Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda
+                        Latinoamérica.</p>
                 </div>
-
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Nuestros Sistemas</h6>
                     <p><a href="farmacia.html" class="footer-link">Sistema Farmacia Pro</a></p>
@@ -341,32 +778,30 @@
                     <p><a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a></p>
                     <p><a href="sistemasweb.html" class="footer-link">Sistemas Web</a></p>
                 </div>
-
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Navegación</h6>
                     <p><a href="index.html#sistemas" class="footer-link">Sistemas</a></p>
                     <p><a href="index.html#beneficios" class="footer-link">Beneficios</a></p>
                     <p><a href="index.html#contacto" class="footer-link">Contacto</a></p>
                 </div>
-
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
                     <p><i class="fas fa-phone me-3"></i> +51 922 784 328</p>
                     <div class="mt-4">
                         <h6 class="text-uppercase fw-bold mb-3">Síguenos</h6>
                         <div class="d-flex gap-3">
-                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i class="fab fa-youtube"></i></a>
-                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i
+                                    class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5"
+                                target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i
+                                    class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2026 Copyright:
-                <a class="text-reset fw-bold" href="index.html">SistemasExcel.com</a>
-            </div>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2026 Copyright: <a
+                    class="text-reset fw-bold" href="index.html">SistemasExcel.com</a></div>
         </div>
     </footer>
 
@@ -381,42 +816,43 @@
                 <div class="modal-body" style="padding: 0;">
                     <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal-content" type="button" role="tab" aria-controls="paypal-content" aria-selected="true" style="border-radius: 0;">
-                                <i class="fab fa-paypal me-2"></i>Pago Internacional
-                            </button>
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
+                                data-bs-target="#paypal-content" type="button" role="tab" style="border-radius: 0;"><i
+                                    class="fab fa-paypal me-2"></i>Pago Internacional</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content" type="button" role="tab" aria-controls="peru-content" aria-selected="false" style="border-radius: 0;">
-                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
-                            </button>
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" style="border-radius: 0;"><img
+                                    src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional
+                                (Perú)</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="paymentTabsContent">
-                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel" aria-labelledby="paypal-tab">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel">
                             <div class="text-center p-4">
                                 <h4 class="mb-3">Pago Manual con PayPal</h4>
                                 <p>Realiza un pago de <strong>$30.00 USD</strong> a la siguiente cuenta de PayPal:</p>
-                                
                                 <div class="alert alert-light border my-3">
                                     <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
                                 </div>
-                                
-                                <img src="img/Paypal.webp" alt="Pagar con PayPal" class="img-fluid my-3" style="max-height: 60px;">
-
-                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Ventas e Inventario. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-3 d-block text-decoration-none">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Una vez realizado el pago, envía tu comprobante a nuestro WhatsApp.
+                                <img src="img/Paypal.webp" alt="PayPal" class="img-fluid my-3"
+                                    style="max-height: 60px;">
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Ventas e Inventario. Adjunto mi comprobante."
+                                    target="_blank"
+                                    class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Una vez realizado el pago, envía tu comprobante
+                                    a nuestro WhatsApp.
                                 </a>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel">
                             <div class="p-4">
                                 <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
-                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar tu licencia.</p>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar
+                                    tu licencia.</p>
                                 <div class="row align-items-center">
-                                    <div class="col-lg-6 text-center">
-                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm" style="max-width: 250px;">
-                                    </div>
+                                    <div class="col-lg-6 text-center"><img src="img/YAPE-.jpeg" alt="QR Yape"
+                                            class="img-fluid rounded shadow-sm" style="max-width: 250px;"></div>
                                     <div class="col-lg-6 mt-3 mt-lg-0">
                                         <div class="border p-3 rounded text-center">
                                             <p class="display-6 fw-bold mb-2">S/90.00</p>
@@ -426,9 +862,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Ventas e Inventario. Adjunto mi comprobante." target="_blank" class="alert alert-success text-center mt-4 d-block text-decoration-none">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Después de realizar el depósito, envía el comprobante a nuestro WhatsApp.
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Ventas e Inventario. Adjunto mi comprobante."
+                                    target="_blank"
+                                    class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Después de realizar el depósito, envía el
+                                    comprobante a nuestro WhatsApp.
                                 </a>
                             </div>
                         </div>
@@ -437,34 +875,24 @@
             </div>
         </div>
     </div>
-    <!-- Scripts -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Countdown Logic (Ends at midnight today)
+        AOS.init({ duration: 800, once: true, offset: 80 });
         function updateCountdown() {
             const now = new Date();
             const endOfDay = new Date();
             endOfDay.setHours(23, 59, 59, 999);
-
             let diff = endOfDay - now;
-
-            if (diff < 0) {
-                endOfDay.setDate(endOfDay.getDate() + 1);
-                diff = endOfDay - now;
-            }
-
+            if (diff < 0) { endOfDay.setDate(endOfDay.getDate() + 1); diff = endOfDay - now; }
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-
             document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
             document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
             document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>

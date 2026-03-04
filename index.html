@@ -4,20 +4,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas Excel - Soluciones Profesionales en VBA</title>
-    <!-- Google Fonts -->
+    <title>Sistemas Excel - Soluciones Profesionales en VBA | Automatización Inteligente</title>
+    <meta name="description"
+        content="Sistemas profesionales en Excel con VBA. Farmacia, Ventas, Cotizaciones y Botica. Automatización inteligente para emprendedores en Latinoamérica.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --ix-gradient: linear-gradient(135deg, #107c41 0%, #22c55e 50%, #0ea5e9 100%);
+            --ix-gradient-text: linear-gradient(135deg, #107c41 0%, #0ea5e9 100%);
+        }
+
+        /* Hero Index */
+        .hero-ix {
+            padding: 170px 0 110px;
+            background:
+                radial-gradient(ellipse at 10% 40%, rgba(16, 124, 65, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 30%, rgba(14, 165, 233, 0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-ix::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: var(--ix-gradient);
+            opacity: 0.04;
+            filter: blur(100px);
+            animation: heroFloat 10s ease-in-out infinite;
+        }
+
+        .hero-ix::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(14, 165, 233, 0.06));
+            filter: blur(80px);
+            animation: heroFloat 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-40px);
+            }
+        }
+
+        .hero-ix h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-gradient-ix {
+            background: var(--ix-gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-ix .lead {
+            font-size: 1.3rem;
+            color: var(--text-body);
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--ix-gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Benefit cards */
+        .bcard {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(16, 124, 65, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--ix-gradient);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .bcard:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(16, 124, 65, 0.12);
+            border-color: var(--primary);
+        }
+
+        .bcard:hover::before {
+            opacity: 1;
+        }
+
+        .bcard-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .bcard:hover .bcard-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .bi-green {
+            background: rgba(16, 124, 65, 0.1);
+            color: #107c41;
+        }
+
+        .bi-blue {
+            background: rgba(14, 165, 233, 0.1);
+            color: #0ea5e9;
+        }
+
+        .bi-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .bi-rose {
+            background: rgba(244, 63, 94, 0.1);
+            color: #f43f5e;
+        }
+
+        .bcard-flag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Product Showcase Card */
+        .showcase {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcase:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px);
+        }
+
+        .showcase-img {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .showcase-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .showcase:hover .showcase-img img {
+            transform: scale(1.06);
+        }
+
+        .showcase-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: white;
+        }
+
+        .showcase-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .showcase-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .showcase-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .showcase-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            font-size: 0.9rem;
+            color: var(--text-body);
+        }
+
+        .showcase-features li i {
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        .showcase-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .showcase-price .sp-amount {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-heading);
+        }
+
+        .showcase-price .sp-cur {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .showcase-price .sp-divider {
+            color: rgba(0, 0, 0, 0.15);
+            margin: 0 4px;
+        }
+
+        .showcase-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .showcase-actions .btn {
+            flex: 1;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+        }
+
+        /* NEW badge for botica */
+        .badge-new-system {
+            background: linear-gradient(135deg, #0e7490, #8b5cf6);
+            color: white;
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulseNew 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseNew {
+
+            0%,
+            100% {
+                box-shadow: 0 0 12px rgba(14, 116, 144, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 24px rgba(139, 92, 246, 0.5);
+            }
+        }
+
+        .pulse-offer {
+            animation: pulseOffer 2s infinite;
+        }
+
+        @keyframes pulseOffer {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+                transform: scale(1.05);
+            }
+        }
+
+        /* CTA Section */
+        .cta-ix {
+            background: linear-gradient(165deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 28px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cta-ix::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: var(--ix-gradient);
+            opacity: 0.08;
+            filter: blur(80px);
+        }
+
+        .cta-ix h2 {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-ix p {
+            color: #94a3b8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-ix .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 14px;
+            background: var(--ix-gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-ix .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(16, 124, 65, 0.4);
+        }
+
+        @media (max-width: 991px) {
+            .hero-ix {
+                padding: 140px 0 70px;
+            }
+
+            .hero-ix h1 {
+                font-size: 2.75rem;
+            }
+
+            .hero-stats {
+                gap: 32px;
+            }
+
+            .showcase {
+                flex-direction: column !important;
+            }
+
+            .cta-ix {
+                padding: 40px 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-ix h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-stats {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero-stat .number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .showcase-horizontal {
+                flex-direction: row !important;
+            }
+
+            .showcase-horizontal .showcase-img {
+                flex: 0 0 35%;
+                max-width: 400px;
+                aspect-ratio: auto;
+            }
+
+            .showcase-horizontal .showcase-body {
+                flex: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -35,233 +509,324 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#sistemas">Nuestras Soluciones</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-1" href="botica.html">
+                            BoticaPro EX 13.0 <span class="badge-new-system"
+                                style="animation:none; padding: 2px 8px; font-size: 0.6rem;">Nuevo</span>
+                        </a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="sistemasweb.html">Sistemas Web</a></li>
                     <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="https://wa.me/51922784328" target="_blank"
+                            class="btn btn-primary btn-sm px-4 rounded-pill">Contactar</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
+    <!-- Hero -->
+    <header class="hero-ix">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
-                    <span class="section-tag" data-aos="fade-right">Lo mejor de la automatización</span>
-                    <h1 data-aos="fade-up" data-aos-delay="100">Potencia tu Negocio con <span
-                            class="text-gradient">Excel Inteligente</span></h1>
-                    <p class="mb-5" data-aos="fade-up" data-aos-delay="1">
+                <div class="col-lg-9">
+                    <span class="section-tag" data-aos="fade-right">Lo mejor de la automatización en Excel</span>
+                    <h1 data-aos="fade-up" data-aos-delay="100">
+                        Potencia tu Negocio con <br><span class="text-gradient-ix">Excel Inteligente</span>
+                    </h1>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="200">
                         Transformamos tus procesos manuales en herramientas potentes y automatizadas con VBA. Gestión de
                         inventarios, reportes dinámicos y control total en un clic.
                     </p>
-                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-5" data-aos="fade-up"
+                        data-aos-delay="300">
+                        <a href="#sistemas" class="btn btn-primary btn-lg px-5">
+                            <i class="bi bi-grid-3x3-gap-fill me-2"></i>Ver Sistemas
+                        </a>
+                        <a href="https://wa.me/51922784328" target="_blank" class="btn btn-outline-dark btn-lg px-4">
+                            <i class="fab fa-whatsapp me-2"></i>Contactar
+                        </a>
+                    </div>
+
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                        <div class="hero-stat">
+                            <div class="number">4</div>
+                            <div class="label">Sistemas</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="number">500+</div>
+                            <div class="label">Clientes</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="number">12+</div>
+                            <div class="label">Países</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Beneficios Section -->
-        <section id="beneficios" class="py-5">
+        <!-- Beneficios -->
+        <section id="beneficios" class="py-5" style="background: linear-gradient(180deg, #f0fdf4 0%, #f8fafc 100%);">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <span class="section-tag">¿Por qué elegirnos?</span>
-                    <h2 class="display-5">Lleva tu gestión al siguiente nivel</h2>
+                    <h2 class="display-5">Lleva tu gestión al <span class="text-gradient-ix">siguiente nivel</span></h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper">
-                                <i class="fas fa-bolt fa-2x"></i>
-                            </div>
-                            <h4>Automatización Total</h4>
-                            <p class="text-muted">Despídete de las tareas repetitivas. Nuestros sistemas trabajan por ti
-                                de forma autónoma.</p>
+                        <div class="bcard">
+                            <div class="bcard-icon bi-green"><i class="fas fa-bolt"></i></div>
+                            <h5>Automatización Total</h5>
+                            <p class="text-muted small mb-0">Despídete de las tareas repetitivas. Nuestros sistemas
+                                trabajan por ti de forma autónoma.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper">
-                                <i class="fas fa-chart-pie fa-2x"></i>
-                            </div>
-                            <h4>Control Preciso</h4>
-                            <p class="text-muted">Inventarios, ventas y clientes en un solo panel de control intuitivo y
-                                muy fácil de usar.</p>
+                        <div class="bcard">
+                            <div class="bcard-icon bi-blue"><i class="fas fa-chart-pie"></i></div>
+                            <h5>Control Preciso</h5>
+                            <p class="text-muted small mb-0">Inventarios, ventas y clientes en un solo panel de control
+                                intuitivo y muy fácil de usar.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-card h-100">
-                            <div class="icon-wrapper">
-                                <i class="fas fa-lock fa-2x"></i>
-                            </div>
-                            <h4>Seguridad Garantizada</h4>
-                            <p class="text-muted">Gestión de accesos, roles de usuario y respaldos automáticos para tu
-                                información crítica.</p>
+                        <div class="bcard">
+                            <div class="bcard-icon bi-amber"><i class="fas fa-lock"></i></div>
+                            <h5>Seguridad Garantizada</h5>
+                            <p class="text-muted small mb-0">Gestión de accesos, roles de usuario y respaldos
+                                automáticos para tu información crítica.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                        <div class="feature-card h-100 position-relative">
-                            <span class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1 rounded-bl-3 fs-6 d-flex align-items-center gap-1" style="border-bottom-left-radius: 15px; font-size: 0.7rem !important;">
-                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" style="width: 16px;"> Perú
+                        <div class="bcard">
+                            <span class="bcard-flag">
+                                <img src="https://flagcdn.com/w16/pe.png" alt="Perú"
+                                    style="width: 14px; border-radius: 2px;"> Perú
                             </span>
-                            <div class="icon-wrapper">
-                                <i class="bi bi-search fa-2x"></i>
-                            </div>
-                            <h4>Consultas DNI / RUC</h4>
-                            <p class="text-muted">Obtén datos de clientes y proveedores al instante conectando con bases de datos oficiales.</p>
+                            <div class="bcard-icon bi-rose"><i class="bi bi-search"></i></div>
+                            <h5>Consultas DNI / RUC</h5>
+                            <p class="text-muted small mb-0">Obtén datos de clientes y proveedores al instante
+                                conectando con bases de datos oficiales.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sistemas Section -->
+        <!-- Sistemas -->
         <section id="sistemas" class="py-5" style="background: #f1f5f9;">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <span class="section-tag">Nuestro Catálogo</span>
-                    <h2 class="display-5">Sistemas Listos para Usar</h2>
+                    <h2 class="display-5">Sistemas Listos para <span class="text-gradient-ix">Usar</span></h2>
                 </div>
-                <div class="row g-5">
-                    <!-- Sistema Farmacia -->
+                <div class="row g-4">
+
+                    <!-- BOTICA PRO EX 13.0 - NUEVO -->
                     <div class="col-12" data-aos="fade-up">
-                        <div class="product-card horizontal">
-                            <div class="product-img-container">
+                        <div class="showcase showcase-horizontal" style="border: 2px solid rgba(14,116,144,0.2);">
+                            <div class="showcase-img">
+                                <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.0">
+                                <span class="showcase-badge"
+                                    style="background: linear-gradient(135deg, #0e7490, #8b5cf6);">🔥 Nuevo
+                                    Lanzamiento</span>
+                            </div>
+                            <div class="showcase-body">
+                                <span class="showcase-tag"
+                                    style="background: rgba(14,116,144,0.1); color: #0e7490;">Venta Fraccionada</span>
+                                <h3 class="mb-2">Sistema <span
+                                        style="background: linear-gradient(135deg,#0e7490,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">BoticaPro
+                                        EX 13.0</span></h3>
+                                <p class="text-muted mb-3">Gestiona tu botica con venta fraccionada inteligente: por
+                                    unidad y blíster. El stock se actualiza automáticamente.</p>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-sm-6">
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Venta por Unidad</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Venta por Blíster</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Alertas de Vencimiento</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Kardex Automatizado</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Reportes de Cierre</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Ticket de Venta</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="showcase-price">
+                                    <span class="sp-cur">S/</span><span class="sp-amount">90</span>
+                                    <span class="sp-divider">|</span>
+                                    <span class="sp-cur">$</span><span class="sp-amount">30</span><span
+                                        class="sp-cur">USD</span>
+                                </div>
+                                <div class="showcase-actions">
+                                    <a href="botica.html" class="btn btn-sm text-white"
+                                        style="background: linear-gradient(135deg,#0e7490,#8b5cf6);">Más detalles</a>
+                                    <button type="button" class="btn btn-outline-dark btn-sm btn-product-buy"
+                                        data-product-id="botica" data-bs-toggle="modal"
+                                        data-bs-target="#paymentModal">Comprar ahora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FARMACIA PRO -->
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                        <div class="showcase showcase-horizontal">
+                            <div class="showcase-img">
                                 <img src="img/farmacia.png" alt="Sistema de Farmacia">
-                                <span class="product-badge">Lo más vendido • Para Farmacias</span>
+                                <span class="showcase-badge"
+                                    style="background: linear-gradient(135deg,#059669,#0ea5e9);">Lo más vendido</span>
                             </div>
-                            <div class="product-content">
-                                
-                                <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Farmacia Pro</span>
-                                    <small class="text-muted fs-5 fw-normal">V 4.19</small>
-                                </h3>
-                                <p class="text-muted mb-4 fs-5">Lleva el control TOTAL de tu botica o farmacia. Gestiona
-                                    medicamentos, stock, vencimientos y reportes con una herramienta profesional
-                                    diseñada para emprendedores.</p>
-                                <div class="row g-3 mb-4">
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-3">
-                                            <i class="fas fa-info-circle text-warning fs-4"></i>
-                                            <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
-                                        </div>
-                                    </div>
+                            <div class="showcase-body">
+                                <span class="showcase-tag" style="background: rgba(5,150,105,0.1); color: #059669;">Para
+                                    Farmacias</span>
+                                <h3 class="mb-2">Sistema de <span class="text-gradient">Farmacia Pro</span> <small
+                                        class="text-muted fs-6 fw-normal">V 4.19</small></h3>
+                                <p class="text-muted mb-3">Lleva el control TOTAL de tu botica o farmacia. Gestiona
+                                    medicamentos, stock, vencimientos y reportes con una herramienta profesional.</p>
+                                <div class="row g-2 mb-3">
                                     <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="bi bi-upc-scan text-primary me-2"></i>
-                                                Lector de Barras</li>
-                                            <li class="mb-2"><i class="bi bi-alarm text-primary me-2"></i>
-                                                Alertas de Vencimiento</li>
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Lector de Barras</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Alertas de Vencimiento</li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="bi bi-file-earmark-bar-graph text-primary me-2"></i>
-                                                Reportes Diarios</li>
-                                            <li class="mb-2"><i class="bi bi-person-badge text-primary me-2"></i>
-                                                Ventas por Vendedor</li>
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Reportes Diarios</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Ventas por Vendedor</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="d-flex gap-3">
-                                    <a href="farmacia.html" class="btn btn-primary px-4">Más detalles del sistema</a>
-                                    <button type="button" class="btn btn-outline-primary px-4 btn-product-buy" data-product-id="farmacia" data-bs-toggle="modal"
-                                        data-bs-target="#paymentModal">
-                                        Comprar ahora
-                                    </button>
+                                <div class="showcase-price align-items-center">
+                                    <div class="d-flex flex-column" style="line-height: 1;">
+                                        <small class="text-muted text-decoration-line-through"
+                                            style="font-size: 0.8rem; margin-bottom: 2px; font-weight: 600;">S/
+                                            90.00</small>
+                                        <div><span class="sp-cur" style="color: #059669;">S/</span><span
+                                                class="sp-amount" style="color: #059669;">60</span></div>
+                                    </div>
+                                    <span class="sp-divider mb-1"
+                                        style="height: 30px; width: 1px; background: rgba(0,0,0,0.1); display: inline-block;"></span>
+                                    <div class="d-flex flex-column" style="line-height: 1;">
+                                        <small class="text-muted text-decoration-line-through"
+                                            style="font-size: 0.8rem; margin-bottom: 2px; font-weight: 600;">$
+                                            30.00</small>
+                                        <div><span class="sp-cur" style="color: #059669;">$</span><span
+                                                class="sp-amount" style="color: #059669;">20</span><span class="sp-cur"
+                                                style="color: #059669;">USD</span></div>
+                                    </div>
+                                    <span class="badge ms-auto pulse-offer"
+                                        style="background: linear-gradient(135deg, #ef4444, #f97316); font-size: 0.75rem; padding: 6px 14px; border-radius: 50px;">-33%
+                                        OFERTA</span>
+                                </div>
+                                <div class="showcase-actions">
+                                    <a href="farmacia.html" class="btn btn-primary btn-sm">Más detalles</a>
+                                    <button type="button" class="btn btn-outline-primary btn-sm btn-product-buy"
+                                        data-product-id="farmacia" data-bs-toggle="modal"
+                                        data-bs-target="#paymentModal">Comprar ahora</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Sistema Ventas e Inventario -->
+                    <!-- VENTAS E INVENTARIO -->
                     <div class="col-12" data-aos="fade-up" data-aos-delay="200">
-                        <div class="product-card horizontal">
-                            <div class="product-img-container">
+                        <div class="showcase showcase-horizontal">
+                            <div class="showcase-img">
                                 <img src="img/ventas.png" alt="Sistema de Ventas">
-                                <span class="product-badge">Actualizado • Multi-Negocio</span>
+                                <span class="showcase-badge"
+                                    style="background: linear-gradient(135deg,#2563eb,#f97316);">Multi-Negocio</span>
                             </div>
-                            <div class="product-content">
-                                <span class="section-tag" style="margin-bottom: 0.5rem;">Versatilidad para tu
-                                    negocio</span>
-                                <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Ventas e
-                                        Inventario</span> <small class="text-muted fs-5 fw-normal">V 5.0</small></h3>
-                                <p class="text-muted mb-4 fs-5">La herramienta ideal para ferreterías, bodegas,
-                                    papelerías y más. Registra ventas con imágenes de productos, genera cotizaciones y
-                                    más.</p>
-                                <div class="row g-3 mb-4">
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-3">
-                                            <i class="fas fa-info-circle text-warning fs-4"></i>
-                                            <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
-                                        </div>
-                                    </div>
+                            <div class="showcase-body">
+                                <span class="showcase-tag"
+                                    style="background: rgba(37,99,235,0.1); color: #2563eb;">Versatilidad</span>
+                                <h3 class="mb-2">Sistema de <span
+                                        style="background: linear-gradient(135deg,#2563eb,#f97316);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Ventas
+                                        e Inventario</span> <small class="text-muted fs-6 fw-normal">V 5.0</small></h3>
+                                <p class="text-muted mb-3">Ideal para ferreterías, bodegas, papelerías y más. Registra
+                                    ventas con imágenes de productos, genera cotizaciones y más.</p>
+                                <div class="row g-2 mb-3">
                                     <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="bi bi-images text-primary me-2"></i>
-                                                Imágenes de Productos</li>
-                                            <li class="mb-2"><i class="bi bi-file-earmark-text text-primary me-2"></i>
-                                                Cotizaciones Profesionales</li>
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Imágenes de Productos</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Cotizaciones Profesionales</li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="bi bi-box-seam text-primary me-2"></i>
-                                                Kardex de Almacén</li>
-                                            <li class="mb-2"><i class="bi bi-truck text-primary me-2"></i>
-                                                Gestión de Proveedores</li>
-                                            <li class="mb-2"><i class="bi bi-upc-scan text-primary me-2"></i>
-                                                Lector de Código de Barras</li>
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Kardex de Almacén</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Lector de Código de Barras</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="d-flex gap-3">
-                                    <a href="ventas.html" class="btn btn-primary px-4">Más detalles del sistema</a>
-                                    <button type="button" class="btn btn-outline-primary px-4 btn-product-buy" data-product-id="ventas" data-bs-toggle="modal"
-                                        data-bs-target="#paymentModal">
-                                        Comprar ahora
-                                    </button>
+                                <div class="showcase-price">
+                                    <span class="sp-cur">S/</span><span class="sp-amount">90</span>
+                                    <span class="sp-divider">|</span>
+                                    <span class="sp-cur">$</span><span class="sp-amount">30</span><span
+                                        class="sp-cur">USD</span>
+                                </div>
+                                <div class="showcase-actions">
+                                    <a href="ventas.html" class="btn btn-sm text-white"
+                                        style="background: linear-gradient(135deg,#2563eb,#f97316);">Más detalles</a>
+                                    <button type="button" class="btn btn-outline-dark btn-sm btn-product-buy"
+                                        data-product-id="ventas" data-bs-toggle="modal"
+                                        data-bs-target="#paymentModal">Comprar ahora</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Sistema de Cotizaciones -->
-                    <div class="col-12" data-aos="fade-up" data-aos-delay="400">
-                        <div class="product-card horizontal">
-                            <div class="product-img-container">
+                    <!-- COTIZACIONES -->
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                        <div class="showcase showcase-horizontal">
+                            <div class="showcase-img">
                                 <img src="img_cotizacion/1.2-01.jpg" alt="Sistema de Cotizaciones">
-                                <span class="product-badge">Nuevo • Empresarial</span>
+                                <span class="showcase-badge"
+                                    style="background: linear-gradient(135deg,#7c3aed,#f59e0b);">Empresarial</span>
                             </div>
-                            <div class="product-content">
-                                <span class="section-tag" style="margin-bottom: 0.5rem;">Gestión Comercial</span>
-                                <h3 class="display-6 mb-3">Sistema de <span class="text-gradient">Cotizaciones</span> <small class="text-muted fs-5 fw-normal">V 10.5</small></h3>
-                                <p class="text-muted mb-4 fs-5">Genera cotizaciones profesionales en segundos. Gestiona clientes, productos y exporta a PDF con diseño impactante.</p>
-                                <div class="row g-3 mb-4">
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-center gap-2 p-3 rounded-3 bg-light border-start border-4 border-warning mb-3">
-                                            <i class="fas fa-info-circle text-warning fs-4"></i>
-                                            <p class="mb-0 small text-dark">Para usar el sistema como <strong>requisito indispensable</strong> se debe contar con la versión de <strong>Office 2019 en adelante.</strong></p>
-                                        </div>
-                                    </div>
+                            <div class="showcase-body">
+                                <span class="showcase-tag"
+                                    style="background: rgba(124,58,237,0.1); color: #7c3aed;">Gestión Comercial</span>
+                                <h3 class="mb-2">Sistema de <span
+                                        style="background: linear-gradient(135deg,#7c3aed,#f59e0b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Cotizaciones</span>
+                                    <small class="text-muted fs-6 fw-normal">V 10.5</small>
+                                </h3>
+                                <p class="text-muted mb-3">Genera cotizaciones profesionales en segundos. Gestiona
+                                    clientes, productos y exporta a PDF con diseño impactante.</p>
+                                <div class="row g-2 mb-3">
                                     <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="bi bi-search text-primary me-2"></i> Consultas DNI/RUC (Perú)</li>
-                                            <li class="mb-2"><i class="bi bi-file-earmark-pdf text-primary me-2"></i> Exportación a PDF</li>
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Consultas DNI/RUC (Perú)</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><i class="bi bi-people-fill text-primary me-2"></i> Base de Datos Clientes</li>
-                                            <li class="mb-2"><i class="bi bi-database text-primary me-2"></i> Base de Datos Productos</li>
+                                        <ul class="showcase-features">
+                                            <li><i class="bi bi-check-circle-fill"></i> Base de Datos Clientes</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Base de Datos Productos</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="d-flex gap-3">
-                                    <a href="cotizaciones.html" class="btn btn-primary px-4">Más detalles del sistema</a>
-                                    <button type="button" class="btn btn-outline-primary px-4 btn-product-buy" data-product-id="cotizaciones" data-bs-toggle="modal"
-                                        data-bs-target="#paymentModal">
-                                        Comprar ahora
-                                    </button>
+                                <div class="showcase-price">
+                                    <span class="sp-cur">S/</span><span class="sp-amount">25</span>
+                                    <span class="sp-divider">|</span>
+                                    <span class="sp-cur">$</span><span class="sp-amount">9</span><span
+                                        class="sp-cur">USD</span>
+                                </div>
+                                <div class="showcase-actions">
+                                    <a href="cotizaciones.html" class="btn btn-sm text-white"
+                                        style="background: linear-gradient(135deg,#7c3aed,#f59e0b);">Más detalles</a>
+                                    <button type="button" class="btn btn-outline-dark btn-sm btn-product-buy"
+                                        data-product-id="cotizaciones" data-bs-toggle="modal"
+                                        data-bs-target="#paymentModal">Comprar ahora</button>
                                 </div>
                             </div>
                         </div>
@@ -270,11 +835,17 @@
             </div>
         </section>
 
-
-
-        <!-- CTA / Contacto Section -->
+        <!-- CTA -->
         <section id="contacto" class="py-5">
             <div class="container py-5">
+                <div class="cta-ix" data-aos="fade-up">
+                    <h2 class="display-6 mb-3">¿Listo para automatizar tu negocio?</h2>
+                    <p class="mb-4 fs-5">Contáctanos ahora y recibe asesoría personalizada sin compromiso.</p>
+                    <a href="https://wa.me/51922784328?text=Hola, vengo desde la web de Sistemas Excel y quiero información sobre sus sistemas."
+                        target="_blank" class="btn-cta">
+                        <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -284,98 +855,95 @@
         <div class="container text-center text-md-start pt-5 pb-4">
             <div class="row">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <img src="img/logo.jpeg" alt="Logo" class="me-2" style="height: 24px; border-radius: 4px;">Sistemas Excel
-                    </h6>
-                    <p>
-                        Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda Latinoamérica.
-                    </p>
+                    <h6 class="text-uppercase fw-bold mb-4"><img src="img/logo.jpeg" alt="Logo" class="me-2"
+                            style="height: 24px; border-radius: 4px;">Sistemas Excel</h6>
+                    <p>Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda
+                        Latinoamérica.</p>
                 </div>
-
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Nuestros Sistemas</h6>
                     <p><a href="farmacia.html" class="footer-link">Sistema Farmacia Pro</a></p>
                     <p><a href="ventas.html" class="footer-link">Ventas e Inventario</a></p>
                     <p><a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a></p>
+                    <p><a href="botica.html" class="footer-link">BoticaPro EX 13.0</a></p>
                     <p><a href="sistemasweb.html" class="footer-link">Sistemas Web</a></p>
                 </div>
-
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Navegación</h6>
-                    <p><a href="index.html#sistemas" class="footer-link">Sistemas</a></p>
-                    <p><a href="index.html#beneficios" class="footer-link">Beneficios</a></p>
-                    <p><a href="index.html#contacto" class="footer-link">Contacto</a></p>
+                    <p><a href="#sistemas" class="footer-link">Sistemas</a></p>
+                    <p><a href="#beneficios" class="footer-link">Beneficios</a></p>
+                    <p><a href="#contacto" class="footer-link">Contacto</a></p>
                 </div>
-
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
                     <p><i class="fas fa-phone me-3"></i> +51 922 784 328</p>
                     <div class="mt-4">
                         <h6 class="text-uppercase fw-bold mb-3">Síguenos</h6>
                         <div class="d-flex gap-3">
-                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i class="fab fa-youtube"></i></a>
-                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.youtube.com/@SISTEMASEXCEL" class="text-white fs-5" target="_blank"><i
+                                    class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61576685654851" class="text-white fs-5"
+                                target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="http://tiktok.com/@excelsistemascusco" class="text-white fs-5" target="_blank"><i
+                                    class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2026 Copyright:
-                <a class="text-reset fw-bold" href="index.html">SistemasExcel.com</a>
-            </div>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2026 Copyright: <a
+                    class="text-reset fw-bold" href="index.html">SistemasExcel.com</a></div>
         </div>
     </footer>
 
-
-
-    <!-- =================================================
-    DYNAMIC PAYMENT MODAL
-    ================================================== -->
+    <!-- Modal Pagos Dinámico -->
     <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="paymentModalLabel">Adquirir <span id="modalProductName">Producto</span></h5>
+                    <h5 class="modal-title" id="paymentModalLabel">Adquirir <span id="modalProductName">Producto</span>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="padding: 0;">
                     <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal-content" type="button" role="tab" aria-controls="paypal-content" aria-selected="true" style="border-radius: 0;">
-                                <i class="fab fa-paypal me-2"></i>Pago Internacional
-                            </button>
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
+                                data-bs-target="#paypal-content" type="button" role="tab" style="border-radius: 0;"><i
+                                    class="fab fa-paypal me-2"></i>Pago Internacional</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content" type="button" role="tab" aria-controls="peru-content" aria-selected="false" style="border-radius: 0;">
-                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
-                            </button>
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" style="border-radius: 0;"><img
+                                    src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional
+                                (Perú)</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="paymentTabsContent">
-                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel" aria-labelledby="paypal-tab">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel">
                             <div class="text-center p-4">
                                 <h4 class="mb-3">Pago Manual con PayPal</h4>
-                                <p>Realiza un pago de <strong id="paypalAmount">$0.00 USD</strong> a la siguiente cuenta de PayPal:</p>
+                                <p>Realiza un pago de <strong id="paypalAmount">$0.00 USD</strong> a la siguiente cuenta
+                                    de PayPal:</p>
                                 <div class="alert alert-light border my-3">
                                     <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
                                 </div>
-                                <img src="img/Paypal.webp" alt="Pagar con PayPal" class="img-fluid my-3" style="max-height: 60px;">
-                                <a href="#" id="paypalWhatsappLink" target="_blank" class="alert alert-success text-center mt-3 d-block text-decoration-none">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Una vez realizado el pago, envía tu comprobante a nuestro WhatsApp.
+                                <img src="img/Paypal.webp" alt="PayPal" class="img-fluid my-3"
+                                    style="max-height: 60px;">
+                                <a href="#" id="paypalWhatsappLink" target="_blank"
+                                    class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Una vez realizado el pago, envía tu comprobante
+                                    a nuestro WhatsApp.
                                 </a>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel">
                             <div class="p-4">
                                 <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
-                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar tu licencia.</p>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar
+                                    tu licencia.</p>
                                 <div class="row align-items-center">
-                                    <div class="col-lg-6 text-center">
-                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm" style="max-width: 250px;">
-                                    </div>
+                                    <div class="col-lg-6 text-center"><img src="img/YAPE-.jpeg" alt="QR Yape"
+                                            class="img-fluid rounded shadow-sm" style="max-width: 250px;"></div>
                                     <div class="col-lg-6 mt-3 mt-lg-0">
                                         <div class="border p-3 rounded text-center">
                                             <p class="display-6 fw-bold mb-2" id="solesAmount">S/0.00</p>
@@ -385,9 +953,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" id="peruWhatsappLink" target="_blank" class="alert alert-success text-center mt-4 d-block text-decoration-none">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Después de realizar el depósito, envía el comprobante a nuestro WhatsApp.
+                                <a href="#" id="peruWhatsappLink" target="_blank"
+                                    class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Después de realizar el depósito, envía el
+                                    comprobante a nuestro WhatsApp.
                                 </a>
                             </div>
                         </div>
@@ -397,18 +966,11 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 800, once: true, offset: 80 });
 
-        // Navbar blur change
         window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 10) {
@@ -420,16 +982,19 @@
             }
         });
 
-        // =================================================
-        // Lógica para Modal de Pagos Dinámico
-        // =================================================
-
         const products = {
-            farmacia: {
-                name: "Sistema de Farmacia Pro",
+            botica: {
+                name: "BoticaPro EX 13.0",
                 paypalAmount: "30.00",
                 solesAmount: "90.00",
-                paypalWhatsappText: "Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Farmacia Pro. Adjunto mi comprobante.",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $30.00 USD por PayPal para el BoticaPro EX 13.0 Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito para el BoticaPro EX 13.0. Adjunto mi comprobante."
+            },
+            farmacia: {
+                name: "Sistema de Farmacia Pro",
+                paypalAmount: "20.00",
+                solesAmount: "60.00",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $20.00 USD por PayPal para el Sistema de Farmacia Pro. Adjunto mi comprobante.",
                 peruWhatsappText: "Hola, acabo de realizar el depósito para el Sistema de Farmacia Pro. Adjunto mi comprobante."
             },
             ventas: {
@@ -448,26 +1013,16 @@
             }
         };
 
-        const paymentModal = document.getElementById('paymentModal');
-        const modalProductName = document.getElementById('modalProductName');
-        const paypalAmountElem = document.getElementById('paypalAmount');
-        const solesAmountElem = document.getElementById('solesAmount');
-        const paypalWhatsappLink = document.getElementById('paypalWhatsappLink');
-        const peruWhatsappLink = document.getElementById('peruWhatsappLink');
-
         document.querySelectorAll('.btn-product-buy').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const productId = this.dataset.productId;
                 const product = products[productId];
-
                 if (product) {
-                    modalProductName.textContent = product.name;
-                    paypalAmountElem.textContent = `$${product.paypalAmount} USD`;
-                    solesAmountElem.textContent = `S/${product.solesAmount}`;
+                    document.getElementById('modalProductName').textContent = product.name;
 
-                    const whatsappBaseUrl = "https://wa.me/51922784328?text=";
-                    paypalWhatsappLink.href = whatsappBaseUrl + encodeURIComponent(product.paypalWhatsappText);
-                    peruWhatsappLink.href = whatsappBaseUrl + encodeURIComponent(product.peruWhatsappText);
+                    const base = "https://wa.me/51922784328?text=";
+                    document.getElementById('paypalWhatsappLink').href = base + encodeURIComponent(product.paypalWhatsappText);
+                    document.getElementById('peruWhatsappLink').href = base + encodeURIComponent(product.peruWhatsappText);
                 }
             });
         });
