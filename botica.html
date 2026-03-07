@@ -539,6 +539,11 @@
                             style="background: var(--botica-gradient);">
                             <i class="fab fa-whatsapp me-2"></i>Solicitar Demo
                         </a>
+                        <button type="button" class="btn btn-info btn-lg text-white shadow-lg fw-bold"
+                            style="background: var(--botica-accent); border: none;" data-bs-toggle="modal"
+                            data-bs-target="#demoModal">
+                            <i class="fas fa-download me-2"></i>Descargar Demo
+                        </button>
                         <a href="#galeria" class="btn btn-outline-dark btn-lg">
                             Ver Módulos
                         </a>
@@ -550,7 +555,7 @@
                 </div>
                 <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="400">
                     <div class="hero-img-wrapper">
-                        <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.0- Menú Principal">
+                        <img src="IMG-botica/BOTICAPRO EX 13.0.png" alt="BoticaPro EX 13.0- Menú Principal">
                     </div>
                 </div>
             </div>
@@ -976,6 +981,13 @@
                                 <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
                             </button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card-content"
+                                type="button" role="tab" aria-controls="card-content" aria-selected="false"
+                                style="border-radius: 0;">
+                                <i class="fas fa-credit-card me-2"></i>Pago con Tarjeta
+                            </button>
+                        </li>
                     </ul>
                     <div class="tab-content" id="paymentTabsContent">
                         <div class="tab-pane fade show active" id="paypal-content" role="tabpanel"
@@ -1023,7 +1035,87 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="card-content" role="tabpanel" aria-labelledby="card-tab">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Seguro con Tarjeta</h4>
+                                <p>Paga de forma rápida y segura desde cualquier país usando tu tarjeta de crédito o
+                                    débito a través de <strong>Hotmart</strong>.</p>
+                                <div class="my-3">
+                                    <i class="fab fa-cc-visa fa-3x mx-2 text-primary"></i>
+                                    <i class="fab fa-cc-mastercard fa-3x mx-2 text-danger"></i>
+                                    <i class="fab fa-cc-amex fa-3x mx-2 text-info"></i>
+                                </div>
+                                <button type="button" class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm"
+                                    style="background: linear-gradient(135deg, #f5313d, #ba0410); border-radius: 12px; padding: 14px;"
+                                    data-bs-toggle="modal" data-bs-target="#hotmartModal"
+                                    onclick="document.getElementById('hotmartIframe').src = 'https://pay.hotmart.com/L102677652I';">
+                                    <i class="fas fa-lock me-2"></i>Pagar ahora vía Hotmart
+                                </button>
+                                <p class="text-muted small"><i class="fas fa-shield-alt me-1"></i> Transacción 100%
+                                    encriptada y segura.</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Hotmart -->
+    <div class="modal fade" id="hotmartModal" tabindex="-1" aria-labelledby="hotmartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="height: 85vh;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hotmartModalLabel">Pago Seguro con Hotmart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="document.getElementById('hotmartIframe').src = '';"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="hotmartIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Demo Botica -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header text-white" style="background: var(--botica-gradient); border-bottom: none;">
+                    <h5 class="modal-title fw-bold" id="demoModalLabel"><i class="fas fa-download me-2"></i>Descargar
+                        Demo Exclusiva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center pb-2">
+                    <i class="fas fa-file-excel fa-4x text-success mb-3"></i>
+                    <h4 class="fw-bold mb-3">BoticaPro EX 13.0</h4>
+                    <p class="text-muted mb-4">Descarga tu archivo de muestra y descubre todo el potencial del sistema.
+                    </p>
+
+                    <div class="alert alert-info py-3 mb-4 text-start"
+                        style="border-radius: 12px; border: 1px dashed rgba(14, 116, 144, 0.4); background-color: #f0f9ff;">
+                        <h6 class="fw-bold mb-2 text-dark"><i class="fas fa-key me-2"></i>Credenciales de Acceso:</h6>
+                        <ul class="list-unstyled mb-0 ms-4 text-dark">
+                            <li class="mb-1"><strong>Usuario:</strong> DEMO</li>
+                            <li><strong>Contraseña:</strong> 1234</li>
+                        </ul>
+                    </div>
+
+                    <a href="BoticaPro EX 13.0 - DEMO.xlsm" download="BoticaPro EX 13.0 - DEMO.xlsm"
+                        class="btn btn-lg w-100 text-white fw-bold shadow-sm mb-3"
+                        style="background: var(--botica-gradient); border-radius: 12px;">
+                        <i class="fas fa-cloud-download-alt me-2"></i>Descargar Archivo Ahora
+                    </a>
+
+                    <a href="01. habilitar macros.mp4" download="01. habilitar macros.mp4"
+                        class="btn btn-outline-secondary w-100 fw-bold shadow-sm" style="border-radius: 12px;">
+                        <i class="fas fa-video me-2"></i>Ver cómo habilitar macros
+                    </a>
+                </div>
+                <div class="modal-footer border-0 justify-content-center pt-2 pb-4">
+                    <small class="text-muted"><i class="fas fa-info-circle me-1"></i> Requiere Office 2019 o
+                        superior</small>
                 </div>
             </div>
         </div>
