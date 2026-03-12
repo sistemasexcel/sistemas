@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoticaPro EX 13.0 - Venta por Unidad y Blíster - Sistemas Excel</title>
+    <title>BoticaPro EX 13.0 - Venta por Unidad, Blíster y Caja - Sistemas Excel</title>
     <meta name="description"
         content="Sistema de BoticaPro EX 13.0 con gestión fraccionada inteligente. Venta por unidad, blíster y caja. Control total de inventario farmacéutico en Excel.">
     <!-- Google Fonts -->
@@ -523,14 +523,15 @@
                     <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200" style="max-width: 540px;">
                         Gestiona tu botica o farmacia como los grandes. Ahora con <strong>Venta Fraccionada
                             Inteligente</strong>:
-                        controla unidades, blísteres desde una sola pantalla.
+                        controla unidades, blísteres y cajas desde una sola pantalla.
                     </p>
 
                     <!-- Feature Chips -->
                     <div class="d-flex flex-wrap gap-2 mb-4" data-aos="fade-up" data-aos-delay="250">
                         <span class="feature-chip"><i class="bi bi-capsule"></i> Venta por Unidad</span>
                         <span class="feature-chip"><i class="bi bi-layers-fill"></i> Venta por Blíster</span>
-
+                        <span class="feature-chip"><i class="bi bi-box-seam"></i> Venta por Caja</span>
+                        <span class="feature-chip"><i class="bi bi-upc-scan"></i> Registra Cód. DIGEMID</span>
                         <span class="feature-chip"><i class="bi bi-graph-up-arrow"></i> Kardex Auto</span>
                     </div>
 
@@ -570,8 +571,8 @@
                     <span class="section-tag"
                         style="background: rgba(14,116,144,0.08); color: var(--botica-primary);">Lo más pedido</span>
                     <h2 class="display-6">Venta Fraccionada <span class="text-gradient-botica">Inteligente</span></h2>
-                    <p class="text-muted mx-auto" style="max-width: 600px;">Registra compras por unidad
-                        o blíster. El stock se actualiza automáticamente con precisión milimétrica.</p>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Registra compras por unidad, 
+                        blíster o caja. El stock se actualiza automáticamente con precisión milimétrica.</p>
                 </div>
 
                 <!-- Info Banner -->
@@ -658,7 +659,10 @@
                                         Unidad</div>
                                     <div class="comparison-item"><i class="bi bi-check-circle-fill"></i> Venta por
                                         Blíster</div>
-
+                                    <div class="comparison-item"><i class="bi bi-check-circle-fill"></i> Venta por
+                                        Caja</div>
+                                    <div class="comparison-item"><i class="bi bi-check-circle-fill"></i> Registra Código
+                                        DIGEMID</div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="comparison-item"><i class="bi bi-check-circle-fill"></i> Kardex
@@ -692,7 +696,7 @@
                                 class="text-gradient-botica">Fraccionadas</span></h2>
                         <p class="text-muted mb-4">
                             Una pantalla potente e intuitiva donde puedes seleccionar si vendes por
-                            <strong>unidad</strong> ó <strong>blíster</strong>.
+                            <strong>unidad</strong>, <strong>blíster</strong> o <strong>caja</strong>.
                             El stock se actualiza en tiempo real.
                         </p>
                         <ul class="list-unstyled">
@@ -775,14 +779,7 @@
                                 Fraccionadas</div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="gallery-card">
-                            <span class="gallery-badge-new">¡Novedad!</span>
-                            <img src="IMG-botica/9. VENTAS Y MENSAJE DE VUELTO.png" alt="Ventas con Vuelto">
-                            <div class="gallery-label" style="color: var(--botica-accent); font-weight: 800;">Ventas +
-                                Cálculo de Vuelto</div>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-6 col-lg-4" data-aos="zoom-in">
                         <div class="gallery-card">
                             <img src="IMG-botica/5. REPORTE DE COMPRAS.png" alt="Reporte de Compras">
@@ -827,8 +824,8 @@
         <section id="precio" class="py-5">
             <div class="container py-5">
                 <!-- Countdown -->
-                <div class="text-center mb-5" data-aos="fade-down">
-                    <h5 class="fw-bold" style="color: #ef4444;"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!
+                <div id="countdownContainer" class="text-center mb-5" data-aos="fade-down">
+                    <h5 class="fw-bold" style="color: #ef4444;"><i class="fas fa-bolt me-2"></i>¡La oferta termina pronto!
                     </h5>
                     <div class="d-flex justify-content-center gap-3 mt-3">
                         <div class="time-box">
@@ -850,17 +847,28 @@
                     <div class="row g-0">
                         <div class="col-lg-5">
                             <div class="cta-left">
-                                <span class="version-badge mb-3" style="align-self: flex-start; animation: none;"><i
-                                        class="bi bi-gem"></i> Versión 2026</span>
+                                <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+                                    <span class="version-badge" style="animation: none;"><i class="bi bi-gem"></i> Versión 2026</span>
+                                    <div id="discountBadge" class="discount-badge" style="background: linear-gradient(90deg, #ff0844, #ffb199); color: white; padding: 6px 16px; border-radius: 50px; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px; box-shadow: 0 8px 20px rgba(255, 8, 68, 0.4); border: 1px solid rgba(255,255,255,0.3); animation: pulse-glow 2s infinite;">
+                                        <i class="fas fa-bolt text-warning me-1"></i> ¡OFERTA -50% OFF!
+                                    </div>
+                                </div>
                                 <h3 class="text-white mt-2">Licencia Vitalicia</h3>
-                                <p style="color: #94a3b8;" class="mb-3">Pago único · Sin mensualidades</p>
-                                <div class="price-display">
-                                    <span class="currency">S/</span>
-                                    <span class="amount">90</span>
+                                <p style="color: #94a3b8;" class="mb-2">Pago único · Sin mensualidades</p>
+                                
+                                <div id="normalPriceLine" class="mt-4 mb-0" style="display: flex; align-items: center; gap: 10px; opacity: 0.7;">
+                                    <span style="font-size: 0.95rem; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px;">Precio Normal:</span>
+                                    <span style="text-decoration: line-through; color: #f87171; font-size: 1.4rem; font-weight: 700;">S/ 180</span>
+                                    <span style="color: #64748b;">|</span>
+                                    <span style="text-decoration: line-through; color: #f87171; font-size: 1.4rem; font-weight: 700;">$60 USD</span>
+                                </div>
+                                <div class="price-display mt-0">
+                                    <span class="currency text-white">S/</span>
+                                    <span id="priceSoles" class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">90</span>
                                     <span class="price-divider">|</span>
-                                    <span class="currency">$</span>
-                                    <span class="amount">30</span>
-                                    <span class="currency">USD</span>
+                                    <span class="currency text-white">$</span>
+                                    <span id="priceUSD" class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">30</span>
+                                    <span class="currency text-white">USD</span>
                                 </div>
 
                                 <!-- Info Banner Dark -->
@@ -877,7 +885,9 @@
                             <div class="cta-right">
                                 <h5 class="text-white mb-4">¿Qué incluye tu compra?</h5>
                                 <ul class="list-unstyled check-list mb-4">
-                                    <li><i class="bi bi-check-circle-fill"></i> Módulo de Ventas por Unidad / Blíster
+                                    <li><i class="bi bi-check-circle-fill"></i> Módulo de Ventas por Unidad / Blíster / Caja
+                                    </li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Registra Código DIGEMID
                                     </li>
                                     <li><i class="bi bi-check-circle-fill"></i> Registro de Compras con stock automático
                                     </li>
@@ -894,7 +904,7 @@
                                     data-bs-target="#paymentModal">
                                     <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
                                 </button>
-                                <a href="https://wa.me/51922784328?text=Hola, quiero adquirir el BoticaPro EX 13.0 con gestión de unidades y blíster."
+                                <a href="https://wa.me/51922784328?text=Hola, quiero adquirir el BoticaPro EX 13.0 con gestión de unidades, blíster y cajas."
                                     target="_blank" class="cta-btn-primary">
                                     <i class="fab fa-whatsapp me-2"></i>Comprar vía WhatsApp
                                 </a>
@@ -1127,9 +1137,39 @@
     <script>
         AOS.init({ duration: 800, once: true, offset: 80 });
 
-        // Countdown Logic
+        // Countdown & Validity Logic
         function updateCountdown() {
             const now = new Date();
+            const deadline = new Date('2026-03-31T23:59:59'); // 31 de Marzo 2026
+            
+            // Si la fecha actual supera a la del 31 de marzo, regresar a precio normal
+            if (now > deadline) {
+                const container = document.getElementById('countdownContainer');
+                if (container) container.style.display = 'none';
+                
+                const badge = document.getElementById('discountBadge');
+                if (badge) badge.style.display = 'none';
+                
+                const normalLine = document.getElementById('normalPriceLine');
+                if (normalLine) normalLine.style.display = 'none';
+                
+                const pSoles = document.getElementById('priceSoles');
+                if (pSoles) { 
+                    pSoles.innerText = '180'; 
+                    pSoles.style.color = 'white'; 
+                    pSoles.style.textShadow = 'none'; 
+                }
+                
+                const pUSD = document.getElementById('priceUSD');
+                if (pUSD) { 
+                    pUSD.innerText = '60'; 
+                    pUSD.style.color = 'white'; 
+                    pUSD.style.textShadow = 'none'; 
+                }
+                return;
+            }
+
+            // Lógica normal de contador diario (vende escasez todos los días hasta que venza la oferta real)
             const endOfDay = new Date();
             endOfDay.setHours(23, 59, 59, 999);
             let diff = endOfDay - now;
@@ -1140,9 +1180,14 @@
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
-            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
-            document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+            
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            if(hoursEl) hoursEl.innerText = h < 10 ? '0' + h : h;
+            if(minutesEl) minutesEl.innerText = m < 10 ? '0' + m : m;
+            if(secondsEl) secondsEl.innerText = s < 10 ? '0' + s : s;
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
