@@ -516,6 +516,7 @@
                         </a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="sistemasweb.html">Sistemas Web</a></li>
+
                     <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
                     <li class="nav-item ms-lg-3">
                         <a href="https://wa.me/51922784328" target="_blank"
@@ -636,11 +637,25 @@
                                     Lanzamiento</span>
                             </div>
                             <div class="showcase-body">
-                                <span class="showcase-tag"
-                                    style="background: rgba(14,116,144,0.1); color: #0e7490;">Venta Fraccionada</span>
-                                <h3 class="mb-2">Sistema <span
+                                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                                    <span class="showcase-tag" style="background: rgba(14,116,144,0.1); color: #0e7490; margin-bottom: 0;">Venta Fraccionada</span>
+                                    <span class="showcase-tag" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; margin-bottom: 0; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);">
+                                        <i class="fas fa-crown me-1"></i>Más Vendido
+                                    </span>
+                                </div>
+                                <h3 class="mb-1">Sistema <span
                                         style="background: linear-gradient(135deg,#0e7490,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">BoticaPro
                                         EX 13.0</span></h3>
+                                <div class="mb-3 d-flex align-items-center gap-2">
+                                    <div class="stars text-warning fs-6">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-muted small fw-bold">4.5/5 (120+ ventas)</span>
+                                </div>
                                 <p class="text-muted mb-3">Gestiona tu botica con venta fraccionada inteligente: por
                                     unidad y blíster. El stock se actualiza automáticamente.</p>
                                 <div class="row g-2 mb-3">
@@ -660,9 +675,9 @@
                                     </div>
                                 </div>
                                 <div class="showcase-price">
-                                    <span class="sp-cur">S/</span><span class="sp-amount">90</span>
+                                    <span class="sp-cur">S/</span><span class="sp-amount">180</span>
                                     <span class="sp-divider">|</span>
-                                    <span class="sp-cur">$</span><span class="sp-amount">30</span><span
+                                    <span class="sp-cur">$</span><span class="sp-amount">60</span><span
                                         class="sp-cur">USD</span>
                                 </div>
                                 <div class="showcase-actions">
@@ -968,10 +983,10 @@
         const products = {
             botica: {
                 name: "BoticaPro EX 13.0",
-                paypalAmount: "30.00",
-                solesAmount: "90.00",
-                paypalWhatsappText: "Hola, acabo de realizar el pago de $30.00 USD por PayPal para el BoticaPro EX 13.0 Adjunto mi comprobante.",
-                peruWhatsappText: "Hola, acabo de realizar el depósito para el BoticaPro EX 13.0. Adjunto mi comprobante.",
+                paypalAmount: "60.00",
+                solesAmount: "180.00",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $60.00 USD por PayPal para el BoticaPro EX 13.0. Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito de S/180 para el BoticaPro EX 13.0. Adjunto mi comprobante.",
                 hotmartLink: "https://pay.hotmart.com/L102677652I"
             },
 
@@ -980,7 +995,7 @@
                 paypalAmount: "30.00",
                 solesAmount: "90.00",
                 paypalWhatsappText: "Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Ventas e Inventario. Adjunto mi comprobante.",
-                peruWhatsappText: "Hola, acabo de realizar el depósito para el Sistema de Ventas e Inventario. Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito de S/90 para el Sistema de Ventas e Inventario. Adjunto mi comprobante.",
                 hotmartLink: "https://pay.hotmart.com/F102803755C"
             },
             cotizaciones: {

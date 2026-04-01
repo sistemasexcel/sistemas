@@ -704,13 +704,8 @@
         <section id="precio" class="py-5" style="background: #f8fafc;">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-down">
-                    <h5 class="fw-bold" style="color: #ef4444;"><i class="fas fa-bolt me-2"></i>¡La oferta termina en!
-                    </h5>
-                    <div class="d-flex justify-content-center gap-3 mt-3">
-                        <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
-                        <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
-                        <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
-                    </div>
+                    <h2 class="display-5 fw-bold">Gestión <span style="color: #2563eb;">Profesional</span> para tu Negocio</h2>
+                    <p class="lead text-muted">Invierte una vez, optimiza para siempre.</p>
                 </div>
 
                 <div class="cta-ven" data-aos="fade-up">
@@ -869,7 +864,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito para el Sistema de Ventas e Inventario. Adjunto mi comprobante."
+                                <a href="https://wa.me/51922784328?text=Hola, acabo de realizar el depósito de S/90 para el Sistema de Ventas e Inventario. Adjunto mi comprobante."
                                     target="_blank"
                                     class="alert alert-success text-center mt-4 d-block text-decoration-none">
                                     <i class="fab fa-whatsapp me-2"></i>Después de realizar el depósito, envía el
@@ -923,21 +918,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true, offset: 80 });
-        function updateCountdown() {
-            const now = new Date();
-            const endOfDay = new Date();
-            endOfDay.setHours(23, 59, 59, 999);
-            let diff = endOfDay - now;
-            if (diff < 0) { endOfDay.setDate(endOfDay.getDate() + 1); diff = endOfDay - now; }
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
-            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
-            document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
     </script>
 </body>
 
