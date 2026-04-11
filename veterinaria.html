@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VET-SYSTEM PRO - Gestión Veterinaria en Excel - Sistemas Excel</title>
+    <meta name="description"
+        content="Sistema de Gestión Veterinaria desarrollado en Excel. Control total de pacientes, historias clínicas, vacunas con semáforo y gestión multiusuario sin pagos mensuales.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* === VET-SYSTEM PRO THEME OVERRIDES (Botica Style) === */
+        :root {
+            --vet-primary: #10b981;
+            --vet-primary-dark: #065f46;
+            --vet-primary-light: #34d399;
+            --vet-accent: #0ea5e9;
+            --vet-accent-light: #7dd3fc;
+            --vet-gradient: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+            --vet-gradient-soft: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(14, 165, 233, 0.08) 100%);
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: #1e293b;
+        }
+
+        /* Hero Veterinary */
+        .hero-vet {
+            padding: 160px 0 100px;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(52, 211, 153, 0.06) 0%, transparent 50%),
+                #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-gradient-vet {
+            background: var(--vet-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Version Badge */
+        .version-badge {
+            background: var(--vet-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Hero Image */
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-img-wrapper img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-img-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Feature Chips */
+        .feature-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--vet-primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        .feature-chip:hover {
+            background: var(--vet-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Novelty Section */
+        .novelty-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .novelty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.12);
+            border-color: var(--vet-primary);
+        }
+
+        .novelty-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .ni-emerald { background: rgba(16, 185, 129, 0.1); color: var(--vet-primary); }
+        .ni-blue { background: rgba(14, 165, 233, 0.1); color: var(--vet-accent); }
+        .ni-purple { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+        .ni-amber { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+
+        /* Comparison Banner */
+        .comparison-banner {
+            background: var(--vet-gradient);
+            border-radius: 24px;
+            padding: 48px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+
+        /* CTA Pricing */
+        .cta-modern {
+            background: linear-gradient(165deg, #0c1222 0%, #1a1f3a 50%, #0e2a3d 100%);
+            border-radius: 28px;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-left {
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cta-right {
+            padding: 48px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .price-display .amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.04em;
+        }
+
+        .price-display .currency {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        .price-divider {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 2rem;
+            margin: 0 8px;
+        }
+
+        .cta-btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: var(--vet-gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4);
+            color: white;
+        }
+
+        .cta-btn-secondary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 12px;
+        }
+
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+        }
+
+        .check-list li i {
+            color: var(--vet-primary-light);
+            font-size: 1rem;
+        }
+
+        /* Info Banner Dark */
+        .info-banner-dark {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Responsive CTA */
+        @media (max-width: 991px) {
+            .cta-left, .cta-right {
+                padding: 32px 24px;
+            }
+            .cta-right {
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            .price-display .amount {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        /* Semaforo */
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+
+        /* Navbar */
+        .navbar { background: rgba(255,255,255,0.9) !important; backdrop-filter: blur(10px); }
+
+        /* Gallery */
+        .gallery-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+        .gallery-card img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.06);
+        }
+        .gallery-label {
+            padding: 14px 18px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #0f172a;
+        }
+        .gallery-badge-new {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--vet-gradient);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .gallery-hero-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+        .gallery-hero-card img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .gallery-hero-card:hover img {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="img/logo.jpeg" alt="Logo" class="brand-logo" style="height: 40px; border-radius: 8px;">
+                <span class="fw-bold">Sistemas <span class="text-gradient-vet">Excel</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#beneficios">Beneficios</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#funcionalidades">Módulos</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#precio">Precio</a></li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-sm px-4 rounded-pill text-white fw-bold"
+                            style="background: var(--vet-gradient);" data-bs-toggle="modal"
+                            data-bs-target="#paymentModal">Comprar</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-vet">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="d-inline-flex align-items-center gap-3 mb-4" data-aos="fade-right">
+                        <span class="version-badge"><i class="bi bi-lightning-charge-fill"></i> DESARROLLADO EN EXCEL</span>
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-delay="100">
+                        🐾 VET-SYSTEM PRO V1.0<br><span class="text-gradient-vet">Control Total Veterinaria</span>
+                    </h1>
+                    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
+                        El control total de tu veterinaria, ahora más simple y organizado. Dile adiós a los cuadernos perdidos y al desorden con nuestro <strong>sistema en Excel.</strong>.
+                    </p>
+
+                    <!-- Feature Chips -->
+                    <div class="d-flex flex-wrap gap-2 mb-4" data-aos="fade-up" data-aos-delay="250">
+                        <span class="feature-chip"><i class="bi bi-people-fill"></i> Multiusuario</span>
+                        <span class="feature-chip"><i class="bi bi-search"></i> Búsqueda por DNI</span>
+                        <span class="feature-chip"><i class="bi bi-clipboard2-pulse"></i> Historias Clínicas</span>
+                        <span class="feature-chip"><i class="bi bi-traffic-light"></i> Semáforo Vacunas</span>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="https://wa.me/51922784328?text=Hola%2C%20me%20interesa%20probar%20la%20demo%20de%20VET-SYSTEM%20PRO.%20%C2%BFPodr%C3%ADan%20enviarme%20m%C3%A1s%20informaci%C3%B3n%3F"
+                            target="_blank" class="btn btn-primary btn-lg shadow-lg fw-bold border-0 px-4"
+                            style="background: var(--vet-primary);">
+                            <i class="fab fa-whatsapp me-2"></i>Solicitar Demo
+                        </a>
+                        <button type="button" class="btn btn-warning btn-lg shadow-lg fw-bold border-0 px-4"
+                            style="color: #0f172a;" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                            <i class="fas fa-shopping-cart me-2"></i>Adquirir por S/ 70
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="hero-img-wrapper">
+                        <img src="img_veterinaria/0 VET-SYSTEM PRO.jpg" alt="VET-SYSTEM PRO - Menú Principal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Multiusuario Section -->
+        <section id="beneficios" class="py-5 bg-white">
+            <div class="container py-5">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill mb-3">SEGURIDAD TOTAL</span>
+                    <h2 class="display-6 fw-bold">👥 Sistema <span class="text-gradient-vet">Multiusuario</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 700px;">VET-SYSTEM PRO es un sistema 100% multiusuario basado en Excel. Crea cuentas con usuario y contraseña para cada persona de tu equipo.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="novelty-card text-center">
+                            <div class="novelty-icon ni-blue mx-auto"><i class="bi bi-person-badge"></i></div>
+                            <h5 class="fw-bold">Recepcionista</h5>
+                            <p class="text-muted small">Registra clientes y agenda citas. Acceso limitado para proteger los diagnósticos médicos.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="novelty-card text-center text-white" style="background: var(--vet-gradient);">
+                            <div class="novelty-icon bg-white text-success mx-auto"><i class="bi bi-heart-pulse"></i></div>
+                            <h5 class="fw-bold">Médico Veterinario</h5>
+                            <p class="small opacity-90">Acceso a historias clínicas, registro de síntomas y tratamientos directamente en el sistema.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="novelty-card text-center">
+                            <div class="novelty-icon ni-purple mx-auto"><i class="bi bi-shield-check"></i></div>
+                            <h5 class="fw-bold">Administrador</h5>
+                            <p class="text-muted small">Tú tienes el control absoluto: auditorías, permisos de personal y gestión de inventario.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funcionalidades -->
+        <section id="funcionalidades" class="py-5" style="background: #f8fafc;">
+            <div class="container py-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="hero-img-wrapper">
+                            <img src="img_veterinaria/2 dashboard PRINCIPAL.jpg" alt="Dashboard Principal VET-SYSTEM PRO">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <h2 class="display-6 fw-bold mb-4">Funcionalidades <span class="text-gradient-vet">Principales</span></h2>
+                        
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="novelty-icon ni-emerald flex-shrink-0"><i class="bi bi-search"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">1. Recepción Ultrarrápida</h5>
+                                <p class="text-muted small">Autocompletado por DNI: Ingresa el número y el sistema busca los nombres automáticamente. Buscador universal por dueño, teléfono o mascota.</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="novelty-icon ni-blue flex-shrink-0"><i class="bi bi-clipboard-pulse"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">2. Historial Clínico</h5>
+                                <p class="text-muted small">Signos vitales, síntomas, diagnóstico y tratamiento. Memoria de visitas para ver el historial pasado al instante.</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="novelty-icon ni-amber flex-shrink-0"><i class="bi bi-traffic-light"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">3. Control de Vacunas con "Semáforo"</h5>
+                                <p class="text-muted small">
+                                    <span class="d-block"><span class="dot" style="background:#10b981;"></span> Verde: Vacunas al día</span>
+                                    <span class="d-block"><span class="dot" style="background:#f59e0b;"></span> Naranja: Próxima dosis pronto</span>
+                                    <span class="d-block"><span class="dot" style="background:#ef4444;"></span> Rojo: Vacuna vencida / Refuerzo</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                            <div class="novelty-icon ni-purple flex-shrink-0"><i class="bi bi-box-seam"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">4. Inventario</h5>
+                                <p class="text-muted small">Alertas de stock mínimo y catálogo de servicios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Módulos -->
+        <section id="galeria" class="py-5" style="background: #f1f5f9;">
+            <div class="container py-5">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-tag" style="background: rgba(16,185,129,0.08); color: var(--vet-primary);">Explora el Sistema</span>
+                    <h2 class="display-6 fw-bold">Todos los módulos en un <span class="text-gradient-vet">solo lugar</span></h2>
+                    <p class="text-muted mx-auto" style="max-width:580px;">Conoce cada pantalla del sistema. Diseñado para ser intuitivo desde el primer día.</p>
+                </div>
+
+                <!-- Imagen principal destacada -->
+                <div class="gallery-hero-card mb-4" data-aos="fade-up">
+                    <img src="img_veterinaria/0 VET-SYSTEM PRO.jpg" alt="VET-SYSTEM PRO - Vista General">
+                    <div class="gallery-label" style="font-size:1rem; background:white; color: var(--vet-primary);">🐾 VET-SYSTEM PRO — Vista General del Sistema</div>
+                </div>
+
+                <!-- Grilla de módulos -->
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="50">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/1 LOGIN.jpg" alt="Login del Sistema">
+                            <div class="gallery-label">🔐 Acceso Seguro con Login</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="gallery-card">
+                            <span class="gallery-badge-new">Principal</span>
+                            <img src="img_veterinaria/2 dashboard PRINCIPAL.jpg" alt="Dashboard Principal">
+                            <div class="gallery-label" style="color: var(--vet-primary);">📊 Dashboard Principal</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="150">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/3 registro de clietes y mascotas.jpg" alt="Clientes y Mascotas">
+                            <div class="gallery-label">🐶 Registro de Clientes y Mascotas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/4 ficha de registro.jpg" alt="Ficha de Registro">
+                            <div class="gallery-label">📋 Ficha de Registro Detallada</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="250">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/5 registro de citas medicas.jpg" alt="Citas Médicas">
+                            <div class="gallery-label">📅 Agenda de Citas Médicas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="gallery-card">
+                            <span class="gallery-badge-new">Clave</span>
+                            <img src="img_veterinaria/6 registro de historia clinica.jpg" alt="Historia Clínica">
+                            <div class="gallery-label" style="color: var(--vet-primary);">🩺 Historia Clínica Electrónica</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="350">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/7 registro de vacunas.jpg" alt="Control de Vacunas">
+                            <div class="gallery-label">💉 Control de Vacunas (Semáforo)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/8 registro de productos y servicios.jpg" alt="Productos y Servicios">
+                            <div class="gallery-label">📦 Productos y Servicios</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="450">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/9 puntos de ventas pos.jpg" alt="Punto de Venta POS">
+                            <div class="gallery-label">🛒 Punto de Venta POS</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="gallery-card">
+                            <img src="img_veterinaria/10 comprobante .jpg" alt="Comprobante de Venta">
+                            <div class="gallery-label">🧾 Comprobante de Venta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing / CTA -->
+        <section id="precio" class="py-5">
+            <div class="container py-5">
+                <div class="cta-modern" data-aos="fade-up">
+                    <div class="row g-0">
+                        <div class="col-lg-5">
+                            <div class="cta-left">
+                                <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+                                    <span class="version-badge" style="animation: none;"><i class="bi bi-gem"></i> Promoción 2026</span>
+                                </div>
+                                <h3 class="text-white mt-2">Licencia Permanente</h3>
+                                <p style="color: #94a3b8;" class="mb-4">Pago único · Sin mensualidades</p>
+                                <div class="price-display mt-0">
+                                    <span class="currency text-white">S/</span>
+                                    <span class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">70</span>
+                                    <span class="price-divider">|</span>
+                                    <span class="currency text-white">$</span>
+                                    <span class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">25</span>
+                                    <span class="currency text-white">USD</span>
+                                </div>
+                                <p class="mt-2 mb-0" style="color: #94a3b8;"><s>Precio regular S/ 100</s></p>
+
+                                <!-- Info Banner Dark -->
+                                <div class="info-banner-dark mt-4">
+                                    <i class="bi bi-info-circle text-warning fs-5"></i>
+                                    <p class="mb-0 text-white small" style="opacity: 0.9;">Para usar el sistema como
+                                        <strong>requisito indispensable</strong> se debe contar con la versión de
+                                        <strong>Office 2019 en adelante.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="cta-right">
+                                <h5 class="text-white mb-4">¿Qué incluye tu compra?</h5>
+                                <ul class="list-unstyled check-list mb-4">
+                                    <li><i class="bi bi-check-circle-fill"></i> Sistema 100% funcional en Excel.</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Acceso Multiusuario (Recepcionista, Doctor, Admin)</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Historias Clínicas y Memoria de Visitas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Control de Vacunas con Semáforo Visual</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Inventario y Punto de Venta</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Autocompletado de nombres por DNI</li>
+                                   
+                                </ul>
+                                <button type="button" class="cta-btn-primary mb-3"
+                                    style="background: #eab308; color: #1e293b; border: none;" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal">
+                                    <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
+                                </button>
+                                <a href="https://wa.me/51922784328?text=Hola%2C%20me%20interesa%20adquirir%20VET-SYSTEM%20PRO%20para%20mi%20cl%C3%ADnica%20veterinaria%20al%20precio%20de%20promoci%C3%B3n%20S%2F%2070.%20%C2%BFPodr%C3%ADan%20darme%20m%C3%A1s%20informaci%C3%B3n%3F"
+                                    target="_blank" class="cta-btn-primary">
+                                    <i class="fab fa-whatsapp me-2"></i>Comprar vía WhatsApp
+                                </a>
+                                <a href="#galeria" class="cta-btn-secondary">
+                                    <i class="bi bi-images me-2"></i>Ver todos los módulos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white">
+        <div class="container text-center">
+            <img src="img/logo.jpeg" alt="Logo" class="mb-4" style="height: 50px; border-radius: 12px;">
+            <p class="mb-1 fw-bold">Sistemas Excel © 2026</p>
+            <p class="text-white-50 small">Control total para tu negocio con la potencia de Microsoft Excel.</p>
+        </div>
+    </footer>
+
+    <!-- Modals (Payment / Demo) -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 overflow-hidden" style="border-radius: 25px;">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title fw-bold">💳 Métodos de Pago</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <div class="row g-4 text-center">
+                        <div class="col-md-6">
+                            <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+                                <img src="https://flagcdn.com/w40/pe.png" alt="Peru" class="mb-3 rounded-circle">
+                                <h4 class="fw-bold">Yape / Plin</h4>
+                                <div class="p-3 bg-success bg-opacity-10 rounded-3 mb-3">
+                                    <span class="h2 fw-bold text-success">S/ 70.00</span>
+                                </div>
+                                <p class="h5 mb-1 fw-bold">931 301 498</p>
+                                <p class="text-muted small mb-4">JOEL V.</p>
+                                <img src="img/YAPE-.jpeg" alt="QR" class="img-fluid rounded-4 shadow-sm" style="max-width: 150px;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+                                <i class="fab fa-paypal fa-4x text-primary mb-3"></i>
+                                <h4 class="fw-bold">Internacional</h4>
+                                <div class="p-3 bg-primary bg-opacity-10 rounded-3 mb-3">
+                                    <span class="h2 fw-bold text-primary">$ 25.00 <small class="fs-6">USD</small></span>
+                                </div>
+                                <p class="fw-bold text-muted">vjoel214@gmail.com</p>
+                                <a href="https://wa.me/51922784328?text=Hola, quiero informar mi pago de $25 USD por PayPal de VET-SYSTEM PRO." 
+                                   target="_blank" class="btn btn-primary w-100 py-3 rounded-pill fw-bold mt-4">PAGAR / INFORMAR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header bg-success text-white p-4 rounded-top-4">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-download me-2"></i>Descarga Demo Gratuita</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-5 text-center">
+                    <i class="bi bi-file-earmark-excel display-1 text-success mb-4 d-block"></i>
+                    <h4 class="fw-bold">Prueba el Sistema en Excel</h4>
+                    <p class="text-muted mb-4">Descarga la versión demo de VET-SYSTEM PRO y experimenta el control total de tu clínica.</p>
+                    <a href="BoticaPro EX 13.0 - DEMO.xlsm" class="btn btn-success btn-lg w-100 py-3 rounded-pill fw-bold shadow">DESCARGAR DEMO (.XLSM)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/51922784328?text=Hola%2C%20me%20interesa%20adquirir%20VET-SYSTEM%20PRO%20para%20mi%20cl%C3%ADnica%20veterinaria%20al%20precio%20de%20promoci%C3%B3n%20S%2F%2070.%20%C2%BFPodr%C3%ADan%20darme%20m%C3%A1s%20informaci%C3%B3n%3F" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+
+</html>
