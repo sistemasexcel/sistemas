@@ -435,11 +435,10 @@
                     </div>
 
                     <div class="d-flex flex-wrap gap-3 mt-4" data-aos="fade-up" data-aos-delay="300">
-                        <a href="https://wa.me/51922784328?text=Hola%2C%20me%20interesa%20probar%20la%20demo%20de%20VET-SYSTEM%20PRO.%20%C2%BFPodr%C3%ADan%20enviarme%20m%C3%A1s%20informaci%C3%B3n%3F"
-                            target="_blank" class="btn btn-primary btn-lg shadow-lg fw-bold border-0 px-4"
-                            style="background: var(--vet-primary);">
-                            <i class="fab fa-whatsapp me-2"></i>Solicitar Demo
-                        </a>
+                        <button type="button" class="btn btn-primary btn-lg shadow-lg fw-bold border-0 px-4"
+                            style="background: var(--vet-primary);" data-bs-toggle="modal" data-bs-target="#demoModal">
+                            <i class="fas fa-download me-2"></i>Descargar Demo
+                        </button>
                         <button type="button" class="btn btn-warning btn-lg shadow-lg fw-bold border-0 px-4"
                             style="color: #0f172a;" data-bs-toggle="modal" data-bs-target="#paymentModal">
                             <i class="fas fa-shopping-cart me-2"></i>Adquirir por S/ 70
@@ -739,18 +738,56 @@
         </div>
     </div>
 
-    <div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+    <!-- Modal Demo Veterinaria -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-4 shadow-lg">
-                <div class="modal-header bg-success text-white p-4 rounded-top-4">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-download me-2"></i>Descarga Demo Gratuita</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            <div class="modal-content border-0 shadow" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header text-white" style="background: var(--vet-gradient); border-bottom: none;">
+                    <h5 class="modal-title fw-bold" id="demoModalLabel"><i class="fas fa-download me-2"></i>Descargar Demo Pro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-5 text-center">
-                    <i class="bi bi-file-earmark-excel display-1 text-success mb-4 d-block"></i>
-                    <h4 class="fw-bold">Prueba el Sistema en Excel</h4>
-                    <p class="text-muted mb-4">Descarga la versión demo de VET-SYSTEM PRO y experimenta el control total de tu clínica.</p>
-                    <a href="BoticaPro EX 13.0 - DEMO.xlsm" class="btn btn-success btn-lg w-100 py-3 rounded-pill fw-bold shadow">DESCARGAR DEMO (.XLSM)</a>
+                <div class="modal-body p-4 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-file-excel fa-4x text-success"></i>
+                        <i class="fas fa-plus mx-2 text-muted" style="font-size: 1.2rem;"></i>
+                        <i class="fas fa-database fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">VET-SYSTEM PRO V1.0</h4>
+                    <p class="text-muted mb-4">Para que el sistema funcione correctamente, debes descargar <strong>ambos archivos</strong> en la misma carpeta.</p>
+
+                    <!-- Credenciales -->
+                    <div class="alert alert-info py-3 mb-4 text-start"
+                        style="border-radius: 12px; border: 1px dashed rgba(16, 185, 129, 0.4); background-color: #f0fdf4;">
+                        <h6 class="fw-bold mb-2 text-dark"><i class="fas fa-key me-2"></i>Credenciales de Acceso:</h6>
+                        <ul class="list-unstyled mb-0 ms-4 text-dark">
+                            <li class="mb-1"><strong>Usuario:</strong> <span class="badge bg-success">DEMO</span></li>
+                            <li><strong>Contraseña:</strong> <span class="badge bg-success">1234</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Botones de Descarga -->
+                    <div class="d-grid gap-3">
+                        <a href="SISTEMA VETERINARIA DEMO.xlsm" download="SISTEMA VETERINARIA DEMO.xlsm"
+                            class="btn btn-lg text-white fw-bold shadow-sm"
+                            style="background: var(--vet-gradient); border-radius: 12px; font-size: 1rem;">
+                            <i class="fas fa-file-excel me-2"></i>1. Descargar Sistema (.xlsm)
+                        </a>
+                        
+                        <a href="VET_DB.accdb" download="VET_DB.accdb"
+                            class="btn btn-outline-primary fw-bold"
+                            style="border-radius: 12px; padding: 12px;">
+                            <i class="fas fa-database me-2"></i>2. Descargar Base de Datos (.accdb)
+                        </a>
+
+                        <a href="DESCARGAR DEMO VETERINARIA.mp4" download="DESCARGAR DEMO VETERINARIA.mp4"
+                            class="btn btn-outline-danger fw-bold"
+                            style="border-radius: 12px; padding: 12px;">
+                            <i class="fas fa-video me-2"></i>3. Descargar Video de Instalación
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center pt-2 pb-4" style="background: #f8fafc;">
+                    <small class="text-muted"><i class="fas fa-info-circle me-1"></i> Requiere Office 2019 o superior instalado en Windows</small>
                 </div>
             </div>
         </div>
