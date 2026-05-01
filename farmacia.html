@@ -939,7 +939,8 @@
                                 </div>
                                 <button type="button" class="cta-btn-secondary mt-3 w-100 py-2" data-bs-toggle="modal"
                                     data-bs-target="#paymentModal" data-price-usd="27.00" data-price-pen="90.00"
-                                    data-version="BoticaPro v13.0">
+                                    data-version="BoticaPro v13.0"
+                                    data-hotmart="https://pay.hotmart.com/L102677652I">
                                     Comprar v13.0
                                 </button>
                             </div>
@@ -984,7 +985,8 @@
                                 <button type="button" class="cta-btn-primary mt-3 w-100 py-2"
                                     style="background: #eab308; color: #1e293b;" data-bs-toggle="modal"
                                     data-bs-target="#paymentModal" data-price-usd="35.00" data-price-pen="120.00"
-                                    data-version="BoticaPro EX 13.5 (1 PC)">
+                                    data-version="BoticaPro EX 13.5 (1 PC)"
+                                    data-hotmart="https://pay.hotmart.com/D105636552A">
                                     <i class="fas fa-shopping-cart me-2"></i>Comprar v13.5 (1 PC)
                                 </button>
                             </div>
@@ -1026,7 +1028,8 @@
                                 <button type="button" class="cta-btn-primary mt-3 w-100 py-2"
                                     style="background: #8b5cf6; color: white;" data-bs-toggle="modal"
                                     data-bs-target="#paymentModal" data-price-usd="50.00" data-price-pen="170.00"
-                                    data-version="BoticaPro EX 13.5 (Red Local)">
+                                    data-version="BoticaPro EX 13.5 (Red Local)"
+                                    data-hotmart="https://pay.hotmart.com/B105636557U">
                                     <i class="fas fa-network-wired me-2"></i>Comprar v13.5 (Red)
                                 </button>
                             </div>
@@ -1177,10 +1180,9 @@
                                     <i class="fab fa-cc-mastercard fa-3x mx-2 text-danger"></i>
                                     <i class="fab fa-cc-amex fa-3x mx-2 text-info"></i>
                                 </div>
-                                <button type="button" class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm"
+                                <button type="button" id="hotmart-btn" class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm"
                                     style="background: linear-gradient(135deg, #f5313d, #ba0410); border-radius: 12px; padding: 14px;"
-                                    data-bs-toggle="modal" data-bs-target="#hotmartModal"
-                                    onclick="document.getElementById('hotmartIframe').src = 'https://pay.hotmart.com/L102677652I';">
+                                    data-bs-toggle="modal" data-bs-target="#hotmartModal">
                                     <i class="fas fa-lock me-2"></i>Pagar ahora vía Hotmart
                                 </button>
                                 <p class="text-muted small"><i class="fas fa-shield-alt me-1"></i> Transacción 100%
@@ -1334,7 +1336,8 @@
                                 </ul>
                                 <button class="btn btn-outline-light w-100 mt-auto py-2 fw-bold" data-bs-toggle="modal"
                                     data-bs-target="#paymentModal" data-price-usd="27.00" data-price-pen="90.00"
-                                    data-version="BoticaPro v13.0">Elegir v13.0</button>
+                                    data-version="BoticaPro v13.0"
+                                    data-hotmart="https://pay.hotmart.com/L102677652I">Elegir v13.0</button>
                             </div>
                         </div>
                         <!-- Card 13.5 (1 PC) -->
@@ -1362,7 +1365,8 @@
                                 <button class="btn btn-warning w-100 mt-auto py-2 fw-bold"
                                     style="background: #fcd34d; color: #0f172a;" data-bs-toggle="modal"
                                     data-bs-target="#paymentModal" data-price-usd="35.00" data-price-pen="120.00"
-                                    data-version="BoticaPro EX 13.5 (1 PC)">Elegir v13.5</button>
+                                    data-version="BoticaPro EX 13.5 (1 PC)"
+                                    data-hotmart="https://pay.hotmart.com/D105636552A">Elegir v13.5</button>
                             </div>
                         </div>
                         <!-- Card 13.5 (Red) -->
@@ -1390,7 +1394,8 @@
                                 </ul>
                                 <button class="btn w-100 mt-auto py-2 fw-bold text-white" style="background: #8b5cf6;"
                                     data-bs-toggle="modal" data-bs-target="#paymentModal" data-price-usd="50.00"
-                                    data-price-pen="170.00" data-version="BoticaPro EX 13.5 (Red Local)">Elegir Red
+                                    data-price-pen="170.00" data-version="BoticaPro EX 13.5 (Red Local)"
+                                    data-hotmart="https://pay.hotmart.com/B105636557U">Elegir Red
                                     Local</button>
                             </div>
                         </div>
@@ -1467,6 +1472,8 @@
                 const usd = button.getAttribute('data-price-usd');
                 const pen = button.getAttribute('data-price-pen');
                 const version = button.getAttribute('data-version');
+                const hotmartUrl = button.getAttribute('data-hotmart');
+                const hotmartBtn = document.getElementById('hotmart-btn');
 
                 if (usd && pen && version) {
                     document.getElementById('modal-price-usd').textContent = '$' + usd + ' USD';
@@ -1474,6 +1481,12 @@
 
                     document.getElementById('modal-wsp-paypal').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola, acabo de realizar el pago de $' + usd + ' USD por PayPal para el ' + version + '. Adjunto mi comprobante.');
                     document.getElementById('modal-wsp-yape').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola, acabo de realizar el depósito de S/' + pen + ' para el ' + version + '. Adjunto mi comprobante.');
+                }
+
+                if (hotmartUrl && hotmartBtn) {
+                    hotmartBtn.onclick = function() {
+                        document.getElementById('hotmartIframe').src = hotmartUrl;
+                    };
                 }
             });
         }
