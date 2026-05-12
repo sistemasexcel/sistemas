@@ -404,7 +404,7 @@
                     <li class="nav-item">
                         <button type="button" class="btn btn-sm px-4 rounded-pill text-white fw-bold"
                             style="background: var(--vet-gradient);" data-bs-toggle="modal"
-                            data-bs-target="#paymentModal">Comprar</button>
+                            data-bs-target="#plansModal">Comprar</button>
                     </li>
                 </ul>
             </div>
@@ -440,14 +440,14 @@
                             <i class="fas fa-download me-2"></i>Descargar Demo
                         </button>
                         <button type="button" class="btn btn-warning btn-lg shadow-lg fw-bold border-0 px-4"
-                            style="color: #0f172a;" data-bs-toggle="modal" data-bs-target="#paymentModal">
-                            <i class="fas fa-shopping-cart me-2"></i>Adquirir por S/ 70
+                            style="color: #0f172a;" data-bs-toggle="modal" data-bs-target="#plansModal">
+                            <i class="fas fa-shopping-cart me-2"></i>Ver Precios
                         </button>
                     </div>
                 </div>
                 <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="400">
                     <div class="hero-img-wrapper">
-                        <img src="img_veterinaria/0 VET-SYSTEM PRO.jpg" alt="VET-SYSTEM PRO - Menú Principal">
+                        <img src="img_veterinaria/VET SYSTEMPRO MULTIUSUARIO.jpg" alt="VET-SYSTEM PRO - Menú Principal">
                     </div>
                 </div>
             </div>
@@ -628,59 +628,76 @@
         <!-- Pricing / CTA -->
         <section id="precio" class="py-5">
             <div class="container py-5">
-                <div class="cta-modern" data-aos="fade-up">
-                    <div class="row g-0">
-                        <div class="col-lg-5">
-                            <div class="cta-left">
-                                <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
-                                    <span class="version-badge" style="animation: none;"><i class="bi bi-gem"></i> Promoción 2026</span>
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-6 fw-bold">Planes y <span class="text-gradient-vet">Precios</span></h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Elige la licencia que mejor se adapte a tu veterinaria. Pago único, sin mensualidades.</p>
+                </div>
+                <div class="row g-4 justify-content-center" data-aos="fade-up">
+                    <!-- Licencia 1 PC -->
+                    <div class="col-lg-5">
+                        <div class="cta-modern h-100 position-relative" style="border: 2px solid var(--vet-primary-light);">
+                            <div class="p-4 d-flex flex-column h-100">
+                                <div class="mb-auto">
+                                    <h4 class="text-white">VET-SYSTEM PRO (1 PC)</h4>
+                                    <p style="color: #94a3b8; font-size: 0.9rem;">Ideal para consultorios pequeños. Licencia para una sola computadora.</p>
+                                    <div class="price-display my-3">
+                                        <span class="currency text-white">S/</span>
+                                        <span class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">70</span>
+                                        <span class="price-divider" style="font-size: 1.5rem;">|</span>
+                                        <span class="currency text-white">$</span>
+                                        <span class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">25</span>
+                                        <span class="currency text-white" style="font-size: 1rem;">USD</span>
+                                    </div>
+                                    <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> <span class="text-white">Instalación en 1 PC</span></li>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> <span class="text-white">Autocompletado DNI</span></li>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> <span class="text-white">Historias Clínicas y Vacunas</span></li>
+                                        <li><i class="bi bi-x-circle text-secondary"></i> <span class="text-muted">Sin Red Local</span></li>
+                                    </ul>
                                 </div>
-                                <h3 class="text-white mt-2">Licencia Permanente</h3>
-                                <p style="color: #94a3b8;" class="mb-4">Pago único · Sin mensualidades</p>
-                                <div class="price-display mt-0">
-                                    <span class="currency text-white">S/</span>
-                                    <span class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">70</span>
-                                    <span class="price-divider">|</span>
-                                    <span class="currency text-white">$</span>
-                                    <span class="amount" style="color: #fcd34d; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">25</span>
-                                    <span class="currency text-white">USD</span>
-                                </div>
-                                <p class="mt-2 mb-0" style="color: #94a3b8;"><s>Precio regular S/ 100</s></p>
-
-                                <!-- Info Banner Dark -->
-                                <div class="info-banner-dark mt-4">
-                                    <i class="bi bi-info-circle text-warning fs-5"></i>
-                                    <p class="mb-0 text-white small" style="opacity: 0.9;">Para usar el sistema como
-                                        <strong>requisito indispensable</strong> se debe contar con la versión de
-                                        <strong>Office 2019 en adelante.</strong>
-                                    </p>
-                                </div>
+                                <button type="button" class="cta-btn-primary mt-3 w-100 py-2"
+                                    style="background: #eab308; color: #1e293b;" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="25.00" data-price-pen="70.00"
+                                    data-version="VET-SYSTEM PRO (1 PC)"
+                                    data-hotmart="https://pay.hotmart.com/Q105629087H">
+                                    <i class="fas fa-shopping-cart me-2"></i>Comprar Licencia 1 PC
+                                </button>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="cta-right">
-                                <h5 class="text-white mb-4">¿Qué incluye tu compra?</h5>
-                                <ul class="list-unstyled check-list mb-4">
-                                    <li><i class="bi bi-check-circle-fill"></i> Sistema 100% funcional en Excel.</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Acceso Multiusuario (Recepcionista, Doctor, Admin)</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Historias Clínicas y Memoria de Visitas</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Control de Vacunas con Semáforo Visual</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Inventario y Punto de Venta</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Autocompletado de nombres por DNI</li>
-                                   
-                                </ul>
-                                <button type="button" class="cta-btn-primary mb-3"
-                                    style="background: #eab308; color: #1e293b; border: none;" data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal">
-                                    <i class="fas fa-shopping-cart me-2"></i>Adquirir Ahora
+                    </div>
+
+                    <!-- Licencia Multiusuario -->
+                    <div class="col-lg-5">
+                        <div class="cta-modern h-100 position-relative" style="border: 2px solid #0ea5e9;">
+                            <div class="position-absolute top-0 end-0 mt-2 me-2">
+                                <span class="badge" style="background: #0ea5e9; font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★ RECOMENDADO</span>
+                            </div>
+                            <div class="p-4 d-flex flex-column h-100">
+                                <div class="mb-auto">
+                                    <h4 class="text-white">VET-SYSTEM PRO (Red Local)</h4>
+                                    <p style="color: #94a3b8; font-size: 0.9rem;">Conecta más de 2 PCs al mismo tiempo en tu red local.</p>
+                                    <div class="price-display my-3">
+                                        <span class="currency text-white">S/</span>
+                                        <span class="amount" style="color: #38bdf8; text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);">120</span>
+                                        <span class="price-divider" style="font-size: 1.5rem;">|</span>
+                                        <span class="currency text-white">$</span>
+                                        <span class="amount" style="color: #38bdf8; text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);">35</span>
+                                        <span class="currency text-white" style="font-size: 1rem;">USD</span>
+                                    </div>
+                                    <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
+                                        <li><i class="bi bi-check-circle-fill text-info"></i> <strong class="text-white">Multiusuario (>2 PCs en red)</strong></li>
+                                        <li><i class="bi bi-check-circle-fill text-info"></i> <strong class="text-white">Sincronización en tiempo real</strong></li>
+                                        <li><i class="bi bi-check-circle-fill text-info"></i> <span class="text-white">Configuración remota incluida</span></li>
+                                        <li><i class="bi bi-check-circle-fill text-info"></i> <span class="text-white">Todas las funciones PRO</span></li>
+                                    </ul>
+                                </div>
+                                <button type="button" class="cta-btn-primary mt-3 w-100 py-2"
+                                    style="background: #0ea5e9; color: white;" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="35.00" data-price-pen="120.00"
+                                    data-version="VET-SYSTEM PRO (Red Local)"
+                                    data-hotmart="https://pay.hotmart.com/V105793599S">
+                                    <i class="fas fa-network-wired me-2"></i>Comprar Licencia en Red
                                 </button>
-                                <a href="https://wa.me/51922784328?text=Hola%2C%20me%20interesa%20adquirir%20VET-SYSTEM%20PRO%20para%20mi%20cl%C3%ADnica%20veterinaria%20al%20precio%20de%20promoci%C3%B3n%20S%2F%2070.%20%C2%BFPodr%C3%ADan%20darme%20m%C3%A1s%20informaci%C3%B3n%3F"
-                                    target="_blank" class="cta-btn-primary">
-                                    <i class="fab fa-whatsapp me-2"></i>Comprar vía WhatsApp
-                                </a>
-                                <a href="#galeria" class="cta-btn-secondary">
-                                    <i class="bi bi-images me-2"></i>Ver todos los módulos
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -698,38 +715,156 @@
         </div>
     </footer>
 
-    <!-- Modals (Payment / Demo) -->
-    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+    <!-- Modal Pagos -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 overflow-hidden" style="border-radius: 25px;">
-                <div class="modal-header bg-dark text-white p-4">
-                    <h5 class="modal-title fw-bold">💳 Métodos de Pago</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Elige tu método de pago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4 bg-light">
-                    <div class="row g-4 text-center">
-                        <div class="col-md-6">
-                            <div class="bg-white p-4 rounded-4 shadow-sm h-100">
-                                <img src="https://flagcdn.com/w40/pe.png" alt="Peru" class="mb-3 rounded-circle">
-                                <h4 class="fw-bold">Yape / Plin</h4>
-                                <div class="p-3 bg-success bg-opacity-10 rounded-3 mb-3">
-                                    <span class="h2 fw-bold text-success">S/ 70.00</span>
+                <div class="modal-body" style="padding: 0;">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
+                                data-bs-target="#paypal-content" type="button" role="tab" style="border-radius: 0;">
+                                <i class="fab fa-paypal me-2"></i>Pago Internacional
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" style="border-radius: 0;">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card-content"
+                                type="button" role="tab" style="border-radius: 0;">
+                                <i class="fas fa-credit-card me-2"></i>Pago con Tarjeta
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="paymentTabsContent">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Manual con PayPal</h4>
+                                <p>Realiza un pago de <strong id="modal-price-usd">$25.00 USD</strong> a la siguiente cuenta de PayPal:</p>
+                                <div class="alert alert-light border my-3">
+                                    <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
                                 </div>
-                                <p class="h5 mb-1 fw-bold">931 301 498</p>
-                                <p class="text-muted small mb-4">JOEL V.</p>
-                                <img src="img/YAPE-.jpeg" alt="QR" class="img-fluid rounded-4 shadow-sm" style="max-width: 150px;">
+                                <img src="img/Paypal.webp" alt="PayPal" class="img-fluid my-3" style="max-height: 60px;">
+                                <a id="modal-wsp-paypal" href="#" target="_blank" class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Una vez realizado el pago, envía tu comprobante a nuestro WhatsApp.
+                                </a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="bg-white p-4 rounded-4 shadow-sm h-100">
-                                <i class="fab fa-paypal fa-4x text-primary mb-3"></i>
-                                <h4 class="fw-bold">Internacional</h4>
-                                <div class="p-3 bg-primary bg-opacity-10 rounded-3 mb-3">
-                                    <span class="h2 fw-bold text-primary">$ 25.00 <small class="fs-6">USD</small></span>
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel">
+                            <div class="p-4">
+                                <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar tu licencia.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 text-center">
+                                        <img src="img/YAPE-.jpeg" alt="QR Yape" class="img-fluid rounded shadow-sm" style="max-width: 250px;">
+                                    </div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-3 rounded text-center">
+                                            <p id="modal-price-pen" class="display-6 fw-bold mb-2">S/70.00</p>
+                                            <h6 class="fw-bold">Yape / Plin</h6>
+                                            <p class="mb-1"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="fw-bold text-muted">vjoel214@gmail.com</p>
-                                <a href="https://wa.me/51922784328?text=Hola, quiero informar mi pago de $25 USD por PayPal de VET-SYSTEM PRO." 
-                                   target="_blank" class="btn btn-primary w-100 py-3 rounded-pill fw-bold mt-4">PAGAR / INFORMAR</a>
+                                <a id="modal-wsp-yape" href="#" target="_blank" class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Después de realizar el depósito, envía el comprobante a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="card-content" role="tabpanel">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Seguro con Tarjeta</h4>
+                                <p>Paga de forma rápida y segura desde cualquier país usando tu tarjeta de crédito o débito a través de <strong>Hotmart</strong>.</p>
+                                <div class="my-3">
+                                    <i class="fab fa-cc-visa fa-3x mx-2 text-primary"></i>
+                                    <i class="fab fa-cc-mastercard fa-3x mx-2 text-danger"></i>
+                                    <i class="fab fa-cc-amex fa-3x mx-2 text-info"></i>
+                                </div>
+                                <button type="button" id="hotmart-btn" class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm"
+                                    style="background: linear-gradient(135deg, #f5313d, #ba0410); border-radius: 12px; padding: 14px;"
+                                    data-bs-toggle="modal" data-bs-target="#hotmartModal">
+                                    <i class="fas fa-lock me-2"></i>Pagar ahora vía Hotmart
+                                </button>
+                                <p class="text-muted small"><i class="fas fa-shield-alt me-1"></i> Transacción 100% encriptada y segura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Hotmart -->
+    <div class="modal fade" id="hotmartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="height: 85vh;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pago Seguro con Hotmart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="document.getElementById('hotmartIframe').src = '';"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="hotmartIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Planes y Precios -->
+    <div class="modal fade" id="plansModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="background: #0f172a; border-radius: 24px;">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-white fs-4">Selecciona la licencia</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4 justify-content-center">
+                        <!-- Card 1 PC -->
+                        <div class="col-lg-6">
+                            <div class="border rounded p-4 h-100 d-flex flex-column"
+                                style="border-color: rgba(255,255,255,0.1) !important; background: rgba(255,255,255,0.03);">
+                                <h5 class="text-white mb-3">Licencia 1 PC</h5>
+                                <div class="my-3">
+                                    <h3 class="fw-bold mb-0 text-white">S/70 <span style="color: rgba(255,255,255,0.5); font-size: 1.1rem; font-weight: 400;">| $25 USD</span></h3>
+                                </div>
+                                <ul class="list-unstyled mb-4 small">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-white">Instalación en 1 PC</span></li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><span class="text-white">Todas las funciones PRO</span></li>
+                                </ul>
+                                <button class="btn btn-outline-light w-100 mt-auto py-2 fw-bold" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="25.00" data-price-pen="70.00"
+                                    data-version="VET-SYSTEM PRO (1 PC)"
+                                    data-hotmart="https://pay.hotmart.com/Q105629087H">Elegir 1 PC</button>
+                            </div>
+                        </div>
+                        <!-- Card Red Local -->
+                        <div class="col-lg-6">
+                            <div class="border rounded p-4 h-100 d-flex flex-column position-relative"
+                                style="border-color: #0ea5e9 !important; background: rgba(14, 165, 233, 0.05);">
+                                <span class="badge position-absolute top-0 end-0 mt-3 me-3"
+                                    style="background: #0ea5e9; color: white; font-weight: 800;">★ RECOMENDADO</span>
+                                <h5 class="text-info mb-3">Licencia Multiusuario</h5>
+                                <div class="my-3">
+                                    <h3 class="fw-bold mb-0 text-info">S/120 <span style="color: rgba(255,255,255,0.5); font-size: 1.1rem; font-weight: 400;">| $35 USD</span></h3>
+                                </div>
+                                <ul class="list-unstyled mb-4 small">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-white">Conecta >2 PCs en red local</span></li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill text-info me-2"></i><span class="text-white">Configuración remota</span></li>
+                                </ul>
+                                <button class="btn btn-info w-100 mt-auto py-2 fw-bold text-white" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="35.00" data-price-pen="120.00"
+                                    data-version="VET-SYSTEM PRO (Red Local)"
+                                    data-hotmart="https://pay.hotmart.com/V105793599S">Elegir Multiusuario</button>
                             </div>
                         </div>
                     </div>
@@ -803,6 +938,33 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // Dynamic Modal Data
+        const paymentModal = document.getElementById('paymentModal');
+        if (paymentModal) {
+            paymentModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const usd = button.getAttribute('data-price-usd');
+                const pen = button.getAttribute('data-price-pen');
+                const version = button.getAttribute('data-version');
+                const hotmartUrl = button.getAttribute('data-hotmart');
+                const hotmartBtn = document.getElementById('hotmart-btn');
+
+                if (usd && pen && version) {
+                    document.getElementById('modal-price-usd').textContent = '$' + usd + ' USD';
+                    document.getElementById('modal-price-pen').textContent = 'S/' + pen;
+
+                    document.getElementById('modal-wsp-paypal').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola, acabo de realizar el pago de $' + usd + ' USD por PayPal para el ' + version + '. Adjunto mi comprobante.');
+                    document.getElementById('modal-wsp-yape').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola, acabo de realizar el depósito de S/' + pen + ' para el ' + version + '. Adjunto mi comprobante.');
+                }
+
+                if (hotmartUrl && hotmartBtn) {
+                    hotmartBtn.onclick = function() {
+                        document.getElementById('hotmartIframe').src = hotmartUrl;
+                    };
+                }
+            });
+        }
     </script>
 </body>
 
