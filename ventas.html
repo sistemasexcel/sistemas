@@ -27,8 +27,23 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
             background-color: #f8fafc;
+        }
+
+        .cta-modern {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .cta-modern h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-modern .amount {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
         }
 
         /* Navbar Dark */
@@ -578,8 +593,8 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
                     <div class="d-inline-flex align-items-center gap-3 mb-4" data-aos="fade-right">
-                        <span class="vbadge-ven"><i class="bi bi-patch-check-fill"></i> Versión 5.5 | Actualizado
-                            04/06/2026</span>
+                        <span class="vbadge-ven"><i class="bi bi-patch-check-fill"></i> Versión 5.5 — Actualizado
+                            2026</span>
                     </div>
                     <h1 class="text-white" data-aos="fade-up" data-aos-delay="100">Sistema de <br><span
                             class="text-gradient-ven">Ventas e
@@ -875,196 +890,84 @@
         <section id="precio" class="py-5" style="background-color: var(--primary-bg);">
             <div class="container py-5">
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <span class="section-tag" style="background: rgba(139,92,246,0.15); color: #c084fc;">Planes y
-                        Precios</span>
-                    <h2 class="display-6 text-white">Elige el plan ideal para tu <span
-                            class="text-gradient-botica">Negocio</span></h2>
-                    <p class="mt-3 text-white-50 fs-5"><i class="bi bi-pc-display me-2"></i>Todas las licencias son
-                        válidas para <strong>1 PC</strong></p>
+                    <span class="section-tag" style="background: rgba(139,92,246,0.15); color: #c084fc;">Planes y Precios</span>
+                    <h2 class="display-6 text-white">Elige el plan ideal para tu <span class="text-gradient-botica">Negocio</span></h2>
+                    <div class="d-inline-flex align-items-center gap-2 mt-3 px-4 py-2 rounded-pill shadow-sm" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);">
+                        <i class="bi bi-pc-display" style="color: #4ade80; font-size: 1.1rem;"></i>
+                        <span class="text-white fw-semibold mb-0" style="font-size: 0.95rem; letter-spacing: 0.02em;">Todas las licencias son válidas para <strong style="color: #4ade80;">1 PC</strong></span>
+                    </div>
                 </div>
                 <div class="row g-4 justify-content-center" data-aos="fade-up">
 
                     <!-- Versión Demo -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="cta-modern h-100"
-                            style="background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%); border: 2px solid #22c55e;">
-                            <div class="p-4 d-flex flex-column h-100">
+                            style="background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%); border: 2px solid #22c55e; border-radius: 20px;">
+                            <div class="p-4 d-flex flex-column h-100" style="border-radius: 20px;">
                                 <div class="mb-auto">
                                     <h4 class="text-white">Versión Demo</h4>
-                                    <p style="color: #94a3b8; font-size: 0.9rem;">Prueba todas las funciones del sistema
-                                        gratis por 3 días.</p>
+                                    <p style="color: #94a3b8; font-size: 0.9rem;">Prueba todas las funciones del sistema gratis por 3 días.</p>
                                     <div class="price-display my-3">
                                         <span class="currency text-white">S/</span>
                                         <span class="amount" style="color: #e2e8f0; font-size: 2.5rem;">0</span>
                                     </div>
                                     <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Punto de
-                                            Venta (POS)</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Módulo de
-                                            Compras</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Gestión de
-                                            Clientes y Proveedores</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Reportes
-                                            Automáticos</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Kardex en
-                                            Tiempo Real</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Alertas de
-                                            Vencimiento</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Apertura y
-                                            Cierre de Caja</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Multiusuario
-                                        </li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Punto de Venta (POS)</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Módulo de Compras</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Gestión de Clientes y Proveedores</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Reportes Automáticos</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Kardex en Tiempo Real</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Alertas de Vencimiento</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Apertura y Cierre de Caja</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Multiusuario</li>
                                     </ul>
                                 </div>
                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#demoModalVentas"
-                                    class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                    style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                    style="background: #22c55e; color: white;">
+                                    class="cta-btn-primary mt-3 w-100 py-3 rounded-4 fw-bold shadow border-0 text-center text-decoration-none"
+                                    style="background: #22c55e; color: white; transition: all 0.3s ease; letter-spacing: 0.5px;">
                                     <i class="bi bi-download me-2"></i>Descargar Demo
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Plan Mensual -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="cta-modern h-100"
-                            style="background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);">
-                            <div class="p-4 d-flex flex-column h-100">
-                                <div class="mb-auto">
-                                    <h4 class="text-white">Plan Mensual</h4>
-                                    <p style="color: #94a3b8; font-size: 0.9rem;">Acceso completo al sistema mes a mes,
-                                        sin contratos forzosos.</p>
-                                    <div class="price-display my-3">
-                                        <span class="currency text-white">S/</span>
-                                        <span class="amount" style="color: #e2e8f0; font-size: 2.5rem;">29</span>
-                                        <span class="price-divider" style="font-size: 1.5rem;">|</span>
-                                        <span class="currency text-white">$</span>
-                                        <span class="amount" style="color: #e2e8f0; font-size: 2.5rem;">10</span>
-                                        <span class="currency text-white" style="font-size: 1rem;">USD</span>
-                                    </div>
-                                    <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Acceso Multiusuario</li>
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Apertura y Cierre de Caja
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Reporte de Utilidades</li>
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Ventas Fraccionadas</li>
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Kardex en tiempo real</li>
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Alertas de Vencimiento
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-info"></i> Soporte técnico</li>
-                                    </ul>
-                                </div>
-                                <button type="button"
-                                    class="cta-btn-secondary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                    style="transition: all 0.3s ease; letter-spacing: 0.5px;" data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal" data-price-usd="10.00" data-price-pen="29.00"
-                                    data-version="VentasPro Plan Mensual"
-                                    data-hotmart="https://pay.hotmart.com/F102803755C">
-                                    Comprar Mensual
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Plan Anual -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="cta-modern h-100 position-relative"
-                            style="border: 2px solid var(--botica-primary-light);">
-                            <div class="position-absolute top-0 end-0 mt-2 me-2">
-                                <span class="badge"
-                                    style="background: var(--botica-gradient); font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★
-                                    RECOMENDADO</span>
-                            </div>
-                            <div class="p-4 d-flex flex-column h-100">
-                                <div class="mb-auto">
-                                    <h4 class="text-white">Plan Anual</h4>
-                                    <p style="color: #94a3b8; font-size: 0.9rem;">Ahorra pagando un año entero. Todas
-                                        las funciones incluidas.</p>
-                                    <div class="price-display my-3">
-                                        <span class="currency text-white">S/</span>
-                                        <span class="amount"
-                                            style="color: #fcd34d; font-size: 2.5rem; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">69</span>
-                                        <span class="price-divider" style="font-size: 1.5rem;">|</span>
-                                        <span class="currency text-white">$</span>
-                                        <span class="amount"
-                                            style="color: #fcd34d; font-size: 2.5rem; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">22</span>
-                                        <span class="currency text-white" style="font-size: 1rem;">USD</span>
-                                    </div>
-                                    <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Acceso Multiusuario
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Apertura y Cierre de
-                                            Caja</li>
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Reporte de Utilidades
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Ventas Fraccionadas
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Kardex en tiempo real
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Alertas de Vencimiento
-                                        </li>
-                                        <li><i class="bi bi-check-circle-fill text-warning"></i> Soporte técnico</li>
-                                    </ul>
-                                </div>
-                                <button type="button"
-                                    class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                    style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                    style="background: #eab308; color: #1e293b;" data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal" data-price-usd="22.00" data-price-pen="69.00"
-                                    data-version="VentasPro Plan Anual"
-                                    data-hotmart="https://pay.hotmart.com/L106062117I">
-                                    <i class="fas fa-shopping-cart me-2"></i>Comprar Anual
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Licencia Permanente -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="cta-modern h-100 position-relative" style="border: 2px solid #8b5cf6;">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="cta-modern h-100 position-relative" style="border: 2px solid #8b5cf6; border-radius: 20px;">
                             <div class="position-absolute top-0 end-0 mt-2 me-2">
                                 <span class="badge"
                                     style="background: #8b5cf6; font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★
                                     UN SOLO PAGO</span>
                             </div>
-                            <div class="p-4 d-flex flex-column h-100">
+                            <div class="p-4 d-flex flex-column h-100" style="border-radius: 20px;">
                                 <div class="mb-auto">
                                     <h4 class="text-white">Permanente</h4>
-                                    <p style="color: #94a3b8; font-size: 0.9rem;">Pago único para siempre. Licencia
-                                        vitalicia para tu Negocio.</p>
+                                    <p style="color: #94a3b8; font-size: 0.9rem;"><strong>Licencia de por vida.</strong> Pago único para siempre, sin mensualidades ni renovaciones.</p>
                                     <div class="price-display my-3">
                                         <span class="currency text-white">S/</span>
                                         <span class="amount"
-                                            style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">99</span>
+                                            style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">80</span>
                                         <span class="price-divider" style="font-size: 1.5rem;">|</span>
                                         <span class="currency text-white">$</span>
                                         <span class="amount"
-                                            style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">33</span>
+                                            style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">26</span>
                                         <span class="currency text-white" style="font-size: 1rem;">USD</span>
                                     </div>
                                     <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Acceso
-                                            Multiusuario</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Apertura y
-                                            Cierre de Caja</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Reporte de
-                                            Utilidades</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Ventas
-                                            Fraccionadas</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Kardex en
-                                            tiempo real</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Alertas de
-                                            Vencimiento</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Soporte
-                                            técnico</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Punto de Venta (POS)</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Módulo de Compras</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Gestión de Clientes y Proveedores</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Reportes Automáticos</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Kardex en Tiempo Real</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Alertas de Vencimiento</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Apertura y Cierre de Caja</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Multiusuario</li>
                                     </ul>
                                 </div>
                                 <button type="button"
-                                    class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                    style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                    style="background: #8b5cf6; color: white;" data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal" data-price-usd="33.00" data-price-pen="99.00"
+                                    class="cta-btn-primary mt-3 w-100 py-3 rounded-4 fw-bold shadow border-0 text-center text-white"
+                                    style="background: #8b5cf6; transition: all 0.3s ease; letter-spacing: 0.5px;" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="26.00" data-price-pen="80.00"
                                     data-version="VentasPro Licencia Permanente"
                                     data-hotmart="https://pay.hotmart.com/C106062137W">
                                     <i class="fas fa-gem me-2"></i>Permanente
@@ -1074,52 +977,43 @@
                     </div>
 
                     <!-- Plan Red Local -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="cta-modern h-100 position-relative" style="border: 2px solid #84cc16;">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="cta-modern h-100 position-relative" style="border: 2px solid #84cc16; border-radius: 20px;">
                             <div class="position-absolute top-0 end-0 mt-2 me-2">
                                 <span class="badge"
                                     style="background: #84cc16; color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★
                                     NUEVO</span>
                             </div>
-                            <div class="p-4 d-flex flex-column h-100">
+                            <div class="p-4 d-flex flex-column h-100" style="border-radius: 20px;">
                                 <div class="mb-auto">
                                     <h4 class="text-white">Red Local</h4>
-                                    <p style="color: #94a3b8; font-size: 0.9rem;">Conecta varias máquinas en tu red
-                                        local y comparte la información en tiempo real.</p>
+                                    <p style="color: #94a3b8; font-size: 0.9rem;">Conecta varias máquinas en tu red local y comparte la información en tiempo real.</p>
                                     <div class="price-display my-3">
                                         <span class="currency text-white">S/</span>
                                         <span class="amount"
-                                            style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">180</span>
+                                            style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">130</span>
                                         <span class="price-divider" style="font-size: 1.5rem;">|</span>
                                         <span class="currency text-white">$</span>
                                         <span class="amount"
-                                            style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">55</span>
+                                            style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">40</span>
                                         <span class="currency text-white" style="font-size: 1rem;">USD</span>
                                     </div>
                                     <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Acceso
-                                            Multiusuario</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Apertura y
-                                            Cierre de Caja</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Reporte de
-                                            Utilidades</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Ventas
-                                            Fraccionadas</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Kardex en
-                                            tiempo real</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Alertas de
-                                            Vencimiento</li>
-                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Soporte
-                                            técnico</li>
-                                        <li><i class="bi bi-pc-display" style="color: #84cc16;"></i> Conexión de
-                                            múltiples máquinas en red local</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Punto de Venta (POS)</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Módulo de Compras</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Gestión de Clientes y Proveedores</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Reportes Automáticos</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Kardex en Tiempo Real</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Alertas de Vencimiento</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Apertura y Cierre de Caja</li>
+                                        <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Multiusuario</li>
+                                        <li><i class="bi bi-pc-display" style="color: #84cc16;"></i> Conexión de múltiples máquinas en red local</li>
                                     </ul>
                                 </div>
                                 <button type="button"
-                                    class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                    style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                    style="background: #84cc16; color: #0f172a;" data-bs-toggle="modal"
-                                    data-bs-target="#paymentModal" data-price-usd="55.00" data-price-pen="180.00"
+                                    class="cta-btn-primary mt-3 w-100 py-3 rounded-4 fw-bold shadow border-0 text-center"
+                                    style="background: #84cc16; color: #0f172a; transition: all 0.3s ease; letter-spacing: 0.5px;" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="40.00" data-price-pen="130.00"
                                     data-version="VentasPro Plan Red Local"
                                     data-hotmart="https://pay.hotmart.com/D106062156A">
                                     <i class="fas fa-network-wired me-2"></i>Conectar en Red Local
@@ -1160,214 +1054,75 @@
                     <div class="modal-body p-4">
                         <div class="row g-4 justify-content-center">
                             <!-- Versión Demo -->
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="cta-modern h-100"
-                                    style="background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%); border: 2px solid #22c55e;">
-                                    <div class="p-4 d-flex flex-column h-100">
+                                    style="background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%); border: 2px solid #22c55e; border-radius: 20px;">
+                                    <div class="p-4 d-flex flex-column h-100" style="border-radius: 20px;">
                                         <div class="mb-auto">
                                             <h4 class="text-white">Versión Demo</h4>
-                                            <p style="color: #94a3b8; font-size: 0.9rem;">Prueba todas las funciones del
-                                                sistema gratis por 3 días.</p>
+                                            <p style="color: #94a3b8; font-size: 0.9rem;">Prueba todas las funciones del sistema gratis por 3 días.</p>
                                             <div class="price-display my-3">
                                                 <span class="currency text-white">S/</span>
                                                 <span class="amount" style="color: #e2e8f0; font-size: 2.5rem;">0</span>
                                             </div>
                                             <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Punto de Venta (POS)</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Módulo de Compras</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Gestión de Clientes y Proveedores</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Reportes Automáticos</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Kardex en Tiempo Real</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Alertas de Vencimiento</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Apertura y Cierre de Caja</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Multiusuario</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Punto de Venta (POS)</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Módulo de Compras</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Gestión de Clientes y Proveedores</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Reportes Automáticos</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Kardex en Tiempo Real</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Alertas de Vencimiento</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Apertura y Cierre de Caja</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Multiusuario</li>
                                             </ul>
                                         </div>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
                                             data-bs-target="#demoModalVentas"
-                                            class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                            style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                            style="background: #22c55e; color: white;">
+                                            class="cta-btn-primary mt-3 w-100 py-3 rounded-4 fw-bold shadow border-0 text-center text-decoration-none"
+                                            style="background: #22c55e; color: white; transition: all 0.3s ease; letter-spacing: 0.5px;">
                                             <i class="bi bi-download me-2"></i>Descargar Demo
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Plan Mensual -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="cta-modern h-100"
-                                    style="background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);">
-                                    <div class="p-4 d-flex flex-column h-100">
-                                        <div class="mb-auto">
-                                            <h4 class="text-white">Plan Mensual</h4>
-                                            <p style="color: #94a3b8; font-size: 0.9rem;">Acceso completo al sistema mes
-                                                a
-                                                mes, sin contratos forzosos.</p>
-                                            <div class="price-display my-3">
-                                                <span class="currency text-white">S/</span>
-                                                <span class="amount"
-                                                    style="color: #e2e8f0; font-size: 2.5rem;">29</span>
-                                                <span class="price-divider" style="font-size: 1.5rem;">|</span>
-                                                <span class="currency text-white">$</span>
-                                                <span class="amount"
-                                                    style="color: #e2e8f0; font-size: 2.5rem;">10</span>
-                                                <span class="currency text-white" style="font-size: 1rem;">USD</span>
-                                            </div>
-                                            <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Acceso
-                                                    Multiusuario
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Apertura y Cierre
-                                                    de
-                                                    Caja</li>
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Reporte de
-                                                    Utilidades
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Ventas
-                                                    Fraccionadas
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Kardex en tiempo
-                                                    real
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Alertas de
-                                                    Vencimiento
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-info"></i> Soporte técnico
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <button type="button"
-                                            class="cta-btn-secondary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                            style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                            data-bs-toggle="modal" data-bs-target="#paymentModal" data-price-usd="10.00"
-                                            data-price-pen="29.00" data-version="VentasPro Plan Mensual"
-                                            data-hotmart="https://pay.hotmart.com/F102803755C">
-                                            Comprar Mensual
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Plan Anual -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="cta-modern h-100 position-relative"
-                                    style="border: 2px solid var(--botica-primary-light);">
-                                    <div class="position-absolute top-0 end-0 mt-2 me-2">
-                                        <span class="badge"
-                                            style="background: var(--botica-gradient); font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★
-                                            RECOMENDADO</span>
-                                    </div>
-                                    <div class="p-4 d-flex flex-column h-100">
-                                        <div class="mb-auto">
-                                            <h4 class="text-white">Plan Anual</h4>
-                                            <p style="color: #94a3b8; font-size: 0.9rem;">Ahorra pagando un año entero.
-                                                Todas las funciones incluidas.</p>
-                                            <div class="price-display my-3">
-                                                <span class="currency text-white">S/</span>
-                                                <span class="amount"
-                                                    style="color: #fcd34d; font-size: 2.5rem; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">69</span>
-                                                <span class="price-divider" style="font-size: 1.5rem;">|</span>
-                                                <span class="currency text-white">$</span>
-                                                <span class="amount"
-                                                    style="color: #fcd34d; font-size: 2.5rem; text-shadow: 0 0 30px rgba(252, 211, 77, 0.4);">22</span>
-                                                <span class="currency text-white" style="font-size: 1rem;">USD</span>
-                                            </div>
-                                            <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Acceso
-                                                    Multiusuario
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Apertura y
-                                                    Cierre
-                                                    de Caja</li>
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Reporte de
-                                                    Utilidades</li>
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Ventas
-                                                    Fraccionadas
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Kardex en
-                                                    tiempo
-                                                    real</li>
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Alertas de
-                                                    Vencimiento</li>
-                                                <li><i class="bi bi-check-circle-fill text-warning"></i> Soporte técnico
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <button type="button"
-                                            class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                            style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                            style="background: #eab308; color: #1e293b;" data-bs-toggle="modal"
-                                            data-bs-target="#paymentModal" data-price-usd="22.00" data-price-pen="69.00"
-                                            data-version="VentasPro Plan Anual"
-                                            data-hotmart="https://pay.hotmart.com/L106062117I">
-                                            <i class="fas fa-shopping-cart me-2"></i>Comprar Anual
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Licencia Permanente -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="cta-modern h-100 position-relative" style="border: 2px solid #8b5cf6;">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="cta-modern h-100 position-relative" style="border: 2px solid #8b5cf6; border-radius: 20px;">
                                     <div class="position-absolute top-0 end-0 mt-2 me-2">
                                         <span class="badge"
                                             style="background: #8b5cf6; font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★
                                             UN SOLO PAGO</span>
                                     </div>
-                                    <div class="p-4 d-flex flex-column h-100">
+                                    <div class="p-4 d-flex flex-column h-100" style="border-radius: 20px;">
                                         <div class="mb-auto">
                                             <h4 class="text-white">Permanente</h4>
-                                            <p style="color: #94a3b8; font-size: 0.9rem;">Pago único para siempre.
-                                                Licencia
-                                                vitalicia para tu botica.</p>
+                                            <p style="color: #94a3b8; font-size: 0.9rem;"><strong>Licencia de por vida.</strong> Pago único para siempre, sin mensualidades ni renovaciones.</p>
                                             <div class="price-display my-3">
                                                 <span class="currency text-white">S/</span>
                                                 <span class="amount"
-                                                    style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">99</span>
+                                                    style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">80</span>
                                                 <span class="price-divider" style="font-size: 1.5rem;">|</span>
                                                 <span class="currency text-white">$</span>
                                                 <span class="amount"
-                                                    style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">33</span>
+                                                    style="color: #a78bfa; font-size: 2.5rem; text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);">26</span>
                                                 <span class="currency text-white" style="font-size: 1rem;">USD</span>
                                             </div>
                                             <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Acceso
-                                                    Multiusuario</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Apertura
-                                                    y Cierre de Caja</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Reporte
-                                                    de Utilidades</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Ventas
-                                                    Fraccionadas</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Kardex
-                                                    en tiempo real</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Alertas
-                                                    de Vencimiento</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i>
-                                                    Soporte
-                                                    técnico</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Punto de Venta (POS)</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Módulo de Compras</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Gestión de Clientes y Proveedores</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Reportes Automáticos</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Kardex en Tiempo Real</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Alertas de Vencimiento</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Apertura y Cierre de Caja</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #a78bfa;"></i> Multiusuario</li>
                                             </ul>
                                         </div>
                                         <button type="button"
-                                            class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                            style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                            style="background: #8b5cf6; color: white;" data-bs-toggle="modal"
-                                            data-bs-target="#paymentModal" data-price-usd="33.00" data-price-pen="99.00"
+                                            class="cta-btn-primary mt-3 w-100 py-3 rounded-4 fw-bold shadow border-0 text-center text-white"
+                                            style="background: #8b5cf6; transition: all 0.3s ease; letter-spacing: 0.5px;" data-bs-toggle="modal"
+                                            data-bs-target="#paymentModal" data-price-usd="26.00" data-price-pen="80.00"
                                             data-version="VentasPro Licencia Permanente"
                                             data-hotmart="https://pay.hotmart.com/C106062137W">
                                             <i class="fas fa-gem me-2"></i>Permanente
@@ -1377,61 +1132,44 @@
                             </div>
 
                             <!-- Plan Red Local -->
-                            <div class="col-lg-3 col-md-6">
-                                <div class="cta-modern h-100 position-relative" style="border: 2px solid #84cc16;">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="cta-modern h-100 position-relative" style="border: 2px solid #84cc16; border-radius: 20px;">
                                     <div class="position-absolute top-0 end-0 mt-2 me-2">
                                         <span class="badge"
                                             style="background: #84cc16; color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 20px;">★
                                             NUEVO</span>
                                     </div>
-                                    <div class="p-4 d-flex flex-column h-100">
+                                    <div class="p-4 d-flex flex-column h-100" style="border-radius: 20px;">
                                         <div class="mb-auto">
                                             <h4 class="text-white">Red Local</h4>
-                                            <p style="color: #94a3b8; font-size: 0.9rem;">Conecta varias máquinas en tu
-                                                red
-                                                local y comparte la información en tiempo real.</p>
+                                            <p style="color: #94a3b8; font-size: 0.9rem;">Conecta varias máquinas en tu red local y comparte la información en tiempo real.</p>
                                             <div class="price-display my-3">
                                                 <span class="currency text-white">S/</span>
                                                 <span class="amount"
-                                                    style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">180</span>
+                                                    style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">130</span>
                                                 <span class="price-divider" style="font-size: 1.5rem;">|</span>
                                                 <span class="currency text-white">$</span>
                                                 <span class="amount"
-                                                    style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">55</span>
+                                                    style="color: #84cc16; font-size: 2.5rem; text-shadow: 0 0 30px rgba(132, 204, 22, 0.4);">40</span>
                                                 <span class="currency text-white" style="font-size: 1rem;">USD</span>
                                             </div>
                                             <ul class="list-unstyled check-list mb-4" style="font-size: 0.85rem;">
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Acceso
-                                                    Multiusuario</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Apertura
-                                                    y Cierre de Caja</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Reporte
-                                                    de Utilidades</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Ventas
-                                                    Fraccionadas</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Kardex
-                                                    en tiempo real</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Alertas
-                                                    de Vencimiento</li>
-                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i>
-                                                    Soporte
-                                                    técnico</li>
-                                                <li><i class="bi bi-pc-display" style="color: #84cc16;"></i> Conexión de
-                                                    múltiples máquinas en red local</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Punto de Venta (POS)</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Módulo de Compras</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Gestión de Clientes y Proveedores</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Reportes Automáticos</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Kardex en Tiempo Real</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Alertas de Vencimiento</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Apertura y Cierre de Caja</li>
+                                                <li><i class="bi bi-check-circle-fill" style="color: #84cc16;"></i> Multiusuario</li>
+                                                <li><i class="bi bi-pc-display" style="color: #84cc16;"></i> Conexión de múltiples máquinas en red local</li>
                                             </ul>
                                         </div>
                                         <button type="button"
-                                            class="cta-btn-primary mt-3 w-100 py-2 rounded-pill fw-bold shadow-sm border-0"
-                                            style="transition: all 0.3s ease; letter-spacing: 0.5px;"
-                                            style="background: #84cc16; color: #0f172a;" data-bs-toggle="modal"
-                                            data-bs-target="#paymentModal" data-price-usd="55.00"
-                                            data-price-pen="180.00" data-version="VentasPro Plan Red Local"
+                                            class="cta-btn-primary mt-3 w-100 py-3 rounded-4 fw-bold shadow border-0 text-center"
+                                            style="background: #84cc16; color: #0f172a; transition: all 0.3s ease; letter-spacing: 0.5px;" data-bs-toggle="modal"
+                                            data-bs-target="#paymentModal" data-price-usd="40.00" data-price-pen="130.00"
+                                            data-version="VentasPro Plan Red Local"
                                             data-hotmart="https://pay.hotmart.com/D106062156A">
                                             <i class="fas fa-network-wired me-2"></i>Conectar en Red Local
                                         </button>
@@ -1572,20 +1310,18 @@
                     <div class="modal-body" style="padding: 0;">
                         <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
+                                <button class="nav-link active fw-bold" id="paypal-tab" data-bs-toggle="tab"
                                     data-bs-target="#paypal-content" type="button" role="tab"
-                                    style="border-radius: 0;"><i class="fab fa-paypal me-2"></i>Pago
-                                    Internacional</button>
+                                    style="border-radius: 0; color: #0f172a;"><i class="fab fa-paypal me-2"></i>Pago Internacional</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="peru-tab" data-bs-toggle="tab"
+                                <button class="nav-link fw-bold text-secondary" id="peru-tab" data-bs-toggle="tab"
                                     data-bs-target="#peru-content" type="button" role="tab"
                                     style="border-radius: 0;"><img src="https://flagcdn.com/w20/pe.png" alt="Perú"
-                                        class="me-2">Pago Nacional
-                                    (Perú)</button>
+                                        class="me-2">Pago Nacional (Perú)</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="card-tab" data-bs-toggle="tab"
+                                <button class="nav-link fw-bold text-secondary" id="card-tab" data-bs-toggle="tab"
                                     data-bs-target="#card-content" type="button" role="tab" style="border-radius: 0;">
                                     <i class="fas fa-credit-card me-2"></i>Pago con Tarjeta
                                 </button>
@@ -1722,6 +1458,20 @@
                     if (hotmartLink) {
                         document.getElementById('hotmartBtn').setAttribute('onclick', `document.getElementById('hotmartIframe').src = '${hotmartLink}';`);
                     }
+                });
+
+                // Cambiar dinámicamente colores de pestañas para legibilidad
+                const tabLinks = paymentModal.querySelectorAll('.nav-link');
+                tabLinks.forEach(tab => {
+                    tab.addEventListener('shown.bs.tab', function (e) {
+                        tabLinks.forEach(t => {
+                            if (t.classList.contains('active')) {
+                                t.style.color = '#0f172a';
+                            } else {
+                                t.style.color = '#6c757d';
+                            }
+                        });
+                    });
                 });
             }
 
