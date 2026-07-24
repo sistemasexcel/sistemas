@@ -649,6 +649,25 @@
         .social-icons a:hover {
             background: #2563eb;
         }
+
+        /* Custom Category Filter Tabs */
+        #systemsCategoryTabs .nav-link {
+            color: #475569;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #f1f5f9;
+        }
+
+        #systemsCategoryTabs .nav-link:hover:not(.active) {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        #systemsCategoryTabs .nav-link.active {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
     </style>
 </head>
 
@@ -840,214 +859,382 @@
         <!-- Sistemas -->
         <section id="sistemas" class="py-5" style="background: #f1f5f9;">
             <div class="container py-5">
-                <div class="section-title" data-aos="fade-up">
-                    <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill">Nuestro
-                        Catálogo</span>
-                    <h2>Sistemas Listos para <span class="text-gradient-ix">Usar</span></h2>
+                <div class="section-title text-center mb-4" data-aos="fade-up">
+                    <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill">Catálogo de Soluciones</span>
+                    <h2>Nuestros Sistemas Listos para <span class="text-gradient-ix">Usar</span></h2>
+                    <p class="text-muted max-width-600 mx-auto mt-2">Filtra y explora los sistemas según la tecnología que mejor se adapte a tu negocio.</p>
                 </div>
-                <div class="row g-4 justify-content-center">
 
-                    <!-- BOTICA PRO EX 13.5 -->
-                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="showcase" style="border: 2px solid #eab308; position: relative; overflow: hidden;">
-                            <div
-                                style="background: #eab308; color: #1e293b; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
-                                <i class="fas fa-star me-1"></i> Más vendido y preferido en Latinoamérica
-                            </div>
-                            <div class="showcase-img" style="border-radius: 0;">
-                                <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5">
-                            </div>
-                            <div class="showcase-body">
-                                <h3>BoticaPro EX 13.5</h3>
-                                <div class="mb-3 d-flex flex-column gap-1">
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-desktop me-2"></i> Uso en PC
-                                    </span>
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-laptop me-2"></i> Uso en Laptop
-                                    </span>
-                                    <span
-                                        style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
-                                        <i class="fas fa-ban me-2 text-danger"></i> No en dispositivos móviles
-                                    </span>
+                <!-- Categorías Filter Tabs -->
+                <div class="d-flex justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <ul class="nav nav-pills p-2 bg-white rounded-pill shadow-sm border gap-2" id="systemsCategoryTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active rounded-pill px-4 py-2 fw-bold" id="tab-web-tab" data-bs-toggle="tab" data-bs-target="#tab-web" type="button" role="tab">
+                                <i class="fas fa-globe me-2"></i>🌐 Sistemas Web (Apps Script / Nube)
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4 py-2 fw-bold" id="tab-excel-tab" data-bs-toggle="tab" data-bs-target="#tab-excel" type="button" role="tab">
+                                <i class="fas fa-file-excel me-2"></i>📊 Sistemas en Excel (VBA)
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4 py-2 fw-bold" id="tab-todos-tab" data-bs-toggle="tab" data-bs-target="#tab-todos" type="button" role="tab">
+                                <i class="fas fa-th-large me-2"></i>Ver Todos los Sistemas
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="systemsCategoryTabsContent">
+                    <!-- Tab 1: Sistemas Web (Apps Script / Nube) -->
+                    <div class="tab-pane fade show active" id="tab-web" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <!-- CREDIPRO V1.5 -->
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                                <div class="showcase h-100" style="border: 2px solid #2563eb; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 7px 6px; text-transform: uppercase; z-index: 10;">
+                                        <i class="fas fa-cloud me-1"></i> Sistema Web Nube (Apps Script)
+                                    </div>
+                                    <div class="showcase-img" style="border-radius: 0;">
+                                        <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5" style="width: 100%; height: 200px; object-fit: cover;">
+                                        <span class="showcase-badge" style="background: #2563eb;">MULTIDISPOSITIVO</span>
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>CrediPro V1.5</h3>
+                                        <div class="mb-3 d-flex flex-column gap-1">
+                                            <span style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
+                                                <i class="fas fa-laptop-house me-2"></i> PC, Laptop, Tablet y Celular
+                                            </span>
+                                            <span style="background: #e0f2fe; color: #0284c7; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bae6fd;">
+                                                <i class="fab fa-google me-2"></i> Vinculado a tu Correo Gmail
+                                            </span>
+                                        </div>
+                                        <p>Control de préstamos, cuotas y cobros en vivo desde cualquier lugar.</p>
+                                        <ul class="showcase-features mb-4">
+                                            <li><i class="bi bi-check-circle-fill text-primary"></i> Consulta DNI y RUC</li>
+                                            <li><i class="bi bi-check-circle-fill text-primary"></i> Control de Cuotas Vencidas</li>
+                                            <li><i class="bi bi-check-circle-fill text-primary"></i> Dashboard de Cobranzas</li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box">
+                                                <span class="from">Precio Único</span>
+                                                <span class="price text-primary">S/ 30.00 | $10 USD</span>
+                                            </div>
+                                            <a href="credipro.html" class="btn btn-details w-100 fw-bold" style="background: #2563eb; color: white;">🌐 Ver detalles de CrediPro</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p>Sistema para boticas y farmacias con venta fraccionada por unidad y blíster.</p>
-                                <ul class="showcase-features">
-                                    <li><i class="bi bi-check-circle-fill"></i> Venta fraccionada</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Kardex automático</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Alertas de vencimiento</li>
-                                </ul>
-                                <div class="showcase-price-box">
-                                    <span class="from">Precio</span>
-                                    <span class="price">S/ 80.00 | $22 USD</span>
+                            </div>
+
+                            <!-- COTIZADOR PRO WEB -->
+                            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+                                <div class="showcase h-100" style="border: 2px solid #3b82f6; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: #3b82f6; color: white; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 7px 6px; text-transform: uppercase; z-index: 10;">
+                                        <i class="fas fa-rocket me-1"></i> Sistema Web Nube (Apps Script)
+                                    </div>
+                                    <div class="showcase-img" style="border-radius: 0;">
+                                        <img src="img_cotizacion/COTIZADORWEB.png" alt="Sistema de Cotizaciones web" style="width: 100%; height: 200px; object-fit: cover;">
+                                        <span class="showcase-badge" style="background: #2563eb;">NUEVO</span>
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>Sistema de Cotizaciones Web</h3>
+                                        <div class="mb-3 d-flex flex-column gap-1">
+                                            <span style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
+                                                <i class="fas fa-mobile-alt me-2"></i> Uso en cualquier dispositivo
+                                            </span>
+                                            <span style="background: #e0f2fe; color: #0284c7; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bae6fd;">
+                                                <i class="fab fa-google me-2"></i> Almacenamiento en Google
+                                            </span>
+                                        </div>
+                                        <p>Genera cotizaciones profesionales en segundos desde tu móvil o laptop.</p>
+                                        <ul class="showcase-features mb-4">
+                                            <li><i class="bi bi-check-circle-fill text-primary"></i> Consultas DNI y RUC</li>
+                                            <li><i class="bi bi-check-circle-fill text-primary"></i> Exportación a PDF</li>
+                                            <li><i class="bi bi-check-circle-fill text-primary"></i> Multiplataforma Web</li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box">
+                                                <span class="from">Precio Único</span>
+                                                <span class="price text-primary">S/ 30.00 | $10 USD</span>
+                                            </div>
+                                            <a href="cotizadorpro.html" class="btn btn-details w-100 fw-bold" style="background: #3b82f6; color: white;">🌐 Ver detalles del Cotizador Web</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a href="botica.html" class="btn btn-details">💊 Ver más detalles</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- VENTAS E INVENTARIO -->
-                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="showcase" style="border: 2px solid #eab308; position: relative; overflow: hidden;">
-                            <div
-                                style="background: #eab308; color: #1e293b; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
-                                <i class="fas fa-star me-1"></i> Más vendido y preferido en Latinoamérica
-                            </div>
-                            <div class="showcase-img" style="border-radius: 0;">
-                                <img src="img/ventas.png" alt="Sistema de Ventas">
-                            </div>
-                            <div class="showcase-body">
-                                <h3>Ventas e Inventario V6.5</h3>
-                                <div class="mb-3 d-flex flex-column gap-1">
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-desktop me-2"></i> Uso en PC
-                                    </span>
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-laptop me-2"></i> Uso en Laptop
-                                    </span>
-                                    <span
-                                        style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
-                                        <i class="fas fa-ban me-2 text-danger"></i> No en dispositivos móviles
-                                    </span>
+                    <!-- Tab 2: Sistemas en Excel (VBA) -->
+                    <div class="tab-pane fade" id="tab-excel" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <!-- BOTICA PRO EX 13.5 -->
+                            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                                <div class="showcase h-100" style="border: 2px solid #eab308; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: #eab308; color: #1e293b; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
+                                        <i class="fas fa-star me-1"></i> Preferido en Latinoamérica
+                                    </div>
+                                    <div class="showcase-img" style="border-radius: 0;">
+                                        <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>BoticaPro EX 13.5</h3>
+                                        <div class="mb-3 d-flex flex-column gap-1">
+                                            <span style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
+                                                <i class="fas fa-desktop me-2"></i> Uso en PC y Laptop
+                                            </span>
+                                            <span style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
+                                                <i class="fas fa-ban me-2"></i> Solo Escritorio (VBA)
+                                            </span>
+                                        </div>
+                                        <p>Sistema para boticas y farmacias con venta fraccionada.</p>
+                                        <ul class="showcase-features mb-4">
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Venta fraccionada</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Kardex automático</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Alertas de vencimiento</li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box">
+                                                <span class="from">Precio</span>
+                                                <span class="price">S/ 80.00 | $22 USD</span>
+                                            </div>
+                                            <a href="botica.html" class="btn btn-details w-100">💊 Ver más detalles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p>Ideal para ferreterías, bodegas, papelerías y más.</p>
-                                <ul class="showcase-features">
-                                    <li><i class="bi bi-check-circle-fill"></i> Control de inventario</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Cotizaciones</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Código de barras</li>
-                                </ul>
-                                <div class="showcase-price-box">
-                                    <span class="from">Precio</span>
-                                    <span class="price">S/ 80.00 | $22 USD</span>
+                            </div>
+
+                            <!-- VENTAS E INVENTARIO -->
+                            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                                <div class="showcase h-100" style="border: 2px solid #eab308; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: #eab308; color: #1e293b; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
+                                        <i class="fas fa-star me-1"></i> Más Vendido
+                                    </div>
+                                    <div class="showcase-img" style="border-radius: 0;">
+                                        <img src="img/ventas.png" alt="Sistema de Ventas" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>Ventas e Inventario V6.5</h3>
+                                        <div class="mb-3 d-flex flex-column gap-1">
+                                            <span style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
+                                                <i class="fas fa-desktop me-2"></i> Uso en PC y Laptop
+                                            </span>
+                                            <span style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
+                                                <i class="fas fa-ban me-2"></i> Solo Escritorio (VBA)
+                                            </span>
+                                        </div>
+                                        <p>Ideal para ferreterías, bodegas, papelerías y más.</p>
+                                        <ul class="showcase-features mb-4">
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Control de inventario</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Cotizaciones</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Código de barras</li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box">
+                                                <span class="from">Precio</span>
+                                                <span class="price">S/ 80.00 | $22 USD</span>
+                                            </div>
+                                            <a href="ventas.html" class="btn btn-details w-100">📦 Ver más detalles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a href="ventas.html" class="btn btn-details">📦 Ver más detalles</a>
+                            </div>
+
+                            <!-- COTIZACIONES EXCEL -->
+                            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                                <div class="showcase h-100" style="border: 2px solid #eab308; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: #eab308; color: #1e293b; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
+                                        <i class="fas fa-star me-1"></i> Popular en Perú
+                                    </div>
+                                    <div class="showcase-img" style="border-radius: 0;">
+                                        <img src="img_cotizacion/1.2-01.jpg" alt="Sistema de Cotizaciones" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>Sistema de Cotizaciones V20.0</h3>
+                                        <div class="mb-3 d-flex flex-column gap-1">
+                                            <span style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
+                                                <i class="fas fa-desktop me-2"></i> Uso en PC y Laptop
+                                            </span>
+                                            <span style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
+                                                <i class="fas fa-ban me-2"></i> Solo Escritorio (VBA)
+                                            </span>
+                                        </div>
+                                        <p>Genera cotizaciones profesionales en segundos.</p>
+                                        <ul class="showcase-features mb-4">
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Consultas DNI/RUC</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Exportación a PDF</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Base de datos clientes</li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box">
+                                                <span class="from">Desde</span>
+                                                <span class="price">S/ 12 | $9 USD</span>
+                                            </div>
+                                            <a href="cotizaciones.html" class="btn btn-details w-100">📄 Ver detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- VET-SYSTEM PRO -->
+                            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                                <div class="showcase h-100" style="border-radius: 16px; overflow: hidden;">
+                                    <div class="showcase-img">
+                                        <img src="img_veterinaria/0 VET-SYSTEM PRO.jpg" alt="VET-SYSTEM PRO" style="width: 100%; height: 180px; object-fit: cover;">
+                                        <span class="showcase-badge" style="background: #10b981;">VETERINARIA</span>
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>VET-SYSTEM PRO</h3>
+                                        <div class="mb-3 d-flex flex-column gap-1">
+                                            <span style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
+                                                <i class="fas fa-desktop me-2"></i> Uso en PC y Laptop
+                                            </span>
+                                            <span style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
+                                                <i class="fas fa-ban me-2"></i> Solo Escritorio (VBA)
+                                            </span>
+                                        </div>
+                                        <p>Gestiona tu veterinaria de forma completa y profesional.</p>
+                                        <ul class="showcase-features mb-4">
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Historias clínicas</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Control de vacunas</li>
+                                            <li><i class="bi bi-check-circle-fill text-success"></i> Semáforo de vacunación</li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box">
+                                                <span class="from">Precio</span>
+                                                <span class="price">S/ 70.00 | $25 USD</span>
+                                            </div>
+                                            <a href="veterinaria.html" class="btn btn-details w-100">🐾 Ver más detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- NUEVO SISTEMA DE COTIZACIONES WEB -->
-                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="250">
-                        <div class="showcase" style="border: 2px solid #3b82f6; position: relative; overflow: hidden;">
-                            <div
-                                style="background: #3b82f6; color: white; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
-                                <i class="fas fa-rocket me-1"></i> Nuevo Lanzamiento
-                            </div>
-                            <div class="showcase-img" style="border-radius: 0;">
-                                <img src="img_cotizacion/COTIZADORWEB.png" alt="Sistema de Cotizaciones web">
-                                <span class="showcase-badge" style="background: #2563eb;">NUEVO</span>
-                            </div>
-                            <div class="showcase-body">
-                                <h3>Sistema de Cotizaciones productos/servicios</h3>
-                                <div class="mb-3 d-flex flex-column gap-1">
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-desktop me-2"></i> Uso en PC y Laptop
-                                    </span>
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-mobile-alt me-2"></i> Uso en cualquier dispositivo
-                                    </span>
+                    <!-- Tab 3: Todos los Sistemas -->
+                    <div class="tab-pane fade" id="tab-todos" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <!-- CrediPro -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="showcase h-100" style="border: 2px solid #2563eb; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: #2563eb; color: white; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 6px; text-transform: uppercase;">
+                                        🌐 Sistema Web Nube (Apps Script)
+                                    </div>
+                                    <div class="showcase-img">
+                                        <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>CrediPro V1.5</h3>
+                                        <p>Préstamos, cuotas y cobros en la nube vinculado a Gmail.</p>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box"><span class="price">S/ 30.00 | $10 USD</span></div>
+                                            <a href="credipro.html" class="btn btn-details w-100" style="background: #2563eb; color: white;">Ver detalles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p>Genera cotizaciones profesionales en segundos desde cualquier lugar.</p>
-                                <ul class="showcase-features">
-                                    <li><i class="bi bi-check-circle-fill"></i> Consultas DNI/RUC</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Acceso Web Multiplataforma</li>
-                                </ul>
-                                <div class="showcase-price-box">
-                                    <span class="from">Precio</span>
-                                    <span class="price">S/ 30.00 | $10 USD</span>
-                                </div>
-                                <a href="cotizadorpro.html" class="btn btn-details" style="background: #3b82f6;">🌐 Ver
-                                    más detalles</a>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- COTIZACIONES -->
-                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="showcase" style="border: 2px solid #eab308; position: relative; overflow: hidden;">
-                            <div
-                                style="background: #eab308; color: #1e293b; font-size: 0.7rem; font-weight: 800; text-align: center; padding: 6px 4px; text-transform: uppercase; z-index: 10;">
-                                <i class="fas fa-star me-1"></i> Producto más vendido en Perú
-                            </div>
-                            <div class="showcase-img" style="border-radius: 0;">
-                                <img src="img_cotizacion/1.2-01.jpg" alt="Sistema de Cotizaciones">
-                                <span class="showcase-badge" style="background: #f59e0b;">Cotizaciones</span>
-                            </div>
-                            <div class="showcase-body">
-                                <h3>Sistema de Cotizaciones V20.0</h3>
-                                <div class="mb-3 d-flex flex-column gap-1">
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-desktop me-2"></i> Uso en PC
-                                    </span>
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-laptop me-2"></i> Uso en Laptop
-                                    </span>
-                                    <span
-                                        style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
-                                        <i class="fas fa-ban me-2 text-danger"></i> No en dispositivos móviles
-                                    </span>
+                            <!-- Cotizador Web -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="showcase h-100" style="border: 2px solid #3b82f6; position: relative; overflow: hidden; border-radius: 16px;">
+                                    <div style="background: #3b82f6; color: white; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 6px; text-transform: uppercase;">
+                                        🌐 Sistema Web Nube (Apps Script)
+                                    </div>
+                                    <div class="showcase-img">
+                                        <img src="img_cotizacion/COTIZADORWEB.png" alt="Cotizador Web" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>Cotizaciones Web</h3>
+                                        <p>Cotizaciones desde cualquier dispositivo almacenado en Google.</p>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box"><span class="price">S/ 30.00 | $10 USD</span></div>
+                                            <a href="cotizadorpro.html" class="btn btn-details w-100" style="background: #3b82f6; color: white;">Ver detalles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p>Genera cotizaciones profesionales en segundos.</p>
-                                <ul class="showcase-features">
-                                    <li><i class="bi bi-check-circle-fill"></i> Consultas DNI/RUC</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Base de datos clientes</li>
-                                </ul>
-                                <div class="showcase-price-box">
-                                    <span class="from">Desde</span>
-                                    <span class="price">S/ 12 | $9 USD</span>
-                                </div>
-                                <a href="cotizaciones.html" class="btn btn-details">📄 Ver detalles</a>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- VET-SYSTEM PRO -->
-                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                        <div class="showcase">
-                            <div class="showcase-img">
-                                <img src="img_veterinaria/0 VET-SYSTEM PRO.jpg" alt="VET-SYSTEM PRO">
-                                <span class="showcase-badge" style="background: #10b981;">Veterinaria</span>
+                            <!-- BoticaPro -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="showcase h-100" style="border-radius: 16px; overflow: hidden;">
+                                    <div style="background: #eab308; color: #1e293b; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 6px; text-transform: uppercase;">
+                                        📊 Sistema en Excel (VBA)
+                                    </div>
+                                    <div class="showcase-img">
+                                        <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>BoticaPro EX 13.5</h3>
+                                        <p>Venta fraccionada por unidad y blíster para boticas.</p>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box"><span class="price">S/ 80.00 | $22 USD</span></div>
+                                            <a href="botica.html" class="btn btn-details w-100">Ver detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="showcase-body">
-                                <h3>VET-SYSTEM PRO</h3>
-                                <div class="mb-3 d-flex flex-column gap-1">
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-desktop me-2"></i> Uso en PC
-                                    </span>
-                                    <span
-                                        style="background: #dcfce7; color: #16a34a; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #bbf7d0;">
-                                        <i class="fas fa-laptop me-2"></i> Uso en Laptop
-                                    </span>
-                                    <span
-                                        style="background: #fee2e2; color: #dc2626; padding: 4px 8px; font-size: 0.65rem; font-weight: 700; border-radius: 4px; display: inline-flex; align-items: center; width: fit-content; border: 1px solid #fca5a5;">
-                                        <i class="fas fa-ban me-2 text-danger"></i> No en dispositivos móviles
-                                    </span>
+                            <!-- Ventas e Inventario -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="showcase h-100" style="border-radius: 16px; overflow: hidden;">
+                                    <div style="background: #eab308; color: #1e293b; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 6px; text-transform: uppercase;">
+                                        📊 Sistema en Excel (VBA)
+                                    </div>
+                                    <div class="showcase-img">
+                                        <img src="img/ventas.png" alt="Ventas V6.5" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>Ventas e Inventario V6.5</h3>
+                                        <p>Control total de inventario, kardex y código de barras.</p>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box"><span class="price">S/ 80.00 | $22 USD</span></div>
+                                            <a href="ventas.html" class="btn btn-details w-100">Ver detalles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p>Gestiona tu veterinaria de forma completa y profesional.</p>
-                                <ul class="showcase-features">
-                                    <li><i class="bi bi-check-circle-fill"></i> Historias clínicas</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Control de vacunas</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Semáforo de vacunación</li>
-                                </ul>
-                                <div class="showcase-price-box">
-                                    <span class="from">Precio</span>
-                                    <span class="price">S/ 70.00 | $25 USD</span>
+                            </div>
+                            <!-- Cotizaciones Excel -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="showcase h-100" style="border-radius: 16px; overflow: hidden;">
+                                    <div style="background: #eab308; color: #1e293b; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 6px; text-transform: uppercase;">
+                                        📊 Sistema en Excel (VBA)
+                                    </div>
+                                    <div class="showcase-img">
+                                        <img src="img_cotizacion/1.2-01.jpg" alt="Cotizaciones Excel" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>Cotizaciones V20.0 (Excel)</h3>
+                                        <p>Cotizaciones rápidas con exportación a PDF.</p>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box"><span class="price">S/ 12.00 | $9 USD</span></div>
+                                            <a href="cotizaciones.html" class="btn btn-details w-100">Ver detalles</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a href="veterinaria.html" class="btn btn-details">🐾 Ver más detalles</a>
+                            </div>
+                            <!-- Vet System -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="showcase h-100" style="border-radius: 16px; overflow: hidden;">
+                                    <div style="background: #10b981; color: white; font-size: 0.75rem; font-weight: 800; text-align: center; padding: 6px; text-transform: uppercase;">
+                                        📊 Sistema en Excel (VBA)
+                                    </div>
+                                    <div class="showcase-img">
+                                        <img src="img_veterinaria/0 VET-SYSTEM PRO.jpg" alt="Vet System" style="width: 100%; height: 180px; object-fit: cover;">
+                                    </div>
+                                    <div class="showcase-body d-flex flex-column h-100">
+                                        <h3>VET-SYSTEM PRO</h3>
+                                        <p>Historias clínicas y control vacunal veterinario.</p>
+                                        <div class="mt-auto">
+                                            <div class="showcase-price-box"><span class="price">S/ 70.00 | $25 USD</span></div>
+                                            <a href="veterinaria.html" class="btn btn-details w-100">Ver detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
                 <div class="text-center mt-5">
                     <a href="#sistemas" class="btn btn-primary px-4 py-2" style="font-weight: 600;"><i
                             class="fas fa-th me-2"></i>Ver todos los sistemas</a>

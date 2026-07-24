@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrediPro V1.5 - Sistema Web de Préstamos y Cobranzas - Sistemas Excel</title>
+    <meta name="description"
+        content="Sistema web moderno y fácil de usar para el control de préstamos y cobranzas. Gestione sus clientes, cuotas y flujo de caja en tiempo real. Vinculado a tu correo Gmail.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --credipro-primary: #2563eb;
+            --credipro-primary-dark: #1d4ed8;
+            --credipro-accent: #10b981;
+            --credipro-warning: #f59e0b;
+            --credipro-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --primary-bg: #0f172a;
+            --text-heading: #0f172a;
+            --text-body: #475569;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-body);
+        }
+
+        .text-gradient-credipro {
+            background: linear-gradient(135deg, #38bdf8 0%, #4ade80 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.4));
+        }
+
+        /* Navbar Dark */
+        .navbar {
+            background-color: var(--primary-bg) !important;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand span {
+            color: white;
+            font-weight: 700;
+        }
+
+        .navbar-brand {
+            color: #4ade80;
+        }
+
+        .navbar .nav-link {
+            color: #cbd5e1 !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .navbar .nav-link:hover {
+            color: white !important;
+        }
+
+        .btn-whatsapp-nav {
+            background-color: #22c55e;
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-whatsapp-nav:hover {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-credipro {
+            padding: 160px 0 100px;
+            background-color: var(--primary-bg);
+            background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.94) 100%), url('img/CREDIPRO (1).jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #ffffff;
+        }
+
+        .vbadge-credipro {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* Notice Banner */
+        .notice-box {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #fef08a;
+            font-size: 0.92rem;
+        }
+
+        /* Feature Cards */
+        .feature-card-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(37, 99, 235, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .fc-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .icon-blue { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
+        .icon-green { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .icon-purple { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+        .icon-amber { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+
+        /* Gallery Image Card */
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-caption {
+            padding: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: center;
+            background: #ffffff;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* Dashboard Preview */
+        .dash-frame {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+            border: 1px solid #cbd5e1;
+            overflow: hidden;
+        }
+
+        .dash-frame-head {
+            background: #0f172a;
+            color: white;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dash-stat-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .dash-stat-card h6 {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .dash-stat-card .num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* Pricing Box */
+        .pricing-box {
+            background: #0f172a;
+            color: white;
+            border-radius: 24px;
+            padding: 45px 35px;
+            border: 2px solid #3b82f6;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+            position: relative;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="img/logo.jpeg" alt="Logo" class="brand-logo" style="height: 55px; border-radius: 8px;">
+                <span style="font-size: 1.3rem;">SISTEMAS <span style="color: #4ade80;">EXCEL</span></span>
+            </a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#sistemas">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#beneficios">Características</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#capturas">Capturas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#precio">Precio</a></li>
+                </ul>
+                <div class="d-flex mt-3 mt-lg-0">
+                    <button type="button" class="btn btn-whatsapp-nav border-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                        <i class="fas fa-shopping-cart me-1"></i> Comprar Ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-credipro">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="vbadge-credipro">
+                        <i class="fas fa-shield-alt"></i> CrediPro V1.5
+                    </div>
+                    <h1 class="hero-title mb-3">
+                        Gestiona tus préstamos <span class="text-gradient-credipro">desde cualquier lugar</span>
+                    </h1>
+                    <p class="lead mb-4" style="color: #cbd5e1; font-size: 1.15rem; line-height: 1.6; text-shadow: 0 2px 10px rgba(0,0,0,0.6);">
+                        Sistema web moderno y fácil de usar para el control completo de préstamos, cuotas y cobranzas. Diseñado para emprendedores que buscan una solución autónoma e intuitiva.
+                    </p>
+
+                    <!-- Notice Banner -->
+                    <div class="notice-box d-flex align-items-start gap-3 mb-4" data-aos="fade-up">
+                        <i class="fas fa-info-circle fs-4 text-warning mt-1"></i>
+                        <div>
+                            <strong class="d-block text-warning mb-1">Aviso importante de la licencia:</strong>
+                            Se vende únicamente el acceso al <strong>sistema listo para usar (vinculado a tu correo Gmail)</strong>. <u>No se vende el código fuente</u>.
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <span class="fs-2 fw-bold text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.6);">S/ 30.00</span>
+                        <span class="fs-4 text-white-50">|</span>
+                        <span class="fs-3 fw-bold" style="color: #4ade80; text-shadow: 0 2px 10px rgba(0,0,0,0.6);">$10.00 USD</span>
+                        <span class="badge bg-primary ms-2 px-3 py-2">Licencia Completa</span>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-3">
+                        <button type="button" class="btn btn-primary btn-lg px-4 py-3 fw-bold" style="background-color: var(--credipro-primary); border: none; border-radius: 12px;" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                            <i class="fas fa-shopping-cart me-2"></i> Adquirir Sistema (S/ 30 | $10 USD)
+                        </button>
+                        <a href="https://wa.me/51922784328?text=Hola,%20solicito%20información%20o%20demostración%20del%20sistema%20CrediPro%20V1.5."
+                            target="_blank" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold" style="border-radius: 12px;">
+                            <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="position-relative text-center">
+                        <a href="img/CREDIPRO (1).jpg" data-fancybox="hero-gallery" data-caption="CrediPro V1.5 - Vista Principal">
+                            <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5" class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-25" style="max-height: 420px; width: 100%; object-fit: cover;">
+                        </a>
+                        <span class="badge bg-dark bg-opacity-75 text-white mt-2 px-3 py-2 rounded-pill small">
+                            <i class="fas fa-search-plus me-1"></i> Haz clic para ampliar captura
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="beneficios" class="py-5" style="background-color: #ffffff;">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2">Funcionalidades</span>
+                <h2 class="fw-bold display-5 text-dark">Todo lo que ofrece CrediPro V1.5</h2>
+                <p class="text-muted max-width-600 mx-auto">Diseñado para simplificar el cobro y seguimiento de tus préstamos diarios o mensuales.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card-item">
+                        <div class="fc-icon-wrapper icon-blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-dark">Clientes</h5>
+                        <p class="text-muted small mb-0">Consulta automática de datos por DNI o RUC. Registra rápidamente a tus prestatarios sin errores manuales.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card-item">
+                        <div class="fc-icon-wrapper icon-green">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-dark">Préstamos</h5>
+                        <p class="text-muted small mb-0">Registra, controla y calendariza tus préstamos de forma flexible adaptándote a las fechas de cobro.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card-item">
+                        <div class="fc-icon-wrapper icon-purple">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-dark">Dashboard</h5>
+                        <p class="text-muted small mb-0">Indicadores visuales en tiempo real para capital recuperado, cuotas vencidas e ingresos por medio de pago.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card-item">
+                        <div class="fc-icon-wrapper icon-amber">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-dark">Multidispositivo</h5>
+                        <p class="text-muted small mb-0">Accede desde tu PC, Tablet o Teléfono Celular en la nube con tu cuenta de correo Gmail vinculada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capturas Section -->
+    <section id="capturas" class="py-5" style="background-color: #f8fafc;">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2">Demostración Visual</span>
+                <h2 class="fw-bold display-5 text-dark">Capturas Reales del Sistema</h2>
+                <p class="text-muted">Explora la interfaz moderna e intuitiva de CrediPro V1.5.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <a href="img/CREDIPRO (1).jpg" data-fancybox="gallery" data-caption="CrediPro V1.5 - Panel de Control Multidispositivo">
+                            <img src="img/CREDIPRO (1).jpg" alt="CrediPro Captura 1">
+                        </a>
+                        <div class="gallery-caption">
+                            <i class="fas fa-desktop me-2 text-primary"></i> Panel de Control y Vista en Dispositivos
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <a href="img/CREDIPRO (2).jpg" data-fancybox="gallery" data-caption="CrediPro V1.5 - Gestión de Cobranzas e Indicadores">
+                            <img src="img/CREDIPRO (2).jpg" alt="CrediPro Captura 2">
+                        </a>
+                        <div class="gallery-caption">
+                            <i class="fas fa-chart-pie me-2 text-success"></i> Indicadores y Medios de Pago
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulated Dashboard Section -->
+    <section class="py-5" style="background-color: #ffffff;">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2">Control en Tiempo Real</span>
+                    <h2 class="fw-bold text-dark display-6 mb-4">Gestión Clara de tus Finanzas</h2>
+                    <p class="text-muted">
+                        Visualiza exactamente el estado financiero de tus préstamos con métricas actualizadas al instante:
+                    </p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-3 d-flex align-items-center gap-3">
+                            <i class="fas fa-check-circle text-primary fs-4"></i>
+                            <span class="text-muted">Desglose de pagos por Efectivo, Yape, Plin y Transferencias.</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center gap-3">
+                            <i class="fas fa-check-circle text-primary fs-4"></i>
+                            <span class="text-muted">Alertas claras sobre cuotas vencidas para cobranza inmediata.</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center gap-3">
+                            <i class="fas fa-check-circle text-primary fs-4"></i>
+                            <span class="text-muted">Indicadores gráficos de capital otorgado vs capital recuperado.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="dash-frame">
+                        <div class="dash-frame-head">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas fa-chart-pie text-primary fs-5"></i>
+                                <span class="fw-bold small">CrediPro V1.5 Panel de Control</span>
+                            </div>
+                            <span class="badge bg-success">Sistema Activo</span>
+                        </div>
+                        <div class="p-4 bg-light">
+                            <div class="row g-3 mb-3">
+                                <div class="col-6 col-md-4">
+                                    <div class="dash-stat-card">
+                                        <h6>Clientes Registrados</h6>
+                                        <div class="num text-primary">2</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <div class="dash-stat-card">
+                                        <h6>Capital Otorgado</h6>
+                                        <div class="num text-dark">S/. 50,600.00</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <div class="dash-stat-card">
+                                        <h6>Préstamos Vigentes</h6>
+                                        <div class="num text-success">2</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-6">
+                                    <div class="dash-stat-card">
+                                        <h6>Capital Recuperado</h6>
+                                        <div class="num text-success">S/. 43.60</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-6">
+                                    <div class="dash-stat-card border-danger">
+                                        <h6 class="text-danger">Cuotas Vencidas</h6>
+                                        <div class="num text-danger">1</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precio" class="py-5" style="background-color: #f8fafc;">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2">Precio de Oferta</span>
+                <h2 class="fw-bold display-5 text-dark">Adquiere CrediPro V1.5</h2>
+                <p class="text-muted max-width-600 mx-auto">Pago único sin suscripciones ni cobros mensuales adicionales.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-6" data-aos="zoom-in">
+                    <div class="pricing-box text-center">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3">★ ACCESO AL SISTEMA</span>
+                        <h3 class="fw-bold text-white mb-2">CrediPro V1.5</h3>
+                        <p class="text-white-50 small mb-4">Solución web completa de gestión de préstamos</p>
+                        
+                        <div class="d-flex justify-content-center align-items-baseline gap-2 my-4">
+                            <span class="display-4 fw-bold text-white">S/ 30.00</span>
+                            <span class="fs-4 text-white-50">|</span>
+                            <span class="display-5 fw-bold text-success">$10.00 USD</span>
+                        </div>
+
+                        <!-- Important conditions bullet list -->
+                        <div class="p-3 mb-4 rounded-3 text-start" style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); font-size: 0.9rem;">
+                            <p class="text-warning fw-bold mb-2"><i class="fas fa-exclamation-circle me-2"></i>Condiciones del Servicio:</p>
+                            <ul class="list-unstyled mb-0 text-white-50">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Se entrega el <strong>sistema listo para usar</strong>.</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Acceso <strong>vinculado a tu correo Gmail</strong>.</li>
+                                <li class="mb-2"><i class="fas fa-times text-danger me-2"></i> <strong><u>NO se vende ni incluye código fuente</u></strong>.</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Pago único, sin renovaciones mensuales.</li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow-lg" style="background-color: var(--credipro-primary); border: none; border-radius: 12px;" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                            <i class="fas fa-shopping-cart me-2"></i> Adquirir Ahora (S/ 30 / $10 USD)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Sistemas Excel. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Pagos -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold" id="paymentModalLabel"><i class="fas fa-shopping-cart me-2"></i>Adquirir CrediPro V1.5</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active fw-bold py-3 text-dark" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" style="border-radius: 0;">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-bold py-3 text-dark" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal-content"
+                                type="button" role="tab" style="border-radius: 0;">
+                                <i class="fab fa-paypal me-2 text-primary"></i>Pago Internacional (PayPal)
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="paymentTabsContent">
+                        <!-- Pago Perú -->
+                        <div class="tab-pane fade show active" id="peru-content" role="tabpanel">
+                            <div class="p-4">
+                                <h4 class="mb-2 text-center fw-bold text-dark">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center text-muted mb-4">Realiza el depósito de <strong>S/ 30.00</strong> y envía el comprobante por WhatsApp adjuntando tu correo Gmail.</p>
+                                <div class="row align-items-center my-3">
+                                    <div class="col-lg-6 text-center">
+                                        <img src="img/YAPE-.jpeg" alt="QR Yape" class="img-fluid rounded-3 shadow-sm border" style="max-width: 220px;">
+                                    </div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-4 rounded-3 text-center bg-light">
+                                            <p class="display-6 fw-bold text-primary mb-2">S/ 30.00</p>
+                                            <h6 class="fw-bold text-dark mb-2">Yape / Plin</h6>
+                                            <p class="mb-1"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/51922784328?text=Hola,%20acabo%20de%20realizar%20el%20pago%20de%20S/%2030.00%20por%20Yape/Plin%20para%20el%20sistema%20CrediPro%20V1.5.%20Mi%20correo%20Gmail%20es:" target="_blank"
+                                    class="btn btn-success btn-lg w-100 py-3 text-white fw-bold shadow-sm d-block mt-4" style="border-radius: 12px;">
+                                    <i class="fab fa-whatsapp me-2"></i>Enviar Comprobante y Gmail por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Pago Internacional -->
+                        <div class="tab-pane fade" id="paypal-content" role="tabpanel">
+                            <div class="text-center p-4">
+                                <h4 class="mb-2 fw-bold text-dark">Pago Internacional con PayPal</h4>
+                                <p class="text-muted mb-4">Realiza el pago de <strong>$10.00 USD</strong> a nuestra cuenta oficial de PayPal:</p>
+                                <div class="alert alert-primary border my-3 py-3">
+                                    <h5 class="fw-bold mb-0 text-primary">vjoel214@gmail.com</h5>
+                                </div>
+                                <img src="img/Paypal.webp" alt="PayPal" class="img-fluid my-3" style="max-height: 55px;">
+                                <a href="https://wa.me/51922784328?text=Hola,%20acabo%20de%20realizar%20el%20pago%20de%20$10.00%20USD%20por%20PayPal%20para%20el%20sistema%20CrediPro%20V1.5.%20Mi%20correo%20Gmail%20es:" target="_blank"
+                                    class="btn btn-success btn-lg w-100 py-3 text-white fw-bold shadow-sm d-block mt-4" style="border-radius: 12px;">
+                                    <i class="fab fa-whatsapp me-2"></i>Enviar Comprobante y Gmail por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/51922784328?text=Hola,%20vengo%20desde%20la%20web%20y%20quiero%20información%20sobre%20el%20Sistema%20CrediPro%20V1.5."
+        class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+        AOS.init({ duration: 800, once: true, offset: 80 });
+
+        // Control de Scroll Navbar
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = "rgba(15, 23, 42, 0.95)";
+                navbar.style.boxShadow = "0 10px 30px -10px rgba(0,0,0,0.3)";
+            } else {
+                navbar.style.background = "transparent";
+                navbar.style.boxShadow = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
