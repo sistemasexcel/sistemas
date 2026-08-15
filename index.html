@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas Excel - Soluciones Profesionales en VBA | Automatización Inteligente</title>
+    <meta name="description"
+        content="Sistemas profesionales en Excel con VBA. Farmacia, Ventas, Cotizaciones y Botica. Automatización inteligente para emprendedores en Latinoamérica.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --bg: #0a0f1e;
+            --bg2: #0d1424;
+            --panel: rgba(255, 255, 255, 0.04);
+            --line: rgba(255, 255, 255, 0.09);
+            --green: #22c55e;
+            --green2: #16a34a;
+            --green-soft: rgba(34, 197, 94, 0.12);
+            --emerald: #4ade80;
+            --amber: #f59e0b;
+            --text: #cbd5e1;
+            --muted: #8b9bb4;
+            --white: #ffffff;
+            --radius: 16px;
+            --mono: 'JetBrains Mono', monospace;
+            --shadow-green: 0 16px 40px -14px rgba(34, 197, 94, 0.55);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== TOP BAR ===== */
+        .topbar {
+            background: #060a14;
+            color: var(--muted);
+            font-size: 0.76rem;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar i {
+            color: var(--emerald);
+            margin-right: 6px;
+        }
+
+        .topbar a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: var(--white);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-p {
+            background: rgba(10, 15, 30, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+            padding: 0.8rem 0;
+            transition: all .3s ease;
+        }
+
+        .navbar-p.scrolled {
+            background: rgba(10, 15, 30, 0.94);
+            box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar-p .navbar-brand {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 1.18rem;
+            color: var(--white) !important;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-p .brand-logo {
+            height: 42px;
+            width: 42px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, .4);
+        }
+
+        .navbar-p .brand-excel {
+            color: var(--emerald);
+        }
+
+        .navbar-p .nav-link {
+            color: var(--text) !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.95rem !important;
+            border-radius: 9px;
+            transition: all .22s ease;
+        }
+
+        .navbar-p .nav-link:hover,
+        .navbar-p .nav-link.active {
+            color: var(--white) !important;
+            background: var(--green-soft);
+        }
+
+        .btn-wa-nav {
+            background: linear-gradient(135deg, var(--green2), var(--green));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 0.88rem;
+            border-radius: 10px;
+            padding: 0.62rem 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-green);
+            transition: all .25s ease;
+            border: none;
+        }
+
+        .btn-wa-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 44px -12px rgba(34, 197, 94, .7);
+        }
+
+        .navbar-toggler {
+            color: var(--white);
+            border: 0;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* ===== HERO ===== */
+        .hero-p {
+            position: relative;
+            padding: 72px 0 0;
+            background:
+                radial-gradient(900px circle at 82% 12%, rgba(34, 197, 94, 0.13) 0%, transparent 50%),
+                linear-gradient(180deg, #0b1120 0%, var(--bg) 100%);
+            overflow: hidden;
+        }
+
+        .hero-p::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: radial-gradient(circle at 50% 30%, black 10%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 10%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            color: var(--emerald);
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 12px var(--green);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, .6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 9px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .hero-p h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            line-height: 1.14;
+            margin-bottom: 1.2rem;
+            color: var(--white);
+        }
+
+        .hero-p h1 .grad {
+            background: linear-gradient(115deg, var(--emerald) 0%, var(--green) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-p .lead {
+            font-size: 1.02rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin-bottom: 1.8rem;
+            line-height: 1.75;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green2), var(--green));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.97rem;
+            padding: 0.9rem 1.6rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-green);
+            transition: all .3s ease;
+            border: none;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .hero-btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.97rem;
+            padding: 0.9rem 1.6rem;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            transition: all .3s ease;
+        }
+
+        .hero-btn-ghost:hover {
+            border-color: var(--green);
+            color: var(--emerald);
+            transform: translateY(-3px);
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 2rem;
+            font-size: 0.76rem;
+            color: var(--muted);
+        }
+
+        .hero-meta .pay-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            color: #a7b6cb;
+        }
+
+        .hero-meta img {
+            height: 22px;
+            border-radius: 4px;
+        }
+
+        .hero-stats-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            margin-top: 2rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .hero-stats-line .num {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .hero-stats-line .num small {
+            color: var(--emerald);
+        }
+
+        .hero-stats-line .lbl {
+            font-size: 0.74rem;
+            color: var(--muted);
+            display: block;
+        }
+
+        /* Excel window */
+        .hero-visual {
+            position: relative;
+            padding: 0 10px 70px;
+        }
+
+        .win-frame {
+            background: linear-gradient(160deg, #101a30, #0a0f1e);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(34, 197, 94, .15);
+        }
+
+        .win-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 14px;
+            background: rgba(255, 255, 255, .04);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .win-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .win-dots span {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .win-dots span:nth-child(1) {
+            background: #f87171;
+        }
+
+        .win-dots span:nth-child(2) {
+            background: #fbbf24;
+        }
+
+        .win-dots span:nth-child(3) {
+            background: #34d399;
+        }
+
+        .win-title {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-left: 6px;
+        }
+
+        .win-body {
+            position: relative;
+            padding: 0;
+            background: #0a0f1e;
+            overflow: hidden;
+        }
+
+        .win-slider-viewport {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .win-slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .win-slide-item {
+            min-width: 100%;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .win-slide-item img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            border: none;
+        }
+
+        .win-slide-tag {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(10, 15, 30, 0.88);
+            backdrop-filter: blur(8px);
+            color: var(--emerald);
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .win-nav-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: auto;
+        }
+
+        .win-nav-arrow {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .win-nav-arrow:hover {
+            background: var(--green-soft);
+            border-color: var(--green);
+            color: var(--emerald);
+        }
+
+        .float-chip {
+            position: absolute;
+            background: rgba(13, 20, 36, 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.7);
+            padding: 11px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: float-y 4s ease-in-out infinite;
+        }
+
+        .float-chip .fc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .float-chip .fc-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .float-chip .fc-sub {
+            font-size: 0.68rem;
+            color: var(--muted);
+        }
+
+        .chip-a {
+            top: 5%;
+            right: -10px;
+        }
+
+        .chip-b {
+            bottom: 16%;
+            left: -10px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float-y {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .sec {
+            padding: 84px 0;
+        }
+
+        .sec-head .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--emerald);
+            background: var(--green-soft);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 0.4rem 0.95rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .sec-head h2 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 0.7rem;
+            color: var(--white);
+        }
+
+        .sec-head h2 .grad {
+            background: linear-gradient(115deg, var(--emerald), var(--green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sec-head p {
+            font-size: 0.96rem;
+            color: var(--muted);
+            max-width: 620px;
+        }
+
+        /* ===== SLIDER ===== */
+        .slider-section {
+            background: var(--bg2);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-shell {
+            position: relative;
+            margin: 0 -12px;
+        }
+
+        .slider-viewport {
+            overflow: hidden;
+            border-radius: 22px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform .65s cubic-bezier(.7, 0, .2, 1);
+        }
+
+        .sld-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+        }
+
+        .sld-inner {
+            background: linear-gradient(160deg, #101a30, #0a0f1e);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 28px;
+            margin: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .9);
+        }
+
+        .sld-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green2), var(--emerald), transparent);
+        }
+
+        .sld-media {
+            position: relative;
+        }
+
+        .sld-frame {
+            background:
+                linear-gradient(rgba(148, 163, 184, .04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, .04) 1px, transparent 1px),
+                #070b15;
+            background-size: 24px 24px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 10px;
+        }
+
+        .sld-frame .fw-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 6px 10px;
+        }
+
+        .sld-frame .fw-bar span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .sld-frame .fw-bar span:nth-child(1) {
+            background: #f87171;
+        }
+
+        .sld-frame .fw-bar span:nth-child(2) {
+            background: #fbbf24;
+        }
+
+        .sld-frame .fw-bar span:nth-child(3) {
+            background: #34d399;
+        }
+
+        .sld-frame .fw-bar small {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            color: var(--muted);
+            margin-left: 6px;
+        }
+
+        .sld-frame img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #0a0f1e;
+        }
+
+        .sld-badge-group {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .sld-badge {
+            position: static;
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 6px 12px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, .5);
+        }
+
+        .sld-badge.excel {
+            background: linear-gradient(135deg, var(--green2), var(--green));
+            color: #fff;
+        }
+
+        .sld-badge.web {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: #fff;
+        }
+
+        .sld-device-tag {
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 6px 12px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, .5);
+            backdrop-filter: blur(8px);
+        }
+
+        .sld-device-tag.pc {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+            border: 1px solid rgba(245, 158, 11, 0.45);
+        }
+
+        .sld-device-tag.web-all {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.45);
+        }
+
+        .sld-body h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .sld-cat {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--emerald);
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .sld-body .desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .sld-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 18px;
+        }
+
+        .sld-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .sld-features li i {
+            color: var(--emerald);
+            margin-top: 3px;
+            font-size: 1rem;
+        }
+
+        .sld-price {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .sld-price small {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .sld-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--green2), var(--green));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 11px;
+            box-shadow: var(--shadow-green);
+            transition: all .28s ease;
+            border: none;
+        }
+
+        .sld-btn:hover {
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .sld-btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .05);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 0.75rem 1.3rem;
+            border-radius: 11px;
+            border: 1px solid var(--line);
+            transition: all .28s ease;
+        }
+
+        .sld-btn-ghost:hover {
+            border-color: var(--green);
+            color: var(--emerald);
+        }
+
+        .sld-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 26px;
+        }
+
+        .sld-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: all .25s ease;
+            cursor: pointer;
+        }
+
+        .sld-arrow:hover {
+            background: var(--green-soft);
+            border-color: var(--green);
+            color: var(--emerald);
+        }
+
+        .sld-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .sld-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .sld-dot.active {
+            width: 30px;
+            border-radius: 6px;
+            background: var(--green);
+            box-shadow: 0 0 12px rgba(34, 197, 94, .6);
+        }
+
+        /* ===== FEATURE CARDS ===== */
+        .feature-card {
+            background: linear-gradient(165deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 30px 26px;
+            height: 100%;
+            transition: all .3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green2), var(--emerald));
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(34, 197, 94, .35);
+            box-shadow: 0 24px 50px -24px rgba(34, 197, 94, .3);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto 18px;
+            border: 1px solid var(--line);
+        }
+
+        .feature-card h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testim-shell {
+            position: relative;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .testim-viewport {
+            overflow: hidden;
+            width: 100%;
+            padding: 12px 6px;
+            margin: -12px -6px;
+        }
+
+        .testim-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+
+        .testim-slide-page {
+            min-width: 100%;
+            width: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            padding: 0 4px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(165deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all .3s ease;
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 197, 94, .4);
+            box-shadow: 0 20px 40px -15px rgba(34, 197, 94, 0.3);
+        }
+
+        .testimonial-body {
+            flex-grow: 1;
+        }
+
+        .stars {
+            color: var(--amber);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-style: italic;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .author-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .author-info h6 {
+            margin: 0 0 2px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .author-info span {
+            font-size: 0.78rem;
+            color: var(--emerald);
+            font-weight: 500;
+        }
+
+        .testim-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 26px;
+        }
+
+        .trust-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .trust-line strong {
+            color: var(--white);
+            font-family: 'Sora', sans-serif;
+        }
+
+        .trust-line .flags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .trust-line .flags img {
+            width: 22px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* ===== CTA ===== */
+        .cta-p {
+            position: relative;
+            padding: 84px 0;
+            background:
+                radial-gradient(700px circle at 12% 20%, rgba(34, 197, 94, .2) 0%, transparent 50%),
+                radial-gradient(700px circle at 88% 85%, rgba(59, 130, 246, .15) 0%, transparent 50%),
+                linear-gradient(150deg, #0d1b33 0%, #0a1120 100%);
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+            border-top: 1px solid var(--line);
+        }
+
+        .cta-p h2 {
+            color: #fff;
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-p p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            max-width: 540px;
+            margin: 0 auto 28px;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green2), var(--green));
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.02rem;
+            padding: 15px 34px;
+            border-radius: 14px;
+            box-shadow: var(--shadow-green);
+            transition: all .3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .cta-p .resp {
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: #7d8ea6;
+        }
+
+        /* ===== FOOTER ===== */
+        .ix-footer {
+            background: #070b15;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+        }
+
+        .ix-footer h6 {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.09em;
+            margin-bottom: 18px;
+        }
+
+        .footer-link {
+            color: var(--muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.87rem;
+            transition: all .25s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--emerald);
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 8px;
+            transition: all .3s ease;
+        }
+
+        .social-icons a:hover {
+            background: linear-gradient(135deg, var(--green2), var(--green));
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 991.98px) {
+            .hero-p {
+                padding: 48px 0 0;
+            }
+
+            .hero-p h1 {
+                font-size: 2rem;
+            }
+
+            .hero-visual {
+                margin-top: 36px;
+            }
+
+            .chip-a {
+                right: 6px;
+            }
+
+            .chip-b {
+                left: 6px;
+            }
+
+            .sld-inner {
+                padding: 22px;
+            }
+
+            .sld-frame img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-p h1 {
+                font-size: 1.65rem;
+            }
+
+            .sec-head h2 {
+                font-size: 1.45rem;
+            }
+
+            .sld-frame img {
+                height: 195px;
+            }
+
+            .sld-inner {
+                margin: 8px;
+            }
+
+            .sld-btn,
+            .sld-btn-ghost {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4">
+                <span><i class="fas fa-phone"></i><a href="https://wa.me/51922784328?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20deseo%20m%C3%A1s%20informaci%C3%B3n." target="_blank">+51 922 784
+                        328</a></span>
+                <span><i class="fas fa-headset"></i>Soporte personalizado</span>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+                <span><i class="fas fa-bolt"></i>Entrega inmediata tras el pago</span>
+                <span class="d-flex gap-2">
+                    <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" aria-label="YouTube"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/mksistemas26/" target="_blank"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="http://tiktok.com/@excelsistemascusco" target="_blank" aria-label="TikTok"><i
+                            class="fab fa-tiktok"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-p" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.jpeg" alt="Logo Sistemas Excel" class="brand-logo">
+                <span>SISTEMAS <span class="brand-excel">EXCEL</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#slider">Sistemas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="d-flex mt-3 mt-lg-0">
+                    <a href="https://wa.me/51922784328?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20deseo%20cotizar%20un%20sistema." target="_blank" class="btn-wa-nav text-decoration-none">
+                        <i class="fab fa-whatsapp"></i> Cotizar ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-p">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <span class="hero-eyebrow"><span class="dot"></span> &gt; SISTEMAS EN EXCEL · VBA</span>
+                    <h1>Sistemas inteligentes en <span class="grad">Excel</span> para negocios que quieren <span
+                            class="grad">crecer</span></h1>
+                    <p class="lead">
+                        Automatiza tus procesos, controla tu negocio y toma mejores
+                        decisiones con nuestros sistemas profesionales en Excel (VBA).
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://wa.me/51922784328?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20quisiera%20recibir%20informaci%C3%B3n." target="_blank" class="hero-btn text-decoration-none">
+                            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                        </a>
+                        <a href="#slider" class="hero-btn-ghost text-decoration-none">
+                            <i class="fas fa-layer-group"></i> Ver sistemas
+                        </a>
+                    </div>
+                    <div class="hero-meta">
+                        <span>Pago seguro:</span>
+                        <span class="pay-icons">
+                            <i class="fab fa-paypal" title="PayPal"></i>
+                            <i class="fab fa-cc-visa" title="Visa"></i>
+                            <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                            <img src="img/YAPE-.jpeg" alt="Yape" title="Yape / Plin">
+                        </span>
+                        <span class="mono"><i class="fas fa-globe" style="color:var(--emerald);"></i> S/ · $ · USD ·
+                            Bs</span>
+                    </div>
+                    <div class="hero-stats-line">
+                        <div>
+                            <span class="num">580<small>+</small></span>
+                            <span class="lbl">Clientes satisfechos</span>
+                        </div>
+                        <div>
+                            <span class="num">4<small>+</small></span>
+                            <span class="lbl">Países</span>
+                        </div>
+                        <div>
+                            <span class="num">3<small>+</small></span>
+                            <span class="lbl">Años de experiencia</span>
+                        </div>
+                        <div>
+                            <span class="num">100<small>%</small></span>
+                            <span class="lbl">Soporte personalizado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="120">
+                    <div class="hero-visual">
+                        <div class="win-frame" id="heroWinFrame">
+                            <div class="win-bar d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="win-dots"><span></span><span></span><span></span></div>
+                                    <span class="win-title" id="winTitleText">SISTEMAS EXCEL · Ventas e Inventario V6.5</span>
+                                </div>
+                                <div class="win-nav-box">
+                                    <button class="win-nav-arrow" id="winPrevBtn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="win-nav-arrow" id="winNextBtn" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="win-body">
+                                <div class="win-slider-viewport">
+                                    <div class="win-slider-track" id="winTrack">
+                                        <div class="win-slide-item">
+                                            <img src="img/ventas.png" alt="Sistema de Ventas e Inventario V6.5">
+                                            <span class="win-slide-tag"><i class="fas fa-desktop me-1"></i> Ventas e Inventario V6.5</span>
+                                        </div>
+                                        <div class="win-slide-item">
+                                            <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5">
+                                            <span class="win-slide-tag"><i class="fas fa-desktop me-1"></i> BoticaPro EX 13.5</span>
+                                        </div>
+                                        <div class="win-slide-item">
+                                            <img src="img_veterinaria/2 dashboard PRINCIPAL.jpg" alt="VET-SYSTEM PRO">
+                                            <span class="win-slide-tag"><i class="fas fa-desktop me-1"></i> VET-SYSTEM PRO</span>
+                                        </div>
+                                        <div class="win-slide-item">
+                                            <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5">
+                                            <span class="win-slide-tag"><i class="fas fa-globe me-1"></i> CrediPro V1.5 (Web)</span>
+                                        </div>
+                                        <div class="win-slide-item">
+                                            <img src="img_cotizacion/COTIZADORWEB.png" alt="Cotizaciones Web">
+                                            <span class="win-slide-tag"><i class="fas fa-globe me-1"></i> Cotizaciones Web</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-chip chip-a">
+                            <div class="fc-icon" style="background:rgba(245,158,11,.15); color:#fbbf24;"><i
+                                    class="fas fa-star"></i></div>
+                            <div>
+                                <div class="fc-title">4.9 / 5</div>
+                                <div class="fc-sub">Valoración de clientes</div>
+                            </div>
+                        </div>
+                        <div class="float-chip chip-b">
+                            <div class="fc-icon" style="background:var(--green-soft); color:var(--emerald);"><i
+                                    class="fas fa-check"></i></div>
+                            <div>
+                                <div class="fc-title">Venta registrada</div>
+                                <div class="fc-sub">Kardex actualizado automáticamente</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slider de Sistemas -->
+    <section id="slider" class="slider-section sec" style="padding-top:96px;">
+        <div class="container">
+            <div class="sec-head text-center" data-aos="fade-up">
+                <span class="tag">&gt; EXPLORA EL CATÁLOGO</span>
+                <h2>Nuestros sistemas listos para <span class="grad">usar</span></h2>
+                <p class="mx-auto">Desliza y explora cada sistema: sus capturas reales, características y precios.</p>
+            </div>
+
+            <div class="slider-shell" id="sliderShell" data-aos="fade-up" data-aos-delay="80">
+                <div class="slider-viewport">
+                    <div class="slider-track" id="sliderTrack">
+
+                        <!-- Slide 1: BoticaPro -->
+                        <div class="sld-slide">
+                            <div class="sld-inner">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <div class="sld-media">
+                                            <div class="sld-badge-group">
+                                                <span class="sld-badge excel">Excel · VBA</span>
+                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                            </div>
+                                            <div class="sld-frame">
+                                                <div class="fw-bar">
+                                                    <span></span><span></span><span></span><small>BoticaPro EX
+                                                        13.5</small></div>
+                                                <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="sld-body">
+                                            <span class="sld-cat">Boticas y Farmacias</span>
+                                            <h3>BoticaPro EX 13.5</h3>
+                                            <p class="desc">Sistema para boticas y farmacias con venta fraccionada.</p>
+                                            <ul class="sld-features">
+                                                <li><i class="bi bi-check-circle-fill"></i> Venta fraccionada</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Kardex automático</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Alertas de vencimiento</li>
+                                            </ul>
+                                            <div class="sld-price"><small>Precio</small>S/ 80.00 | $22 USD</div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="botica.html" class="sld-btn text-decoration-none">💊 Ver
+                                                    detalles</a>
+                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20BoticaPro%20EX%2013.5"
+                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
+                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Ventas e Inventario -->
+                        <div class="sld-slide">
+                            <div class="sld-inner">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <div class="sld-media">
+                                            <div class="sld-badge-group">
+                                                <span class="sld-badge excel">Excel · VBA</span>
+                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                            </div>
+                                            <div class="sld-frame">
+                                                <div class="fw-bar"><span></span><span></span><span></span><small>Ventas
+                                                        e Inventario V6.5</small></div>
+                                                <img src="img-ventas/2 menu principal.png"
+                                                    alt="Ventas e Inventario V6.5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="sld-body">
+                                            <span class="sld-cat">Ferreterías · Bodegas · Papelerías</span>
+                                            <h3>Ventas e Inventario V6.5</h3>
+                                            <p class="desc">Ideal para comercios de todo tipo: ventas, stock y código de
+                                                barras.</p>
+                                            <ul class="sld-features">
+                                                <li><i class="bi bi-check-circle-fill"></i> Control de inventario</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Cotizaciones</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Código de barras</li>
+                                            </ul>
+                                            <div class="sld-price"><small>Precio</small>S/ 80.00 | $22 USD</div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="ventas.html" class="sld-btn text-decoration-none">📦 Ver
+                                                    detalles</a>
+                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Ventas%20e%20Inventario"
+                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
+                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: VET-SYSTEM PRO -->
+                        <div class="sld-slide">
+                            <div class="sld-inner">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <div class="sld-media">
+                                            <div class="sld-badge-group">
+                                                <span class="sld-badge excel">Excel · VBA</span>
+                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                            </div>
+                                            <div class="sld-frame">
+                                                <div class="fw-bar">
+                                                    <span></span><span></span><span></span><small>VET-SYSTEM PRO</small>
+                                                </div>
+                                                <img src="img_veterinaria/2 dashboard PRINCIPAL.jpg"
+                                                    alt="VET-SYSTEM PRO">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="sld-body">
+                                            <span class="sld-cat">Veterinarias y Clínicas</span>
+                                            <h3>VET-SYSTEM PRO</h3>
+                                            <p class="desc">Gestiona tu veterinaria de forma completa y profesional.</p>
+                                            <ul class="sld-features">
+                                                <li><i class="bi bi-check-circle-fill"></i> Historias clínicas</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Control de vacunas</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Semáforo de vacunación</li>
+                                            </ul>
+                                            <div class="sld-price"><small>Precio</small>S/ 70.00 | $25 USD</div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="veterinaria.html" class="sld-btn text-decoration-none">🐾 Ver
+                                                    detalles</a>
+                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20VET-SYSTEM%20PRO"
+                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
+                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Cotizaciones Excel -->
+                        <div class="sld-slide">
+                            <div class="sld-inner">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <div class="sld-media">
+                                            <div class="sld-badge-group">
+                                                <span class="sld-badge excel">Excel · VBA</span>
+                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                            </div>
+                                            <div class="sld-frame">
+                                                <div class="fw-bar">
+                                                    <span></span><span></span><span></span><small>Cotizaciones
+                                                        V20.0</small></div>
+                                                <img src="img_cotizacion/1.2-01.jpg"
+                                                    alt="Sistema de Cotizaciones V20.0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="sld-body">
+                                            <span class="sld-cat">Ventas y Servicios</span>
+                                            <h3>Sistema de Cotizaciones V20.0</h3>
+                                            <p class="desc">Genera cotizaciones profesionales en segundos.</p>
+                                            <ul class="sld-features">
+                                                <li><i class="bi bi-check-circle-fill"></i> Consultas DNI/RUC</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Base de datos clientes</li>
+                                            </ul>
+                                            <div class="sld-price"><small>Precio</small>S/ 20.00 | $8 USD</div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="cotizaciones.html" class="sld-btn text-decoration-none">📄 Ver
+                                                    detalles</a>
+                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Cotizaciones"
+                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
+                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: CrediPro -->
+                        <div class="sld-slide">
+                            <div class="sld-inner">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <div class="sld-media">
+                                            <div class="sld-badge-group">
+                                                <span class="sld-badge web">Web · Nube</span>
+                                                <span class="sld-device-tag web-all"><i class="fas fa-mobile-alt me-1"></i><i class="fas fa-laptop me-1"></i> Todos los dispositivos</span>
+                                            </div>
+                                            <div class="sld-frame">
+                                                <div class="fw-bar">
+                                                    <span></span><span></span><span></span><small>CrediPro V1.5</small>
+                                                </div>
+                                                <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="sld-body">
+                                            <span class="sld-cat">Financieras y Prestamistas</span>
+                                            <h3>CrediPro V1.5</h3>
+                                            <p class="desc">Préstamos, cuotas y cobros en la nube, vinculado a tu Gmail.
+                                            </p>
+                                            <ul class="sld-features">
+                                                <li><i class="bi bi-check-circle-fill"></i> Consulta DNI y RUC</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Control de Cuotas Vencidas
+                                                </li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Dashboard de Cobranzas</li>
+                                            </ul>
+                                            <div class="sld-price"><small>Precio único</small>S/ 30.00 | $10 USD</div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="credipro.html" class="sld-btn text-decoration-none">🌐 Ver
+                                                    detalles</a>
+                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CrediPro"
+                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
+                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Cotizaciones Web -->
+                        <div class="sld-slide">
+                            <div class="sld-inner">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <div class="sld-media">
+                                            <div class="sld-badge-group">
+                                                <span class="sld-badge web">Web · Nube</span>
+                                                <span class="sld-device-tag web-all"><i class="fas fa-mobile-alt me-1"></i><i class="fas fa-laptop me-1"></i> Todos los dispositivos</span>
+                                            </div>
+                                            <div class="sld-frame">
+                                                <div class="fw-bar">
+                                                    <span></span><span></span><span></span><small>Cotizaciones
+                                                        Web</small></div>
+                                                <img src="img_cotizacion/COTIZADORWEB.png"
+                                                    alt="Sistema de Cotizaciones Web">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="sld-body">
+                                            <span class="sld-cat">Ventas en Línea</span>
+                                            <h3>Sistema de Cotizaciones Web</h3>
+                                            <p class="desc">Cotizaciones desde tu móvil o laptop con almacenamiento en
+                                                Google.</p>
+                                            <ul class="sld-features">
+                                                <li><i class="bi bi-check-circle-fill"></i> Consultas DNI y RUC</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
+                                                <li><i class="bi bi-check-circle-fill"></i> Multiplataforma Web</li>
+                                            </ul>
+                                            <div class="sld-price"><small>Precio único</small>S/ 30.00 | $10 USD</div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="cotizadorpro.html" class="sld-btn text-decoration-none">🌐 Ver
+                                                    detalles</a>
+                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Cotizador%20Web"
+                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
+                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="sld-nav">
+                    <button class="sld-arrow" id="prevSlide" aria-label="Anterior"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="sld-dots" id="sliderDots"></div>
+                    <button class="sld-arrow" id="nextSlide" aria-label="Siguiente"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section id="beneficios" class="sec">
+        <div class="container">
+            <div class="sec-head text-center" data-aos="fade-up">
+                <span class="tag">&gt; VENTAJAS</span>
+                <h2>¿Por qué elegir <span class="grad">Sistemas Excel</span>?</h2>
+                <p class="mx-auto">Sistemas fáciles de usar, con respaldo real y pensados para hacer crecer tu negocio.
+                </p>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="60">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:var(--green-soft); color:var(--emerald);"><i
+                                class="fas fa-bolt"></i></div>
+                        <h5>Automatización Total</h5>
+                        <p>Despídete de las tareas repetitivas. Nuestros sistemas trabajan por ti de forma autónoma.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="140">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:rgba(59,130,246,.12); color:#60a5fa;"><i
+                                class="fas fa-chart-pie"></i></div>
+                        <h5>Control Preciso</h5>
+                        <p>Inventarios, ventas y clientes en un solo panel de control intuitivo y muy fácil de usar.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="220">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background:rgba(245,158,11,.12); color:#fbbf24;"><i
+                                class="fas fa-lock"></i></div>
+                        <h5>Seguridad Garantizada</h5>
+                        <p>Gestión de accesos, roles de usuario y respaldos automáticos para tu información crítica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="sec"
+        style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+        <div class="container">
+            <div class="sec-head text-center" data-aos="fade-up">
+                <span class="tag">&gt; TESTIMONIOS REALES</span>
+                <h2>Lo que dicen nuestros <span class="grad">clientes</span></h2>
+                <p class="mx-auto" style="max-width: 540px;">Emprendedores y profesionales de toda Latinoamérica confían en nuestros sistemas.</p>
+            </div>
+
+            <div class="testim-shell mt-4" id="testimShell" data-aos="fade-up" data-aos-delay="100">
+                <div class="testim-viewport">
+                    <div class="testim-track" id="testimTrack">
+
+                        <!-- Slide Page 1 (2 Testimonios) -->
+                        <div class="testim-slide-page">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                            <p class="testimonial-text">"Adquirí el software, y está de maravilla, facilita muchos procesos y el rendimiento en todos los aspectos. 👌<br>100% recomendable y un precio muy accesible. 🤓"</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#10b981;">C</div>
+                                            <div class="author-info">
+                                                <h6>Carlos M. <img src="https://flagcdn.com/w20/co.png" alt="Colombia" title="Colombia" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Cliente BoticaPro — Colombia 🇨🇴</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                            <p class="testimonial-text">"BoticaPro ha transformado mi negocio, ahora tengo el control total de mi inventario, medicamentos fraccionados y las ventas del día sin complicaciones."</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#ef4444;">M</div>
+                                            <div class="author-info">
+                                                <h6>María C. <img src="https://flagcdn.com/w20/pe.png" alt="Perú" title="Perú" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Dueña de Botica — Lima, Perú 🇵🇪</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide Page 2 (2 Testimonios) -->
+                        <div class="testim-slide-page">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                            <p class="testimonial-text">"El VET-SYSTEM PRO es súper completo. Las historias clínicas de mascotas y el semáforo de vacunas organizan mi clínica veterinaria al 100%."</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#3b82f6;">C</div>
+                                            <div class="author-info">
+                                                <h6>Dr. Carlos R. <img src="https://flagcdn.com/w20/pe.png" alt="Perú" title="Perú" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Clínica Veterinaria — Arequipa 🇵🇪</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                            <p class="testimonial-text">"Las aperturas y cierres de caja nunca fueron tan rápidos. La lectura de código de barras aceleró la atención a nuestros clientes en tienda."</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#8b5cf6;">R</div>
+                                            <div class="author-info">
+                                                <h6>Roberto F. <img src="https://flagcdn.com/w20/mx.png" alt="México" title="México" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Papelería & Comercial — CDMX 🇲🇽</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide Page 3 (2 Testimonios) -->
+                        <div class="testim-slide-page">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                            <p class="testimonial-text">"Generar cotizaciones formales exportadas a PDF en segundos y enviarlas directo al cliente ha elevado el nivel profesional de mi empresa."</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#f59e0b;">G</div>
+                                            <div class="author-info">
+                                                <h6>Ing. Gabriel H. <img src="https://flagcdn.com/w20/cl.png" alt="Chile" title="Chile" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Servicios Industriales — Santiago 🇨🇱</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                            <p class="testimonial-text">"Controlar préstamos, intereses y cuotas vencidas en la nube con CrediPro nos permitió mantener nuestra cobranza al día y sin errores."</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#06b6d4;">F</div>
+                                            <div class="author-info">
+                                                <h6>Lic. Fernando K. <img src="https://flagcdn.com/w20/bo.png" alt="Bolivia" title="Bolivia" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>CrediFast — La Paz, Bolivia 🇧🇴</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide Page 4 (2 Testimonios) -->
+                        <div class="testim-slide-page">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                            <p class="testimonial-text">"Enviar cotizaciones Web por WhatsApp al instante desde el celular mientras visito a mis clientes me ayudó a cerrar más contratos en terreno."</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#ec4899;">L</div>
+                                            <div class="author-info">
+                                                <h6>Lucía P. <img src="https://flagcdn.com/w20/ec.png" alt="Ecuador" title="Ecuador" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Distribuidora — Quito, Ecuador 🇪🇨</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-body">
+                                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                            <p class="testimonial-text">"Excelente atención y soporte inmediato por WhatsApp. Teníamos dudas con el módulo de vacunas y nos guiaron en minutos. ¡Muy recomendado!"</p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-img" style="background:#6366f1;">M</div>
+                                            <div class="author-info">
+                                                <h6>Dr. Miguel T. <img src="https://flagcdn.com/w20/pe.png" alt="Perú" title="Perú" style="width:18px; height:12px; vertical-align:middle; border-radius:2px;"></h6>
+                                                <span>Veterinaria — Cusco, Perú 🇵🇪</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="testim-nav">
+                    <button class="sld-arrow" id="testimPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <div class="sld-dots" id="testimDots"></div>
+                    <button class="sld-arrow" id="testimNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="trust-line" data-aos="fade-up">
+                <span><strong>+580</strong> clientes satisfechos en Latinoamérica</span>
+                <span class="flags">
+                    <img src="https://flagcdn.com/w20/pe.png" alt="Perú">
+                    <img src="https://flagcdn.com/w20/bo.png" alt="Bolivia">
+                    <img src="https://flagcdn.com/w20/cl.png" alt="Chile">
+                    <img src="https://flagcdn.com/w20/ec.png" alt="Ecuador">
+                    <img src="https://flagcdn.com/w20/co.png" alt="Colombia">
+                    <img src="https://flagcdn.com/w20/mx.png" alt="México">
+                </span>
+                <span>Pago seguro: PayPal · Tarjeta · Yape · Plin</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contacto" class="cta-p">
+        <div class="container" data-aos="fade-up">
+            <h2>¿Listo para llevar tu negocio al siguiente nivel?</h2>
+            <p>Contáctanos por WhatsApp y recibe asesoría personalizada sin compromiso.</p>
+            <a href="https://wa.me/51922784328?text=Hola%2C%20estuve%20viendo%20la%20web%20de%20Sistemas%20Excel%20y%20deseo%20asesor%C3%ADa%20personalizada." target="_blank" class="btn-cta text-decoration-none">
+                <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+            </a>
+            <div class="resp">Respuesta inmediata</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ix-footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="img/logo.jpeg" alt="Logo Sistemas Excel"
+                            style="height:36px; width:36px; object-fit:cover; border-radius:8px; box-shadow:0 0 0 2px rgba(34,197,94,.4);">
+                        <span class="text-white fw-bold"
+                            style="font-family:'Sora',sans-serif; letter-spacing:-.02em;">SISTEMAS <span
+                                style="color:var(--emerald);">EXCEL</span></span>
+                    </div>
+                    <p>Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda
+                        Latinoamérica.</p>
+                    <p class="mt-4 mb-0 small">© 2026 Copyright: <a href="index.html"
+                            class="text-white text-decoration-none">SistemasExcel.com</a></p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h6>NUESTROS SISTEMAS</h6>
+                    <a href="ventas.html" class="footer-link">Ventas e Inventario</a>
+                    <a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a>
+                    <a href="botica.html" class="footer-link">BoticaPro EX 13.5</a>
+                    <a href="veterinaria.html" class="footer-link">VET-SYSTEM PRO</a>
+                    <a href="sistemasweb.html" class="footer-link">Sistemas Web</a>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h6>NAVEGACIÓN</h6>
+                    <a href="#" class="footer-link">Inicio</a>
+                    <a href="#slider" class="footer-link">Sistemas</a>
+                    <a href="#beneficios" class="footer-link">Beneficios</a>
+                    <a href="#testimonios" class="footer-link">Testimonios</a>
+                    <a href="#contacto" class="footer-link">Contacto</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h6>CONTACTO</h6>
+                    <p class="text-white mb-2"><i class="fas fa-phone text-muted me-2"></i> +51 922 784 328</p>
+                    <p class="text-white mb-4"><i class="fas fa-envelope text-muted me-2"></i>vjoel214@gmail.com</p>
+                    <h6>SÍGUENOS</h6>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" aria-label="YouTube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/mksistemas26/" target="_blank"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" aria-label="TikTok"><i
+                                class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/51922784328" target="_blank" aria-label="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Pagos Dinámico -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Adquirir <span id="modalProductName">Producto</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 0;">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
+                                data-bs-target="#paypal-content" type="button" role="tab" style="border-radius: 0;"><i
+                                    class="fab fa-paypal me-2"></i>Pago Internacional</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" style="border-radius: 0;"><img
+                                    src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional
+                                (Perú)</button>
+                        </li>
+                        <li class="nav-item" role="presentation" id="card-tab-item" style="display: none;">
+                            <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card-content"
+                                type="button" role="tab" style="border-radius: 0;">
+                                <i class="fas fa-credit-card me-2"></i>Pago con Tarjeta
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="paymentTabsContent">
+                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Manual con PayPal</h4>
+                                <p>Realiza un pago de <strong id="paypalAmount">$0.00 USD</strong> a la siguiente cuenta
+                                    de PayPal:</p>
+                                <div class="alert alert-light border my-3">
+                                    <h5 class="fw-bold mb-0">vjoel214@gmail.com</h5>
+                                </div>
+                                <img src="img/Paypal.webp" alt="PayPal" class="img-fluid my-3"
+                                    style="max-height: 60px;">
+                                <a href="#" id="paypalWhatsappLink" target="_blank"
+                                    class="alert alert-success text-center mt-3 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Una vez realizado el pago, envía tu comprobante
+                                    a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="peru-content" role="tabpanel">
+                            <div class="p-4">
+                                <h4 class="mb-3 text-center">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center">Realiza el pago y envía el comprobante por WhatsApp para activar
+                                    tu licencia.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 text-center"><img src="img/YAPE-.jpeg" alt="QR Yape"
+                                            class="img-fluid rounded shadow-sm" style="max-width: 250px;"></div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-3 rounded text-center">
+                                            <p class="display-6 fw-bold mb-2" id="solesAmount">S/0.00</p>
+                                            <h6 class="fw-bold">Yape / Plin</h6>
+                                            <p class="mb-1"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" id="peruWhatsappLink" target="_blank"
+                                    class="alert alert-success text-center mt-4 d-block text-decoration-none">
+                                    <i class="fab fa-whatsapp me-2"></i>Después de realizar el depósito, envía el
+                                    comprobante a nuestro WhatsApp.
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="card-content" role="tabpanel">
+                            <div class="text-center p-4">
+                                <h4 class="mb-3">Pago Seguro con Tarjeta</h4>
+                                <p>Paga de forma rápida y segura desde cualquier país usando tu tarjeta de crédito o
+                                    débito a través de <strong>Hotmart</strong>.</p>
+                                <div class="my-3">
+                                    <i class="fab fa-cc-visa fa-3x mx-2 text-primary"></i>
+                                    <i class="fab fa-cc-mastercard fa-3x mx-2 text-danger"></i>
+                                    <i class="fab fa-cc-amex fa-3x mx-2 text-info"></i>
+                                </div>
+                                <button type="button" id="hotmartLinkBtn"
+                                    class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm"
+                                    style="background: linear-gradient(135deg, #f5313d, #ba0410); border-radius: 12px; padding: 14px;"
+                                    data-bs-toggle="modal" data-bs-target="#hotmartModal"
+                                    onclick="document.getElementById('hotmartIframe').src = this.dataset.hotmartLink;">
+                                    <i class="fas fa-lock me-2"></i>Pagar ahora vía Hotmart
+                                </button>
+                                <p class="text-muted small"><i class="fas fa-shield-alt me-1"></i> Transacción 100%
+                                    encriptada y segura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Hotmart -->
+    <div class="modal fade" id="hotmartModal" tabindex="-1" aria-labelledby="hotmartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="height: 85vh;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hotmartModalLabel">Pago Seguro con Hotmart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="document.getElementById('hotmartIframe').src = '';"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="hotmartIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 80 });
+
+        // Navbar scroll state
+        const navbar = document.getElementById('mainNavbar');
+        window.addEventListener('scroll', function () {
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        // ===== HERO WIN-FRAME CAROUSEL =====
+        (function () {
+            const track = document.getElementById('winTrack');
+            const title = document.getElementById('winTitleText');
+            const prevBtn = document.getElementById('winPrevBtn');
+            const nextBtn = document.getElementById('winNextBtn');
+            if (!track) return;
+
+            const slidesData = [
+                "SISTEMAS EXCEL · Ventas e Inventario V6.5",
+                "SISTEMAS EXCEL · BoticaPro EX 13.5",
+                "SISTEMAS EXCEL · VET-SYSTEM PRO",
+                "SISTEMAS EXCEL · CrediPro V1.5 (Web)",
+                "SISTEMAS EXCEL · Cotizaciones Web"
+            ];
+            const total = slidesData.length;
+            let index = 0;
+            let timer = null;
+
+            function go(i) {
+                index = (i + total) % total;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                if (title) title.textContent = slidesData[index];
+            }
+
+            function next() { go(index + 1); }
+            function prev() { go(index - 1); }
+            function start() { timer = setInterval(next, 4500); }
+            function stop() { if (timer) clearInterval(timer); }
+            function restart() { stop(); start(); }
+
+            if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+            if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+
+            const winFrame = document.getElementById('heroWinFrame');
+            if (winFrame) {
+                winFrame.addEventListener('mouseenter', stop);
+                winFrame.addEventListener('mouseleave', start);
+            }
+
+            start();
+        })();
+
+        // ===== SLIDER DE SISTEMAS (10 SEGUNDOS) =====
+        (function () {
+            const track = document.getElementById('sliderTrack');
+            const shell = document.getElementById('sliderShell');
+            const dotsBox = document.getElementById('sliderDots');
+            if (!track || !shell || !dotsBox) return;
+            const slides = track.children;
+            const total = slides.length;
+            let index = 0;
+            let timer = null;
+
+            for (let i = 0; i < total; i++) {
+                const d = document.createElement('button');
+                d.className = 'sld-dot' + (i === 0 ? ' active' : '');
+                d.setAttribute('aria-label', 'Ir al sistema ' + (i + 1));
+                d.addEventListener('click', function () { go(i); restart(); });
+                dotsBox.appendChild(d);
+            }
+
+            function go(i) {
+                index = (i + total) % total;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                Array.from(dotsBox.children).forEach(function (d, k) {
+                    d.classList.toggle('active', k === index);
+                });
+            }
+
+            function next() { go(index + 1); }
+            function prev() { go(index - 1); }
+            function start() { timer = setInterval(next, 10000); }
+            function stop() { if (timer) clearInterval(timer); }
+            function restart() { stop(); start(); }
+
+            const nextEl = document.getElementById('nextSlide');
+            const prevEl = document.getElementById('prevSlide');
+            if (nextEl) nextEl.addEventListener('click', function () { next(); restart(); });
+            if (prevEl) prevEl.addEventListener('click', function () { prev(); restart(); });
+
+            shell.addEventListener('mouseenter', stop);
+            shell.addEventListener('mouseleave', start);
+
+            let x0 = null;
+            shell.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+            shell.addEventListener('touchend', function (e) {
+                if (x0 === null) return;
+                const dx = e.changedTouches[0].clientX - x0;
+                if (dx > 50) { prev(); restart(); }
+                else if (dx < -50) { next(); restart(); }
+                x0 = null;
+            }, { passive: true });
+
+            start();
+        })();
+
+        // ===== CARROUSEL DE TESTIMONIOS =====
+        (function () {
+            const track = document.getElementById('testimTrack');
+            const shell = document.getElementById('testimShell');
+            const dotsBox = document.getElementById('testimDots');
+            const prevBtn = document.getElementById('testimPrev');
+            const nextBtn = document.getElementById('testimNext');
+            if (!track || !shell || !dotsBox) return;
+
+            const slides = track.children;
+            const total = slides.length;
+            let index = 0;
+            let timer = null;
+
+            for (let i = 0; i < total; i++) {
+                const d = document.createElement('button');
+                d.className = 'sld-dot' + (i === 0 ? ' active' : '');
+                d.setAttribute('aria-label', 'Ver grupo de testimonios ' + (i + 1));
+                d.addEventListener('click', function () { go(i); restart(); });
+                dotsBox.appendChild(d);
+            }
+
+            function go(i) {
+                index = (i + total) % total;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                Array.from(dotsBox.children).forEach(function (d, k) {
+                    d.classList.toggle('active', k === index);
+                });
+            }
+
+            function next() { go(index + 1); }
+            function prev() { go(index - 1); }
+            function start() { timer = setInterval(next, 7000); }
+            function stop() { if (timer) clearInterval(timer); }
+            function restart() { stop(); start(); }
+
+            if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+            if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+
+            shell.addEventListener('mouseenter', stop);
+            shell.addEventListener('mouseleave', start);
+
+            let x0 = null;
+            shell.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+            shell.addEventListener('touchend', function (e) {
+                if (x0 === null) return;
+                const dx = e.changedTouches[0].clientX - x0;
+                if (dx > 50) { prev(); restart(); }
+                else if (dx < -50) { next(); restart(); }
+                x0 = null;
+            }, { passive: true });
+
+            start();
+        })();
+
+        const products = {
+            botica: {
+                name: "BoticaPro EX 13.0",
+                paypalAmount: "30.00",
+                solesAmount: "100.00",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $30.00 USD por PayPal para el BoticaPro EX 13.0. Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito de S/100 para el BoticaPro EX 13.0. Adjunto mi comprobante.",
+                hotmartLink: "https://pay.hotmart.com/L102677652I"
+            },
+            veterinaria: {
+                name: "VET-SYSTEM PRO",
+                paypalAmount: "25.00",
+                solesAmount: "70.00",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $25.00 USD por PayPal para el VET-SYSTEM PRO. Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito de S/70 para el VET-SYSTEM PRO. Adjunto mi comprobante.",
+                hotmartLink: ""
+            },
+            ventas: {
+                name: "Sistema de Ventas e Inventario",
+                paypalAmount: "30.00",
+                solesAmount: "90.00",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $30.00 USD por PayPal para el Sistema de Ventas e Inventario. Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito de S/90 para el Sistema de Ventas e Inventario. Adjunto mi comprobante.",
+                hotmartLink: "https://pay.hotmart.com/F102803755C"
+            },
+            cotizaciones: {
+                name: "Sistema de Cotizaciones",
+                paypalAmount: "6.00",
+                solesAmount: "12.00",
+                paypalWhatsappText: "Hola, acabo de realizar el pago de $6.00 USD por PayPal para el Sistema de Cotizaciones. Adjunto mi comprobante.",
+                peruWhatsappText: "Hola, acabo de realizar el depósito para el Sistema de Cotizaciones. Adjunto mi comprobante.",
+                hotmartLink: "https://pay.hotmart.com/G103608811T"
+            }
+        };
+
+        document.querySelectorAll('.btn-product-buy').forEach(button => {
+            button.addEventListener('click', function () {
+                const productId = this.dataset.productId;
+                const product = products[productId];
+                if (product) {
+                    document.getElementById('modalProductName').textContent = product.name;
+                    document.getElementById('paypalAmount').textContent = "$" + product.paypalAmount + " USD";
+                    document.getElementById('solesAmount').textContent = "S/" + product.solesAmount;
+
+                    const cardTabItem = document.getElementById('card-tab-item');
+                    if (product.hotmartLink) {
+                        cardTabItem.style.display = 'block';
+                        document.getElementById('hotmartLinkBtn').dataset.hotmartLink = product.hotmartLink;
+                    } else {
+                        cardTabItem.style.display = 'none';
+                        if (document.getElementById('card-tab').classList.contains('active')) {
+                            document.getElementById('paypal-tab').click();
+                        }
+                    }
+
+                    const base = "https://wa.me/51922784328?text=";
+                    document.getElementById('paypalWhatsappLink').href = base + encodeURIComponent(product.paypalWhatsappText);
+                    document.getElementById('peruWhatsappLink').href = base + encodeURIComponent(product.peruWhatsappText);
+                }
+            });
+        });
+    </script>
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/51922784328?text=Hola%20%F0%9F%91%8B%2C%20vengo%20desde%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20quisiera%20informaci%C3%B3n%20sobre%20sus%20sistemas."
+        class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+
+</html>
