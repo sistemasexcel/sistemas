@@ -758,3 +758,189 @@ a { text-decoration: none; }
     color: var(--secondary);
     line-height: 1;
 }
+
+/* ===== SOCIAL WELCOME MODAL & FLOATING BAR STYLING ===== */
+#socialWelcomeModal.modal .modal-dialog {
+    max-width: 480px;
+    margin: 1.75rem auto;
+}
+
+#socialWelcomeModal .modal-content {
+    background-color: #0f172a !important;
+    background: #0f172a !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8) !important;
+    color: #f8fafc !important;
+    overflow: hidden !important;
+}
+
+#socialWelcomeModal .modal-header {
+    background-color: #0f172a !important;
+    background: #0f172a !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem !important;
+}
+
+#socialWelcomeModal .modal-body {
+    background-color: #0f172a !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    padding: 1rem 1.25rem 1.5rem 1.25rem !important;
+}
+
+#socialWelcomeModal .modal-footer {
+    background-color: #0f172a !important;
+    background: #0f172a !important;
+    border-top: none !important;
+    padding: 0 1.25rem 1.25rem 1.25rem !important;
+}
+
+#socialWelcomeModal h4,
+#socialWelcomeModal h5,
+#socialWelcomeModal .modal-title {
+    color: #ffffff !important;
+}
+
+#socialWelcomeModal p {
+    color: #cbd5e1 !important;
+}
+
+#socialWelcomeModal .social-card-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 14px 18px !important;
+    border-radius: 14px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#socialWelcomeModal .social-card-btn:hover {
+    transform: translateY(-2px) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+#socialWelcomeModal .social-btn-whatsapp-channel {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    background-color: #25D366 !important;
+}
+
+#socialWelcomeModal .social-btn-youtube {
+    background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%) !important;
+    background-color: #FF0000 !important;
+}
+
+#socialWelcomeModal .social-btn-facebook {
+    background: linear-gradient(135deg, #1877F2 0%, #0d65d9 100%) !important;
+    background-color: #1877F2 !important;
+}
+
+#socialWelcomeModal .social-btn-tiktok {
+    background: linear-gradient(135deg, #111111 0%, #1f2937 100%) !important;
+    background-color: #111111 !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+#socialWelcomeModal .social-card-btn div,
+#socialWelcomeModal .social-card-btn small,
+#socialWelcomeModal .social-card-btn i {
+    color: #ffffff !important;
+}
+
+#socialWelcomeModal .social-card-icon {
+    font-size: 1.75rem !important;
+    width: 32px !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+}
+
+#btnCloseSocialModal {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    padding: 8px 24px !important;
+    font-weight: 600 !important;
+}
+
+#btnCloseSocialModal:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+}
+
+/* Floating Bar Left */
+.social-float-bar {
+    position: fixed;
+    bottom: 25px;
+    left: 20px;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-float-item {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none !important;
+    position: relative;
+}
+
+.social-float-item:hover {
+    transform: scale(1.15) translateX(4px);
+    color: #fff !important;
+}
+
+.social-float-yt { background: #FF0000; }
+.social-float-fb { background: #1877F2; }
+.social-float-tt { background: #111111; border: 1px solid rgba(255,255,255,0.2); }
+.social-float-wa { background: #25D366; }
+
+.social-float-tooltip {
+    position: absolute;
+    left: 56px;
+    background: #0f172a;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateX(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.social-float-item:hover .social-float-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .social-float-bar {
+        bottom: 85px;
+        left: 15px;
+    }
+    .social-float-item {
+        width: 40px;
+        height: 40px;
+        font-size: 1.05rem;
+    }
+}
