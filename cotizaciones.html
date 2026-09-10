@@ -674,10 +674,9 @@
                     </div>
 
                     <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a href="https://wa.me/51922784328?text=Hola%2C%20deseo%20adquirir%20el%20sistema%20de%20cotizaciones%20en%20Excel%20por%20el%20costo%20de%20S%2F20%20o%20%248%20USD."
-                            target="_blank" class="btn-cyan text-decoration-none">
-                            <i class="fab fa-whatsapp"></i> Adquirir por WhatsApp
-                        </a>
+                        <button type="button" class="btn-cyan border-0 text-decoration-none" data-bs-toggle="modal" data-bs-target="#downloadModal">
+                            <i class="fas fa-download"></i> Descargar archivo
+                        </button>
 
                         <a href="#video-tutorial" class="btn-ghost-p text-decoration-none">
                             <i class="fab fa-youtube text-danger fs-5"></i> Ver video tutorial
@@ -1255,6 +1254,66 @@
                 </div>
                 <div class="modal-body p-0">
                     <iframe id="hotmartIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Descargar Sistema y Pasos de Habilitación -->
+    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="background:#0f172a; color:#fff; border-radius:20px; border:1px solid var(--line);">
+                <div class="modal-header border-0 pb-3" style="background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <h5 class="modal-title fw-bold mb-0 fs-5" id="downloadModalLabel" style="color: #ffffff !important;">
+                        <i class="fas fa-file-excel text-success me-2"></i>Descargar Sistema de <span style="color: #4ade80;">Cotizaciones Pro</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    
+                    <!-- 1. Botón de Descargar Archivo -->
+                    <div class="p-4 rounded-4 text-center mb-4" style="background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.25);">
+                        <div class="mb-3">
+                            <i class="fas fa-file-excel fa-4x text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-white mb-2">COTIZADOR_PRO V20.5.xlsm</h4>
+                        <p class="text-white-50 small mb-3">Archivo oficial en Microsoft Excel con Macros habilitadas — Versión 20.5 Pro</p>
+                        <a href="COTIZADOR_PRO V20.5.xlsm" download="COTIZADOR_PRO V20.5.xlsm" class="btn btn-lg text-white fw-bold px-4 py-3 shadow-lg" style="background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 12px;">
+                            <i class="fas fa-download me-2"></i>Descargar Archivo Ahora (.xlsm)
+                        </a>
+                    </div>
+
+                    <!-- 2. Pasos para Habilitar el Archivo Excel -->
+                    <div class="pt-2">
+                        <h5 class="fw-bold text-white mb-3 d-flex align-items-center gap-2">
+                            <i class="fas fa-shield-alt text-warning"></i> Pasos para Habilitar las Macros en Excel
+                        </h5>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3 h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);">
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <span class="badge bg-warning text-dark fw-bold rounded-circle" style="width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center;">1</span>
+                                        <strong class="text-white">Desbloquear el archivo</strong>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Haz clic derecho en el archivo descargado > <strong>Propiedades</strong> > En la pestaña <em>General</em> marca la casilla <strong>"Desbloquear"</strong> y pulsa <em>Aceptar</em>.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3 h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);">
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <span class="badge bg-success fw-bold rounded-circle" style="width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center;">2</span>
+                                        <strong class="text-white">Habilitar Contenido</strong>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Abre el archivo en Excel y haz clic en el botón amarillo <strong>"Habilitar contenido"</strong> en la barra de advertencia superior.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 justify-content-center pt-0 pb-4">
+                    <small class="text-white-50"><i class="fas fa-info-circle me-1"></i> Exclusivo para Microsoft Excel (2019 o superior) en PC o Laptop con Windows</small>
                 </div>
             </div>
         </div>
