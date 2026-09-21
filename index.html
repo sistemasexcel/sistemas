@@ -570,7 +570,7 @@
             max-width: 620px;
         }
 
-        /* ===== SLIDER ===== */
+        /* ===== CATÁLOGOS Y PRODUCTOS ===== */
         .slider-section {
             background: var(--bg2);
             border-top: 1px solid var(--line);
@@ -579,35 +579,21 @@
             overflow: hidden;
         }
 
-        .slider-shell {
-            position: relative;
-            margin: 0 -12px;
-        }
-
-        .slider-viewport {
-            overflow: hidden;
-            border-radius: 22px;
-        }
-
-        .slider-track {
-            display: flex;
-            transition: transform .65s cubic-bezier(.7, 0, .2, 1);
-        }
-
-        .sld-slide {
-            flex: 0 0 100%;
-            min-width: 100%;
-        }
-
         .sld-inner {
             background: linear-gradient(160deg, #101a30, #0a0f1e);
             border: 1px solid var(--line);
             border-radius: 22px;
-            padding: 28px;
-            margin: 12px;
+            padding: 32px 28px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .9);
+            box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .8);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .sld-inner:hover {
+            transform: translateY(-5px);
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 30px 70px -20px rgba(34, 197, 94, 0.25);
         }
 
         .sld-inner::before {
@@ -1440,7 +1426,7 @@
             <div class="sec-head text-center" data-aos="fade-up">
                 <span class="tag">&gt; EXPLORA EL CATÁLOGO</span>
                 <h2>Nuestros sistemas listos para <span class="grad">usar</span></h2>
-                <p class="mx-auto">Desliza y explora cada sistema: sus capturas reales, características y precios.</p>
+                <p class="mx-auto">Explora el catálogo completo de nuestros sistemas: capturas reales, características y precios.</p>
 
                 <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill mt-3 shadow-sm" style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); color: #fcd34d; font-size: 0.85rem; font-weight: 600;">
                     <i class="fas fa-clock text-warning"></i>
@@ -1448,290 +1434,234 @@
                 </div>
             </div>
 
-            <div class="slider-shell" id="sliderShell" data-aos="fade-up" data-aos-delay="80">
-                <div class="slider-viewport">
-                    <div class="slider-track" id="sliderTrack">
+            <div class="d-flex flex-column gap-4" data-aos="fade-up" data-aos-delay="80">
 
-                        <!-- Slide 1: BoticaPro -->
-                        <div class="sld-slide">
-                            <div class="sld-inner">
-                                <div class="row align-items-center g-4">
-                                    <div class="col-lg-7">
-                                        <div class="sld-media">
-                                            <div class="sld-badge-group">
-                                                <span class="sld-badge excel">Excel · VBA</span>
-                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC /
-                                                    Laptop</span>
-                                            </div>
-                                            <div class="sld-frame">
-                                                <div class="fw-bar">
-                                                    <span></span><span></span><span></span><small>BoticaPro EX
-                                                        13.5</small>
-                                                </div>
-                                                <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5">
-                                            </div>
-                                        </div>
+                <!-- 1. BoticaPro EX 13.5 -->
+                <div class="sld-inner" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div class="sld-media">
+                                <div class="sld-badge-group">
+                                    <span class="sld-badge excel">Excel · VBA</span>
+                                    <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                </div>
+                                <div class="sld-frame">
+                                    <div class="fw-bar">
+                                        <span></span><span></span><span></span><small>BoticaPro EX 13.5</small>
                                     </div>
-                                    <div class="col-lg-5">
-                                        <div class="sld-body">
-                                            <span class="sld-cat">Boticas y Farmacias</span>
-                                            <h3>BoticaPro EX 13.5</h3>
-                                            <p class="desc">Sistema para boticas y farmacias con venta fraccionada.</p>
-                                            <ul class="sld-features">
-                                                <li><i class="bi bi-check-circle-fill"></i> Venta fraccionada</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Kardex automático</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Alertas de vencimiento</li>
-                                            </ul>
-                                            <div class="sld-price"><small>Precio desde</small>S/ 50.00 | $15 USD</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <a href="botica.html" class="sld-btn text-decoration-none">💊 Ver
-                                                    detalles</a>
-                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20BoticaPro%20EX%2013.5"
-                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
-                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="BoticaPro EX 13.5">
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Slide 2: Ventas e Inventario -->
-                        <div class="sld-slide">
-                            <div class="sld-inner">
-                                <div class="row align-items-center g-4">
-                                    <div class="col-lg-7">
-                                        <div class="sld-media">
-                                            <div class="sld-badge-group">
-                                                <span class="sld-badge excel">Excel · VBA</span>
-                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC /
-                                                    Laptop</span>
-                                            </div>
-                                            <div class="sld-frame">
-                                                <div class="fw-bar"><span></span><span></span><span></span><small>Ventas
-                                                        e Inventario V6.5</small></div>
-                                                <img src="img-ventas/2 menu principal.png"
-                                                    alt="Ventas e Inventario V6.5">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="sld-body">
-                                            <span class="sld-cat">Ferreterías · Bodegas · Papelerías</span>
-                                            <h3>Ventas e Inventario V6.5</h3>
-                                            <p class="desc">Ideal para comercios de todo tipo: ventas, stock y código de
-                                                barras.</p>
-                                            <ul class="sld-features">
-                                                <li><i class="bi bi-check-circle-fill"></i> Control de inventario</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Cotizaciones</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Código de barras</li>
-                                            </ul>
-                                            <div class="sld-price"><small>Precio desde</small>S/ 50.00 | $15 USD</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <a href="ventas.html" class="sld-btn text-decoration-none">📦 Ver
-                                                    detalles</a>
-                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Ventas%20e%20Inventario"
-                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
-                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-lg-5">
+                            <div class="sld-body">
+                                <span class="sld-cat">Boticas y Farmacias</span>
+                                <h3>BoticaPro EX 13.5</h3>
+                                <p class="desc">Sistema para boticas y farmacias con venta fraccionada.</p>
+                                <ul class="sld-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Venta fraccionada</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Kardex automático</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Alertas de vencimiento</li>
+                                </ul>
+                                <div class="sld-price"><small>Precio desde</small>S/ 50.00 | $15 USD</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="botica.html" class="sld-btn text-decoration-none">💊 Ver detalles</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20BoticaPro%20EX%2013.5"
+                                        target="_blank" class="sld-btn-ghost text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Slide 3: VET-SYSTEM PRO -->
-                        <div class="sld-slide">
-                            <div class="sld-inner">
-                                <div class="row align-items-center g-4">
-                                    <div class="col-lg-7">
-                                        <div class="sld-media">
-                                            <div class="sld-badge-group">
-                                                <span class="sld-badge excel">Excel · VBA</span>
-                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC /
-                                                    Laptop</span>
-                                            </div>
-                                            <div class="sld-frame">
-                                                <div class="fw-bar">
-                                                    <span></span><span></span><span></span><small>VET-SYSTEM PRO</small>
-                                                </div>
-                                                <img src="img_veterinaria/2 dashboard PRINCIPAL.jpg"
-                                                    alt="VET-SYSTEM PRO">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="sld-body">
-                                            <span class="sld-cat">Veterinarias y Clínicas</span>
-                                            <h3>VET-SYSTEM PRO V7.5</h3>
-                                            <p class="desc">Gestiona tu veterinaria de forma completa y profesional.</p>
-                                            <ul class="sld-features">
-                                                <li><i class="bi bi-check-circle-fill"></i> Historias clínicas</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Control de vacunas</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Semáforo de vacunación</li>
-                                            </ul>
-                                            <div class="sld-price"><small>Precio desde</small>S/ 30.00 | $12 USD</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <a href="veterinaria.html" class="sld-btn text-decoration-none">🐾 Ver
-                                                    detalles</a>
-                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20VET-SYSTEM%20PRO"
-                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
-                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 4: Cotizaciones Excel -->
-                        <div class="sld-slide">
-                            <div class="sld-inner">
-                                <div class="row align-items-center g-4">
-                                    <div class="col-lg-7">
-                                        <div class="sld-media">
-                                            <div class="sld-badge-group">
-                                                <span class="sld-badge excel">Excel · VBA</span>
-                                                <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC /
-                                                    Laptop</span>
-                                            </div>
-                                            <div class="sld-frame">
-                                                <div class="fw-bar">
-                                                    <span></span><span></span><span></span><small>Cotizaciones
-                                                        Pro</small>
-                                                </div>
-                                                <img src="img_cotizacion/02 menu principal.png"
-                                                    alt="Sistema de Cotizaciones Pro">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="sld-body">
-                                            <span class="sld-cat">Ventas y Servicios</span>
-                                            <h3>Sistema de Cotizaciones Pro</h3>
-                                            <p class="desc">Genera cotizaciones profesionales en segundos.</p>
-                                            <ul class="sld-features">
-                                                <li><i class="bi bi-check-circle-fill"></i> Consultas DNI/RUC</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Base de datos clientes</li>
-                                            </ul>
-                                            <div class="sld-price"><small>Precio desde</small>S/ 10.00 | $5 USD</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <a href="cotizaciones.html" class="sld-btn text-decoration-none">📄 Ver
-                                                    detalles</a>
-                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Cotizaciones"
-                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
-                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 5: CrediPro -->
-                        <div class="sld-slide">
-                            <div class="sld-inner">
-                                <div class="row align-items-center g-4">
-                                    <div class="col-lg-7">
-                                        <div class="sld-media">
-                                            <div class="sld-badge-group">
-                                                <span class="sld-badge web">Web · Nube</span>
-                                                <span class="sld-device-tag web-all"><i
-                                                        class="fas fa-mobile-alt me-1"></i><i
-                                                        class="fas fa-laptop me-1"></i> Todos los dispositivos</span>
-                                            </div>
-                                            <div class="sld-frame">
-                                                <div class="fw-bar">
-                                                    <span></span><span></span><span></span><small>CrediPro V1.5</small>
-                                                </div>
-                                                <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="sld-body">
-                                            <span class="sld-cat">Financieras y Prestamistas</span>
-                                            <h3>CrediPro V1.5</h3>
-                                            <p class="desc">Préstamos, cuotas y cobros en la nube, vinculado a tu Gmail.
-                                            </p>
-                                            <ul class="sld-features">
-                                                <li><i class="bi bi-check-circle-fill"></i> Consulta DNI y RUC</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Control de Cuotas Vencidas
-                                                </li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Dashboard de Cobranzas</li>
-                                            </ul>
-                                            <div class="sld-price"><small>Precio único</small>S/ 30.00 | $10 USD</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <a href="credipro.html" class="sld-btn text-decoration-none">🌐 Ver
-                                                    detalles</a>
-                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CrediPro"
-                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
-                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 6: Cotizaciones Web -->
-                        <div class="sld-slide">
-                            <div class="sld-inner">
-                                <div class="row align-items-center g-4">
-                                    <div class="col-lg-7">
-                                        <div class="sld-media">
-                                            <div class="sld-badge-group">
-                                                <span class="sld-badge web">Web · Nube</span>
-                                                <span class="sld-device-tag web-all"><i
-                                                        class="fas fa-mobile-alt me-1"></i><i
-                                                        class="fas fa-laptop me-1"></i> Todos los dispositivos</span>
-                                            </div>
-                                            <div class="sld-frame">
-                                                <div class="fw-bar">
-                                                    <span></span><span></span><span></span><small>Cotizaciones
-                                                        Web</small>
-                                                </div>
-                                                <img src="img_cotizacion/COTIZADORWEB.png"
-                                                    alt="Sistema de Cotizaciones Web">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="sld-body">
-                                            <span class="sld-cat">Ventas en Línea</span>
-                                            <h3>Sistema de Cotizaciones Web</h3>
-                                            <p class="desc">Cotizaciones desde tu móvil o laptop con almacenamiento en
-                                                Google.</p>
-                                            <ul class="sld-features">
-                                                <li><i class="bi bi-check-circle-fill"></i> Consultas DNI y RUC</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
-                                                <li><i class="bi bi-check-circle-fill"></i> Multiplataforma Web</li>
-                                            </ul>
-                                            <div class="sld-price"><small>Precio único</small>S/ 30.00 | $10 USD</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <a href="cotizadorpro.html" class="sld-btn text-decoration-none">🌐 Ver
-                                                    detalles</a>
-                                                <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Cotizador%20Web"
-                                                    target="_blank" class="sld-btn-ghost text-decoration-none"><i
-                                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <div class="sld-nav">
-                    <button class="sld-arrow" id="prevSlide" aria-label="Anterior"><i
-                            class="fas fa-chevron-left"></i></button>
-                    <div class="sld-dots" id="sliderDots"></div>
-                    <button class="sld-arrow" id="nextSlide" aria-label="Siguiente"><i
-                            class="fas fa-chevron-right"></i></button>
+                <!-- 2. Ventas e Inventario V6.5 -->
+                <div class="sld-inner" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div class="sld-media">
+                                <div class="sld-badge-group">
+                                    <span class="sld-badge excel">Excel · VBA</span>
+                                    <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                </div>
+                                <div class="sld-frame">
+                                    <div class="fw-bar"><span></span><span></span><span></span><small>Ventas e Inventario V6.5</small></div>
+                                    <img src="img-ventas/2 menu principal.png" alt="Ventas e Inventario V6.5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="sld-body">
+                                <span class="sld-cat">Ferreterías · Bodegas · Papelerías</span>
+                                <h3>Ventas e Inventario V6.5</h3>
+                                <p class="desc">Ideal para comercios de todo tipo: ventas, stock y código de barras.</p>
+                                <ul class="sld-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Control de inventario</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Cotizaciones</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Código de barras</li>
+                                </ul>
+                                <div class="sld-price"><small>Precio desde</small>S/ 50.00 | $15 USD</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="ventas.html" class="sld-btn text-decoration-none">📦 Ver detalles</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Ventas%20e%20Inventario"
+                                        target="_blank" class="sld-btn-ghost text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- 3. Sistema de Cotizaciones Pro -->
+                <div class="sld-inner" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div class="sld-media">
+                                <div class="sld-badge-group">
+                                    <span class="sld-badge excel">Excel · VBA</span>
+                                    <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                </div>
+                                <div class="sld-frame">
+                                    <div class="fw-bar">
+                                        <span></span><span></span><span></span><small>Cotizaciones Pro</small>
+                                    </div>
+                                    <img src="img_cotizacion/02 menu principal.png" alt="Sistema de Cotizaciones Pro">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="sld-body">
+                                <span class="sld-cat">Ventas y Servicios</span>
+                                <h3>Sistema de Cotizaciones Pro</h3>
+                                <p class="desc">Genera cotizaciones profesionales en segundos.</p>
+                                <ul class="sld-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Consultas DNI/RUC</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Base de datos clientes</li>
+                                </ul>
+                                <div class="sld-price"><small>Precio desde</small>S/ 10.00 | $5 USD</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="cotizaciones.html" class="sld-btn text-decoration-none">📄 Ver detalles</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Cotizaciones"
+                                        target="_blank" class="sld-btn-ghost text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Sistema de Cotizaciones Web -->
+                <div class="sld-inner" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div class="sld-media">
+                                <div class="sld-badge-group">
+                                    <span class="sld-badge web">Web · Nube</span>
+                                    <span class="sld-device-tag web-all"><i class="fas fa-mobile-alt me-1"></i><i class="fas fa-laptop me-1"></i> Todos los dispositivos</span>
+                                </div>
+                                <div class="sld-frame">
+                                    <div class="fw-bar">
+                                        <span></span><span></span><span></span><small>Cotizaciones Web</small>
+                                    </div>
+                                    <img src="img_cotizacion/COTIZADORWEB.png" alt="Sistema de Cotizaciones Web">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="sld-body">
+                                <span class="sld-cat">Ventas en Línea</span>
+                                <h3>Sistema de Cotizaciones Web</h3>
+                                <p class="desc">Cotizaciones desde tu móvil o laptop con almacenamiento en Google.</p>
+                                <ul class="sld-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Consultas DNI y RUC</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Exportación a PDF</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Multiplataforma Web</li>
+                                </ul>
+                                <div class="sld-price"><small>Precio único</small>S/ 30.00 | $10 USD</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="cotizadorpro.html" class="sld-btn text-decoration-none">🌐 Ver detalles</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Cotizador%20Web"
+                                        target="_blank" class="sld-btn-ghost text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. VET-SYSTEM PRO V7.5 -->
+                <div class="sld-inner" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div class="sld-media">
+                                <div class="sld-badge-group">
+                                    <span class="sld-badge excel">Excel · VBA</span>
+                                    <span class="sld-device-tag pc"><i class="fas fa-desktop"></i> Para PC / Laptop</span>
+                                </div>
+                                <div class="sld-frame">
+                                    <div class="fw-bar">
+                                        <span></span><span></span><span></span><small>VET-SYSTEM PRO</small>
+                                    </div>
+                                    <img src="img_veterinaria/2 dashboard PRINCIPAL.jpg" alt="VET-SYSTEM PRO">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="sld-body">
+                                <span class="sld-cat">Veterinarias y Clínicas</span>
+                                <h3>VET-SYSTEM PRO V7.5</h3>
+                                <p class="desc">Gestiona tu veterinaria de forma completa y profesional.</p>
+                                <ul class="sld-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Historias clínicas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Control de vacunas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Semáforo de vacunación</li>
+                                </ul>
+                                <div class="sld-price"><small>Precio desde</small>S/ 30.00 | $12 USD</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="veterinaria.html" class="sld-btn text-decoration-none">🐾 Ver detalles</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20VET-SYSTEM%20PRO"
+                                        target="_blank" class="sld-btn-ghost text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. CrediPro V1.5 -->
+                <div class="sld-inner" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div class="sld-media">
+                                <div class="sld-badge-group">
+                                    <span class="sld-badge web">Web · Nube</span>
+                                    <span class="sld-device-tag web-all"><i class="fas fa-mobile-alt me-1"></i><i class="fas fa-laptop me-1"></i> Todos los dispositivos</span>
+                                </div>
+                                <div class="sld-frame">
+                                    <div class="fw-bar">
+                                        <span></span><span></span><span></span><small>CrediPro V1.5</small>
+                                    </div>
+                                    <img src="img/CREDIPRO (1).jpg" alt="CrediPro V1.5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="sld-body">
+                                <span class="sld-cat">Financieras y Prestamistas</span>
+                                <h3>CrediPro V1.5</h3>
+                                <p class="desc">Préstamos, cuotas y cobros en la nube, vinculado a tu Gmail.</p>
+                                <ul class="sld-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Consulta DNI y RUC</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Control de Cuotas Vencidas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Dashboard de Cobranzas</li>
+                                </ul>
+                                <div class="sld-price"><small>Precio único</small>S/ 30.00 | $10 USD</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="credipro.html" class="sld-btn text-decoration-none">🌐 Ver detalles</a>
+                                    <a href="https://wa.me/51922784328?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CrediPro"
+                                        target="_blank" class="sld-btn-ghost text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -2240,59 +2170,7 @@
             start();
         })();
 
-        // ===== SLIDER DE SISTEMAS (10 SEGUNDOS) =====
-        (function () {
-            const track = document.getElementById('sliderTrack');
-            const shell = document.getElementById('sliderShell');
-            const dotsBox = document.getElementById('sliderDots');
-            if (!track || !shell || !dotsBox) return;
-            const slides = track.children;
-            const total = slides.length;
-            let index = 0;
-            let timer = null;
 
-            for (let i = 0; i < total; i++) {
-                const d = document.createElement('button');
-                d.className = 'sld-dot' + (i === 0 ? ' active' : '');
-                d.setAttribute('aria-label', 'Ir al sistema ' + (i + 1));
-                d.addEventListener('click', function () { go(i); restart(); });
-                dotsBox.appendChild(d);
-            }
-
-            function go(i) {
-                index = (i + total) % total;
-                track.style.transform = 'translateX(-' + (index * 100) + '%)';
-                Array.from(dotsBox.children).forEach(function (d, k) {
-                    d.classList.toggle('active', k === index);
-                });
-            }
-
-            function next() { go(index + 1); }
-            function prev() { go(index - 1); }
-            function start() { timer = setInterval(next, 10000); }
-            function stop() { if (timer) clearInterval(timer); }
-            function restart() { stop(); start(); }
-
-            const nextEl = document.getElementById('nextSlide');
-            const prevEl = document.getElementById('prevSlide');
-            if (nextEl) nextEl.addEventListener('click', function () { next(); restart(); });
-            if (prevEl) prevEl.addEventListener('click', function () { prev(); restart(); });
-
-            shell.addEventListener('mouseenter', stop);
-            shell.addEventListener('mouseleave', start);
-
-            let x0 = null;
-            shell.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-            shell.addEventListener('touchend', function (e) {
-                if (x0 === null) return;
-                const dx = e.changedTouches[0].clientX - x0;
-                if (dx > 50) { prev(); restart(); }
-                else if (dx < -50) { next(); restart(); }
-                x0 = null;
-            }, { passive: true });
-
-            start();
-        })();
 
         // ===== CARROUSEL DE TESTIMONIOS =====
         (function () {
