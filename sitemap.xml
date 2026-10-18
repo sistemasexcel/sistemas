@@ -2,46 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sistemasexcel.site/</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/index.html</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/cotizaciones.html</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/ventas.html</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/botica.html</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/veterinaria.html</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/cotizadorpro.html</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/credipro.html</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://sistemasexcel.site/sistemasweb.html</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -585,9 +585,18 @@
             box-shadow: 0 4px 15px rgba(34, 197, 94, 0.45) !important;
         }
     </style>
+
+    <!-- SEO & Open Graph Tags -->
+    <link rel="canonical" href="https://sistemasexcel.site/ventas.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sistemasexcel.site/ventas.html" />
+    <meta property="og:title" content="Sistema de Ventas e Inventario V6.5 Pro - Control Total en Excel | Sistemas Excel" />
+    <meta property="og:description" content="Sistema de Ventas e Inventario Pro V6.5 desarrollado en Excel. Lector de código de barras, kardex valorado, cierre de caja y reportes de utilidades. Exclusivo para PC y Laptop." />
+    <meta property="og:image" content="https://sistemasexcel.site/img/logo.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
 </head>
 
-<body>
+<body data-page-system="ventas">
 
     <!-- Top Bar -->
     <div class="topbar d-none d-md-block">
@@ -632,8 +641,7 @@
                     <li class="nav-item"><a class="nav-link" href="#precio">Precios</a></li>
                 </ul>
                 <div class="d-flex mt-3 mt-lg-0">
-                    <a href="https://wa.me/51922784328?text=Hola%20%F0%9F%91%8B%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20deseo%20cotizar%20el%20%2ASistema%20de%20Ventas%20e%20Inventario%20V6.5%2A."
-                        target="_blank" class="btn-wa-nav text-decoration-none">
+                    <a href="#" class="btn-wa-nav text-decoration-none" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="ventas">
                         <i class="fab fa-whatsapp"></i> Cotizar ahora
                     </a>
                 </div>
@@ -672,8 +680,7 @@
                     </div>
 
                     <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a href="https://wa.me/51922784328?text=Hola%20%F0%9F%91%8B%2C%20estoy%20interesado%20en%20el%20%2ASistema%20de%20Ventas%20e%20Inventario%20V6.5%2A%20y%20quisiera%20conocer%20c%C3%B3mo%20funciona.%20%C2%BFPodr%C3%ADan%20brindarme%20una%20%2Ademo%20para%20probarlo%20antes%20de%20adquirirlo%2A%3F"
-                            target="_blank" class="btn-cyan text-decoration-none">
+                        <a href="#" class="btn-cyan text-decoration-none" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="ventas">
                             <i class="fab fa-whatsapp"></i> Probar Demo Gratis
                         </a>
 
@@ -1215,15 +1222,8 @@
                 <div class="modal-body p-0 mt-3">
                     <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="paypal-tab" data-bs-toggle="tab"
-                                data-bs-target="#paypal-content" type="button" role="tab" aria-controls="paypal-content"
-                                aria-selected="true">
-                                <i class="fab fa-paypal me-2"></i>Pago Internacional
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
-                                type="button" role="tab" aria-controls="peru-content" aria-selected="false">
+                            <button class="nav-link active" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" aria-controls="peru-content" aria-selected="true">
                                 <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
                             </button>
                         </li>
@@ -1235,27 +1235,7 @@
                         </li>
                     </ul>
                     <div class="tab-content p-4" id="paymentTabsContent">
-                        <div class="tab-pane fade show active" id="paypal-content" role="tabpanel"
-                            aria-labelledby="paypal-tab">
-                            <div class="text-center text-white">
-                                <h4 class="mb-3 fw-bold">Pago Manual con PayPal</h4>
-                                <p>Realiza un pago de <strong id="modal-price-usd" style="color:var(--emerald);">$15.00
-                                        USD</strong> a la cuenta de PayPal:</p>
-                                <div class="alert alert-dark border my-3">
-                                    <h5 class="fw-bold mb-0 text-emerald">vjoel214@gmail.com</h5>
-                                </div>
-                                <img src="img/Paypal.webp" alt="Pagar con PayPal" class="img-fluid my-3"
-                                    style="max-height: 50px;">
-                                <a id="modal-wsp-paypal"
-                                    href="https://wa.me/51922784328?text=Hola,%20acabo%20de%20realizar%20el%20pago"
-                                    target="_blank"
-                                    class="btn btn-success text-center mt-3 d-block text-decoration-none fw-bold py-3">
-                                    <i class="fab fa-whatsapp me-2"></i>
-                                    Enviar comprobante de PayPal a WhatsApp
-                                </a>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                        <div class="tab-pane fade show active" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
                             <div class="text-white">
                                 <h4 class="mb-3 text-center fw-bold">Pago con Yape / Plin (Perú)</h4>
                                 <p class="text-center text-white">Realiza el pago y envía el comprobante por WhatsApp
@@ -1409,8 +1389,7 @@
     </div>
 
     <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/51922784328?text=Hola%20%F0%9F%91%8B%2C%20vengo%20desde%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20quiero%20informaci%C3%B3n%20sobre%20el%20%2ASistema%20de%20Ventas%20e%20Inventario%20V6.5%2A."
-        class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+    <a href="#" class="whatsapp-float" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="ventas" title="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1448,11 +1427,8 @@
                 const hotmartUrl = button.getAttribute('data-hotmart');
                 const hotmartBtn = document.getElementById('hotmart-btn');
 
-                if (usd && pen && version) {
-                    document.getElementById('modal-price-usd').textContent = '$' + usd + ' USD';
+                if (pen && version) {
                     document.getElementById('modal-price-pen').textContent = 'S/' + pen;
-
-                    document.getElementById('modal-wsp-paypal').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola 👋, acabo de realizar el pago de $' + usd + ' USD por PayPal para ' + version + '. Adjunto mi comprobante.');
                     document.getElementById('modal-wsp-yape').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola 👋, acabo de realizar el depósito de S/' + pen + ' por Yape/Plin para ' + version + '. Adjunto mi comprobante.');
                 }
 
@@ -1573,6 +1549,79 @@
             }
         });
     </script>
+    <!-- Modal Opciones de WhatsApp por Sistema -->
+    <div class="modal fade" id="whatsappContactModal" tabindex="-1" aria-labelledby="whatsappContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 580px;">
+            <div class="modal-content" style="background:#0b1329; color:#fff; border-radius:24px; border:1px solid rgba(255,255,255,0.15); box-shadow:0 25px 60px -15px rgba(0,0,0,0.85); overflow:hidden;">
+                <div class="modal-header border-0 pb-2 pt-4 px-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div style="width:46px; height:46px; border-radius:14px; background:rgba(34,197,94,0.18); display:flex; align-items:center; justify-content:center; color:#22c55e; font-size:1.6rem; flex-shrink:0;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="modal-title fw-bold mb-0" id="whatsappContactModalLabel" style="color:#ffffff !important; font-family:'Sora',sans-serif; font-size:1.25rem;">Elige tu consulta por WhatsApp</h4>
+                            <p class="wsp-modal-subtitle mb-0 small" style="color:#94a3b8 !important;">Atención personalizada y respuesta inmediata</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-3">
+                    <div class="mb-3 p-3 rounded-3 d-flex align-items-center justify-content-between" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+                        <span class="small text-white-50"><i class="fas fa-layer-group me-1 text-success"></i> Sistema seleccionado:</span>
+                        <div>
+                            <span class="badge bg-dark border border-secondary border-opacity-25 me-2" id="wspModalSystemBadge">📦 Ventas e Inventario</span>
+                            <strong class="text-white fw-bold" id="wspModalSystemName" style="color:#34d399 !important;">Sistema de Ventas e Inventario V6.5</strong>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3">
+                        <!-- Opción 1: Solicitar Demo -->
+                        <div class="wsp-option-card p-3 p-md-4 rounded-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div style="width:48px; height:48px; border-radius:14px; background:rgba(34,197,94,0.14); display:flex; align-items:center; justify-content:center; color:#4ade80; font-size:1.4rem; flex-shrink:0;">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
+                                        <h5 class="fw-bold text-white mb-0 fs-6">1. Solicitar demo</h5>
+                                        <span class="badge rounded-pill fw-semibold" style="background:rgba(34,197,94,0.18); color:#4ade80; border:1px solid rgba(34,197,94,0.3); font-size:0.75rem; padding:5px 12px;">Mensaje automático 1</span>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Para conocer el funcionamiento del sistema antes de comprarlo.</p>
+                                </div>
+                            </div>
+
+                            <a href="#" id="wspDemoLink" target="_blank" class="btn btn-whatsapp-action w-100 fw-bold py-2 px-3 d-flex align-items-center justify-content-center gap-2 text-white" style="background:linear-gradient(135deg, #22c55e, #16a34a); border:none; font-size:0.95rem;">
+                                <i class="fab fa-whatsapp fs-5"></i> Solicitar Demo por WhatsApp
+                            </a>
+                        </div>
+
+                        <!-- Opción 2: Consultar precio y comprar -->
+                        <div class="wsp-option-card p-3 p-md-4 rounded-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div style="width:48px; height:48px; border-radius:14px; background:rgba(16,185,129,0.18); display:flex; align-items:center; justify-content:center; color:#34d399; font-size:1.4rem; flex-shrink:0;">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
+                                        <h5 class="fw-bold text-white mb-0 fs-6">2. Consultar precio y comprar</h5>
+                                        <span class="badge rounded-pill fw-semibold" style="background:rgba(16,185,129,0.18); color:#34d399; border:1px solid rgba(16,185,129,0.3); font-size:0.75rem; padding:5px 12px;">Mensaje automático 2</span>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Para quienes ya tienen interés en adquirir el sistema.</p>
+                                </div>
+                            </div>
+
+                            <a href="#" id="wspComprarLink" target="_blank" class="btn btn-whatsapp-action w-100 fw-bold py-2 px-3 d-flex align-items-center justify-content-center gap-2 text-white" style="background:linear-gradient(135deg, #10b981, #059669); border:none; font-size:0.95rem;">
+                                <i class="fab fa-whatsapp fs-5"></i> Consultar Precio y Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Modal Script -->
+    <script src="whatsapp-modal.js"></script>
 </body>
 
 </html>
