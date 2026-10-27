@@ -582,6 +582,177 @@
             background: var(--emerald, #4ade80) !important;
             box-shadow: 0 4px 15px rgba(34, 197, 94, 0.45) !important;
         }
+        /* ===== VIDEO COURSE / PLAYLIST STYLES ===== */
+        .video-playlist-container {
+            background: rgba(13, 20, 36, 0.7);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-main-stage {
+            background: #060a14;
+            border-bottom: 1px solid var(--line);
+        }
+
+        @media (min-width: 992px) {
+            .video-main-stage {
+                border-bottom: none;
+                border-right: 1px solid var(--line);
+            }
+        }
+
+        .video-playlist-sidebar {
+            background: rgba(8, 13, 24, 0.85);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .playlist-header {
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .playlist-scroll {
+            max-height: 480px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--botica-cyan) rgba(255, 255, 255, 0.05);
+        }
+
+        .playlist-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .playlist-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .playlist-scroll::-webkit-scrollbar-thumb {
+            background: var(--botica-cyan);
+            border-radius: 4px;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.25s ease;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border-left: 3px solid transparent;
+            color: var(--text);
+        }
+
+        .playlist-item:hover {
+            background: rgba(14, 165, 233, 0.08);
+            color: var(--white);
+        }
+
+        .playlist-item.active {
+            background: rgba(14, 165, 233, 0.15);
+            border-left: 3px solid var(--botica-cyan);
+            color: var(--white);
+        }
+
+        .playlist-thumb-wrap {
+            position: relative;
+            width: 86px;
+            min-width: 86px;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .playlist-thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .playlist-item:hover .playlist-thumb-wrap img {
+            transform: scale(1.08);
+        }
+
+        .playlist-thumb-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-family: var(--mono);
+        }
+
+        .playlist-item.active .playlist-thumb-wrap::after {
+            content: '\f04b';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background: var(--botica-cyan);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.8);
+        }
+
+        .playlist-item-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .playlist-item-index {
+            font-size: 0.7rem;
+            color: var(--botica-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .playlist-item.active .playlist-item-index {
+            color: #38bdf8;
+        }
+
+        .playlist-item-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .video-active-meta {
+            padding: 1.25rem;
+            background: rgba(10, 15, 30, 0.95);
+            border-top: 1px solid var(--line);
+        }
     </style>
 
     <!-- SEO & Open Graph Tags Added Automatically -->
@@ -716,81 +887,310 @@
                     Excel (Office 2019 o superior).
                 </span>
             </div>
-        </div>
-
-        <!-- Video Tutorial Section: Habilitación y Uso de BoticaPro EX -->
+              <!-- Video Tutorial Section: Guía Completa y Actualizada en Video -->
         <section id="video-tutorial" class="sec"
             style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
             <div class="container">
                 <div class="sec-head text-center" data-aos="fade-up">
-                    <span class="tag">&gt; TUTORIALES EN VIDEO PASO A PASO</span>
-                    <h2>Aprende a habilitar, configurar y usar <span class="grad">BoticaPro EX</span></h2>
-                    <p class="mx-auto text-white" style="max-width: 680px;">
-                        Descubre en estos tutoriales cómo activar las macros, realizar la configuración en red local para múltiples PCs y las funciones clave del sistema.
+                    <span class="tag">&gt; CURSO COMPLETO EN VIDEO PASO A PASO (13 CLASES)</span>
+                    <h2>Aprende a dominar cada función de <span class="grad">BoticaPro EX 13.5</span></h2>
+                    <p class="mx-auto text-white" style="max-width: 720px;">
+                        Tutoriales oficiales actualizados paso a paso: desde las configuraciones iniciales, compras y ventas fraccionadas, hasta apertura de caja, utilidades y conexión en red local.
                     </p>
                 </div>
 
-                <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
-                    <!-- Video 1: Habilitación de Macros -->
-                    <div class="col-lg-4">
-                        <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
-                            style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
-                            <div>
-                                <div class="d-flex align-items-center gap-2 mb-3">
-                                    <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Video 1</span>
-                                    <h5 class="mb-0 text-white fs-6 fw-bold">Cómo Habilitar las Macros y Conexión DB</h5>
-                                </div>
-                                <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
-                                    style="border-color: rgba(14, 165, 233, 0.3) !important;">
-                                    <iframe src="https://www.youtube.com/embed/di-gGU3lqAk"
-                                        title="Cómo habilitar el sistema BoticaPro EX" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <p class="small text-muted mt-3 mb-0 text-center"><i
-                                    class="fas fa-key me-1 text-success"></i> Guía paso a paso para la activación de
-                                macros e instalación inicial.</p>
-                        </div>
-                    </div>
-
-                    <!-- Video 2: Uso del Sistema y Configuraciones Iniciales -->
-                    <div class="col-lg-4">
-                        <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
-                            style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
-                            <div>
-                                <div class="d-flex align-items-center gap-2 mb-3">
-                                    <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Video 2</span>
-                                    <h5 class="mb-0 text-white fs-6 fw-bold">Uso del Sistema y Configuraciones Iniciales</h5>
-                                </div>
-                                <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
-                                    style="border-color: rgba(139, 92, 246, 0.3) !important;">
-                                    <iframe src="https://www.youtube.com/embed/d2kw8fDiXik"
-                                        title="Uso del sistema y configuraciones iniciales BoticaPro EX"
+                <!-- Reproductor Interactivo con Playlist de Clases -->
+                <div class="video-playlist-container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row g-0">
+                        <!-- Pantalla Principal del Video -->
+                        <div class="col-lg-8 video-main-stage d-flex flex-column justify-content-between">
+                            <div class="p-2 p-md-3">
+                                <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-2xl border"
+                                    style="border-color: rgba(14, 165, 233, 0.4) !important;">
+                                    <iframe id="mainPlayerIframe"
+                                        src="https://www.youtube.com/embed/C8EoMJYtYDY?rel=0&enablejsapi=1"
+                                        title="BoticaPro EX 13.5 - Video Tutorial"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         allowfullscreen></iframe>
                                 </div>
                             </div>
-                            <p class="small text-muted mt-3 mb-0 text-center"><i class="fas fa-cogs me-1 text-info"></i>
-                                Tutorial completo de registro de medicamentos, fraccionamiento y ventas.</p>
-                        </div>
-                    </div>
-
-                    <!-- Video 3: Configuración en Red Local -->
-                    <div class="col-lg-4">
-                        <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
-                            style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
-                            <div>
-                                <div class="d-flex align-items-center gap-2 mb-3">
-                                    <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Video 3</span>
-                                    <h5 class="mb-0 text-white fs-6 fw-bold">Configuración en Red Local (Multi-PC)</h5>
+                            <!-- Meta del video seleccionado -->
+                            <div class="video-active-meta d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge bg-danger px-2 py-1" id="currentVideoBadge"><i class="fab fa-youtube me-1"></i> Clase 1 de 13</span>
+                                        <span class="badge bg-primary bg-opacity-25 text-info border border-info border-opacity-25" id="currentVideoModule">Configuración</span>
+                                    </div>
+                                    <h4 class="mb-0 text-white fs-5 fw-bold" id="currentVideoTitle">BoticaPro EX 13.5 (2026) 💊 | Configuraciones iniciales</h4>
                                 </div>
-                                <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
-                                    style="border-color: rgba(34, 197, 94, 0.3) !important;">
-                                    <iframe src="https://www.youtube.com/embed/gaoLOl6Ouj0"
-                                        title="Configuración en Red Local BoticaPro EX"
-                                        allowfullscreen></iframe>
+                                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                    <a id="currentYoutubeDirect" href="https://www.youtube.com/watch?v=C8EoMJYtYDY&list=PLS6Po-Z9_soQ&index=1" target="_blank" class="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill fw-semibold">
+                                        <i class="fab fa-youtube"></i> Ver en YouTube
+                                    </a>
                                 </div>
                             </div>
-                            <p class="small text-muted mt-3 mb-0 text-center"><i class="fas fa-network-wired me-1 text-warning"></i>
-                                Aprende a compartir la base de datos y conectar múltiples equipos en red.</p>
+                        </div>
+
+                        <!-- Sidebar / Lista de Reproducción con Miniaturas -->
+                        <div class="col-lg-4 video-playlist-sidebar">
+                            <div class="playlist-header d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fas fa-list-ol text-info fs-5"></i>
+                                    <div>
+                                        <h6 class="mb-0 text-white fw-bold">Plan de Aprendizaje</h6>
+                                        <small class="text-muted">13 Videos Prácticos</small>
+                                    </div>
+                                </div>
+                                <span class="badge rounded-pill" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3);">
+                                    <i class="fas fa-check-circle me-1"></i> Actualizado 2026
+                                </span>
+                            </div>
+
+                            <!-- Lista con Scroll -->
+                            <div class="playlist-scroll" id="tutorialPlaylist">
+                                <!-- Item 1 -->
+                                <button type="button" class="playlist-item active" data-vid="C8EoMJYtYDY" data-index="1" data-module="Configuración" data-title="BoticaPro EX 13.5 (2026) 💊 | Configuraciones iniciales">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/C8EoMJYtYDY/hqdefault.jpg" alt="Miniatura Clase 1" loading="lazy">
+                                        <span class="playlist-thumb-badge">01</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index"><i class="fas fa-play-circle me-1"></i> Clase 1</div>
+                                        <div class="playlist-item-title">Configuraciones iniciales y datos de la botica</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 2 -->
+                                <button type="button" class="playlist-item" data-vid="O2XRs7nyz9c" data-index="2" data-module="Medicamentos" data-title="BoticaPro EX 13.5 (2026) 💊 | Registro de Medicamentos">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/O2XRs7nyz9c/hqdefault.jpg" alt="Miniatura Clase 2" loading="lazy">
+                                        <span class="playlist-thumb-badge">02</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 2</div>
+                                        <div class="playlist-item-title">Registro de Medicamentos y Venta Fraccionada</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 3 -->
+                                <button type="button" class="playlist-item" data-vid="uEIhldjddZE" data-index="3" data-module="Compras" data-title="BoticaPro EX 13.5 (2026) 💊 | Registro de Compras">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/uEIhldjddZE/hqdefault.jpg" alt="Miniatura Clase 3" loading="lazy">
+                                        <span class="playlist-thumb-badge">03</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 3</div>
+                                        <div class="playlist-item-title">Registro de Compras e Ingreso al Inventario</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 4 -->
+                                <button type="button" class="playlist-item" data-vid="Pn54QLHU7KI" data-index="4" data-module="Inventario" data-title="BoticaPro EX 13.5 (2026) 💊 | Módulo de Kardex">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/Pn54QLHU7KI/hqdefault.jpg" alt="Miniatura Clase 4" loading="lazy">
+                                        <span class="playlist-thumb-badge">04</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 4</div>
+                                        <div class="playlist-item-title">Módulo de Kardex y Control Físico de Stock</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 5 -->
+                                <button type="button" class="playlist-item" data-vid="rFNgnV5Ruh0" data-index="5" data-module="Ventas" data-title="BoticaPro EX 13.5 (2026) 💊 | Módulo de Registro de Ventas">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/rFNgnV5Ruh0/hqdefault.jpg" alt="Miniatura Clase 5" loading="lazy">
+                                        <span class="playlist-thumb-badge">05</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 5</div>
+                                        <div class="playlist-item-title">Módulo de Punto de Venta y Facturación Rápida</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 6 -->
+                                <button type="button" class="playlist-item" data-vid="1K_qbTlU7Sk" data-index="6" data-module="Reportes" data-title="BoticaPro EX 13.5 (2026) 💊 | Reporte de Ventas">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/1K_qbTlU7Sk/hqdefault.jpg" alt="Miniatura Clase 6" loading="lazy">
+                                        <span class="playlist-thumb-badge">06</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 6</div>
+                                        <div class="playlist-item-title">Reporte de Ventas por Fechas, Turnos y Vendedor</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 7 -->
+                                <button type="button" class="playlist-item" data-vid="i0GeUHp3kVw" data-index="7" data-module="Caja" data-title="BoticaPro EX 13.5 (2026) 💊 | Reporte de apertura de caja">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/i0GeUHp3kVw/hqdefault.jpg" alt="Miniatura Clase 7" loading="lazy">
+                                        <span class="playlist-thumb-badge">07</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 7</div>
+                                        <div class="playlist-item-title">Reporte de Apertura y Cierre Cuadrado de Caja</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 8 -->
+                                <button type="button" class="playlist-item" data-vid="lC2Jqkla_48" data-index="8" data-module="Finanzas" data-title="BoticaPro EX 13.5 (2026) 💊 | Reporte de Utilidades">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/lC2Jqkla_48/hqdefault.jpg" alt="Miniatura Clase 8" loading="lazy">
+                                        <span class="playlist-thumb-badge">08</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 8</div>
+                                        <div class="playlist-item-title">Reporte de Utilidades y Ganancia Neta Real</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 9 -->
+                                <button type="button" class="playlist-item" data-vid="WMx1L_y53Eo" data-index="9" data-module="Directorio" data-title="BoticaPro EX 13.5 (2026) 💊 | Registro de Clientes y Proveedores">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/WMx1L_y53Eo/hqdefault.jpg" alt="Miniatura Clase 9" loading="lazy">
+                                        <span class="playlist-thumb-badge">09</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 9</div>
+                                        <div class="playlist-item-title">Directorio de Clientes y Proveedores Comerciales</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 10 -->
+                                <button type="button" class="playlist-item" data-vid="y-Iam0qCZ1w" data-index="10" data-module="Alertas" data-title="BoticaPro EX 13.5 (2026) 💊 | Desactivar alertas de vencimiento">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/y-Iam0qCZ1w/hqdefault.jpg" alt="Miniatura Clase 10" loading="lazy">
+                                        <span class="playlist-thumb-badge">10</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 10</div>
+                                        <div class="playlist-item-title">Control y Alertas de Fechas de Vencimiento</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 11 -->
+                                <button type="button" class="playlist-item" data-vid="nhzC6dB4h3Y" data-index="11" data-module="Resumen" data-title="BoticaPro EX 13.5 (2026) 💊 | RESUMEN RÁPIDO">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/nhzC6dB4h3Y/hqdefault.jpg" alt="Miniatura Clase 11" loading="lazy">
+                                        <span class="playlist-thumb-badge">11</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 11</div>
+                                        <div class="playlist-item-title">Resumen Rápido: Flujo Completo del Sistema</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 12 -->
+                                <button type="button" class="playlist-item" data-vid="nxD6MdWHiyM" data-index="12" data-module="Auditoría" data-title="BoticaPro EX 13.5 (2026) 💊 | Identificar Id de Una comprar registrada">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/nxD6MdWHiyM/hqdefault.jpg" alt="Miniatura Clase 12" loading="lazy">
+                                        <span class="playlist-thumb-badge">12</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 12</div>
+                                        <div class="playlist-item-title">Identificar ID de compras registradas para ajustes</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 13 -->
+                                <button type="button" class="playlist-item" data-vid="_3yN8Pl9KnU" data-index="13" data-module="Bonus" data-title="BoticaPro EX 13.5 (2026) 💊 | BONUS - Desactivar alertas de vencimiento">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/_3yN8Pl9KnU/hqdefault.jpg" alt="Miniatura Clase 13" loading="lazy">
+                                        <span class="playlist-thumb-badge">13</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 13 (Bonus)</div>
+                                        <div class="playlist-item-title">Bonus: Personalización avanzada y avisos automáticos</div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- Footer de la lista -->
+                            <div class="p-3 border-top border-secondary border-opacity-25 bg-black bg-opacity-20 text-center">
+                                <a href="https://www.youtube.com/playlist?list=PLS6Po-Z9_soQ" target="_blank" class="small text-decoration-none fw-bold text-white d-inline-flex align-items-center gap-2">
+                                    <i class="fab fa-youtube text-danger fs-6"></i> Abrir lista completa en YouTube <i class="fas fa-external-link-alt fs-7 text-muted"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Videos Tutoriales Esenciales Anteriores -->
+                <div class="mt-5 pt-3">
+                    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2" data-aos="fade-up">
+                        <div>
+                            <span class="badge bg-secondary bg-opacity-25 text-info border border-info border-opacity-25 px-3 py-1 mb-2">
+                                <i class="fas fa-shield-alt me-1"></i> Guías Clave de Instalación & Red
+                            </span>
+                            <h3 class="fs-4 fw-bold text-white mb-0">Tutoriales Esenciales de Inicio y Red Local</h3>
+                        </div>
+                        <span class="text-muted small">
+                            <i class="fas fa-info-circle me-1 text-warning"></i> Pasos fundamentales para instalación y multi-computadora
+                        </span>
+                    </div>
+
+                    <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Video Anterior 1: Habilitación de Macros -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Guía 1</span>
+                                        <h5 class="mb-0 text-white fs-6 fw-bold">Cómo Habilitar las Macros y Conexión DB</h5>
+                                    </div>
+                                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
+                                        style="border-color: rgba(14, 165, 233, 0.3) !important;">
+                                        <iframe src="https://www.youtube.com/embed/di-gGU3lqAk"
+                                            title="Cómo habilitar el sistema BoticaPro EX" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mt-3 mb-0 text-center"><i
+                                        class="fas fa-key me-1 text-success"></i> Guía paso a paso para la activación de
+                                    macros e instalación inicial.</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Anterior 2: Uso del Sistema y Configuraciones Iniciales -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Guía 2</span>
+                                        <h5 class="mb-0 text-white fs-6 fw-bold">Uso del Sistema y Configuraciones Iniciales</h5>
+                                    </div>
+                                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
+                                        style="border-color: rgba(139, 92, 246, 0.3) !important;">
+                                        <iframe src="https://www.youtube.com/embed/d2kw8fDiXik"
+                                            title="Uso del sistema y configuraciones iniciales BoticaPro EX"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mt-3 mb-0 text-center"><i class="fas fa-cogs me-1 text-info"></i>
+                                    Tutorial completo de registro de medicamentos, fraccionamiento y ventas.</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Anterior 3: Configuración en Red Local -->
+                        <div class="col-lg-4 col-md-12">
+                            <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Guía 3</span>
+                                        <h5 class="mb-0 text-white fs-6 fw-bold">Configuración en Red Local (Multi-PC)</h5>
+                                    </div>
+                                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
+                                        style="border-color: rgba(34, 197, 94, 0.3) !important;">
+                                        <iframe src="https://www.youtube.com/embed/gaoLOl6Ouj0"
+                                            title="Configuración en Red Local BoticaPro EX"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mt-3 mb-0 text-center"><i class="fas fa-network-wired me-1 text-warning"></i>
+                                    Aprende a compartir la base de datos y conectar múltiples equipos en red.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1487,6 +1887,42 @@
                 }
             });
         }
+
+        // Playlist Interactiva de Tutoriales BoticaPro EX
+        document.addEventListener('DOMContentLoaded', function () {
+            const playlistItems = document.querySelectorAll('#tutorialPlaylist .playlist-item');
+            const mainIframe = document.getElementById('mainPlayerIframe');
+            const currentBadge = document.getElementById('currentVideoBadge');
+            const currentModule = document.getElementById('currentVideoModule');
+            const currentTitle = document.getElementById('currentVideoTitle');
+            const directYtLink = document.getElementById('currentYoutubeDirect');
+
+            if (playlistItems.length && mainIframe) {
+                playlistItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        playlistItems.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const vid = this.getAttribute('data-vid');
+                        const index = this.getAttribute('data-index');
+                        const module = this.getAttribute('data-module');
+                        const title = this.getAttribute('data-title');
+
+                        // Actualizar iframe con autoplay activado al seleccionar
+                        mainIframe.src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&enablejsapi=1`;
+
+                        // Actualizar etiquetas y título
+                        if (currentBadge) currentBadge.innerHTML = `<i class="fab fa-youtube me-1"></i> Clase ${index} de 13`;
+                        if (currentModule) currentModule.textContent = module;
+                        if (currentTitle) currentTitle.textContent = title;
+                        if (directYtLink) directYtLink.href = `https://www.youtube.com/watch?v=${vid}&list=PLS6Po-Z9_soQ&index=${index}`;
+
+                        // Auto scroll suave del elemento activo en la playlist si está fuera de vista
+                        this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                });
+            }
+        });
     </script>
 
     <!-- Floating Social Bar (Esquina Inferior Izquierda) -->
