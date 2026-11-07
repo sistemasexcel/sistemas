@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cotizaciones Pro - Presupuestos Profesionales en Excel | Sistemas Excel</title>
+    <meta name="description"
+        content="Sistema de Cotizaciones en Excel. Genera presupuestos profesionales, exporta a PDF, realiza consultas DNI/RUC y gestiona clientes y productos desde una sola herramienta.">
+    <!-- Favicon / Ícono de la pestaña -->
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+    <link rel="apple-touch-icon" href="img/logo.jpeg">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7323567232551802"
+        crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --bg: #0a0f1e;
+            --bg2: #0d1424;
+            --panel: rgba(255, 255, 255, 0.04);
+            --line: rgba(255, 255, 255, 0.09);
+            --green: #22c55e;
+            --green2: #16a34a;
+            --green-soft: rgba(34, 197, 94, 0.12);
+            --emerald: #4ade80;
+            --amber: #f59e0b;
+            --text: #cbd5e1;
+            --muted: #8b9bb4;
+            --white: #ffffff;
+            --radius: 16px;
+            --mono: 'JetBrains Mono', monospace;
+            --shadow-green: 0 16px 40px -14px rgba(34, 197, 94, 0.55);
+
+            --cot-purple: #7c3aed;
+            --cot-amber: #f59e0b;
+            --cot-gradient: linear-gradient(135deg, #7c3aed 0%, #f59e0b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== TOP BAR ===== */
+        .topbar {
+            background: #060a14;
+            color: var(--muted);
+            font-size: 0.76rem;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar i {
+            color: var(--emerald);
+            margin-right: 6px;
+        }
+
+        .topbar a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: var(--white);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-p {
+            background: rgba(10, 15, 30, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+            padding: 0.8rem 0;
+            transition: all .3s ease;
+        }
+
+        .navbar-p.scrolled {
+            background: rgba(10, 15, 30, 0.94);
+            box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar-p .navbar-brand {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 1.18rem;
+            color: var(--white) !important;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-p .brand-logo {
+            height: 42px;
+            width: 42px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, .4);
+        }
+
+        .navbar-p .brand-excel {
+            color: var(--emerald);
+        }
+
+        .navbar-p .nav-link {
+            color: var(--text) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.9rem !important;
+            transition: all .2s ease;
+        }
+
+        .navbar-p .nav-link:hover,
+        .navbar-p .nav-link.active {
+            color: var(--emerald) !important;
+        }
+
+        .btn-wa-nav {
+            background: linear-gradient(135deg, var(--green), var(--green2));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 0.86rem;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-green);
+            transition: all .3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-wa-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 45px -12px rgba(34, 197, 94, 0.75);
+            color: #fff;
+        }
+
+        /* ===== HERO COTIZACIONES ===== */
+        .hero-cot-p {
+            padding: 140px 0 90px;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.12) 0%, transparent 40%),
+                var(--bg);
+        }
+
+        .hero-cot-p::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            color: #a78bfa;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .device-badge-pc {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            color: var(--emerald);
+            font-size: 0.83rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grad {
+            background: linear-gradient(135deg, #a78bfa 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-cot-p h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-cot-p h1 {
+                font-size: 2.1rem;
+            }
+        }
+
+        .hero-cot-p p.lead {
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 28px;
+            max-width: 540px;
+        }
+
+        .feature-chip-p {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .feature-chip-p:hover {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: #a78bfa;
+            color: var(--white);
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.6);
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px -10px rgba(124, 58, 237, 0.8);
+        }
+
+        .btn-ghost-p {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line);
+            color: var(--white) !important;
+            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 12px;
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-ghost-p:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-img-box {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(124, 58, 237, 0.15);
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-img-box:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ===== SECTIONS ===== */
+        .sec {
+            padding: 90px 0;
+        }
+
+        .sec-head {
+            margin-bottom: 50px;
+        }
+
+        .sec-head .tag {
+            font-family: var(--mono);
+            color: var(--emerald);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .sec-head h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .sec-head p {
+            font-size: 0.96rem;
+            color: var(--muted);
+            max-width: 620px;
+        }
+
+        /* ===== NOVELTY CARDS ===== */
+        .novelty-card-p {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            height: 100%;
+            transition: all .3s ease;
+        }
+
+        .novelty-card-p:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 20px 40px -20px rgba(124, 58, 237, 0.3);
+        }
+
+        .novelty-card-p p {
+            color: #ffffff !important;
+            opacity: 0.95;
+        }
+
+        .novelty-icon-p {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ===== GALLERY CARDS ===== */
+        .gallery-card-p {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-card-p:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(34, 197, 94, 0.25);
+        }
+
+        .gallery-card-p img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card-p:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-label-p {
+            padding: 16px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* ===== CTA PRICING ===== */
+        .pricing-card-p {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 36px 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all .3s ease;
+        }
+
+        .pricing-card-p.featured {
+            border-color: #7c3aed;
+            box-shadow: 0 0 40px -10px rgba(124, 58, 237, 0.3);
+        }
+
+        .pricing-card-p:hover {
+            transform: translateY(-6px);
+        }
+
+        .price-display-p {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .price-display-p .amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            font-family: 'Sora', sans-serif;
+        }
+
+        .price-display-p .currency {
+            font-size: 1.1rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .check-list-p {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px 0;
+        }
+
+        .check-list-p li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .check-list-p li i {
+            color: var(--emerald);
+        }
+
+        /* ===== FOOTER ===== */
+        .ix-footer {
+            background: #070b15;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+        }
+
+        .ix-footer h6 {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.09em;
+            margin-bottom: 18px;
+        }
+
+        .footer-link {
+            color: var(--muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.87rem;
+            transition: all .25s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--emerald);
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 8px;
+            transition: all .25s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--green);
+            transform: translateY(-3px);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        /* ===== PAYMENT MODAL TABS STYLING ===== */
+        #paymentModal .nav-tabs {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            padding: 8px 8px 0 8px !important;
+            gap: 6px !important;
+            border-radius: 12px 12px 0 0 !important;
+        }
+
+        #paymentModal .nav-tabs .nav-link {
+            border: none !important;
+            border-radius: 10px 10px 0 0 !important;
+            color: #cbd5e1 !important;
+            font-weight: 700 !important;
+            font-size: 0.92rem !important;
+            padding: 12px 16px !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            transition: all 0.25s ease !important;
+        }
+
+        #paymentModal .nav-tabs .nav-link:hover {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        #paymentModal .nav-tabs .nav-link.active {
+            color: #0f172a !important;
+            background: #22c55e !important;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.45) !important;
+        }
+    </style>
+
+    <!-- SEO & Open Graph Tags -->
+    <link rel="canonical" href="https://sistemasexcel.site/cotizaciones.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sistemasexcel.site/cotizaciones.html" />
+    <meta property="og:title" content="Sistema de Cotizaciones Pro - Presupuestos Profesionales en Excel | Sistemas Excel" />
+    <meta property="og:description" content="Sistema de Cotizaciones en Excel. Genera presupuestos profesionales, exporta a PDF, realiza consultas DNI/RUC y gestiona clientes y productos desde una sola herramienta." />
+    <meta property="og:image" content="https://sistemasexcel.site/img/logo.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+</head>
+
+<body data-page-system="cotizaciones">
+
+    <!-- Top Bar -->
+    <div class="topbar d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4">
+                <span><i class="fas fa-phone"></i><a
+                        href="https://wa.me/51922784328?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20deseo%20m%C3%A1s%20informaci%C3%B3n."
+                        target="_blank">+51 922 784 328</a></span>
+                <span><i class="fas fa-headset"></i>Soporte personalizado</span>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+                <span><i class="fas fa-bolt"></i>Entrega inmediata tras el pago</span>
+                <span class="d-flex gap-2">
+                    <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" aria-label="YouTube"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/mksistemas27" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="http://tiktok.com/@excelsistemascusco" target="_blank" aria-label="TikTok"><i
+                            class="fab fa-tiktok"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-p" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.jpeg" alt="Logo Sistemas Excel" class="brand-logo">
+                <span>SISTEMAS <span class="brand-excel">EXCEL</span></span>
+            </a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#funcionalidades">Funcionalidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#video-tutorial">Video Tutorial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#precio">Precios</a></li>
+                </ul>
+                <div class="d-flex mt-3 mt-lg-0">
+                    <a href="#" class="btn-wa-nav text-decoration-none" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="cotizaciones">
+                        <i class="fab fa-whatsapp"></i> Cotizar ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-cot-p">
+        <div class="container position-relative">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <span class="hero-eyebrow"><i class="fas fa-file-invoice"></i> Versión 20.5 Pro — Actualizado
+                            2026</span>
+                        <span class="device-badge-pc"><i class="fas fa-desktop"></i> Exclusivo para PC o Laptop</span>
+                    </div>
+
+                    <h1>Sistema de <span class="grad">Cotizaciones Pro</span></h1>
+
+                    <p class="lead">
+                        Genera cotizaciones y presupuestos comerciales impactantes en segundos. Exporta a PDF, realiza
+                        consultas DNI/RUC y administra clientes en Microsoft Excel.
+                    </p>
+
+                    <!-- Feature Chips -->
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="feature-chip-p"><i class="fas fa-desktop" style="color:var(--emerald);"></i> Para
+                            PC / Laptop</span>
+                        <span class="feature-chip-p"><i class="fas fa-file-pdf" style="color:#a78bfa;"></i> Exportar
+                            PDF</span>
+                        <span class="feature-chip-p"><i class="fas fa-search" style="color:#f59e0b;"></i> Consulta
+                            DNI/RUC</span>
+                        <span class="feature-chip-p"><i class="fas fa-users" style="color:#38bdf8;"></i> Gestión
+                            Clientes</span>
+                        <span class="feature-chip-p"><i class="fas fa-palette" style="color:#f43f5e;"></i> Colores
+                            Marca</span>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="#" class="btn-cyan text-decoration-none" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="cotizaciones">
+                            <i class="fab fa-whatsapp"></i> Solicitar Acceso Demo
+                        </a>
+
+                        <a href="#video-tutorial" class="btn-ghost-p text-decoration-none">
+                            <i class="fab fa-youtube text-danger fs-5"></i> Ver video tutorial
+                        </a>
+
+                        <button type="button"
+                            class="btn btn-warning fw-bold px-4 py-3 rounded-3 border-0 shadow-lg text-dark d-inline-flex align-items-center gap-2"
+                            data-bs-toggle="modal" data-bs-target="#paymentModal" data-price-usd="5"
+                            data-price-pen="10" data-version="Sistema de Cotizaciones Pro"
+                            data-hotmart="https://pay.hotmart.com/G103608811T">
+                            <i class="fas fa-shopping-cart"></i> Adquirir Ahora (S/10 o $5)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="row g-3">
+                        <div class="col-md-6 col-12">
+                            <div class="hero-img-box position-relative shadow-lg rounded-4 overflow-hidden border border-secondary border-opacity-25" style="transition: transform 0.3s ease;">
+                                <a href="img_cotizacion/01 Inicio del sistema.png" class="glightbox"
+                                    data-gallery="hero-main" title="01. Inicio del Sistema">
+                                    <img src="img_cotizacion/01 Inicio del sistema.png"
+                                        alt="01 Inicio del Sistema - Sistema de Cotizaciones Pro"
+                                        class="w-100 d-block" style="aspect-ratio: 16/10; object-fit: cover;">
+                                </a>
+                                <div class="position-absolute bottom-0 start-0 end-0 p-2 text-center" style="background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(8px);">
+                                    <span class="small fw-bold text-white"><i class="fas fa-desktop text-success me-1"></i> 01. Inicio del Sistema</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="hero-img-box position-relative shadow-lg rounded-4 overflow-hidden border border-secondary border-opacity-25" style="transition: transform 0.3s ease;">
+                                <a href="img_cotizacion/02 menu principal.png" class="glightbox"
+                                    data-gallery="hero-main" title="02. Menú Principal">
+                                    <img src="img_cotizacion/02 menu principal.png"
+                                        alt="02 Menú Principal - Sistema de Cotizaciones Pro" class="w-100 d-block" style="aspect-ratio: 16/10; object-fit: cover;">
+                                </a>
+                                <div class="position-absolute bottom-0 start-0 end-0 p-2 text-center" style="background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(8px);">
+                                    <span class="small fw-bold text-white"><i class="fas fa-th-large text-warning me-1"></i> 02. Menú Principal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner Requisito Dispositivo PC / Laptop -->
+        <div style="background: rgba(34, 197, 94, 0.08); border-y: 1px solid rgba(34, 197, 94, 0.2);" class="py-3">
+            <div class="container text-center">
+                <span class="text-white fw-semibold" style="font-size: 0.95rem;">
+                    <i class="fas fa-laptop me-2 text-success fs-5"></i>
+                    <strong>Compatibilidad de Uso:</strong> Este sistema es exclusivo para ejecución en <strong
+                        style="color:var(--emerald);">PC o Laptop</strong> con sistema operativo Windows y Microsoft
+                    Excel (Office 2019 o superior).
+                </span>
+            </div>
+        </div>
+
+        <!-- Video Tutorial Section -->
+        <section id="video-tutorial" class="sec"
+            style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; DEMOSTRACIÓN Y TUTORIAL EN VIDEO</span>
+                    <h2>Aprende a usar el <span class="grad">Sistema de Cotizaciones Pro</span></h2>
+                    <p class="mx-auto text-white" style="max-width: 650px;">
+                        Mira el video demostrativo completo paso a paso para crear presupuestos, personalizar formatos y
+                        exportar a PDF en segundos.
+                    </p>
+                </div>
+
+                <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-lg-10">
+                        <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg border"
+                            style="border-color: rgba(124, 58, 237, 0.3) !important; box-shadow: 0 20px 50px -15px rgba(124, 58, 237, 0.25) !important;">
+                            <iframe src="https://www.youtube.com/embed/Oy2eZ7dJnKo"
+                                title="Demostración Sistema de Cotizaciones Pro" allowfullscreen></iframe>
+                        </div>
+                        <div class="text-center mt-3">
+                            <span class="badge bg-secondary p-2 font-monospace"><i
+                                    class="fab fa-youtube text-danger me-1"></i> Video Tutorial Oficial del Sistema de
+                                Cotizaciones Pro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funcionalidades -->
+        <section id="funcionalidades" class="sec">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; HERRAMIENTAS COMERCIALES</span>
+                    <h2>Potencia tus <span class="grad">Ventas</span></h2>
+                    <p class="mx-auto text-white" style="max-width: 600px;">Crea propuestas comerciales profesionales,
+                        gestiona clientes y automatiza tus precios en Microsoft Excel.</p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(139,92,246,0.12); color: #a78bfa;"><i
+                                    class="fas fa-globe-americas"></i></div>
+                            <h5>Multimoneda Internacional</h5>
+                            <p class="small text-white mb-2">Configura tu moneda local en segundos para cualquier país
+                                (Soles, Dólares, Pesos, etc.).</p>
+                            <div class="d-flex flex-wrap gap-1 mt-2">
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/pe.png" alt="Perú"
+                                        style="width: 13px; margin-right: 3px;">S/</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/mx.png" alt="México"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/co.png" alt="Colombia"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/cl.png" alt="Chile"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/bo.png" alt="Bolivia"
+                                        style="width: 13px; margin-right: 3px;">Bs</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/ec.png" alt="Ecuador"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(239,68,68,0.12); color: #f87171;"><i
+                                    class="fas fa-search"></i></div>
+                            <h5>Consultas DNI / RUC</h5>
+                            <p class="small text-white mb-0">Búsqueda y validación automática de datos de clientes con
+                                integración a SUNAT y RENIEC en Perú.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(124,58,237,0.12); color: #a78bfa;"><i
+                                    class="fas fa-file-invoice-dollar"></i></div>
+                            <h5>Cotizaciones Rápidas</h5>
+                            <p class="small text-white mb-0">Crea presupuestos detallados en pocos clics con cálculo
+                                automático de totales e impuestos.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(245,158,11,0.12); color: #fbbf24;"><i
+                                    class="fas fa-file-pdf"></i></div>
+                            <h5>Exportación PDF</h5>
+                            <p class="small text-white mb-0">Convierte tus cotizaciones a formato PDF elegante y limpio
+                                listo para enviar por WhatsApp o correo.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(59,130,246,0.12); color: #60a5fa;"><i
+                                    class="fas fa-users"></i></div>
+                            <h5>Base de Datos de Clientes</h5>
+                            <p class="small text-white mb-0">Registra y administra el historial completo de tus clientes
+                                para una facturación inmediata.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p"
+                                style="background: rgba(34,197,94,0.12); color: var(--emerald);"><i
+                                    class="fas fa-box"></i></div>
+                            <h5>Control de Productos</h5>
+                            <p class="small text-white mb-0">Gestiona tus productos o servicios con precios, stock y
+                                descripciones actualizadas.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(168,85,247,0.12); color: #c084fc;"><i
+                                    class="fas fa-palette"></i></div>
+                            <h5>Colores Personalizables</h5>
+                            <p class="small text-white mb-0">Adapta fácilmente los colores del formato de cotización con
+                                la identidad visual de tu empresa.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Personalización -->
+        <section id="personalizacion" class="sec"
+            style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+            <div class="container">
+                <div class="p-5 rounded-4"
+                    style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(245, 158, 11, 0.12) 100%); border: 1px solid rgba(124, 58, 237, 0.3);">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <span class="tag" style="color:#a78bfa; font-family:var(--mono);">&gt; SERVICIO A
+                                MEDIDA</span>
+                            <h2 class="display-6 fw-bold mb-3 text-white">Personaliza tu <span class="grad">Cotización a
+                                    Medida</span></h2>
+                            <p class="text-white mb-4">
+                                Adaptamos el formato con tu logo corporativo, colores institucionales, términos y
+                                condiciones y campos específicos para tu rubro.
+                            </p>
+                            <div class="d-flex flex-wrap gap-4 text-white mb-4">
+                                <div><i class="fas fa-magic text-warning me-2"></i> <strong>Diseño
+                                        Personalizado:</strong> Colores y Logos de Marca.</div>
+                                <div><i class="fas fa-layer-group text-warning me-2"></i> <strong>Campos
+                                        Personalizados:</strong> Términos y firmas.</div>
+                            </div>
+                            <a href="https://wa.me/51922784328?text=Hola%2C%20quisiera%20personalizar%20mi%20sistema%20de%20cotizaciones."
+                                target="_blank"
+                                class="btn btn-warning btn-lg fw-bold px-4 py-3 rounded-3 border-0 shadow-lg text-dark">
+                                <i class="fab fa-whatsapp me-2"></i>Solicitar Personalización
+                            </a>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="gallery-card-p">
+                                        <a href="img_cotizacion/modelo1.jpg" class="glightbox"
+                                            data-gallery="cot-gallery">
+                                            <img src="img_cotizacion/modelo1.jpg" alt="Modelo Premium">
+                                        </a>
+                                        <div class="gallery-label-p">Modelo Premium</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="gallery-card-p">
+                                        <a href="img_cotizacion/modelo2.jpg" class="glightbox"
+                                            data-gallery="cot-gallery">
+                                            <img src="img_cotizacion/modelo2.jpg" alt="Modelo Corporativo">
+                                        </a>
+                                        <div class="gallery-label-p">Modelo Corporativo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Capturas -->
+        <section id="galeria" class="sec">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; EXPLORA LA INTERFAZ</span>
+                    <h2>Recorrido por las Capturas del Sistema</h2>
+                    <p class="mx-auto text-white" style="max-width: 540px;">Haz clic en cualquier módulo para ver la
+                        captura en pantalla completa.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/01 Inicio del sistema.png" class="glightbox"
+                                data-gallery="cot-gallery" title="01. Inicio del Sistema">
+                                <img src="img_cotizacion/01 Inicio del sistema.png" alt="01. Inicio del Sistema">
+                            </a>
+                            <div class="gallery-label-p" style="color: var(--emerald);">01. Inicio del Sistema</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/02 menu principal.png" class="glightbox" data-gallery="cot-gallery"
+                                title="02. Menú Principal">
+                                <img src="img_cotizacion/02 menu principal.png" alt="02. Menú Principal">
+                            </a>
+                            <div class="gallery-label-p" style="color: var(--emerald);">02. Menú Principal</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/03 modulo de productos-servicios.png" class="glightbox"
+                                data-gallery="cot-gallery" title="03. Módulo de Productos y Servicios">
+                                <img src="img_cotizacion/03 modulo de productos-servicios.png"
+                                    alt="03. Módulo de Productos y Servicios">
+                            </a>
+                            <div class="gallery-label-p">03. Productos y Servicios</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/04. modulo de registro de clientes.png" class="glightbox"
+                                data-gallery="cot-gallery" title="04. Módulo Registro de Clientes">
+                                <img src="img_cotizacion/04. modulo de registro de clientes.png"
+                                    alt="04. Módulo Registro de Clientes">
+                            </a>
+                            <div class="gallery-label-p">04. Registro de Clientes</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/05 modulo de cotizacones.png" class="glightbox"
+                                data-gallery="cot-gallery" title="05. Módulo de Cotizaciones">
+                                <img src="img_cotizacion/05 modulo de cotizacones.png" alt="05. Módulo de Cotizaciones">
+                            </a>
+                            <div class="gallery-label-p" style="color: var(--emerald);">05. Módulo Cotizaciones</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/06 panel de configuraciones - paleta de colores corporativos.png"
+                                class="glightbox" data-gallery="cot-gallery"
+                                title="06. Panel de Configuraciones y Colores">
+                                <img src="img_cotizacion/06 panel de configuraciones - paleta de colores corporativos.png"
+                                    alt="06. Panel de Configuraciones">
+                            </a>
+                            <div class="gallery-label-p">06. Panel Configuraciones</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/modelo1.jpg" class="glightbox" data-gallery="cot-gallery"
+                                title="Formato Premium en PDF">
+                                <img src="img_cotizacion/modelo1.jpg" alt="Formato Premium">
+                            </a>
+                            <div class="gallery-label-p">Formato Premium</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="gallery-card-p">
+                            <a href="img_cotizacion/modelo2.jpg" class="glightbox" data-gallery="cot-gallery"
+                                title="Formato Corporativo en PDF">
+                                <img src="img_cotizacion/modelo2.jpg" alt="Formato Corporativo">
+                            </a>
+                            <div class="gallery-label-p">Formato Corporativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planes y Precios -->
+        <section id="precio" class="sec" style="background: var(--bg2); border-top: 1px solid var(--line);">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; OFERTA DE ADQUISICIÓN</span>
+                    <h2>Consigue tu <span class="grad">Licencia Permanente</span></h2>
+                    <p class="mx-auto text-white mt-2" style="max-width: 580px;">
+                        <i class="fas fa-desktop text-success me-1"></i> Pago único sin mensualidades. Para uso
+                        exclusivo en **PC o Laptop** (Windows + Excel).
+                    </p>
+                    
+                </div>
+
+                <div class="row g-4 justify-content-center" data-aos="fade-up">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="pricing-card-p featured">
+                            <div>
+                                <span class="badge bg-primary px-3 py-2 rounded-pill text-white fw-bold mb-3"
+                                    style="background:#7c3aed;">★ PAGO ÚNICO</span>
+                                <h3 class="text-white">Sistema de Cotizaciones Pro</h3>
+                                <p class="small text-white"><strong>Licencia de por vida.</strong> Sin mensualidades ni
+                                    alquiler de software.</p>
+
+                                <div class="price-display-p">
+                                    <span class="currency">S/</span>
+                                    <span class="amount" style="color:#a78bfa;">10</span>
+                                    <span class="currency text-white-50 ms-2">| $5 USD</span>
+                                </div>
+
+                                <ul class="check-list-p">
+                                    <li><i class="fas fa-check"></i> Generación ilimitada de Cotizaciones en PDF</li>
+                                    <li><i class="fas fa-check"></i> Consultas DNI / RUC (SUNAT & RENIEC Perú)</li>
+                                    <li><i class="fas fa-check"></i> Base de datos de clientes y catálogo de productos
+                                    </li>
+                                    <li><i class="fas fa-check"></i> Colores y formatos personalizables</li>
+                                    <li><i class="fas fa-desktop text-success"></i> Instalación en 1 PC o Laptop</li>
+                                    <li><i class="fas fa-headset text-info"></i> Soporte de instalación incluido</li>
+                                </ul>
+                            </div>
+
+                            <button type="button"
+                                class="btn btn-lg text-white fw-bold py-3 w-100 rounded-3 border-0 shadow-lg"
+                                style="background: #7c3aed;" data-bs-toggle="modal" data-bs-target="#paymentModal"
+                                data-price-usd="5" data-price-pen="10" data-version="Sistema de Cotizaciones Pro"
+                                data-hotmart="https://pay.hotmart.com/G103608811T">
+                                <i class="fas fa-shopping-cart me-2"></i>Adquirir Licencia Ahora (S/10 o $5)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ix-footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="img/logo.jpeg" alt="Logo Sistemas Excel"
+                            style="height:36px; width:36px; object-fit:cover; border-radius:8px; box-shadow:0 0 0 2px rgba(34,197,94,.4);">
+                        <span class="text-white fw-bold"
+                            style="font-family:'Sora',sans-serif; letter-spacing:-.02em;">SISTEMAS <span
+                                style="color:var(--emerald);">EXCEL</span></span>
+                    </div>
+                    <p>Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda
+                        Latinoamérica.</p>
+                    <p class="mt-4 mb-0 small">© 2026 Copyright: <a href="https://sistemasexcel.site"
+                            class="text-white text-decoration-none">https://sistemasexcel.site</a></p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h6>NUESTROS SISTEMAS</h6>
+                    <a href="ventas.html" class="footer-link">Ventas e Inventario</a>
+                    <a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a>
+                    <a href="botica.html" class="footer-link">BoticaPro EX 13.5</a>
+                    <a href="veterinaria.html" class="footer-link">VET-SYSTEM PRO</a>
+                    <a href="sistemasweb.html" class="footer-link">Sistemas Web</a>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h6>NAVEGACIÓN</h6>
+                    <a href="index.html" class="footer-link">Inicio</a>
+                    <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
+                    <a href="#video-tutorial" class="footer-link">Video Tutorial</a>
+                    <a href="#galeria" class="footer-link">Galería</a>
+                    <a href="#precio" class="footer-link">Precios</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h6>CONTACTO DE SOPORTE</h6>
+                    <p class="mb-2"><i class="fas fa-phone text-success me-2"></i> +51 922 784 328</p>
+                    <p class="mb-3"><i class="fas fa-desktop text-success me-2"></i> Asistencia remota de instalación
+                        para PC / Laptop</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" aria-label="YouTube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/mksistemas27" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" aria-label="TikTok"><i
+                                class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Pagos -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content"
+                style="background:#0f172a; color:#fff; border-radius:20px; border:1px solid var(--line);">
+                <div class="modal-header border-0 pb-0 px-4 pt-4 align-items-center">
+                    <div class="d-flex align-items-center gap-2 px-3 py-2 rounded-3 shadow-sm" style="background: #ffffff;">
+                        <i class="fas fa-wallet text-success fs-4"></i>
+                        <h5 class="modal-title fw-bold fs-5 mb-0" id="paymentModalLabel" style="color: #000000 !important;">
+                            Elige tu método de pago
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0 mt-3">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" aria-controls="peru-content" aria-selected="true">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card-content"
+                                type="button" role="tab" aria-controls="card-content" aria-selected="false">
+                                <i class="fas fa-credit-card me-2"></i>Pago con Tarjeta
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-4" id="paymentTabsContent">
+                        <div class="tab-pane fade show active" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                            <div class="text-white">
+                                <h4 class="mb-3 text-center fw-bold">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center text-white">Realiza el pago y envía el comprobante por WhatsApp
+                                    para activar tu licencia de inmediato.</p>
+                                <div class="row align-items-center mt-4">
+                                    <div class="col-lg-6 text-center">
+                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm"
+                                            style="max-width: 230px;">
+                                    </div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-4 rounded-3 text-center"
+                                            style="background:rgba(255,255,255,0.03); border-color:var(--line) !important;">
+                                            <p id="modal-price-pen" class="display-6 fw-bold mb-2"
+                                                style="color:var(--emerald);">S/10</p>
+                                            <h6 class="fw-bold text-white">Yape / Plin</h6>
+                                            <p class="mb-1 text-white"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0 text-white"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a id="modal-wsp-yape"
+                                    href="https://wa.me/51922784328?text=Hola%2C%20deseo%20adquirir%20el%20sistema%20de%20cotizaciones%20en%20Excel%20por%20el%20costo%20de%20S%2F10%20o%20%245%20USD."
+                                    target="_blank"
+                                    class="btn btn-success text-center mt-4 d-block text-decoration-none fw-bold py-3">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Enviar comprobante Yape/Plin por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="card-content" role="tabpanel" aria-labelledby="card-tab">
+                            <div class="text-center text-white">
+                                <h4 class="mb-3 fw-bold">Pago Seguro con Tarjeta</h4>
+                                <p class="text-white">Paga de forma rápida y encriptada desde cualquier país vía
+                                    Hotmart.</p>
+                                <div class="my-3">
+                                    <i class="fab fa-cc-visa fa-3x mx-2 text-primary"></i>
+                                    <i class="fab fa-cc-mastercard fa-3x mx-2 text-danger"></i>
+                                    <i class="fab fa-cc-amex fa-3x mx-2 text-info"></i>
+                                </div>
+                                <button type="button" id="hotmart-btn"
+                                    class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm py-3"
+                                    style="background: linear-gradient(135deg, #f5313d, #ba0410); border-radius: 12px;"
+                                    data-bs-toggle="modal" data-bs-target="#hotmartModal">
+                                    <i class="fas fa-lock me-2"></i>Pagar ahora vía Hotmart
+                                </button>
+                                <p class="text-muted small"><i class="fas fa-shield-alt me-1"></i> Transacción 100%
+                                    encriptada y segura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Hotmart -->
+    <div class="modal fade" id="hotmartModal" tabindex="-1" aria-labelledby="hotmartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="height: 85vh; background:#0f172a; border-radius:20px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white" id="hotmartModalLabel">Pago Seguro con Hotmart</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="document.getElementById('hotmartIframe').src = '';"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="hotmartIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Descargar Sistema y Pasos de Habilitación -->
+    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="background:#0f172a; color:#fff; border-radius:20px; border:1px solid var(--line);">
+                <div class="modal-header border-0 pb-3" style="background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <h5 class="modal-title fw-bold mb-0 fs-5" id="downloadModalLabel" style="color: #ffffff !important;">
+                        <i class="fas fa-file-excel text-success me-2"></i>Descargar Sistema de <span style="color: #4ade80;">Cotizaciones Pro</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    
+                    <!-- 1. Botón de Descargar Archivo -->
+                    <div class="p-4 rounded-4 text-center mb-4" style="background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.25);">
+                        <div class="mb-3">
+                            <i class="fas fa-file-excel fa-4x text-success"></i>
+                        </div>
+                        <h4 class="fw-bold text-white mb-2">COTIZADOR_PRO V20.5.xlsm</h4>
+                        <p class="text-white-50 small mb-3">Archivo oficial en Microsoft Excel con Macros habilitadas — Versión 20.5 Pro</p>
+                        <a href="COTIZADOR_PRO V20.5.xlsm" download="COTIZADOR_PRO V20.5.xlsm" class="btn btn-lg text-white fw-bold px-4 py-3 shadow-lg" style="background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 12px;">
+                            <i class="fas fa-download me-2"></i>Descargar Archivo Ahora (.xlsm)
+                        </a>
+                    </div>
+
+                    <!-- 2. Pasos para Habilitar el Archivo Excel -->
+                    <div class="pt-2">
+                        <h5 class="fw-bold text-white mb-3 d-flex align-items-center gap-2">
+                            <i class="fas fa-shield-alt text-warning"></i> Pasos para Habilitar las Macros en Excel
+                        </h5>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3 h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);">
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <span class="badge bg-warning text-dark fw-bold rounded-circle" style="width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center;">1</span>
+                                        <strong class="text-white">Desbloquear el archivo</strong>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Haz clic derecho en el archivo descargado > <strong>Propiedades</strong> > En la pestaña <em>General</em> marca la casilla <strong>"Desbloquear"</strong> y pulsa <em>Aceptar</em>.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3 h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);">
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <span class="badge bg-success fw-bold rounded-circle" style="width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center;">2</span>
+                                        <strong class="text-white">Habilitar Contenido</strong>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Abre el archivo en Excel y haz clic en el botón amarillo <strong>"Habilitar contenido"</strong> en la barra de advertencia superior.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 justify-content-center pt-0 pb-4">
+                    <small class="text-white-50"><i class="fas fa-info-circle me-1"></i> Exclusivo para Microsoft Excel (2019 o superior) en PC o Laptop con Windows</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Flotante -->
+    <a href="#" class="whatsapp-float" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="cotizaciones" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 80 });
+
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true
+        });
+
+        // Navbar Scroll Behavior
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Dynamic Payment Modal Data
+        const paymentModal = document.getElementById('paymentModal');
+        if (paymentModal) {
+            paymentModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const usd = button.getAttribute('data-price-usd') || '5';
+                const pen = button.getAttribute('data-price-pen') || '10';
+                const version = button.getAttribute('data-version') || 'Sistema de Cotizaciones Pro';
+                const hotmartUrl = button.getAttribute('data-hotmart') || 'https://pay.hotmart.com/G103608811T';
+                const hotmartBtn = document.getElementById('hotmart-btn');
+
+                document.getElementById('modal-price-pen').textContent = 'S/' + pen;
+                document.getElementById('modal-wsp-yape').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola 👋, acabo de realizar el depósito de S/' + pen + ' por Yape/Plin para el ' + version + '. Adjunto mi comprobante.');
+
+                if (hotmartBtn) {
+                    hotmartBtn.onclick = function () {
+                        document.getElementById('hotmartIframe').src = hotmartUrl;
+                    };
+                }
+            });
+        }
+    </script>
+
+    <!-- Floating Social Bar (Esquina Inferior Izquierda) -->
+    <div class="social-float-bar">
+        <a href="https://whatsapp.com/channel/0029VbDRlTBHAdNRwYQlgV3L" target="_blank" class="social-float-item social-float-wa" title="Canal de WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="social-float-tooltip">Canal de WhatsApp</span>
+        </a>
+        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" class="social-float-item social-float-yt" title="YouTube">
+            <i class="fab fa-youtube"></i>
+            <span class="social-float-tooltip">YouTube</span>
+        </a>
+        <a href="https://www.facebook.com/mksistemas27" target="_blank" class="social-float-item social-float-fb" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span class="social-float-tooltip">Facebook</span>
+        </a>
+        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" class="social-float-item social-float-tt" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+            <span class="social-float-tooltip">TikTok</span>
+        </a>
+    </div>
+
+    <!-- Modal Redes Sociales + Canal WhatsApp -->
+    <div class="modal fade modal-social-dark" id="socialWelcomeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 480px;">
+            <div class="modal-content" style="background-color: #0f172a !important; background: #0f172a !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; border-radius: 20px !important;">
+                <div class="modal-header border-0 pb-0" style="background-color: #0f172a !important; background: #0f172a !important;">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="img/logo.jpeg" alt="Logo" style="height:32px; width:32px; border-radius:6px; object-fit:cover;">
+                        <h5 class="modal-title fw-bold fs-6" style="color: #ffffff !important;">Sistemas Excel</h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center pt-2 pb-4 px-4" style="background-color: #0f172a !important; background: #0f172a !important; color: #ffffff !important;">
+                    <div class="mb-3">
+                        <span class="badge px-3 py-2 rounded-pill fs-7 fw-bold" style="background: rgba(34, 197, 94, 0.15) !important; color: #4ade80 !important; border: 1px solid rgba(34, 197, 94, 0.3) !important;">
+                            <i class="fas fa-bell me-1"></i> Comunidad & Novedades
+                        </span>
+                    </div>
+                    <h4 class="fw-bold mb-2" style="font-family:'Sora', sans-serif; color: #ffffff !important;">¡Entérate de las últimas novedades!</h4>
+                    <p class="small mb-4" style="color: #cbd5e1 !important;">
+                        Únete a nuestro canal oficial de WhatsApp y síguenos en redes para recibir tutoriales gratuitos, nuevas plantillas y promociones exclusivas.
+                    </p>
+
+                    <div class="d-flex flex-column gap-2 text-start">
+                        <a href="https://whatsapp.com/channel/0029VbDRlTBHAdNRwYQlgV3L" target="_blank" class="social-card-btn social-btn-whatsapp-channel" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important; background-color: #25D366 !important; color: #ffffff !important;">
+                            <i class="fab fa-whatsapp social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Unirme al Canal de WhatsApp</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Recibe novedades y actualizaciones directas</small>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" class="social-card-btn social-btn-youtube" style="background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%) !important; background-color: #FF0000 !important; color: #ffffff !important;">
+                            <i class="fab fa-youtube social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Suscribirse en YouTube</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Tutoriales en video y demos completas</small>
+                            </div>
+                        </a>
+                        <a href="https://www.facebook.com/mksistemas27" target="_blank" class="social-card-btn social-btn-facebook" style="background: linear-gradient(135deg, #1877F2 0%, #0d65d9 100%) !important; background-color: #1877F2 !important; color: #ffffff !important;">
+                            <i class="fab fa-facebook-f social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Seguir en Facebook</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Noticias, avisos y soporte</small>
+                            </div>
+                        </a>
+                        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" class="social-card-btn social-btn-tiktok" style="background: linear-gradient(135deg, #111111 0%, #1f2937 100%) !important; background-color: #111111 !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.25) !important;">
+                            <i class="fab fa-tiktok social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Seguir en TikTok</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Tips rápidos y trucos de Excel</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-center" style="background-color: #0f172a !important; background: #0f172a !important;">
+                    <button type="button" class="btn btn-sm rounded-pill px-4" data-bs-dismiss="modal" id="btnCloseSocialModal" style="background: rgba(255, 255, 255, 0.12) !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.3) !important;">
+                        Continuar navegando
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('socialWelcomeModalShown')) {
+                setTimeout(function () {
+                    const modalElement = document.getElementById('socialWelcomeModal');
+                    if (modalElement && typeof bootstrap !== 'undefined') {
+                        const socialModal = new bootstrap.Modal(modalElement);
+                        socialModal.show();
+                    }
+                }, 2500);
+            }
+
+            const closeBtn = document.getElementById('btnCloseSocialModal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    localStorage.setItem('socialWelcomeModalShown', 'true');
+                });
+            }
+            const modalElement = document.getElementById('socialWelcomeModal');
+            if (modalElement) {
+                modalElement.addEventListener('hidden.bs.modal', function () {
+                    localStorage.setItem('socialWelcomeModalShown', 'true');
+                });
+            }
+        });
+    </script>
+    <!-- Modal Opciones de WhatsApp por Sistema -->
+    <div class="modal fade" id="whatsappContactModal" tabindex="-1" aria-labelledby="whatsappContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 580px;">
+            <div class="modal-content" style="background:#0b1329; color:#fff; border-radius:24px; border:1px solid rgba(255,255,255,0.15); box-shadow:0 25px 60px -15px rgba(0,0,0,0.85); overflow:hidden;">
+                <div class="modal-header border-0 pb-2 pt-4 px-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div style="width:46px; height:46px; border-radius:14px; background:rgba(34,197,94,0.18); display:flex; align-items:center; justify-content:center; color:#22c55e; font-size:1.6rem; flex-shrink:0;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="modal-title fw-bold mb-0" id="whatsappContactModalLabel" style="color:#ffffff !important; font-family:'Sora',sans-serif; font-size:1.25rem;">Elige tu consulta por WhatsApp</h4>
+                            <p class="wsp-modal-subtitle mb-0 small" style="color:#94a3b8 !important;">Atención personalizada y respuesta inmediata</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-3">
+                    <div class="mb-3 p-3 rounded-3 d-flex align-items-center justify-content-between" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+                        <span class="small text-white-50"><i class="fas fa-layer-group me-1 text-success"></i> Sistema seleccionado:</span>
+                        <div>
+                            <span class="badge bg-dark border border-secondary border-opacity-25 me-2" id="wspModalSystemBadge">📄 Cotizaciones Pro (Excel)</span>
+                            <strong class="text-white fw-bold" id="wspModalSystemName" style="color:#34d399 !important;">Sistema de Cotizaciones Pro</strong>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3">
+                        <!-- Opción 1: Solicitar Demo -->
+                        <div class="wsp-option-card p-3 p-md-4 rounded-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div style="width:48px; height:48px; border-radius:14px; background:rgba(34,197,94,0.14); display:flex; align-items:center; justify-content:center; color:#4ade80; font-size:1.4rem; flex-shrink:0;">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
+                                        <h5 class="fw-bold text-white mb-0 fs-6">1. Solicitar demo</h5>
+                                        <span class="badge rounded-pill fw-semibold" style="background:rgba(34,197,94,0.18); color:#4ade80; border:1px solid rgba(34,197,94,0.3); font-size:0.75rem; padding:5px 12px;">Mensaje automático 1</span>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Para conocer el funcionamiento del sistema antes de comprarlo.</p>
+                                </div>
+                            </div>
+
+                            <a href="#" id="wspDemoLink" target="_blank" class="btn btn-whatsapp-action w-100 fw-bold py-2 px-3 d-flex align-items-center justify-content-center gap-2 text-white" style="background:linear-gradient(135deg, #22c55e, #16a34a); border:none; font-size:0.95rem;">
+                                <i class="fab fa-whatsapp fs-5"></i> Solicitar Demo por WhatsApp
+                            </a>
+                        </div>
+
+                        <!-- Opción 2: Consultar precio y comprar -->
+                        <div class="wsp-option-card p-3 p-md-4 rounded-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div style="width:48px; height:48px; border-radius:14px; background:rgba(16,185,129,0.18); display:flex; align-items:center; justify-content:center; color:#34d399; font-size:1.4rem; flex-shrink:0;">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
+                                        <h5 class="fw-bold text-white mb-0 fs-6">2. Consultar precio y comprar</h5>
+                                        <span class="badge rounded-pill fw-semibold" style="background:rgba(16,185,129,0.18); color:#34d399; border:1px solid rgba(16,185,129,0.3); font-size:0.75rem; padding:5px 12px;">Mensaje automático 2</span>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Para quienes ya tienen interés en adquirir el sistema.</p>
+                                </div>
+                            </div>
+
+                            <a href="#" id="wspComprarLink" target="_blank" class="btn btn-whatsapp-action w-100 fw-bold py-2 px-3 d-flex align-items-center justify-content-center gap-2 text-white" style="background:linear-gradient(135deg, #10b981, #059669); border:none; font-size:0.95rem;">
+                                <i class="fab fa-whatsapp fs-5"></i> Consultar Precio y Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Modal Script -->
+    <script src="whatsapp-modal.js"></script>
+</body>
+
+</html>

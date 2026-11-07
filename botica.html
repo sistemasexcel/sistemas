@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoticaPro EX 13.5 - Sistema para Boticas y Farmacias en Excel | Sistemas Excel</title>
+    <meta name="description"
+        content="Sistema de BoticaPro EX 13.5 con gestión fraccionada inteligente, acceso multiusuario, apertura de caja y reportes de utilidades. Exclusivo para PC y Laptop con Excel.">
+    <!-- Favicon / Ícono de la pestaña -->
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+    <link rel="apple-touch-icon" href="img/logo.jpeg">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7323567232551802"
+         crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --bg: #0a0f1e;
+            --bg2: #0d1424;
+            --panel: rgba(255, 255, 255, 0.04);
+            --line: rgba(255, 255, 255, 0.09);
+            --green: #22c55e;
+            --green2: #16a34a;
+            --green-soft: rgba(34, 197, 94, 0.12);
+            --emerald: #4ade80;
+            --amber: #f59e0b;
+            --text: #cbd5e1;
+            --muted: #8b9bb4;
+            --white: #ffffff;
+            --radius: 16px;
+            --mono: 'JetBrains Mono', monospace;
+            --shadow-green: 0 16px 40px -14px rgba(34, 197, 94, 0.55);
+
+            --botica-cyan: #0ea5e9;
+            --botica-purple: #8b5cf6;
+            --botica-gradient: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== TOP BAR ===== */
+        .topbar {
+            background: #060a14;
+            color: var(--muted);
+            font-size: 0.76rem;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar i {
+            color: var(--emerald);
+            margin-right: 6px;
+        }
+
+        .topbar a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: var(--white);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-p {
+            background: rgba(10, 15, 30, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+            padding: 0.8rem 0;
+            transition: all .3s ease;
+        }
+
+        .navbar-p.scrolled {
+            background: rgba(10, 15, 30, 0.94);
+            box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar-p .navbar-brand {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 1.18rem;
+            color: var(--white) !important;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-p .brand-logo {
+            height: 42px;
+            width: 42px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, .4);
+        }
+
+        .navbar-p .brand-excel {
+            color: var(--emerald);
+        }
+
+        .navbar-p .nav-link {
+            color: var(--text) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.9rem !important;
+            transition: all .2s ease;
+        }
+
+        .navbar-p .nav-link:hover,
+        .navbar-p .nav-link.active {
+            color: var(--emerald) !important;
+        }
+
+        .btn-wa-nav {
+            background: linear-gradient(135deg, var(--green), var(--green2));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 0.86rem;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-green);
+            transition: all .3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-wa-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 45px -12px rgba(34, 197, 94, 0.75);
+            color: #fff;
+        }
+
+        /* ===== HERO BOTICA ===== */
+        .hero-botica-p {
+            padding: 140px 0 90px;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+                var(--bg);
+        }
+
+        .hero-botica-p::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(14, 165, 233, 0.12);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: var(--botica-cyan);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .device-badge-pc {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            color: var(--emerald);
+            font-size: 0.83rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grad {
+            background: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-botica-p h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-botica-p h1 {
+                font-size: 2.1rem;
+            }
+        }
+
+        .hero-botica-p p.lead {
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 28px;
+            max-width: 540px;
+        }
+
+        .feature-chip-p {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .feature-chip-p:hover {
+            background: rgba(14, 165, 233, 0.15);
+            border-color: var(--botica-cyan);
+            color: var(--white);
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.6);
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px -10px rgba(14, 165, 233, 0.8);
+        }
+
+        .btn-ghost-p {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line);
+            color: var(--white) !important;
+            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 12px;
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-ghost-p:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-img-box {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(14, 165, 233, 0.15);
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-img-box:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ===== SECTIONS ===== */
+        .sec {
+            padding: 90px 0;
+        }
+
+        .sec-head {
+            margin-bottom: 50px;
+        }
+
+        .sec-head .tag {
+            font-family: var(--mono);
+            color: var(--emerald);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .sec-head h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        /* ===== NOVELTY CARDS ===== */
+        .novelty-card-p {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            height: 100%;
+            transition: all .3s ease;
+        }
+
+        .novelty-card-p:hover {
+            transform: translateY(-5px);
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 20px 40px -20px rgba(14, 165, 233, 0.3);
+        }
+
+        .novelty-card-p p,
+        p.small.text-muted,
+        .small.text-muted,
+        .pricing-card-p p.small {
+            color: #ffffff !important;
+            opacity: 0.95;
+        }
+
+        .novelty-icon-p {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ===== GALLERY CARDS ===== */
+        .gallery-card-p {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-card-p:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(34, 197, 94, 0.25);
+        }
+
+        .gallery-card-p img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card-p:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-label-p {
+            padding: 16px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* ===== CTA PRICING ===== */
+        .pricing-card-p {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 36px 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all .3s ease;
+        }
+
+        .pricing-card-p.featured {
+            border-color: var(--botica-purple);
+            box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.3);
+        }
+
+        .pricing-card-p:hover {
+            transform: translateY(-6px);
+        }
+
+        .price-display-p {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .price-display-p .amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            font-family: 'Sora', sans-serif;
+        }
+
+        .price-display-p .currency {
+            font-size: 1.1rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .check-list-p {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px 0;
+        }
+
+        .check-list-p li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .check-list-p li i {
+            color: var(--emerald);
+        }
+
+        /* ===== FOOTER ===== */
+        .ix-footer {
+            background: #070b15;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+        }
+
+        .ix-footer h6 {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.09em;
+            margin-bottom: 18px;
+        }
+
+        .footer-link {
+            color: var(--muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.87rem;
+            transition: all .25s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--emerald);
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 8px;
+            transition: all .25s ease;
+
+        }
+
+        .social-icons a:hover {
+            background: var(--green);
+            transform: translateY(-3px);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        /* ===== PAYMENT MODAL TABS STYLING ===== */
+        #paymentModal .nav-tabs {
+            border-bottom: 1px solid var(--line, rgba(255, 255, 255, 0.15)) !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            padding: 8px 8px 0 8px !important;
+            gap: 6px !important;
+            border-radius: 12px 12px 0 0 !important;
+        }
+
+        #paymentModal .nav-tabs .nav-link {
+            border: none !important;
+            border-radius: 10px 10px 0 0 !important;
+            color: #cbd5e1 !important;
+            font-weight: 700 !important;
+            font-size: 0.92rem !important;
+            padding: 12px 16px !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            transition: all 0.25s ease !important;
+        }
+
+        #paymentModal .nav-tabs .nav-link:hover {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        #paymentModal .nav-tabs .nav-link.active {
+            color: #0f172a !important;
+            background: var(--emerald, #4ade80) !important;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.45) !important;
+        }
+        /* ===== VIDEO COURSE / PLAYLIST STYLES ===== */
+        .video-playlist-container {
+            background: rgba(13, 20, 36, 0.7);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-main-stage {
+            background: #060a14;
+            border-bottom: 1px solid var(--line);
+        }
+
+        @media (min-width: 992px) {
+            .video-main-stage {
+                border-bottom: none;
+                border-right: 1px solid var(--line);
+            }
+        }
+
+        .video-playlist-sidebar {
+            background: rgba(8, 13, 24, 0.85);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .playlist-header {
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .playlist-scroll {
+            max-height: 480px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--botica-cyan) rgba(255, 255, 255, 0.05);
+        }
+
+        .playlist-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .playlist-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .playlist-scroll::-webkit-scrollbar-thumb {
+            background: var(--botica-cyan);
+            border-radius: 4px;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.25s ease;
+            text-align: left;
+            width: 100%;
+            background: transparent;
+            border-left: 3px solid transparent;
+            color: var(--text);
+        }
+
+        .playlist-item:hover {
+            background: rgba(14, 165, 233, 0.08);
+            color: var(--white);
+        }
+
+        .playlist-item.active {
+            background: rgba(14, 165, 233, 0.15);
+            border-left: 3px solid var(--botica-cyan);
+            color: var(--white);
+        }
+
+        .playlist-thumb-wrap {
+            position: relative;
+            width: 86px;
+            min-width: 86px;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .playlist-thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .playlist-item:hover .playlist-thumb-wrap img {
+            transform: scale(1.08);
+        }
+
+        .playlist-thumb-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-family: var(--mono);
+        }
+
+        .playlist-item.active .playlist-thumb-wrap::after {
+            content: '\f04b';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background: var(--botica-cyan);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.8);
+        }
+
+        .playlist-item-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .playlist-item-index {
+            font-size: 0.7rem;
+            color: var(--botica-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .playlist-item.active .playlist-item-index {
+            color: #38bdf8;
+        }
+
+        .playlist-item-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .video-active-meta {
+            padding: 1.25rem;
+            background: rgba(10, 15, 30, 0.95);
+            border-top: 1px solid var(--line);
+        }
+    </style>
+
+    <!-- SEO & Open Graph Tags Added Automatically -->
+    <link rel="canonical" href="https://sistemasexcel.site/botica.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sistemasexcel.site/botica.html" />
+    <meta property="og:title" content="BoticaPro EX 13.5 - Sistema para Boticas y Farmacias en Excel | Sistemas Excel" />
+    <meta property="og:description" content="Sistema de BoticaPro EX 13.5 con gestión fraccionada inteligente, acceso multiusuario, apertura de caja y reportes de utilidades. Exclusivo para PC y Laptop con Excel." />
+    <meta property="og:image" content="https://sistemasexcel.site/img/logo.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+</head>
+
+<body data-page-system="botica">
+
+    <!-- Top Bar -->
+    <div class="topbar d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4">
+                <span><i class="fas fa-phone"></i><a
+                        href="https://wa.me/51922784328?text=Hola%20%F0%9F%91%8B%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Sistemas%20Excel%20y%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20%2ABoticaPro%20EX%2013.5%2A."
+                        target="_blank">+51 922 784 328</a></span>
+                <span><i class="fas fa-headset"></i>Soporte personalizado</span>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+                <span><i class="fas fa-bolt"></i>Entrega inmediata tras el pago</span>
+                <span class="d-flex gap-2">
+                    <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" aria-label="YouTube"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/mksistemas27" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="http://tiktok.com/@excelsistemascusco" target="_blank" aria-label="TikTok"><i
+                            class="fab fa-tiktok"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-p" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.jpeg" alt="Logo Sistemas Excel" class="brand-logo">
+                <span>SISTEMAS <span class="brand-excel">EXCEL</span></span>
+            </a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#novedades">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#video-tutorial">Tutoriales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#como-comprar">¿Cómo comprar?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Módulos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#precio">Precios</a></li>
+                </ul>
+                <div class="d-flex mt-3 mt-lg-0">
+                    <a href="#" class="btn-wa-nav text-decoration-none" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="botica">
+                        <i class="fab fa-whatsapp"></i> Cotizar ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-botica-p">
+        <div class="container position-relative">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <span class="hero-eyebrow"><i class="fas fa-capsules"></i> Versión 13.5 — 2026</span>
+                        <span class="device-badge-pc"><i class="fas fa-desktop"></i> Exclusivo para PC o Laptop</span>
+                    </div>
+
+                    <h1>Sistema para control de <span class="grad">Boticas & Farmacias</span></h1>
+
+                    <p class="lead">
+                        Gestiona tu botica o farmacia con <strong>Venta Fraccionada Inteligente</strong>:
+                        controla unidades, blísteres y cajas desde una sola pantalla en Microsoft Excel.
+                    </p>
+
+                    <!-- Feature Chips -->
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="feature-chip-p"><i class="fas fa-desktop" style="color:var(--emerald);"></i> Para
+                            PC / Laptop</span>
+                        <span class="feature-chip-p"><i class="fas fa-users" style="color:#38bdf8;"></i>
+                            Multiusuario</span>
+                        <span class="feature-chip-p"><i class="fas fa-cash-register" style="color:#f59e0b;"></i>
+                            Apertura de Caja</span>
+                        <span class="feature-chip-p"><i class="fas fa-chart-line" style="color:#c084fc;"></i> Reporte
+                            Utilidades</span>
+                        <span class="feature-chip-p"><i class="fas fa-pills" style="color:#f43f5e;"></i> Venta por
+                            Unidad / Blister / Caja</span>
+                    </div>
+
+                    <!-- Botones de Acción de Alta Conversión -->
+                    <div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+                        <button type="button"
+                            class="btn btn-warning fw-bold px-4 py-3 rounded-3 border-0 shadow-lg text-dark d-inline-flex align-items-center gap-2"
+                            style="font-size: 1.05rem;"
+                            data-bs-toggle="modal" data-bs-target="#plansModal">
+                            <i class="fas fa-shopping-cart"></i> Adquirir Licencia (Desde S/ 80)
+                        </button>
+
+                        <a href="#como-comprar" class="btn-ghost-p text-decoration-none">
+                            <i class="fas fa-shield-alt text-info"></i> ¿Cómo es la compra?
+                        </a>
+
+                        <a href="#video-tutorial" class="text-white-50 text-decoration-underline small ms-2">
+                            <i class="fab fa-youtube text-danger me-1"></i> Ver las 13 clases completas
+                        </a>
+                    </div>
+
+                    <div class="d-flex flex-wrap align-items-center gap-3 gap-md-4 mt-4 pt-3 small" style="border-top: 1px solid rgba(255,255,255,0.14); color: #e2e8f0 !important; font-weight: 500;">
+                        <div><i class="fas fa-check-circle text-success me-1"></i> Licencia permanente de por vida</div>
+                        <div><i class="fas fa-clock text-warning me-1"></i> Sin mensualidades ni cobros sorpresa</div>
+                        <div><i class="fas fa-headset text-info me-1"></i> Asistencia remota de activación incluida</div>
+                    </div>
+                </div>
+
+                <!-- Video Resumen de la Clase 11 en vez de solo imagen estática -->
+                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="hero-video-showcase position-relative" style="background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(14, 165, 233, 0.35); border-radius: 20px; padding: 12px; box-shadow: 0 25px 60px -15px rgba(0,0,0,0.85);">
+                        <div class="d-flex align-items-center justify-content-between px-2 pb-2 mb-1 border-bottom" style="border-color: rgba(255,255,255,0.08) !important;">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-danger px-2 py-1"><i class="fab fa-youtube me-1"></i> Video Resumen</span>
+                                <span class="small text-white fw-semibold">Demostración en vivo del sistema</span>
+                            </div>
+                            <span class="badge bg-dark border border-secondary text-info"><i class="fas fa-eye me-1"></i> 100% Real</span>
+                        </div>
+                        <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border border-secondary border-opacity-25">
+                            <iframe src="https://www.youtube.com/embed/nhzC6dB4h3Y?rel=0"
+                                title="BoticaPro EX 13.5 - Resumen Rápido del Sistema"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between pt-2 px-2 text-white-50 small">
+                            <span><i class="fas fa-info-circle text-info me-1"></i> Observa el funcionamiento real antes de comprar.</span>
+                            <a href="#video-tutorial" class="text-info text-decoration-none fw-semibold">Explorar 13 clases &darr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner Requisito Dispositivo PC / Laptop -->
+        <div style="background: rgba(34, 197, 94, 0.08); border-y: 1px solid rgba(34, 197, 94, 0.2);" class="py-3">
+            <div class="container text-center">
+                <span class="text-white fw-semibold" style="font-size: 0.95rem;">
+                    <i class="fas fa-laptop me-2 text-success fs-5"></i>
+                    <strong>Compatibilidad de Uso:</strong> Este sistema es exclusivo para ejecución en <strong
+                        style="color:var(--emerald);">PC o Laptop</strong> con sistema operativo Windows y Microsoft
+                    Excel (Office 2019 o superior).
+                </span>
+            </div>
+              <!-- Video Tutorial Section: Guía Completa y Actualizada en Video -->
+        <section id="video-tutorial" class="sec"
+            style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; CURSO COMPLETO EN VIDEO PASO A PASO (13 CLASES)</span>
+                    <h2>Aprende a dominar cada función de <span class="grad">BoticaPro EX 13.5</span></h2>
+                    <p class="mx-auto text-white" style="max-width: 720px;">
+                        Tutoriales oficiales actualizados paso a paso: desde las configuraciones iniciales, compras y ventas fraccionadas, hasta apertura de caja, utilidades y conexión en red local.
+                    </p>
+                </div>
+
+                <!-- Reproductor Interactivo con Playlist de Clases -->
+                <div class="video-playlist-container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row g-0">
+                        <!-- Pantalla Principal del Video -->
+                        <div class="col-lg-8 video-main-stage d-flex flex-column justify-content-between">
+                            <div class="p-2 p-md-3">
+                                <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-2xl border"
+                                    style="border-color: rgba(14, 165, 233, 0.4) !important;">
+                                    <iframe id="mainPlayerIframe"
+                                        src="https://www.youtube.com/embed/C8EoMJYtYDY?rel=0&enablejsapi=1"
+                                        title="BoticaPro EX 13.5 - Video Tutorial"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <!-- Meta del video seleccionado -->
+                            <div class="video-active-meta d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge bg-danger px-2 py-1" id="currentVideoBadge"><i class="fab fa-youtube me-1"></i> Clase 1 de 13</span>
+                                        <span class="badge bg-primary bg-opacity-25 text-info border border-info border-opacity-25" id="currentVideoModule">Configuración</span>
+                                    </div>
+                                    <h4 class="mb-0 text-white fs-5 fw-bold" id="currentVideoTitle">BoticaPro EX 13.5 (2026) 💊 | Configuraciones iniciales</h4>
+                                </div>
+                                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                    <a id="currentYoutubeDirect" href="https://www.youtube.com/watch?v=C8EoMJYtYDY&list=PLS6Po-Z9_soQ&index=1" target="_blank" class="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill fw-semibold">
+                                        <i class="fab fa-youtube"></i> Ver en YouTube
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar / Lista de Reproducción con Miniaturas -->
+                        <div class="col-lg-4 video-playlist-sidebar">
+                            <div class="playlist-header d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fas fa-list-ol text-info fs-5"></i>
+                                    <div>
+                                        <h6 class="mb-0 text-white fw-bold">Plan de Aprendizaje</h6>
+                                        <small class="text-muted">13 Videos Prácticos</small>
+                                    </div>
+                                </div>
+                                <span class="badge rounded-pill" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3);">
+                                    <i class="fas fa-check-circle me-1"></i> Actualizado 2026
+                                </span>
+                            </div>
+
+                            <!-- Lista con Scroll -->
+                            <div class="playlist-scroll" id="tutorialPlaylist">
+                                <!-- Item 1 -->
+                                <button type="button" class="playlist-item active" data-vid="C8EoMJYtYDY" data-index="1" data-module="Configuración" data-title="BoticaPro EX 13.5 (2026) 💊 | Configuraciones iniciales">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/C8EoMJYtYDY/hqdefault.jpg" alt="Miniatura Clase 1" loading="lazy">
+                                        <span class="playlist-thumb-badge">01</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index"><i class="fas fa-play-circle me-1"></i> Clase 1</div>
+                                        <div class="playlist-item-title">Configuraciones iniciales y datos de la botica</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 2 -->
+                                <button type="button" class="playlist-item" data-vid="O2XRs7nyz9c" data-index="2" data-module="Medicamentos" data-title="BoticaPro EX 13.5 (2026) 💊 | Registro de Medicamentos">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/O2XRs7nyz9c/hqdefault.jpg" alt="Miniatura Clase 2" loading="lazy">
+                                        <span class="playlist-thumb-badge">02</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 2</div>
+                                        <div class="playlist-item-title">Registro de Medicamentos y Venta Fraccionada</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 3 -->
+                                <button type="button" class="playlist-item" data-vid="uEIhldjddZE" data-index="3" data-module="Compras" data-title="BoticaPro EX 13.5 (2026) 💊 | Registro de Compras">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/uEIhldjddZE/hqdefault.jpg" alt="Miniatura Clase 3" loading="lazy">
+                                        <span class="playlist-thumb-badge">03</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 3</div>
+                                        <div class="playlist-item-title">Registro de Compras e Ingreso al Inventario</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 4 -->
+                                <button type="button" class="playlist-item" data-vid="Pn54QLHU7KI" data-index="4" data-module="Inventario" data-title="BoticaPro EX 13.5 (2026) 💊 | Módulo de Kardex">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/Pn54QLHU7KI/hqdefault.jpg" alt="Miniatura Clase 4" loading="lazy">
+                                        <span class="playlist-thumb-badge">04</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 4</div>
+                                        <div class="playlist-item-title">Módulo de Kardex y Control Físico de Stock</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 5 -->
+                                <button type="button" class="playlist-item" data-vid="rFNgnV5Ruh0" data-index="5" data-module="Ventas" data-title="BoticaPro EX 13.5 (2026) 💊 | Módulo de Registro de Ventas">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/rFNgnV5Ruh0/hqdefault.jpg" alt="Miniatura Clase 5" loading="lazy">
+                                        <span class="playlist-thumb-badge">05</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 5</div>
+                                        <div class="playlist-item-title">Módulo de Punto de Venta y Facturación Rápida</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 6 -->
+                                <button type="button" class="playlist-item" data-vid="1K_qbTlU7Sk" data-index="6" data-module="Reportes" data-title="BoticaPro EX 13.5 (2026) 💊 | Reporte de Ventas">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/1K_qbTlU7Sk/hqdefault.jpg" alt="Miniatura Clase 6" loading="lazy">
+                                        <span class="playlist-thumb-badge">06</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 6</div>
+                                        <div class="playlist-item-title">Reporte de Ventas por Fechas, Turnos y Vendedor</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 7 -->
+                                <button type="button" class="playlist-item" data-vid="i0GeUHp3kVw" data-index="7" data-module="Caja" data-title="BoticaPro EX 13.5 (2026) 💊 | Reporte de apertura de caja">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/i0GeUHp3kVw/hqdefault.jpg" alt="Miniatura Clase 7" loading="lazy">
+                                        <span class="playlist-thumb-badge">07</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 7</div>
+                                        <div class="playlist-item-title">Reporte de Apertura y Cierre Cuadrado de Caja</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 8 -->
+                                <button type="button" class="playlist-item" data-vid="lC2Jqkla_48" data-index="8" data-module="Finanzas" data-title="BoticaPro EX 13.5 (2026) 💊 | Reporte de Utilidades">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/lC2Jqkla_48/hqdefault.jpg" alt="Miniatura Clase 8" loading="lazy">
+                                        <span class="playlist-thumb-badge">08</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 8</div>
+                                        <div class="playlist-item-title">Reporte de Utilidades y Ganancia Neta Real</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 9 -->
+                                <button type="button" class="playlist-item" data-vid="WMx1L_y53Eo" data-index="9" data-module="Directorio" data-title="BoticaPro EX 13.5 (2026) 💊 | Registro de Clientes y Proveedores">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/WMx1L_y53Eo/hqdefault.jpg" alt="Miniatura Clase 9" loading="lazy">
+                                        <span class="playlist-thumb-badge">09</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 9</div>
+                                        <div class="playlist-item-title">Directorio de Clientes y Proveedores Comerciales</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 10 -->
+                                <button type="button" class="playlist-item" data-vid="y-Iam0qCZ1w" data-index="10" data-module="Alertas" data-title="BoticaPro EX 13.5 (2026) 💊 | Desactivar alertas de vencimiento">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/y-Iam0qCZ1w/hqdefault.jpg" alt="Miniatura Clase 10" loading="lazy">
+                                        <span class="playlist-thumb-badge">10</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 10</div>
+                                        <div class="playlist-item-title">Control y Alertas de Fechas de Vencimiento</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 11 -->
+                                <button type="button" class="playlist-item" data-vid="nhzC6dB4h3Y" data-index="11" data-module="Resumen" data-title="BoticaPro EX 13.5 (2026) 💊 | RESUMEN RÁPIDO">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/nhzC6dB4h3Y/hqdefault.jpg" alt="Miniatura Clase 11" loading="lazy">
+                                        <span class="playlist-thumb-badge">11</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 11</div>
+                                        <div class="playlist-item-title">Resumen Rápido: Flujo Completo del Sistema</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 12 -->
+                                <button type="button" class="playlist-item" data-vid="nxD6MdWHiyM" data-index="12" data-module="Auditoría" data-title="BoticaPro EX 13.5 (2026) 💊 | Identificar Id de Una comprar registrada">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/nxD6MdWHiyM/hqdefault.jpg" alt="Miniatura Clase 12" loading="lazy">
+                                        <span class="playlist-thumb-badge">12</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 12</div>
+                                        <div class="playlist-item-title">Identificar ID de compras registradas para ajustes</div>
+                                    </div>
+                                </button>
+
+                                <!-- Item 13 -->
+                                <button type="button" class="playlist-item" data-vid="_3yN8Pl9KnU" data-index="13" data-module="Bonus" data-title="BoticaPro EX 13.5 (2026) 💊 | BONUS - Desactivar alertas de vencimiento">
+                                    <div class="playlist-thumb-wrap">
+                                        <img src="https://i.ytimg.com/vi/_3yN8Pl9KnU/hqdefault.jpg" alt="Miniatura Clase 13" loading="lazy">
+                                        <span class="playlist-thumb-badge">13</span>
+                                    </div>
+                                    <div class="playlist-item-info">
+                                        <div class="playlist-item-index">Clase 13 (Bonus)</div>
+                                        <div class="playlist-item-title">Bonus: Personalización avanzada y avisos automáticos</div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- Footer de la lista -->
+                            <div class="p-3 border-top border-secondary border-opacity-25 bg-black bg-opacity-20 text-center">
+                                <a href="https://www.youtube.com/playlist?list=PLS6Po-Z9_soQ" target="_blank" class="small text-decoration-none fw-bold text-white d-inline-flex align-items-center gap-2">
+                                    <i class="fab fa-youtube text-danger fs-6"></i> Abrir lista completa en YouTube <i class="fas fa-external-link-alt fs-7 text-muted"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Videos Tutoriales Esenciales Anteriores -->
+                <div class="mt-5 pt-3">
+                    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2" data-aos="fade-up">
+                        <div>
+                            <span class="badge bg-secondary bg-opacity-25 text-info border border-info border-opacity-25 px-3 py-1 mb-2">
+                                <i class="fas fa-shield-alt me-1"></i> Guías Clave de Instalación & Red
+                            </span>
+                            <h3 class="fs-4 fw-bold text-white mb-0">Tutoriales Esenciales de Inicio y Red Local</h3>
+                        </div>
+                        <span class="text-muted small">
+                            <i class="fas fa-info-circle me-1 text-warning"></i> Pasos fundamentales para instalación y multi-computadora
+                        </span>
+                    </div>
+
+                    <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Video Anterior 1: Habilitación de Macros -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Guía 1</span>
+                                        <h5 class="mb-0 text-white fs-6 fw-bold">Cómo Habilitar las Macros y Conexión DB</h5>
+                                    </div>
+                                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
+                                        style="border-color: rgba(14, 165, 233, 0.3) !important;">
+                                        <iframe src="https://www.youtube.com/embed/di-gGU3lqAk"
+                                            title="Cómo habilitar el sistema BoticaPro EX" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mt-3 mb-0 text-center"><i
+                                        class="fas fa-key me-1 text-success"></i> Guía paso a paso para la activación de
+                                    macros e instalación inicial.</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Anterior 2: Uso del Sistema y Configuraciones Iniciales -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Guía 2</span>
+                                        <h5 class="mb-0 text-white fs-6 fw-bold">Uso del Sistema y Configuraciones Iniciales</h5>
+                                    </div>
+                                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
+                                        style="border-color: rgba(139, 92, 246, 0.3) !important;">
+                                        <iframe src="https://www.youtube.com/embed/d2kw8fDiXik"
+                                            title="Uso del sistema y configuraciones iniciales BoticaPro EX"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mt-3 mb-0 text-center"><i class="fas fa-cogs me-1 text-info"></i>
+                                    Tutorial completo de registro de medicamentos, fraccionamiento y ventas.</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Anterior 3: Configuración en Red Local -->
+                        <div class="col-lg-4 col-md-12">
+                            <div class="p-3 rounded-4 h-100 d-flex flex-column justify-content-between"
+                                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line);">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-danger"><i class="fab fa-youtube me-1"></i> Guía 3</span>
+                                        <h5 class="mb-0 text-white fs-6 fw-bold">Configuración en Red Local (Multi-PC)</h5>
+                                    </div>
+                                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border"
+                                        style="border-color: rgba(34, 197, 94, 0.3) !important;">
+                                        <iframe src="https://www.youtube.com/embed/gaoLOl6Ouj0"
+                                            title="Configuración en Red Local BoticaPro EX"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mt-3 mb-0 text-center"><i class="fas fa-network-wired me-1 text-warning"></i>
+                                    Aprende a compartir la base de datos y conectar múltiples equipos en red.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Novedades: Venta Fraccionada -->
+        <section id="novedades" class="sec">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; LO MÁS PEDIDO</span>
+                    <h2>Venta Fraccionada <span class="grad">Inteligente</span></h2>
+                    <p class="mx-auto text-white" style="max-width: 600px;">Registra compras y ventas por unidad,
+                        blíster o caja. El stock se actualiza automáticamente con precisión exacta.</p>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(139,92,246,0.12); color: #a78bfa;"><i
+                                    class="fas fa-globe-americas"></i></div>
+                            <h5>Multimoneda Internacional</h5>
+                            <p class="small text-white mb-2">Adaptable a cualquier país con configuración inmediata.</p>
+                            <div class="d-flex flex-wrap gap-1 mt-2">
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/pe.png" alt="Perú"
+                                        style="width: 13px; margin-right: 3px;">S/</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/mx.png" alt="México"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/co.png" alt="Colombia"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/cl.png" alt="Chile"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/bo.png" alt="Bolivia"
+                                        style="width: 13px; margin-right: 3px;">Bs</span>
+                                <span
+                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;"
+                                    class="text-white"><img src="https://flagcdn.com/w20/ec.png" alt="Ecuador"
+                                        style="width: 13px; margin-right: 3px;">$</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(14,165,233,0.12); color: #38bdf8;"><i
+                                    class="bi bi-layers-fill"></i></div>
+                            <h5>Despacho por Blíster</h5>
+                            <p class="small text-white mb-0">Vende fracciones exactas de blísteres sin perder el control
+                                del inventario general.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(245,158,11,0.12); color: #fbbf24;"><i
+                                    class="bi bi-capsule"></i></div>
+                            <h5>Venta por Unidad</h5>
+                            <p class="small text-white mb-0">Ideal para pastillas sueltas. El sistema convierte y
+                                descuenta el stock automáticamente.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(239,68,68,0.12); color: #f87171;"><i
+                                    class="bi bi-exclamation-triangle-fill"></i></div>
+                            <h5>Alertas de Vencimiento</h5>
+                            <p class="small text-white mb-0">Recibe notificaciones automáticas de productos próximos a
+                                vencer para evitar pérdidas.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p"
+                                style="background: rgba(34,197,94,0.12); color: var(--emerald);"><i
+                                    class="bi bi-people-fill"></i></div>
+                            <h5>Multiusuarios</h5>
+                            <p class="small text-white mb-0">Crea múltiples usuarios con diferentes niveles de acceso y
+                                permisos en el sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(168,85,247,0.12); color: #c084fc;"><i
+                                    class="bi bi-cash-coin"></i></div>
+                            <h5>Apertura de Caja</h5>
+                            <p class="small text-white mb-0">Gestiona tu flujo de efectivo registrando el monto inicial
+                                al abrir tu turno de trabajo.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(245,158,11,0.12); color: #fbbf24;"><i
+                                    class="bi bi-graph-up-arrow"></i></div>
+                            <h5>Reporte de Utilidades</h5>
+                            <p class="small text-white mb-0">Conoce la rentabilidad de tu negocio con reportes
+                                detallados de tus ganancias netas.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="novelty-card-p">
+                            <div class="novelty-icon-p" style="background: rgba(59,130,246,0.12); color: #60a5fa;"><i
+                                    class="bi bi-receipt-cutoff"></i></div>
+                            <h5>Ticket Profesional</h5>
+                            <p class="small text-white mb-0">Genera notas de venta con formato profesional listas para
+                                imprimir al instante.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo de Ventas Preview -->
+        <section class="sec"
+            style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="hero-img-box">
+                            <img src="IMG-botica/8. MODULO DE VENTAS.png" alt="Módulo de Ventas Fraccionadas">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <span class="tag" style="color:var(--emerald); font-family:var(--mono);">&gt; MÓDULO
+                            ESTRELLA</span>
+                        <h2 class="mb-4">Módulo de Ventas <span class="grad">Fraccionadas</span></h2>
+                        <p class="text-white mb-4">
+                            Una pantalla potente e intuitiva donde puedes seleccionar si vendes por
+                            <strong>unidad</strong>, <strong>blíster</strong> o <strong>caja</strong>.
+                            El stock se actualiza en tiempo real en tu PC o Laptop.
+                        </p>
+                        <ul class="check-list-p">
+                            <li><i class="fas fa-check-circle"></i> Descuento de Stock Inteligente por blíster o
+                                pastilla</li>
+                            <li><i class="fas fa-check-circle"></i> Cálculo de vuelto instantáneo al cobrar</li>
+                            <li><i class="fas fa-check-circle"></i> Soporte para lectoras de código de barras</li>
+                            <li><i class="fas fa-check-circle"></i> Impresión directa de Ticket / Nota de Venta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Capturas -->
+        <section id="galeria" class="sec">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; VISTA PREVIA</span>
+                    <h2>Todos los módulos en un solo lugar</h2>
+                    <p class="mx-auto text-white" style="max-width: 540px;">Haz clic en cualquier módulo para ver la
+                        captura en pantalla completa.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/1. LOGIN PRINCIPAL.png" class="glightbox" data-gallery="botica-gallery">
+                                <img src="IMG-botica/1. LOGIN PRINCIPAL.png" alt="Login Principal">
+                            </a>
+                            <div class="gallery-label-p">Acceso Seguro con Login</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/2. MENU PRINCIPAL.png" class="glightbox" data-gallery="botica-gallery">
+                                <img src="IMG-botica/2. MENU PRINCIPAL.png" alt="Menú Principal">
+                            </a>
+                            <div class="gallery-label-p">Menú Principal Intuitivo</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/3. REGISTRO DE MEDICAMENTOS.png" class="glightbox"
+                                data-gallery="botica-gallery">
+                                <img src="IMG-botica/3. REGISTRO DE MEDICAMENTOS.png" alt="Registro de Medicamentos">
+                            </a>
+                            <div class="gallery-label-p">Registro de Medicamentos</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/4. MODULO DE COMPRAS.png" class="glightbox"
+                                data-gallery="botica-gallery">
+                                <img src="IMG-botica/4. MODULO DE COMPRAS.png" alt="Módulo de Compras">
+                            </a>
+                            <div class="gallery-label-p">Gestión de Compras</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/8. MODULO DE VENTAS.png" class="glightbox"
+                                data-gallery="botica-gallery">
+                                <img src="IMG-botica/8. MODULO DE VENTAS.png" alt="Módulo de Ventas">
+                            </a>
+                            <div class="gallery-label-p" style="color: var(--emerald);">Ventas Fraccionadas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/6. KARDEX.png" class="glightbox" data-gallery="botica-gallery">
+                                <img src="IMG-botica/6. KARDEX.png" alt="Kardex">
+                            </a>
+                            <div class="gallery-label-p">Kardex Físico y Valorado</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                        <div class="gallery-card-p">
+                            <a href="IMG-botica/10. NOTA DE VENTA.png" class="glightbox" data-gallery="botica-gallery">
+                                <img src="IMG-botica/10. NOTA DE VENTA.png" alt="Comprobante Nota de Venta">
+                            </a>
+                            <div class="gallery-label-p" style="color: var(--emerald);">Comprobante Ticket / Nota de Venta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios Reales -->
+        <section id="testimonios" class="sec" style="background: var(--bg2); border-top: 1px solid var(--line);">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; TESTIMONIOS REALES</span>
+                    <h2>Lo que dicen los usuarios de <span class="grad">BoticaPro EX</span></h2>
+                    <p class="mx-auto text-white" style="max-width: 580px;">Opiniones reales de clientes que gestionan sus farmacias y boticas con nuestro sistema.</p>
+                </div>
+                <div class="row g-4 mt-2 justify-content-center">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-card p-4 rounded-4" style="background: linear-gradient(165deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); border: 1px solid var(--line); height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div class="stars mb-3" style="color: #f59e0b;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p class="text-white mb-4" style="font-style: italic; line-height: 1.7; font-size: 0.95rem;">
+                                    "Excelente servicio, completo y adecuado"
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 pt-3" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white fs-5" style="width: 44px; height: 44px; background: #8b5cf6;">J</div>
+                                <div>
+                                    <h6 class="fw-bold text-white mb-0">Jonathan Benjamín Hu</h6>
+                                    <small style="color: #4ade80;"><i class="fab fa-tiktok me-1"></i>Cliente Verificado</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-card p-4 rounded-4" style="background: linear-gradient(165deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); border: 1px solid var(--line); height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div class="stars mb-3" style="color: #f59e0b;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p class="text-white mb-4" style="font-style: italic; line-height: 1.7; font-size: 0.95rem;">
+                                    "excelente sistema cumple con las funciones y muy fácil de usarlo ni que decir del soporte técnico muy amables ☺️ 100% RECOMENDADO"
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 pt-3" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white fs-5" style="width: 44px; height: 44px; background: #ec4899;">A</div>
+                                <div>
+                                    <h6 class="fw-bold text-white mb-0">Auccatinco🌻</h6>
+                                    <small style="color: #4ade80;"><i class="fab fa-tiktok me-1"></i>Cliente Verificado</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testimonial-card p-4 rounded-4" style="background: linear-gradient(165deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); border: 1px solid var(--line); height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <div class="stars mb-3" style="color: #f59e0b;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p class="text-white mb-4" style="font-style: italic; line-height: 1.7; font-size: 0.95rem;">
+                                    "ya llevo mas de 6 meses, y el sistema, va de maravilla, gracias a eso agilizo las ventas de mi farmacia.💊 Compra segura 💪"
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 pt-3" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white fs-5" style="width: 44px; height: 44px; background: #3b82f6;">E</div>
+                                <div>
+                                    <h6 class="fw-bold text-white mb-0">ElianRV11</h6>
+                                    <small style="color: #4ade80;"><i class="fab fa-tiktok me-1"></i>Cliente Verificado</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planes y Precios -->
+                <!-- Sección: Cómo comprar y recibir tu sistema en 3 pasos -->
+        <section id="como-comprar" class="sec" style="background: #090e1a; border-top: 1px solid var(--line);">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; PROCESO RÁPIDO Y TRANSPARENTE</span>
+                    <h2>¿Cómo comprar y recibir tu sistema en <span class="grad">3 simples pasos</span>?</h2>
+                    <p class="mx-auto text-white mt-2" style="max-width: 650px;">
+                        Sin trámites largos ni esperas innecesarias. Todo el proceso toma menos de 5 minutos.
+                    </p>
+                </div>
+
+                <div class="row g-4" data-aos="fade-up">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="p-4 rounded-4 h-100 position-relative" style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-top: 3px solid #0ea5e9;">
+                            <div class="d-inline-flex align-items-center justify-content-center fw-bold fs-4 mb-3 rounded-circle" style="width: 50px; height: 50px; background: rgba(14,165,233,0.15); color: #38bdf8;">
+                                1
+                            </div>
+                            <h4 class="text-white fw-bold mb-2">Elige tu Licencia</h4>
+                            <p class="text-white-50 mb-0">
+                                Selecciona si necesitas la <strong>Licencia Permanente para 1 PC (S/ 80 / $26 USD)</strong> o el <strong>Plan Red Local Multi-PC (S/ 135 / $40 USD)</strong> para conectar varios equipos en tu botica.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="p-4 rounded-4 h-100 position-relative" style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-top: 3px solid #f59e0b;">
+                            <div class="d-inline-flex align-items-center justify-content-center fw-bold fs-4 mb-3 rounded-circle" style="width: 50px; height: 50px; background: rgba(245,158,11,0.15); color: #fbbf24;">
+                                2
+                            </div>
+                            <h4 class="text-white fw-bold mb-2">Realiza tu Pago Seguro</h4>
+                            <p class="text-white-50 mb-0">
+                                <strong>En Perú:</strong> Paga al instante con Yape o Plin y envíanos la captura por WhatsApp.<br>
+                                <strong>Internacional:</strong> Paga con tarjeta de débito o crédito en Hotmart con cifrado bancario 100% seguro.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="p-4 rounded-4 h-100 position-relative" style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-top: 3px solid #22c55e;">
+                            <div class="d-inline-flex align-items-center justify-content-center fw-bold fs-4 mb-3 rounded-circle" style="width: 50px; height: 50px; background: rgba(34,197,94,0.15); color: #4ade80;">
+                                3
+                            </div>
+                            <h4 class="text-white fw-bold mb-2">Entrega Inmediata</h4>
+                            <p class="text-white-50 mb-0">
+                                Recibes de inmediato el enlace de descarga oficial con el archivo completo original, la guía paso a paso y la asistencia remota de instalación si la requieres.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner Solicitar Demo de Prueba -->
+                <div class="mt-5 p-4 rounded-4" style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(14,165,233,0.1)); border: 1px solid rgba(34,197,94,0.3);" data-aos="fade-up">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-8">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge bg-success px-3 py-1 rounded-pill"><i class="fab fa-whatsapp me-1"></i> Atención Directa</span>
+                                <h4 class="text-white fw-bold mb-0">Solicitar Demo de Prueba</h4>
+                            </div>
+                            <p class="text-white-50 mb-0">
+                                ¿Deseas comprobar cómo funciona en tu negocio antes de adquirir la licencia? Escríbenos por WhatsApp y solicita tu versión demo o una demostración guiada para conocer todas las funciones de <strong>BoticaPro EX 13.5</strong>.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a href="https://wa.me/51922784328?text=Hola%20%F0%9F%91%8B%2C%20deseo%20solicitar%20la%20demo%20de%20prueba%20de%20%2ABoticaPro%20EX%2013.5%2A%20y%20conocer%20sus%20funcionalidades." target="_blank" class="btn btn-success fw-bold text-white px-4 py-3 rounded-3 shadow-lg border-0 d-inline-flex align-items-center gap-2">
+                                <i class="fab fa-whatsapp fs-5"></i> Solicitar Demo por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="precio" class="sec" style="background: var(--bg2); border-top: 1px solid var(--line);">
+            <div class="container">
+                <div class="sec-head text-center" data-aos="fade-up">
+                    <span class="tag">&gt; ADQUISICIÓN E INSTALACIÓN</span>
+                    <h2>Elige el plan ideal para tu <span class="grad">Botica</span></h2>
+                    <p class="mx-auto text-white mt-2" style="max-width: 580px;">
+                        <i class="fas fa-desktop text-success me-1"></i> Licencias listas para instalación en PC o
+                        Laptop (Windows + Microsoft Excel).
+                    </p>
+                    
+                </div>
+
+                <div class="row g-4 justify-content-center" data-aos="fade-up">
+
+                    <!-- Licencia Permanente -->
+                    <div class="col-lg-5 col-md-6">
+                        <div class="pricing-card-p featured">
+                            <div>
+                                <span class="badge bg-purple px-3 py-2 rounded-pill text-white fw-bold mb-3"
+                                    style="background:#8b5cf6;">★ UN SOLO PAGO</span>
+                                <h3 class="text-white">Permanente</h3>
+                                <p class="small text-white"><strong>Un solo pago de por vida.</strong> Sin mensualidades
+                                    ni suscripciones.</p>
+
+                                <div class="price-display-p">
+                                    <span class="currency">S/</span>
+                                    <span class="amount" style="color:#a78bfa;">50</span>
+                                    <span class="currency text-white-50 ms-2">| $15 USD</span>
+                                </div>
+
+                                <ul class="check-list-p">
+                                    <li><i class="fas fa-check"></i> Acceso Multiusuario completo</li>
+                                    <li><i class="fas fa-check"></i> Apertura y Cierre de Caja</li>
+                                    <li><i class="fas fa-check"></i> Reporte de Utilidades y Rentabilidad</li>
+                                    <li><i class="fas fa-check"></i> Ventas Fraccionadas (Unidad, Blíster, Caja)</li>
+                                    <li><i class="fas fa-check"></i> Alertas de Vencimiento</li>
+                                    <li><i class="fas fa-desktop text-success"></i> <strong>Uso exclusivo en 1 PC o
+                                            Laptop</strong></li>
+                                    <li><i class="fas fa-gem text-warning"></i> <strong>Un solo pago de por vida (sin
+                                            mensualidades)</strong></li>
+                                    <li><i class="fas fa-headset text-info"></i> Soporte de instalación incluido</li>
+                                </ul>
+                            </div>
+
+                            <button type="button"
+                                class="btn btn-lg text-white fw-bold py-3 w-100 rounded-3 border-0 shadow-lg"
+                                style="background: #8b5cf6;" data-bs-toggle="modal" data-bs-target="#paymentModal"
+                                data-price-usd="26.00" data-price-pen="80.00"
+                                data-version="BoticaPro Licencia Permanente"
+                                data-hotmart="https://pay.hotmart.com/D105636552A">
+                                <i class="fas fa-gem me-2"></i>Adquirir Licencia Permanente
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Plan Red Local -->
+                    <div class="col-lg-5 col-md-6">
+                        <div class="pricing-card-p" style="border-color: rgba(34, 197, 94, 0.5);">
+                            <div>
+                                <span class="badge bg-success px-3 py-2 rounded-pill text-white fw-bold mb-3">★ MULTI-PC
+                                    RED LOCAL</span>
+                                <h3 class="text-white">Red Local</h3>
+                                <p class="small text-white"><strong>Uso en varios equipos a la vez.</strong> Permite
+                                    conectar múltiples computadoras dentro de tu local mediante Red Local por <strong>un
+                                        solo pago</strong> (sin mensualidades).</p>
+
+                                <div class="price-display-p">
+                                    <span class="currency">S/</span>
+                                    <span class="amount" style="color:var(--emerald);">90</span>
+                                    <span class="currency text-white-50 ms-2">| $30 USD</span>
+                                </div>
+
+                                <ul class="check-list-p">
+                                    <li><i class="fas fa-check"></i> Todo lo del plan Permanente</li>
+                                    <li><i class="fas fa-desktop text-success"></i> <strong>Uso simultáneo en varios
+                                            equipos a la vez</strong></li>
+                                    <li><i class="fas fa-network-wired text-success"></i> Conexión exclusiva en Red
+                                        Local</li>
+                                    <li><i class="fas fa-database text-info"></i> Base de datos compartida en tiempo
+                                        real (Caja, Almacén, Mostrador)</li>
+                                    <li><i class="fas fa-gem text-warning"></i> <strong>Un solo pago de por
+                                            vida</strong> (sin mensualidades)</li>
+                                    <li><i class="fas fa-headset text-info"></i> Asistencia remota de configuración e
+                                        instalación incluida</li>
+                                </ul>
+                            </div>
+
+                            <button type="button"
+                                class="btn btn-lg text-dark fw-bold py-3 w-100 rounded-3 border-0 shadow-lg"
+                                style="background: var(--emerald);" data-bs-toggle="modal"
+                                data-bs-target="#paymentModal" data-price-usd="40.00" data-price-pen="135.00"
+                                data-version="BoticaPro Plan Red Local"
+                                data-hotmart="https://pay.hotmart.com/Y106060643U">
+                                <i class="fas fa-network-wired me-2"></i>Conectar en Red Local
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ix-footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="img/logo.jpeg" alt="Logo Sistemas Excel"
+                            style="height:36px; width:36px; object-fit:cover; border-radius:8px; box-shadow:0 0 0 2px rgba(34,197,94,.4);">
+                        <span class="text-white fw-bold"
+                            style="font-family:'Sora',sans-serif; letter-spacing:-.02em;">SISTEMAS <span
+                                style="color:var(--emerald);">EXCEL</span></span>
+                    </div>
+                    <p>Soluciones tecnológicas accesibles para transformar el flujo de trabajo de emprendedores en toda
+                        Latinoamérica.</p>
+                    <p class="mt-4 mb-0 small">© 2026 Copyright: <a href="https://sistemasexcel.site"
+                            class="text-white text-decoration-none">https://sistemasexcel.site</a></p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h6>NUESTROS SISTEMAS</h6>
+                    <a href="ventas.html" class="footer-link">Ventas e Inventario</a>
+                    <a href="cotizaciones.html" class="footer-link">Sistema de Cotizaciones</a>
+                    <a href="botica.html" class="footer-link">BoticaPro EX 13.5</a>
+                    <a href="veterinaria.html" class="footer-link">VET-SYSTEM PRO</a>
+                    <a href="sistemasweb.html" class="footer-link">Sistemas Web</a>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h6>NAVEGACIÓN</h6>
+                    <a href="index.html" class="footer-link">Inicio</a>
+                    <a href="#novedades" class="footer-link">Novedades</a>
+                    <a href="#video-tutorial" class="footer-link">Video Habilitar</a>
+                    <a href="#galeria" class="footer-link">Módulos</a>
+                    <a href="#precio" class="footer-link">Precios</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h6>CONTACTO DE SOPORTE</h6>
+                    <p class="mb-2"><i class="fas fa-phone text-success me-2"></i> +51 922 784 328</p>
+                    <p class="mb-3"><i class="fas fa-desktop text-success me-2"></i> Asistencia remota de instalación
+                        para PC / Laptop</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" aria-label="YouTube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/mksistemas27" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" aria-label="TikTok"><i
+                                class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Pagos -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content"
+                style="background:#0f172a; color:#fff; border-radius:20px; border:1px solid var(--line);">
+                <div class="modal-header border-0 pb-0 px-4 pt-4 align-items-center">
+                    <div class="d-flex align-items-center gap-2 px-3 py-2 rounded-3 shadow-sm" style="background: #ffffff;">
+                        <i class="fas fa-wallet text-success fs-4"></i>
+                        <h5 class="modal-title fw-bold fs-5 mb-0" id="paymentModalLabel" style="color: #000000 !important;">
+                            Elige tu método de pago
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0 mt-3">
+                    <ul class="nav nav-tabs nav-justified" id="paymentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="peru-tab" data-bs-toggle="tab" data-bs-target="#peru-content"
+                                type="button" role="tab" aria-controls="peru-content" aria-selected="true">
+                                <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2">Pago Nacional (Perú)
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card-content"
+                                type="button" role="tab" aria-controls="card-content" aria-selected="false">
+                                <i class="fas fa-credit-card me-2"></i>Pago con Tarjeta
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-4" id="paymentTabsContent">
+                        <div class="tab-pane fade show active" id="peru-content" role="tabpanel" aria-labelledby="peru-tab">
+                            <div class="text-white">
+                                <h4 class="mb-3 text-center fw-bold">Pago con Yape / Plin (Perú)</h4>
+                                <p class="text-center text-white">Realiza el pago y envía el comprobante por WhatsApp
+                                    para activar tu licencia de inmediato.</p>
+                                <div class="row align-items-center mt-4">
+                                    <div class="col-lg-6 text-center">
+                                        <img src="img/YAPE-.jpeg" alt="QR Yape Plin" class="img-fluid rounded shadow-sm"
+                                            style="max-width: 230px;">
+                                    </div>
+                                    <div class="col-lg-6 mt-3 mt-lg-0">
+                                        <div class="border p-4 rounded-3 text-center"
+                                            style="background:rgba(255,255,255,0.03); border-color:var(--line) !important;">
+                                            <p id="modal-price-pen" class="display-6 fw-bold mb-2"
+                                                style="color:var(--emerald);">S/80.00</p>
+                                            <h6 class="fw-bold text-white">Yape / Plin</h6>
+                                            <p class="mb-1 text-white"><strong>Titular:</strong> JOEL V.</p>
+                                            <p class="mb-0 text-white"><strong>Número:</strong> 931301498</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a id="modal-wsp-yape"
+                                    href="https://wa.me/51922784328?text=Hola,%20acabo%20de%20realizar%20el%20depósito"
+                                    target="_blank"
+                                    class="btn btn-success text-center mt-4 d-block text-decoration-none fw-bold py-3">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    Enviar comprobante Yape/Plin por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="card-content" role="tabpanel" aria-labelledby="card-tab">
+                            <div class="text-center text-white">
+                                <h4 class="mb-3 fw-bold">Pago Seguro con Tarjeta</h4>
+                                <p class="text-white">Paga de forma rápida y encriptada desde cualquier país vía
+                                    Hotmart.</p>
+                                <div class="my-3">
+                                    <i class="fab fa-cc-visa fa-3x mx-2 text-primary"></i>
+                                    <i class="fab fa-cc-mastercard fa-3x mx-2 text-danger"></i>
+                                    <i class="fab fa-cc-amex fa-3x mx-2 text-info"></i>
+                                </div>
+                                <button type="button" id="hotmart-btn"
+                                    class="btn btn-lg w-100 text-white fw-bold mb-3 shadow-sm py-3"
+                                    style="background: linear-gradient(135deg, #f5313d, #ba0410); border-radius: 12px;"
+                                    data-bs-toggle="modal" data-bs-target="#hotmartModal">
+                                    <i class="fas fa-lock me-2"></i>Pagar ahora vía Hotmart
+                                </button>
+                                <p class="text-muted small"><i class="fas fa-shield-alt me-1"></i> Transacción 100%
+                                    encriptada y segura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2" data-bs-dismiss="modal" id="btnClosePaymentModal">
+                        <i class="fas fa-times me-2"></i>Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Hotmart -->
+    <div class="modal fade" id="hotmartModal" tabindex="-1" aria-labelledby="hotmartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="height: 85vh; background:#0f172a; border-radius:20px;">
+                <div class="modal-header border-0 px-4 py-3 align-items-center" style="background: #1e293b; border-bottom: 1px solid rgba(255,255,255,0.1) !important;">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-shield-alt text-warning fs-5"></i>
+                        <h5 class="modal-title fw-bold text-white mb-0 fs-6" id="hotmartModalLabel">
+                            Pasarela de Pago Seguro Oficial — Hotmart
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white ms-auto shadow-sm" data-bs-dismiss="modal" aria-label="Close"
+                        style="opacity: 0.95; filter: invert(1) grayscale(100%) brightness(200%); width: 1.25rem; height: 1.25rem;"
+                        onclick="document.getElementById('hotmartIframe').src = '';"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="hotmartIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Planes y Precios -->
+    <div class="modal fade" id="plansModal" tabindex="-1" aria-labelledby="plansModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg"
+                style="background: #0f172a; border-radius: 24px; border: 1px solid var(--line);">
+                <div class="modal-header border-0 pb-0 px-4 pt-4 align-items-center">
+                    <div class="d-flex align-items-center gap-2 px-3 py-2 rounded-3 shadow-sm" style="background: #ffffff;">
+                        <i class="fas fa-tags text-primary fs-4"></i>
+                        <h5 class="modal-title fw-bold fs-5 mb-0" id="plansModalLabel" style="color: #000000 !important;">
+                            Planes y Precios — BoticaPro EX
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4 justify-content-center">
+                        <!-- Licencia Permanente -->
+                        <div class="col-lg-5 col-md-6">
+                            <div class="pricing-card-p featured">
+                                <div>
+                                    <span class="badge bg-purple px-3 py-2 rounded-pill text-white fw-bold mb-3"
+                                        style="background:#8b5cf6;">★ UN SOLO PAGO</span>
+                                    <h4 class="text-white">Permanente</h4>
+                                    <p class="small text-white">Un solo pago de por vida (sin mensualidades). Uso en 1
+                                        PC o Laptop.</p>
+                                    <div class="price-display-p">
+                                        <span class="currency">S/</span>
+                                        <span class="amount" style="color:#a78bfa;">80</span>
+                                        <span class="currency text-white-50 ms-2">| $26 USD</span>
+                                    </div>
+                                    <ul class="check-list-p">
+                                        <li><i class="fas fa-check"></i> Acceso Multiusuario completo</li>
+                                        <li><i class="fas fa-check"></i> Ventas Fraccionadas (Unidad/Caja)</li>
+                                        <li><i class="fas fa-desktop text-success"></i> Uso en 1 PC o Laptop</li>
+                                        <li><i class="fas fa-gem text-warning"></i> <strong>Un solo pago de por vida
+                                                (sin mensualidades)</strong></li>
+                                    </ul>
+                                </div>
+                                <button type="button"
+                                    class="btn btn-lg text-white fw-bold py-3 w-100 rounded-3 border-0"
+                                    style="background: #8b5cf6;" data-bs-toggle="modal" data-bs-target="#paymentModal"
+                                    data-price-usd="26.00" data-price-pen="80.00"
+                                    data-version="BoticaPro Licencia Permanente"
+                                    data-hotmart="https://pay.hotmart.com/D105636552A">
+                                    <i class="fas fa-gem me-2"></i>Permanente
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Plan Red Local -->
+                        <div class="col-lg-5 col-md-6">
+                            <div class="pricing-card-p" style="border-color: rgba(34, 197, 94, 0.5);">
+                                <div>
+                                    <span class="badge bg-success px-3 py-2 rounded-pill text-white fw-bold mb-3">★
+                                        MULTI-PC RED LOCAL</span>
+                                    <h4 class="text-white">Red Local</h4>
+                                    <p class="small text-white">Uso simultáneo en varios equipos a la vez (Red Local).
+                                        Un solo pago de por vida.</p>
+                                    <div class="price-display-p">
+                                        <span class="currency">S/</span>
+                                        <span class="amount" style="color:var(--emerald);">135</span>
+                                        <span class="currency text-white-50 ms-2">| $40 USD</span>
+                                    </div>
+                                    <ul class="check-list-p">
+                                        <li><i class="fas fa-check"></i> Todo lo del plan Permanente</li>
+                                        <li><i class="fas fa-desktop text-success"></i> <strong>Uso simultáneo en varios
+                                                equipos a la vez</strong></li>
+                                        <li><i class="fas fa-network-wired text-success"></i> Conexión exclusiva en Red
+                                            Local</li>
+                                        <li><i class="fas fa-gem text-warning"></i> Un solo pago (Sin mensualidades)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button" class="btn btn-lg text-dark fw-bold py-3 w-100 rounded-3 border-0"
+                                    style="background: var(--emerald);" data-bs-toggle="modal"
+                                    data-bs-target="#paymentModal" data-price-usd="40.00" data-price-pen="135.00"
+                                    data-version="BoticaPro Plan Red Local"
+                                    data-hotmart="https://pay.hotmart.com/Y106060643U">
+                                    <i class="fas fa-network-wired me-2"></i>Conectar en Red Local
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2" data-bs-dismiss="modal" id="btnClosePlansModal">
+                        <i class="fas fa-times me-2"></i>Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Flotante -->
+    <a href="#" class="whatsapp-float" data-bs-toggle="modal" data-bs-target="#whatsappContactModal" data-system-id="botica" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 80 });
+
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true
+        });
+
+        // Navbar Scroll Behavior
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Dynamic Payment Modal Data
+        const paymentModal = document.getElementById('paymentModal');
+        if (paymentModal) {
+            paymentModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const usd = button.getAttribute('data-price-usd');
+                const pen = button.getAttribute('data-price-pen');
+                const version = button.getAttribute('data-version');
+                const hotmartUrl = button.getAttribute('data-hotmart');
+                const hotmartBtn = document.getElementById('hotmart-btn');
+
+                if (pen && version) {
+                    document.getElementById('modal-price-pen').textContent = 'S/' + pen;
+                    document.getElementById('modal-wsp-yape').href = 'https://wa.me/51922784328?text=' + encodeURIComponent('Hola 👋, acabo de realizar el depósito de S/' + pen + ' por Yape/Plin para ' + version + '. Adjunto mi comprobante.');
+                }
+
+                if (hotmartUrl && hotmartBtn) {
+                    hotmartBtn.onclick = function () {
+                        document.getElementById('hotmartIframe').src = hotmartUrl;
+                    };
+                }
+            });
+        }
+
+        // Playlist Interactiva de Tutoriales BoticaPro EX
+        document.addEventListener('DOMContentLoaded', function () {
+            const playlistItems = document.querySelectorAll('#tutorialPlaylist .playlist-item');
+            const mainIframe = document.getElementById('mainPlayerIframe');
+            const currentBadge = document.getElementById('currentVideoBadge');
+            const currentModule = document.getElementById('currentVideoModule');
+            const currentTitle = document.getElementById('currentVideoTitle');
+            const directYtLink = document.getElementById('currentYoutubeDirect');
+
+            if (playlistItems.length && mainIframe) {
+                playlistItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        playlistItems.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const vid = this.getAttribute('data-vid');
+                        const index = this.getAttribute('data-index');
+                        const module = this.getAttribute('data-module');
+                        const title = this.getAttribute('data-title');
+
+                        // Actualizar iframe con autoplay activado al seleccionar
+                        mainIframe.src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&enablejsapi=1`;
+
+                        // Actualizar etiquetas y título
+                        if (currentBadge) currentBadge.innerHTML = `<i class="fab fa-youtube me-1"></i> Clase ${index} de 13`;
+                        if (currentModule) currentModule.textContent = module;
+                        if (currentTitle) currentTitle.textContent = title;
+                        if (directYtLink) directYtLink.href = `https://www.youtube.com/watch?v=${vid}&list=PLS6Po-Z9_soQ&index=${index}`;
+
+                        // Auto scroll suave del elemento activo en la playlist si está fuera de vista
+                        this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- Floating Social Bar (Esquina Inferior Izquierda) -->
+    <div class="social-float-bar">
+        <a href="https://whatsapp.com/channel/0029VbDRlTBHAdNRwYQlgV3L" target="_blank" class="social-float-item social-float-wa" title="Canal de WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="social-float-tooltip">Canal de WhatsApp</span>
+        </a>
+        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" class="social-float-item social-float-yt" title="YouTube">
+            <i class="fab fa-youtube"></i>
+            <span class="social-float-tooltip">YouTube</span>
+        </a>
+        <a href="https://www.facebook.com/mksistemas27" target="_blank" class="social-float-item social-float-fb" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span class="social-float-tooltip">Facebook</span>
+        </a>
+        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" class="social-float-item social-float-tt" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+            <span class="social-float-tooltip">TikTok</span>
+        </a>
+    </div>
+
+    <!-- Modal Redes Sociales + Canal WhatsApp -->
+    <div class="modal fade modal-social-dark" id="socialWelcomeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 480px;">
+            <div class="modal-content" style="background-color: #0f172a !important; background: #0f172a !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; border-radius: 20px !important;">
+                <div class="modal-header border-0 pb-0" style="background-color: #0f172a !important; background: #0f172a !important;">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="img/logo.jpeg" alt="Logo" style="height:32px; width:32px; border-radius:6px; object-fit:cover;">
+                        <h5 class="modal-title fw-bold fs-6" style="color: #ffffff !important;">Sistemas Excel</h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center pt-2 pb-4 px-4" style="background-color: #0f172a !important; background: #0f172a !important; color: #ffffff !important;">
+                    <div class="mb-3">
+                        <span class="badge px-3 py-2 rounded-pill fs-7 fw-bold" style="background: rgba(34, 197, 94, 0.15) !important; color: #4ade80 !important; border: 1px solid rgba(34, 197, 94, 0.3) !important;">
+                            <i class="fas fa-bell me-1"></i> Comunidad & Novedades
+                        </span>
+                    </div>
+                    <h4 class="fw-bold mb-2" style="font-family:'Sora', sans-serif; color: #ffffff !important;">¡Entérate de las últimas novedades!</h4>
+                    <p class="small mb-4" style="color: #cbd5e1 !important;">
+                        Únete a nuestro canal oficial de WhatsApp y síguenos en redes para recibir tutoriales gratuitos, nuevas plantillas y promociones exclusivas.
+                    </p>
+
+                    <div class="d-flex flex-column gap-2 text-start">
+                        <a href="https://whatsapp.com/channel/0029VbDRlTBHAdNRwYQlgV3L" target="_blank" class="social-card-btn social-btn-whatsapp-channel" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important; background-color: #25D366 !important; color: #ffffff !important;">
+                            <i class="fab fa-whatsapp social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Unirme al Canal de WhatsApp</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Recibe novedades y actualizaciones directas</small>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/@SISTEMASEXCEL" target="_blank" class="social-card-btn social-btn-youtube" style="background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%) !important; background-color: #FF0000 !important; color: #ffffff !important;">
+                            <i class="fab fa-youtube social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Suscribirse en YouTube</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Tutoriales en video y demos completas</small>
+                            </div>
+                        </a>
+                        <a href="https://www.facebook.com/mksistemas27" target="_blank" class="social-card-btn social-btn-facebook" style="background: linear-gradient(135deg, #1877F2 0%, #0d65d9 100%) !important; background-color: #1877F2 !important; color: #ffffff !important;">
+                            <i class="fab fa-facebook-f social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Seguir en Facebook</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Noticias, avisos y soporte</small>
+                            </div>
+                        </a>
+                        <a href="http://tiktok.com/@excelsistemascusco" target="_blank" class="social-card-btn social-btn-tiktok" style="background: linear-gradient(135deg, #111111 0%, #1f2937 100%) !important; background-color: #111111 !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.25) !important;">
+                            <i class="fab fa-tiktok social-card-icon" style="color: #ffffff !important;"></i>
+                            <div>
+                                <div class="lh-1 fw-bold" style="color: #ffffff !important;">Seguir en TikTok</div>
+                                <small style="font-size:0.75rem; color: rgba(255, 255, 255, 0.8) !important;">Tips rápidos y trucos de Excel</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-center" style="background-color: #0f172a !important; background: #0f172a !important;">
+                    <button type="button" class="btn btn-sm rounded-pill px-4" data-bs-dismiss="modal" id="btnCloseSocialModal" style="background: rgba(255, 255, 255, 0.12) !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.3) !important;">
+                        Continuar navegando
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('socialWelcomeModalShown')) {
+                setTimeout(function () {
+                    const modalElement = document.getElementById('socialWelcomeModal');
+                    if (modalElement && typeof bootstrap !== 'undefined') {
+                        const socialModal = new bootstrap.Modal(modalElement);
+                        socialModal.show();
+                    }
+                }, 2500);
+            }
+
+            const closeBtn = document.getElementById('btnCloseSocialModal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    localStorage.setItem('socialWelcomeModalShown', 'true');
+                });
+            }
+            const modalElement = document.getElementById('socialWelcomeModal');
+            if (modalElement) {
+                modalElement.addEventListener('hidden.bs.modal', function () {
+                    localStorage.setItem('socialWelcomeModalShown', 'true');
+                });
+            }
+        });
+    </script>
+    <!-- Modal Opciones de WhatsApp por Sistema -->
+    <div class="modal fade" id="whatsappContactModal" tabindex="-1" aria-labelledby="whatsappContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 580px;">
+            <div class="modal-content" style="background:#0b1329; color:#fff; border-radius:24px; border:1px solid rgba(255,255,255,0.15); box-shadow:0 25px 60px -15px rgba(0,0,0,0.85); overflow:hidden;">
+                <div class="modal-header border-0 pb-2 pt-4 px-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div style="width:46px; height:46px; border-radius:14px; background:rgba(34,197,94,0.18); display:flex; align-items:center; justify-content:center; color:#22c55e; font-size:1.6rem; flex-shrink:0;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="modal-title fw-bold mb-0" id="whatsappContactModalLabel" style="color:#ffffff !important; font-family:'Sora',sans-serif; font-size:1.25rem;">Elige tu consulta por WhatsApp</h4>
+                            <p class="wsp-modal-subtitle mb-0 small" style="color:#94a3b8 !important;">Atención personalizada y respuesta inmediata</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-3">
+                    <div class="mb-3 p-3 rounded-3 d-flex align-items-center justify-content-between" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+                        <span class="small text-white-50"><i class="fas fa-layer-group me-1 text-success"></i> Sistema seleccionado:</span>
+                        <div>
+                            <span class="badge bg-dark border border-secondary border-opacity-25 me-2" id="wspModalSystemBadge">💊 BoticaPro</span>
+                            <strong class="text-white fw-bold" id="wspModalSystemName" style="color:#34d399 !important;">BoticaPro EX 13.5</strong>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3">
+                        <!-- Opción 1: Solicitar Demo -->
+                        <div class="wsp-option-card p-3 p-md-4 rounded-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div style="width:48px; height:48px; border-radius:14px; background:rgba(34,197,94,0.14); display:flex; align-items:center; justify-content:center; color:#4ade80; font-size:1.4rem; flex-shrink:0;">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
+                                        <h5 class="fw-bold text-white mb-0 fs-6">1. Solicitar demo</h5>
+                                        <span class="badge rounded-pill fw-semibold" style="background:rgba(34,197,94,0.18); color:#4ade80; border:1px solid rgba(34,197,94,0.3); font-size:0.75rem; padding:5px 12px;">Mensaje automático 1</span>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Para conocer el funcionamiento del sistema antes de comprarlo.</p>
+                                </div>
+                            </div>
+
+                            <a href="#" id="wspDemoLink" target="_blank" class="btn btn-whatsapp-action w-100 fw-bold py-2 px-3 d-flex align-items-center justify-content-center gap-2 text-white" style="background:linear-gradient(135deg, #22c55e, #16a34a); border:none; font-size:0.95rem;">
+                                <i class="fab fa-whatsapp fs-5"></i> Solicitar Demo por WhatsApp
+                            </a>
+                        </div>
+
+                        <!-- Opción 2: Consultar precio y comprar -->
+                        <div class="wsp-option-card p-3 p-md-4 rounded-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div style="width:48px; height:48px; border-radius:14px; background:rgba(16,185,129,0.18); display:flex; align-items:center; justify-content:center; color:#34d399; font-size:1.4rem; flex-shrink:0;">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
+                                        <h5 class="fw-bold text-white mb-0 fs-6">2. Consultar precio y comprar</h5>
+                                        <span class="badge rounded-pill fw-semibold" style="background:rgba(16,185,129,0.18); color:#34d399; border:1px solid rgba(16,185,129,0.3); font-size:0.75rem; padding:5px 12px;">Mensaje automático 2</span>
+                                    </div>
+                                    <p class="small text-white-50 mb-0">Para quienes ya tienen interés en adquirir el sistema.</p>
+                                </div>
+                            </div>
+
+                            <a href="#" id="wspComprarLink" target="_blank" class="btn btn-whatsapp-action w-100 fw-bold py-2 px-3 d-flex align-items-center justify-content-center gap-2 text-white" style="background:linear-gradient(135deg, #10b981, #059669); border:none; font-size:0.95rem;">
+                                <i class="fab fa-whatsapp fs-5"></i> Consultar Precio y Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Modal Script -->
+    <script src="whatsapp-modal.js"></script>
+</body>
+
+</html>

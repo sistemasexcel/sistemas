@@ -1,0 +1,23 @@
+# Archivos y carpetas temporales / locales
+node_modules/
+.vscode/
+.idea/
+*.log
+*.tmp
+scratch/
+replace.js
+update_ventas.js
+update_ventas.py
+seo_injector.py
+
+# Bases de datos Access locales
+*.accdb
+
+# Videos pesados locales (ya están en YouTube)
+*.mp4
+
+# Copias de respaldo locales
+*copia*.html
+botica_modal.html
+botica_precio.html
+ventas_precio.html
